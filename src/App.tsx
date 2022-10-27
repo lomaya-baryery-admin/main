@@ -1,8 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import reactLogo from './assets/react.svg';
 import './App.css';
+import { useAppDispatch } from './redux-store/redux-hooks'
+import { defaultList } from './redux-store/default-slice/default-slice'
 
 function App() {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(defaultList());
+  }, [dispatch]);
+
   const [count, setCount] = useState(0);
   return (
     <div className="App">
