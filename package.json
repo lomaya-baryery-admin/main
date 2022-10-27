@@ -10,7 +10,9 @@
     "lint.fix": "eslint --ext .ts,.tsx src --fix",
     "preview": "vite preview",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prettier": "prettier --check src/**/*.{ts,tsx,css,json}",
+    "prettier-format": "prettier --write src/**/*.{ts,tsx,css,json}"
   },
   "prettier": {
     "singleQuote": true,
