@@ -30,6 +30,7 @@ jobs:
         run: npm run prettier
 
       - name: Build
+        if: always()
         run: npm run build
 
       - name: Deploy
