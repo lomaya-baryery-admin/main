@@ -13,3 +13,11 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('./OpenSans-Bold-700.woff2') format('woff2'), url('./OpenSans-Bold-700.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

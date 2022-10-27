@@ -1,0 +1,43 @@
+.header {
+  display: flex;
+  padding: 20px;
+  width: 100%;
+  max-width: 1440px;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  /* Удалить обводку */
+  border: 1px dotted var(--colors-interface-blue);
+}
+
+.links {
+  display: flex;
+  gap: 30px;
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+  color: var(--colors-interface-gray-dark);
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  padding: 0;
+}
+
+.title {
+  font-family: 'Open Sans';
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.03em;
+  margin: 10px 11px;
+  color: var(--colors-interface-blue);
+}
+
+.logoContainer {
+  display: flex;
+}

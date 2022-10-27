@@ -57,6 +57,13 @@
   font-weight: 700;
 }
 
+.text_type_secondary-large {
+  font-family: 'Open Sans';
+  font-size: 20px;
+  line-height: 19px;
+  font-weight: 700;
+}
+
 .text_color_primary {
   color: var(--text-color-primary);
 }
