@@ -26,6 +26,7 @@ jobs:
         run: npm run lint
 
       - name: Prettier
+        if: always()
         run: npm run prettier
 
       - name: Build
