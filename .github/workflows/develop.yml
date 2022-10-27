@@ -23,6 +23,7 @@ jobs:
         run: npm ci
 
       - name: ESLint
+        if: always()
         run: npm run lint
 
       - name: Prettier
