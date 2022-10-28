@@ -33,7 +33,7 @@ export const shiftCreate = createAsyncThunk(
             finished_at: finished_at
          })
       });
-      const data = checkResponse<IStateShifts>(response);
+      const data = checkResponse<IResponceShifts>(response);
       return data;
    });
 
@@ -58,8 +58,8 @@ export const shiftCreateSlice = createSlice({
             state.error = "";
             state.id = '';
             state.started_at = '';
-            state.finished_at = ''
-            state.status = ''
+            state.finished_at = '';
+            state.status = '';
          })
          .addCase(shiftCreate.rejected, (state) => {
             state.loading = "idle";
@@ -71,7 +71,7 @@ export const shiftCreateSlice = createSlice({
             state.loading = "idle";
             state.error = '';
             state.id = action.payload.id;
-            state.status = action.payload.status
+            state.status = action.payload.status;
          })
    }
 })

@@ -4,6 +4,7 @@ import { applicationSelectSlice } from "./applications-select-slice/applications
 import { reportsSelectSlice } from "./reports-select-slice/reports-select-slice";
 import { defaultSlice } from "./default-slice/default-slice";
 import { shiftCreateSlice } from "./shifts-create-slice/shifts-create-slice";
+import { shiftGetSlice } from './shifts-get-slice/shifts-get-slice'
 
 export const store = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ export const store = configureStore({
     applicationSelectReducer: applicationSelectSlice.reducer,
     reportsSelectReducer: reportsSelectSlice.reducer,
     defaultReducer: defaultSlice.reducer,
-    shiftsReducer: shiftCreateSlice.reducer
+    shiftsCreateReducer: shiftCreateSlice.reducer,
+    shiftGetReducer: shiftGetSlice.reducer
   },
   devTools: true
 });
