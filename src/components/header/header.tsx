@@ -1,27 +1,26 @@
 import React from 'react';
 import headerStyles from './header.module.css';
-import logo from '../../img/logo.png';
-import exit from '../../img/Enter.png';
-import user from '../../img/User.png';
 import '../../assets/styles/common.css';
 import '../../assets/fonts/fonts.css';
+import { EnterIcon } from '../../stories/icons/enter-icon';
+import { Logo } from '../../stories/logo';
+import { UserIcon } from '../../stories/icons';
 
 export function Header() {
   return (
     <header className={headerStyles.header}>
       <div className={headerStyles.logoContainer}>
-        <img className={headerStyles.logo} src={logo} alt="Логотип" />
-        <h1 className={`${headerStyles.title} text_type_secondary-large`}>ломая барьеры</h1>
+        <Logo className={headerStyles.logo} />
       </div>
       <div className={headerStyles.links}>
-        {/* Указать ссылки /profile/ */}
+        {/* Указать ссылки /profile/ и состояние */}
         <button className={`${headerStyles.button} text_type_main-medium`}>
-          <img src={user} alt="Аккаунт" />
+          <UserIcon type="link" />
           Аккаунт
         </button>
-        {/* Указать ссылки /logout/ */}
+        {/* Указать ссылки /logout/ и состояние */}
         <button className={`${headerStyles.button} text_type_main-medium`}>
-          <img src={exit} alt="Выйти" />
+          <EnterIcon type="link" />
           Выйти
         </button>
       </div>
