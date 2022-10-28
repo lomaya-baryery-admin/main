@@ -1,0 +1,39 @@
+.changeCurrent {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  color: #3ea745;
+  background: rgba(62, 167, 69, 0.1);
+  border-radius: 10px;
+  padding: 6px 8px;
+}
+
+.changeNew {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  background: #f7f6f9;
+  border-radius: 10px;
+  padding: 6px 8px;
+}
+
+.changePast {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  color: #929ead;
+  background: #f7f6f9;
+  border-radius: 10px;
+  padding: 6px 8px;
+}
+
+.changes {
+  display: flex;
+}

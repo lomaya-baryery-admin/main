@@ -1,4 +1,5 @@
 import { getColor, IIconProps } from './utils';
+import React from 'react';
 
 export const ZoomIcon = ({ type }: IIconProps) => {
   return (
