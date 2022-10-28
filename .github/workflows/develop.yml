@@ -32,7 +32,7 @@ jobs:
 
       - name: Build
         if: always()
-        run: npm run build
+        run: npm run build-gh-pages
 
       - name: Add .nojekyll to dist folder
         if: github.event.pull_request.merged == true
