@@ -13,7 +13,7 @@ export default {
     },
     size: {
       type: 'string',
-      description: 'ширина (max-content, min-content) и размер шрифта',
+      description: 'ширина (max-content, min-content), размер шрифта и отступы',
       defaultValue: 'default',
       options: ['default', 'small'],
       control: {
