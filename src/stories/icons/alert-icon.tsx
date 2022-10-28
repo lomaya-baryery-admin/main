@@ -15,3 +15,4 @@ export const AlertIcon = ({ type }: IIconProps) => (
     />
   </svg>
 );
+
