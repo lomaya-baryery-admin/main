@@ -30,7 +30,7 @@
     "prettier/prettier": "error",
     "quotes": ["error", "single"],
     "jsx-quotes": ["error", "prefer-double"],
-    "indent": ["warn", 2],
+    // "indent": ["warn", 2],
     "react/jsx-indent": ["warn", 2],
     "react/jsx-indent-props": ["warn", 2],
     "react/react-in-jsx-scope": "off",
