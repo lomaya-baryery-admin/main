@@ -13,11 +13,7 @@ export default {
     },
     type: {
       description: 'Тип кнопки',
-      defaultValue: 'main',
-    },
-    primary: {
-      description: 'Статус кнопки',
-      defaultValue: true,
+      defaultValue: 'primary',
     },
     label: {
       description: 'Имя кнопки',
@@ -31,35 +27,35 @@ export default {
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
-export const MainLarge = Template.bind({});
-MainLarge.args = {
-  type: 'main',
+export const PrimaryLarge = Template.bind({});
+PrimaryLarge.args = {
+  type: 'primary',
   size: 'large'
 };
 
-export const NotMainLarge = Template.bind({});
-NotMainLarge.args = {
-  type: 'not_main',
+export const SecondaryLarge = Template.bind({});
+SecondaryLarge.args = {
+  type: 'secondary',
   size: 'large'
 };
 
-export const MainSmall = Template.bind({});
-MainSmall.args = {
-  type: 'main',
+export const PrimarySmall = Template.bind({});
+PrimarySmall.args = {
+  type: 'primary',
   size: 'small',
   label: 'Выбрать'
 };
 
-export const NotMainSmall = Template.bind({});
-NotMainSmall.args = {
-  type: 'not_main',
+export const SecondarySmall = Template.bind({});
+SecondarySmall.args = {
+  type: 'secondary',
   size: 'small',
   label: 'Выбрать дату'
 };
 
-export const NotMainNegative = Template.bind({});
-NotMainNegative.args = {
-  type: 'not_main_negative',
+export const Negative = Template.bind({});
+Negative.args = {
+  type: 'negative',
   size: 'small',
   label: 'Завершить смену'
 };
