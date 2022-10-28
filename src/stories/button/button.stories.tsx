@@ -15,8 +15,10 @@ export default {
       description: 'Тип кнопки',
       defaultValue: 'primary',
     },
-    label: {
-      description: 'Имя кнопки',
+    className: {
+      description: 'Класс',
+    },
+    children: {
       defaultValue: 'Начать смену',
     },
     onClick: {
@@ -43,21 +45,21 @@ export const PrimarySmall = Template.bind({});
 PrimarySmall.args = {
   type: 'primary',
   size: 'small',
-  label: 'Выбрать'
+  children: 'Выбрать'
 };
 
 export const SecondarySmall = Template.bind({});
 SecondarySmall.args = {
   type: 'secondary',
   size: 'small',
-  label: 'Выбрать дату'
+  children: 'Выбрать дату'
 };
 
 export const Negative = Template.bind({});
 Negative.args = {
   type: 'negative',
   size: 'small',
-  label: 'Завершить смену'
+  children: 'Завершить смену'
 };
 
 

@@ -19,14 +19,14 @@
   transition: none;
   opacity: 1;
   color: #FFFFFF; 
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #4154A4;
+  background-color: #344383;
 }
 .secondary {
   color: #4154A4;
-  background: rgba(65, 84, 164, 0.1);
+  background-color: #ECEEF6;
 }
 .secondary:hover {
-  background: rgba(65, 84, 164, 0.2);
+  background-color: #D9DDED;
 }
 .secondary:active {
   transition: none;
@@ -36,11 +36,11 @@
 }
 .negative {
   color: #4154A4;
-  background: rgba(65, 84, 164, 0.1);
+  background-color: #ECEEF6;
 }
 .negative:hover {
   color: #C53637;
-  background: rgba(197, 54, 55, 0.1);
+  background-color: #F9EBEB;
 }
 .negative:active {
   transition: none;
