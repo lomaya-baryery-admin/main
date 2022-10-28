@@ -6,9 +6,8 @@ export default {
   title: 'Alert',
   component: Alert,
   argTypes: {
-    name: {
+    title: {
         description: 'Текст',
-        defaultValue: 'Отчёты на проверку отсутствуют'
     },
     className: {
         description: 'Имя класса',
@@ -21,6 +20,8 @@ const Template: ComponentStory<typeof Alert> = (args) => <Alert {...args} />;
 
 export const Default = Template.bind({});
 
-Default.args = {
-  name: 'Отчёты на проверку отсутствуют',
+export const Title = Template.bind({});
+
+Title.args = {
+  title: 'Отчёты на проверку отсутствуют',
 };
