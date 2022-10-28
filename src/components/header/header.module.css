@@ -25,13 +25,8 @@
 }
 
 .title {
-  font-family: 'Open Sans';
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 19px;
   display: flex;
   align-items: center;
-  letter-spacing: -0.03em;
   margin: 10px 11px;
   color: var(--colors-interface-blue);
 }
