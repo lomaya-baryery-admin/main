@@ -23,12 +23,15 @@ export const shiftGet = createAsyncThunk<
    IInformation,
    undefined,
    { state: RootState }
->("@@shiftsGet", async (_, { getState }) => {
-   const shiftId = getState().shiftsCreateReducer.id;
-   const response = await fetch(`${config.url}/shifts/${shiftId}`);
-   const data = checkResponse<IInformation>(response);
-   return data;
-});
+>
+   (
+      "@@shiftsGet",
+      async (_, { getState }) => {
+         const shiftId = getState().shiftsCreateReducer.id;
+         const response = await fetch(`${config.url}/shifts/${shiftId}`);
+         const data = checkResponse<IInformation>(response);
+         return data;
+      });
 
 const initialState: IStateShiftsGet = {
    id: "",
