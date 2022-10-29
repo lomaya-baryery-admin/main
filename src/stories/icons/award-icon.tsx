@@ -15,3 +15,4 @@ export const AwardIcon = ({ type }: IIconProps) => (
     />
   </svg>
 );
+
