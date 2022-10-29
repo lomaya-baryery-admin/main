@@ -7,21 +7,20 @@ export default {
   component: Alert,
   argTypes: {
     title: {
-        description: 'Текст',
+      description: 'Текст',
     },
     className: {
-        description: 'Имя класса',
-    }
-  }
-
+      description: 'Имя класса',
+    },
+  },
 } as ComponentMeta<typeof Alert>;
 
 const Template: ComponentStory<typeof Alert> = (args) => <Alert {...args} />;
 
 export const Default = Template.bind({});
 
-export const Title = Template.bind({});
+export const WithTitle = Template.bind({});
 
-Title.args = {
+WithTitle.args = {
   title: 'Отчёты на проверку отсутствуют',
 };

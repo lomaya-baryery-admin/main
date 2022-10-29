@@ -1,16 +1,17 @@
 .button {
   font-family: 'Lato';
   font-weight: 700;
-  border: 0;
-  border-radius: 10px;
+  border: none;
+  border-radius: var(--common-border-radius);
   cursor: pointer;
-  display: inline-block; 
+  display: flex;
+  align-items: center;
   transition: linear, 0.5s;
 }
 
-.primary { 
-  color: #FFFFFF; 
-  background-color: #4154A4;  
+.primary {
+  color: #ffffff;
+  background-color: #4154a4;
 }
 .primary:hover {
   opacity: 0.8;
@@ -18,45 +19,43 @@
 .primary:active {
   transition: none;
   opacity: 1;
-  color: #FFFFFF; 
+  color: #ffffff;
   background-color: #344383;
 }
 .secondary {
-  color: #4154A4;
-  background-color: #ECEEF6;
+  color: #4154a4;
+  background-color: #eceef6;
 }
 .secondary:hover {
-  background-color: #D9DDED;
+  background-color: #d9dded;
 }
 .secondary:active {
   transition: none;
   opacity: 1;
-  color: #FFFFFF; 
-  background-color: #4154A4; 
+  color: #ffffff;
+  background-color: #4154a4;
 }
 .negative {
-  color: #4154A4;
-  background-color: #ECEEF6;
+  color: #4154a4;
+  background-color: #eceef6;
 }
 .negative:hover {
-  color: #C53637;
-  background-color: #F9EBEB;
+  color: #c53637;
+  background-color: #f9ebeb;
 }
 .negative:active {
   transition: none;
   opacity: 1;
-  color: #FFFFFF; 
-  background-color: #C53637;
+  color: #ffffff;
+  background-color: #c53637;
 }
 .small {
   font-size: 16px;
   line-height: 19px;
-  padding: 10.5px 15px;
+  padding: 10px 15px;
 }
 .large {
   font-size: 18px;
   line-height: 22px;
-  padding: 19px 74.75px;
+  padding: 18px 56px;
 }
-
-

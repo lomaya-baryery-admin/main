@@ -1,38 +1,43 @@
-import React, { FC, ReactNode } from 'react';
+import React from 'react';
 import styles from './button.module.css';
 
-interface ButtonProps {
+interface ButtonProps extends React.PropsWithChildren {
+  htmlType: 'button' | 'submit' | 'reset';
   type?: 'primary' | 'secondary' | 'negative';
   size?: 'small' | 'large';
-  children?: ReactNode;
   className?: string;
   onClick?: () => void;
 }
 
-export const Button: FC<ButtonProps> = ({
+export const Button = ({
   type = 'primary',
   size = 'large',
   children,
   className,
+  htmlType,
   ...props
-}) => {
+}: ButtonProps) => {
   let mode;
   switch (type) {
-    case 'primary': 
+    case 'primary':
       mode = `${styles.primary}`;
       break;
-    case 'secondary': 
+    case 'secondary':
       mode = `${styles.secondary}`;
       break;
-    case 'negative': 
+    case 'negative':
       mode = `${styles.negative}`;
       break;
-  };
-  
+  }
+
   className = className ? className : '';
 
   return (
-    <button type="button" className={`${styles.button} ${styles[size]} ${mode} ${className}`} {...props}>
+    <button
+      type={htmlType}
+      className={`${styles.button} ${styles[size]} ${mode} ${className}`}
+      {...props}
+    >
       {children}
     </button>
   );
