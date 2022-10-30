@@ -1,0 +1,78 @@
+.navbar {
+  width: 264px;
+  min-height: 262px;
+  padding-left: 20px;
+  padding-right: 20px;
+  row-gap: 10px;
+}
+.button {
+  border: none;
+  width: 264px;
+  height: 58px;
+  padding: 0px;
+  background: #f7f6f9;
+  cursor: pointer;
+}
+.button__container {
+  width: 234px;
+  height: 24px;
+  padding-top: 17px;
+  padding-left: 20px;
+  padding-bottom: 17px;
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+}
+.button__text_active {
+  display: flex;
+  padding-left: 13px;
+  align-items: center;
+  margin: 0;
+  padding-top: 4px;
+  color: #4154a4;
+  text-decoration: none;
+  list-style: none;
+}
+.button__text {
+  display: flex;
+  padding-left: 13px;
+  align-items: center;
+  margin: 0;
+  padding-top: 4px;
+  color: #606c78;
+  text-decoration: none;
+  list-style: none;
+}
+.Chevron {
+  margin-left: auto;
+  margin-right: 0;
+}
+.navbar__list {
+  color: #4154a4;
+  text-decoration: none;
+  list-style: none;
+  margin: 0;
+  margin-left: 54px;
+  padding: 0;
+}
+.navbar__listElement {
+  text-decoration: none;
+  list-style: none;
+  width: 210px;
+  display: flex;
+}
+.navbar__link {
+  text-decoration: none;
+  list-style: none;
+  width: 258px;
+  padding-top: 17px;
+  padding-left: 30px;
+  padding-bottom: 19px;
+  padding-right: 10px;
+  height: min-content;
+  color: #4154a4;
+}
+.navbar__link_active {
+  background: #ffffff;
+  border-radius: 10px;
+}
