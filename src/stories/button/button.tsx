@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './button.module.css';
 
 interface ButtonProps extends React.PropsWithChildren {
-  htmlType: 'button' | 'submit' | 'reset';
+  htmlType?: 'button' | 'submit' | 'reset';
   type?: 'primary' | 'secondary' | 'negative';
   size?: 'small' | 'large';
   className?: string;
@@ -14,7 +14,6 @@ export const Button = ({
   size = 'large',
   children,
   className,
-  htmlType,
   ...props
 }: ButtonProps) => {
   let mode;
@@ -28,13 +27,15 @@ export const Button = ({
     case 'negative':
       mode = `${styles.negative}`;
       break;
+    default:
+      break;
   }
 
-  className = className ? className : '';
+  className = className || '';
 
   return (
     <button
-      type={htmlType}
+      type="button"
       className={`${styles.button} ${styles[size]} ${mode} ${className}`}
       {...props}
     >
