@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 //смены
 interface IchangesState {
-  changes: "все" | "текущая" | "новая" | "";
+  changes: "all" | "current" | "new" | "";
 }
 const initialState: IchangesState = {
   changes: ""
@@ -12,7 +12,7 @@ export const changesSelectSlice = createSlice({
   reducers: {
     changesSelectAction: (
       state,
-      action: PayloadAction<"все" | "текущая" | "новая" | "">
+      action: PayloadAction<"all" | "current" | "new" | "">
     ) => {
       state.changes = action.payload;
     },

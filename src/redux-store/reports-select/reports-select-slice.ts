@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 //отчеты участников
 interface IreportsState {
-  reports: "ждут проверки" | "проверенные" | "отколоненные" | "";
+  reports: "waiting for verification" | "tested" | "rejected" | "";
 }
 const initialState: IreportsState = {
   reports: ""
@@ -13,7 +13,7 @@ export const reportsSelectSlice = createSlice({
     reportsSelectAction: (
       state,
       action: PayloadAction<
-        "ждут проверки" | "проверенные" | "отколоненные" | ""
+        "waiting for verification" | "tested" | "rejected" | ""
       >
     ) => {
       state.reports = action.payload;

@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 //заявки на участие
 interface IApplicationState {
-  application: "активные" | "рассмотренные" | "";
+  application: "active" | "reviewed" | "";
 }
 
 const initialState: IApplicationState = {
@@ -15,7 +15,7 @@ export const applicationSelectSlice = createSlice({
   reducers: {
     applicationSelectAction: (
       state,
-      action: PayloadAction<"активные" | "рассмотренные" | "">
+      action: PayloadAction<"active" | "reviewed" | "">
     ) => {
       state.application = action.payload;
     },

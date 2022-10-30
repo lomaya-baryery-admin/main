@@ -2,15 +2,24 @@
 import React, { useState, useEffect } from 'react';
 import reactLogo from './assets/react.svg';
 import './App.css';
-import { useAppDispatch } from './redux-store/redux-hooks'
-import { defaultList } from './redux-store/default-slice/default-slice'
+import { useGetDefaultQuery, useShiftsPostMutation } from './redux-store/rtk-query/dataService'
+
+fetch('http://51.250.32.125:8000/hello')
+  .then(res => res.json())
+  .then(data => console.log(data))
 
 function App() {
-  const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(defaultList());
-  }, [dispatch]);
+  const { data = '', isLoading, isError } = useGetDefaultQuery() //пример для get-запроса
+  const [shiftPost, { }] = useShiftsPostMutation() //пример для post-запроса
+
+
+  const handleShiftPost = async () => {
+    await shiftPost({
+      started_at: "2022-10-30T16:55:31.422Z",
+      finished_at: "2022-10-30T16:55:31.422Z"
+    }).unwrap()
+  }
 
   const [count, setCount] = useState(0);
 
@@ -29,6 +38,7 @@ function App() {
         <button type="button" onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+        <button type="button" onClick={handleShiftPost}>postShifts</button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
