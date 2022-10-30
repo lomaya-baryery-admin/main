@@ -3,6 +3,8 @@ interface ILogoProps {
 }
 
 export const Logo = ({ className }: ILogoProps) => {
+  const elementClassName = className ? className : '';
+
   return (
     <svg
       width="207"
@@ -10,7 +12,7 @@ export const Logo = ({ className }: ILogoProps) => {
       viewBox="0 0 207 40"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      className={elementClassName}
     >
       <g clipPath="url(#clip0_332_3356)">
         <path
