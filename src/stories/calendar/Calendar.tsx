@@ -4,7 +4,8 @@ import { registerLocale, setDefaultLocale } from  "react-datepicker";
 import ru from 'date-fns/locale/ru';
 import "react-datepicker/dist/react-datepicker.css";
 import calendar from "./calendar.module.css";
-import {Button} from "../button/button"
+import {Button} from "../button/button";
+import {CloseIcon} from "../icons/close-icon"
 registerLocale('ru', ru)
 
 export const Calendar = () => {
@@ -21,7 +22,7 @@ export const Calendar = () => {
     <div className={calendar.container}>
       <div className={calendar.header}>
         <h2 className={calendar.header__title}>Выбрать дату</h2>
-        <button className={calendar.close} type='button'></button>
+        <CloseIcon type={'interface-secondary'}/>
       </div>
       <DatePicker
                 locale = {ru}

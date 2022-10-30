@@ -30,16 +30,6 @@
     margin: 0;
 }
 
-.close{
-    border: 0px;
-    background-color: #FFFFFF;
-    width: 24px;
-    height: 24px;
-    background-image: url(../images/closeicon.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
 .close:hover{
     opacity: .6;
 }
