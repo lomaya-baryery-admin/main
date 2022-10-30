@@ -7,5 +7,5 @@ export default {
   component: Calendar,
 } as ComponentMeta<typeof Calendar>;
 
-export const Template: ComponentStory<typeof Calendar> = (args) => <Calendar {...args} />;
+export const Template: ComponentStory<typeof Calendar> = () => <Calendar />;
 export const Primary = Template.bind({});
