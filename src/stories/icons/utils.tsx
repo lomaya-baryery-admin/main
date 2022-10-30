@@ -29,6 +29,8 @@ export const getColor = (type: IconType) => {
       return '#FDBD02';
     case 'error':
       return '#C53637';
+    default:
+      return null;
   }
 };
 

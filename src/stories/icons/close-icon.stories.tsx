@@ -29,5 +29,5 @@ export const Close = Template.bind({});
 
 Close.args = {
   type: 'link',
-  onClick: () => console.log('click'),
+  onClick: () => {},
 };
