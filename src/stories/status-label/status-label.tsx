@@ -13,28 +13,7 @@ interface IStatusLabelProps {
 export const StatusLabel = ({ type, icon, statusText, className }: IStatusLabelProps) => {
   const HTMLClass = className ? className : '';
 
-  let typeStyle;
-
-  switch (type) {
-    case 'current':
-      typeStyle = styles.status_type_current;
-      break;
-    case 'new':
-      typeStyle = styles.status_type_new;
-      break;
-    case 'past':
-      typeStyle = styles.status_type_past;
-      break;
-    case 'approved':
-      typeStyle = styles.status_type_current;
-      break;
-    case 'review':
-      typeStyle = styles.status_type_review;
-      break;
-    case 'rejected':
-      typeStyle = styles.status_type_rejected;
-      break;
-  }
+  const typeStyle = styles[`status_type_${type}`];
 
   const iconToRender = useMemo(() => {
     if (!icon) {

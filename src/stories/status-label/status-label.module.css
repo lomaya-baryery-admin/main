@@ -20,6 +20,10 @@
   background-color: var(--colors-interface-gray-light);
 }
 
+.status_type_approved {
+  composes: status_type_current;
+}
+
 .status_type_review {
   color: #ac9134;
   background-color: #fdf8e9;
