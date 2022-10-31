@@ -30,7 +30,7 @@ export const getColor = (type: IconType) => {
     case 'error':
       return '#C53637';
     default:
-      return null;
+      return undefined;
   }
 };
 
