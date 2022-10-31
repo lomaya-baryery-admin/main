@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { CircleCheckIcon } from '../../stories/icons';
-import { CircleStop } from '../../stories/icons/circle-stop-icon.stories';
-import { CircleWarning } from '../../stories/icons/circle-warning-icon.stories';
+import { CircleCheckIcon } from '../icons';
+import { CircleStop } from '../icons/circle-stop-icon.stories';
+import { CircleWarning } from '../icons/circle-warning-icon.stories';
 import styles from './labels.module.css';
 
 interface ILabelStatusProps {
