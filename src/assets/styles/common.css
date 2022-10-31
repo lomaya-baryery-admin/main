@@ -19,7 +19,6 @@
 
 .text {
   margin: 0;
-  padding: 0;
 }
 
 .text_type_main-small {
@@ -63,4 +62,15 @@
 
 .text_color_secondary {
   color: var(--text-color-secondary);
+}
+
+.spreadsheetLink {
+  color: var(--colors-interface-blue);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.spreadsheetLink:hover {
+  text-decoration: underline solid 1px;
+  text-decoration-skip-ink: none;
 }
