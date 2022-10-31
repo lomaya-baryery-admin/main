@@ -13,24 +13,24 @@ export const Button = ({
   type = 'primary',
   size = 'large',
   children,
-  className,
+  className = '',
   htmlType,
   ...props
 }: ButtonProps) => {
-  let mode;
+  let mode: string;
   switch (type) {
     case 'primary':
-      mode = `${styles.primary}`;
+      mode = styles.primary;
       break;
     case 'secondary':
-      mode = `${styles.secondary}`;
+      mode = styles.secondary;
       break;
     case 'negative':
-      mode = `${styles.negative}`;
+      mode = styles.negative;
       break;
+    default:
+      mode = styles.primary;
   }
-
-  className = className ? className : '';
 
   return (
     <button
