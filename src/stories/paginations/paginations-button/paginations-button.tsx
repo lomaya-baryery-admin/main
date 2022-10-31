@@ -3,8 +3,8 @@ import styles from './paginations-button.module.css';
 
 interface IPaginationsButtonProps {
   buttonName: number | string;
-  buttonActive: 'active' | 'inactive' | 'disabled';
-  textActive: 'active' | 'inactive';
+  buttonActive?: 'active' | 'inactive' | 'disabled';
+  textActive?: 'active' | 'inactive';
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
