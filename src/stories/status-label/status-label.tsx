@@ -44,7 +44,15 @@ export const StatusLabel = ({ type, icon, statusText, className }: IStatusLabelP
     const Icon = appIcons[icon];
 
     const iconType: IIconProps['type'] =
-      type === 'approved' ? 'success' : type === 'review' ? 'pending' : 'error';
+      type === 'approved' || type === 'current'
+        ? 'success'
+        : type === 'review'
+        ? 'pending'
+        : type === 'rejected'
+        ? 'error'
+        : type === 'new'
+        ? 'interface-black'
+        : 'interface-secondary';
 
     return (
       <span className={styles.status__icon}>
@@ -58,10 +66,5 @@ export const StatusLabel = ({ type, icon, statusText, className }: IStatusLabelP
       {iconToRender}
       {statusText}
     </p>
-    // <div className={styles.status}>
-    //   {statusTitle === 'current' && <p className={styles.statusCurrent}>Текущая</p>}
-    //   {statusTitle === 'new' && <p className={styles.statusNew}>Новая</p>}
-    //   {statusTitle === 'past' && <p className={styles.statusPast}>Прошедшая</p>}
-    // </div>
   );
 };
