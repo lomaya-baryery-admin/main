@@ -45,16 +45,16 @@ const Navbar = () => {
         <div>
           <button
             className={styles.button}
-            onClick={() => {
+            onClick={ CalendarActive ? () => setCalendarActive(false) : () => {
               setActive(setCalendarActive);
             }}
           >
-            {' '}
+      
             <div className={styles.button__container}>
               <CalendarIcon type={CalendarActive ? 'link-active' : 'link'} />
               <p
                 className={`${
-                  CalendarActive ? styles.button__text_active : styles.button__text
+                  CalendarActive ? `${styles.button__text_active} ${styles.button__text}` : styles.button__text
                 } text_type_main-medium`}
               >
                 Смены
@@ -69,33 +69,33 @@ const Navbar = () => {
           {CalendarActive ? (
             <ul className={styles.navbar__list}>
               <li className={`${styles.navbar__listElement}`}>
-                {' '}
+              
                 <NavLink
                   className={`${styles.navbar__link}
                    text_type_main-medium`}
-                  to="/shift-all"
+                  to="/shift/all"
                   style={({ isActive }) => (isActive ? active : undefined)}
                 >
                   Все
                 </NavLink>
               </li>
               <li className={styles.navbar__listElement}>
-                {' '}
+             
                 <NavLink
                   className={`${styles.navbar__link}
                    text_type_main-medium`}
-                  to="/shift-current"
+                  to="/shift/current"
                   style={({ isActive }) => (isActive ? active : undefined)}
                 >
                   Текущая
                 </NavLink>
               </li>
               <li className={styles.navbar__listElement}>
-                {' '}
+              
                 <NavLink
                   className={`${styles.navbar__link}
                    text_type_main-medium`}
-                  to="/shift-new"
+                  to="/shift/new"
                   style={({ isActive }) => (isActive ? active : undefined)}
                 >
                   Новая
@@ -107,7 +107,7 @@ const Navbar = () => {
         <div>
           <button
             className={styles.button}
-            onClick={() => {
+            onClick={ NoteEditActive ? () => setNoteEditActive(false) : () => {
               setActive(setNoteEditActive);
             }}
           >
@@ -116,7 +116,7 @@ const Navbar = () => {
               <NoteEditIcon type={NoteEditActive ? 'link-active' : 'link'} />
               <p
                 className={`${
-                  NoteEditActive ? styles.button__text_active : styles.button__text
+                  NoteEditActive ? `${styles.button__text} ${styles.button__text_active}` : styles.button__text
                 } text_type_main-medium`}
               >
                 Заявки на участие
@@ -131,11 +131,11 @@ const Navbar = () => {
           {NoteEditActive ? (
             <ul className={styles.navbar__list}>
               <li className={`${styles.navbar__listElement} `}>
-                {' '}
+           
                 <NavLink
                   className={`${styles.navbar__link}
                    text_type_main-medium`}
-                  to="/invites-active"
+                  to="/invites/active"
                   style={({ isActive }) => (isActive ? active : undefined)}
                 >
                   Активные
@@ -146,7 +146,7 @@ const Navbar = () => {
                 <NavLink
                   className={`${styles.navbar__link}
                    text_type_main-medium`}
-                  to="/invites-reviewed"
+                  to="/invites/reviewed"
                   style={({ isActive }) => (isActive ? active : undefined)}
                 >
                   Рассмотренные
@@ -158,7 +158,7 @@ const Navbar = () => {
         <div>
           <button
             className={styles.button}
-            onClick={() => {
+            onClick={ UsersActive ? ()=> setUsersActive(false) : () => {
               setActive(setUsersActive);
             }}
           >
@@ -166,7 +166,7 @@ const Navbar = () => {
             <div className={styles.button__container}>
               <UsersIcon type={UsersActive ? 'link-active' : 'link'} />
               <NavLink
-                className={`${UsersActive ? styles.button__text_active : styles.button__text} 
+                className={`${UsersActive ? `${styles.button__text_active} ${styles.button__text}` : styles.button__text} 
                    text_type_main-medium`}
                 to="/participants"
               >
@@ -178,7 +178,7 @@ const Navbar = () => {
         <div>
           <button
             className={styles.button}
-            onClick={() => {
+            onClick={ FileCheckActive ? ()=> setFileCheckActive(false) : () => {
               setActive(setFileCheckActive);
             }}
           >
@@ -188,7 +188,7 @@ const Navbar = () => {
 
               <p
                 className={`${
-                  FileCheckActive ? styles.button__text_active : styles.button__text
+                  FileCheckActive ? `${styles.button__text_active} ${styles.button__text}` : styles.button__text
                 } text_type_main-medium`}
               >
                 Отчёты участников
@@ -207,7 +207,7 @@ const Navbar = () => {
                 <NavLink
                   className={`${styles.navbar__link}
                    text_type_main-medium`}
-                  to="/report-noverified"
+                  to="/report/noverified"
                   style={({ isActive }) => (isActive ? active : undefined)}
                 >
                   Ждут проверки
@@ -218,7 +218,7 @@ const Navbar = () => {
                 <NavLink
                   className={`${styles.navbar__link}
                    text_type_main-medium`}
-                  to="/report-verified"
+                  to="/report/verified"
                   style={({ isActive }) => (isActive ? active : undefined)}
                 >
                   Проверенные
@@ -229,7 +229,7 @@ const Navbar = () => {
                 <NavLink
                   className={`${styles.navbar__link}
                    text_type_main-medium`}
-                  to="/report-rejected"
+                  to="/report/rejected"
                   style={({ isActive }) => (isActive ? active : undefined)}
                 >
                   Отклонённые
