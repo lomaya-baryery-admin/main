@@ -1,21 +1,13 @@
 .main {
-    margin: 0;
-    padding: 30px 30px 20px 30px;
-    width: calc(1116/1440 * 100vw);
-    background: #FFFFFF;
-    border-radius: 10px;
+  margin: 0;
+  padding: 30px 30px 20px 30px;
+  width: calc(1116 / 1440 * 100vw);
+  background: var(--colors-interface-white);
+  border-radius: var(--common-border-radius);
 }
 
 .header_content {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.header {
-    font-family: 'Lato', 'Arial', sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 30px;
-    line-height: 36px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
