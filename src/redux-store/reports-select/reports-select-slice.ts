@@ -18,7 +18,7 @@ export const reportsSelectSlice = createSlice({
     ) => {
       state.reports = action.payload;
     },
-    clearReportsSelectAction: (state, action) => {
+    clearReportsSelectAction: (state) => {
       state.reports = "";
     }
   }

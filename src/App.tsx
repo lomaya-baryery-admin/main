@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import reactLogo from './assets/react.svg';
 import './App.css';
-import { useGetDefaultQuery, useShiftsPostMutation } from './redux-store/rtk-query/dataService'
+import { useGetDefaultQuery, useShiftsPostMutation } from './redux-store/api-slice/api-slice'
 
 fetch('http://51.250.32.125:8000/hello')
   .then(res => res.json())
