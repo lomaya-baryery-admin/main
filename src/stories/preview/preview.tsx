@@ -18,9 +18,9 @@ export const Preview = () => {
 
   return(
     zoom ?
-    <div style={{ backgroundImage: `url(${image})`}} className={styles.container} onClick={handler}>
+    <div style={{ backgroundImage: `url(${image})`}} className={styles.container} onMouseEnter={handler}>
       <ZoomIcon size="18" type="interface-white" />
     </div>
-    : <div style={{ backgroundImage: `url(${image})`}} className={styles.container_full} onClick={handler} />
+    : <div style={{ backgroundImage: `url(${image})`}} className={styles.container_full} onMouseLeave={handler} />
   )
 };
