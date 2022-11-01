@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import reactLogo from './assets/react.svg';
 import './App.css';
 import { useGetDefaultQuery, useShiftsPostMutation } from './redux-store/api-slice/api-slice'
+import Home from './pages';
 
 fetch('http://51.250.32.125:8000/hello')
   .then(res => res.json())
@@ -25,6 +26,7 @@ function App() {
 
   return (
     <div className="App">
+			<Home />
       <div>
         <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
           <img src="/vite.svg" className="logo" alt="Vite logo" />

@@ -25,6 +25,13 @@
 	margin: 0;
 }
 
+.container__main {
+	min-height: 500px;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+}
+
 .container__table {
 	display: flex;
 	border: 1px solid #E2E4E8;
