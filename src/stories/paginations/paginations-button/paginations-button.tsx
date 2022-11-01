@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { ButtonHTMLAttributes, DetailedHTMLProps, MouseEventHandler } from 'react';
 import styles from './paginations-button.module.css';
 
 interface IPaginationsButtonProps {
   buttonName: number | string;
   buttonActive?: 'active' | 'inactive' | 'disabled';
   textActive?: 'active' | 'inactive';
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
 export const PaginationsButton = ({
