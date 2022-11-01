@@ -5,7 +5,7 @@ interface IPaginationsButtonProps {
   buttonName: number | string;
   buttonActive?: 'active' | 'inactive' | 'disabled';
   textActive?: 'active' | 'inactive';
-  onClick?: MouseEventHandler<HTMLButtonElement>;
+  onClick?: () => number;
 }
 
 export const PaginationsButton = ({
