@@ -1,4 +1,4 @@
 .content {
-    display: grid;
-    gap: 8px;
+    display: flex;
+    column-gap: 8px;
 }

@@ -11,9 +11,10 @@ export default {
       defaultValue: '1',
       description: 'имя кнопки',
     },
+    
     buttonActive: {
       type: 'string',
-      description: 'определяет стиль рамки у кнопки',
+      description: 'определяет стиль рамки у кнопки и активность кнопки',
       defaultValue: 'active',
       options: ['active', 'inactive', 'disabled'],
       control: {
