@@ -6,7 +6,7 @@ interface IPaginationsProps {
   counterPages: number;
   currentPage: number;
   onClick: MouseEventHandler<HTMLButtonElement>;
-  setCurrentPage: () => number
+  setCurrentPage: any
 }
 
 export const Paginations = ({ counterPages, currentPage, setCurrentPage, onClick }: IPaginationsProps) => {
@@ -21,16 +21,16 @@ export const Paginations = ({ counterPages, currentPage, setCurrentPage, onClick
         </>
       ) : (
         <>
-          <PaginationsButton buttonName={'<'} onClick={onClick} buttonActive="disabled" textActive="inactive"/>
-          <PaginationsButton buttonName={'<<'} onClick={onClick} buttonActive="disabled" textActive="inactive"/>
+          <PaginationsButton buttonName={'<'} buttonActive="disabled" textActive="inactive"/>
+          <PaginationsButton buttonName={'<<'} buttonActive="disabled" textActive="inactive"/>
         </>
       )}
 
       {arrPages.map((page) =>
         page === currentPage ? (
-          <PaginationsButton buttonName={page} onClick={onClick} />
+          <PaginationsButton buttonName={page}/>
         ) : (
-          <PaginationsButton buttonName={page} onClick={onClick} buttonActive="inactive" />
+          <PaginationsButton buttonName={page} onClick={setCurrentPage(page)} buttonActive="inactive" />
         )
       )}
 
@@ -41,8 +41,8 @@ export const Paginations = ({ counterPages, currentPage, setCurrentPage, onClick
         </>
       ) : (
         <>
-          <PaginationsButton buttonName={'>'} onClick={onClick} buttonActive="disabled" textActive="inactive"/>
-          <PaginationsButton buttonName={'>>'} onClick={onClick} buttonActive="disabled" textActive="inactive"/>
+          <PaginationsButton buttonName={'>'} buttonActive="disabled" textActive="inactive"/>
+          <PaginationsButton buttonName={'>>'} buttonActive="disabled" textActive="inactive"/>
         </>
       )}
 
