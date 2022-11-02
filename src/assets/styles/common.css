@@ -20,6 +20,24 @@
   --common-element-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
 }
 
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #bfc5cd;
+  border: 5px solid #ebebeb;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #929ead;
+}
+
+::-webkit-scrollbar-track {
+  background: #ebebeb;
+}
+
 .text {
   margin: 0;
 }
