@@ -12,6 +12,7 @@ export const Logo = ({ className, ...props }: ILogoProps) => {
       viewBox="0 0 207 40"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
       className={elementClassName}
     >
       <g clipPath="url(#clip0_332_3356)">

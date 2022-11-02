@@ -21,7 +21,7 @@ import { UsersIcon } from './users-icon';
 import { ZoomIcon } from './zoom-icon';
 import type { IIconProps } from './utils';
 
-export type TICons = {
+export type TIcons = {
   AlertIcon: React.FC<IIconProps>;
   ArrowLeftIcon: React.FC<IIconProps>;
   ArrowRightIcon: React.FC<IIconProps>;

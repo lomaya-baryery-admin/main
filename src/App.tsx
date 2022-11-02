@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import reactLogo from './assets/react.svg';
+import { useState } from 'react';
 import './App.css';
 import { useGetDefaultQuery, useShiftsPostMutation } from './redux-store/api-slice/api-slice';
 
