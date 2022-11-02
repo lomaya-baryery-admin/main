@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import image from './image5.jpg';
+import imageDefault from './image5.jpg';
 import { ZoomIcon } from '../icons';
 import styles from './preview.module.css'
 
-// interface IPreviewProps {
-//   image: string;
-// }
+interface IPreviewProps {
+  image: string;
+}
 
-export const Preview = () => {
+export const Preview = ({ image = imageDefault } : IPreviewProps) => {
 
   const [zoom, setZoom] = useState(true);
 
