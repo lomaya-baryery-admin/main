@@ -6,13 +6,11 @@ interface IPreviewProps {
   image: string;
 }
 
-export const Preview = ({ image = imageDefault }: IPreviewProps) => {
-  return (
+export const Preview = ({ image = imageDefault }: IPreviewProps) => (
     <div style={{ backgroundImage: `url(${image})` }} className={styles.container}>
-      <div className={styles.overlay}></div>
+      <div className={styles.overlay} />
       <span>
         <ZoomIcon type="interface-white" />
       </span>
     </div>
   );
-};
