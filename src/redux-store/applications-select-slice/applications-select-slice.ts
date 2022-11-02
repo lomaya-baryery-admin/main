@@ -1,31 +1,26 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 //заявки на участие
 interface IApplicationState {
-  application: "active" | "reviewed" | "";
+  application: 'active' | 'reviewed' | '';
 }
 
 const initialState: IApplicationState = {
-  application: ""
+  application: '',
 };
 
 export const applicationSelectSlice = createSlice({
-  name: "@@select/application",
+  name: '@@select/application',
   initialState,
   reducers: {
-    applicationSelectAction: (
-      state,
-      action: PayloadAction<"active" | "reviewed" | "">
-    ) => {
+    applicationSelectAction: (state, action: PayloadAction<'active' | 'reviewed' | ''>) => {
       state.application = action.payload;
     },
     clearApplicationSelectAction: (state) => {
-      state.application = "";
-    }
-  }
+      state.application = '';
+    },
+  },
 });
 
-export const {
-  applicationSelectAction,
-  clearApplicationSelectAction
-} = applicationSelectSlice.actions;
+export const { applicationSelectAction, clearApplicationSelectAction } =
+  applicationSelectSlice.actions;

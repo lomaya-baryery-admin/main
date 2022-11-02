@@ -10,8 +10,8 @@ export default {
     image: {
       description: 'Cсылка на фото',
       defaultValue: imageDefault,
-    }
-  }
+    },
+  },
 } as ComponentMeta<typeof Preview>;
 
 export const Default: ComponentStory<typeof Preview> = (args) => <Preview {...args} />;

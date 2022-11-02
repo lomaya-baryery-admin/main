@@ -1,25 +1,22 @@
-
 import React, { useState, useEffect } from 'react';
 import reactLogo from './assets/react.svg';
 import './App.css';
-import { useGetDefaultQuery, useShiftsPostMutation } from './redux-store/api-slice/api-slice'
+import { useGetDefaultQuery, useShiftsPostMutation } from './redux-store/api-slice/api-slice';
 
 fetch('http://51.250.32.125:8000/hello')
-  .then(res => res.json())
-  .then(data => console.log(data))
+  .then((res) => res.json())
+  .then((data) => console.log(data));
 
 function App() {
-
-  const { data = '', isLoading, isError } = useGetDefaultQuery() //пример для get-запроса
-  const [shiftPost, { }] = useShiftsPostMutation() //пример для post-запроса
-
+  const { data = '', isLoading, isError } = useGetDefaultQuery(); //пример для get-запроса
+  const [shiftPost, {}] = useShiftsPostMutation(); //пример для post-запроса
 
   const handleShiftPost = async () => {
     await shiftPost({
-      started_at: "2022-10-30T16:55:31.422Z",
-      finished_at: "2022-10-30T16:55:31.422Z"
-    }).unwrap()
-  }
+      started_at: '2022-10-30T16:55:31.422Z',
+      finished_at: '2022-10-30T16:55:31.422Z',
+    }).unwrap();
+  };
 
   const [count, setCount] = useState(0);
 
@@ -38,7 +35,9 @@ function App() {
         <button type="button" onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
-        <button type="button" onClick={handleShiftPost}>postShifts</button>
+        <button type="button" onClick={handleShiftPost}>
+          postShifts
+        </button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>

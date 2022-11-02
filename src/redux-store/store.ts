@@ -1,8 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { changesSelectSlice } from "./changes-select-slice/changes-select-slice";
-import { applicationSelectSlice } from "./applications-select-slice/applications-select-slice";
-import { reportsSelectSlice } from "./reports-select-slice/reports-select-slice";
-import { dataApi } from './api-slice/api-slice'
+import { configureStore } from '@reduxjs/toolkit';
+import { changesSelectSlice } from './changes-select-slice/changes-select-slice';
+import { applicationSelectSlice } from './applications-select-slice/applications-select-slice';
+import { reportsSelectSlice } from './reports-select-slice/reports-select-slice';
+import { dataApi } from './api-slice/api-slice';
 
 export const store = configureStore({
   reducer: {
@@ -12,7 +12,7 @@ export const store = configureStore({
     [dataApi.reducerPath]: dataApi.reducer,
   },
   devTools: true,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(dataApi.middleware)
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(dataApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>; //для селектора
