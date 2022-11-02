@@ -1,23 +1,22 @@
-import React, { MouseEventHandler } from 'react';
+import React from 'react';
 import { PaginationsButton } from './paginations-button/paginations-button';
 import styles from './paginations.module.css';
 
 interface IPaginationsProps {
   counterPages: number;
   currentPage: number;
-  onClick: MouseEventHandler<HTMLButtonElement>;
   setCurrentPage: any
 }
 
-export const Paginations = ({ counterPages, currentPage, setCurrentPage, onClick }: IPaginationsProps) => {
+export const Paginations = ({ counterPages, currentPage, setCurrentPage }: IPaginationsProps) => {
   const arrPages = Array.from({ length: counterPages }, (v, i) => i + 1);
 
   return (
     <div className={styles.content}>
       {currentPage > 1 ? (
         <>
-          <PaginationsButton buttonName={'<<'} onClick={setCurrentPage(1)} buttonActive="inactive" />
-          <PaginationsButton buttonName={'<'} onClick={setCurrentPage(currentPage-1)} buttonActive="inactive" />
+          <PaginationsButton buttonName={'<<'} onClick={() => setCurrentPage(1)} buttonActive="inactive" />
+          <PaginationsButton buttonName={'<'} onClick={() => setCurrentPage(currentPage-1)} buttonActive="inactive" />
         </>
       ) : (
         <>
@@ -28,16 +27,16 @@ export const Paginations = ({ counterPages, currentPage, setCurrentPage, onClick
 
       {arrPages.map((page) =>
         page === currentPage ? (
-          <PaginationsButton buttonName={page}/>
+          <PaginationsButton key={page} buttonName={page}/>
         ) : (
-          <PaginationsButton buttonName={page} onClick={setCurrentPage(page)} buttonActive="inactive" />
+          <PaginationsButton key={page} buttonName={page} onClick={() => setCurrentPage(page)} buttonActive="inactive" />
         )
       )}
 
       {currentPage < counterPages ? (
         <>
-          <PaginationsButton buttonName={'>'} onClick={setCurrentPage(currentPage+1)} buttonActive="inactive" />
-          <PaginationsButton buttonName={'>>'} onClick={setCurrentPage(counterPages)} buttonActive="inactive" />
+          <PaginationsButton buttonName={'>'} onClick={() => setCurrentPage(currentPage+1)} buttonActive="inactive" />
+          <PaginationsButton buttonName={'>>'} onClick={() => setCurrentPage(counterPages)} buttonActive="inactive" />
         </>
       ) : (
         <>
