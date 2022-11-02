@@ -15,7 +15,7 @@ export const Button = ({
   type = 'primary',
   size = 'large',
   children,
-  className,
+  className = '',
   htmlType,
   disabled,
   ...props
