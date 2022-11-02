@@ -19,11 +19,13 @@
     "printWidth": 100
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.6",
     "@types/react-datepicker": "^4.4.2",
-    "esbuild-darwin-arm64": "^0.15.12",
     "react": "^18.2.0",
     "react-datepicker": "^4.8.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.4",
+    "react-tooltip": "^4.4.3"
   },
   "devDependencies": {
     "@babel/core": "^7.19.6",

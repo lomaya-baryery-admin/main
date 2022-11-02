@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { Tooltip } from '../tooltip/tooltip';
 import styles from './button.module.css';
 
-interface ButtonProps extends React.PropsWithChildren {
+type TButtonProps = React.PropsWithChildren<Omit<React.HTMLProps<HTMLButtonElement>, 'size'>> & {
   htmlType: 'button' | 'submit' | 'reset';
   type?: 'primary' | 'secondary' | 'negative';
   size?: 'small' | 'large';
+  disabled?: boolean;
   className?: string;
   onClick?: () => void;
-}
+};
 
 export const Button = ({
   type = 'primary',
@@ -15,27 +17,18 @@ export const Button = ({
   children,
   className = '',
   htmlType,
+  disabled,
   ...props
-}: ButtonProps) => {
-  let mode: string;
-  switch (type) {
-    case 'primary':
-      mode = styles.primary;
-      break;
-    case 'secondary':
-      mode = styles.secondary;
-      break;
-    case 'negative':
-      mode = styles.negative;
-      break;
-    default:
-      mode = styles.primary;
-  }
+}: TButtonProps) => {
+  const styleType = disabled ? styles.disabled : styles[type];
+
+  const extClassName = className ? className : '';
 
   return (
     <button
       type={htmlType}
-      className={`${styles.button} ${styles[size]} ${mode} ${className}`}
+      className={`${styles.button} ${styles[size]} ${styleType} ${extClassName}`}
+      disabled={disabled}
       {...props}
     >
       {children}
