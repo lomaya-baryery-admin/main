@@ -2,8 +2,8 @@ interface ILogoProps {
   className?: string;
 }
 
-export const Logo = ({ className }: ILogoProps) => {
-  const elementClassName = className || '';
+export const Logo = ({ className, ...props }: ILogoProps) => {
+  const elementClassName = className ? className : '';
 
   return (
     <svg
