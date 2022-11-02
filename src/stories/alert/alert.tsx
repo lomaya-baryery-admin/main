@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import styles from './alert.module.css';
 import '../../assets/styles/common.css';
 import '../../assets/fonts/fonts.css';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Button } from './button';
 
@@ -16,6 +15,9 @@ export default {
     },
     className: {
       description: 'Класс',
+    },
+    disabled: {
+      type: 'boolean',
     },
     children: {
       defaultValue: 'Начать смену',

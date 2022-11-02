@@ -1,42 +1,34 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { Tooltip } from '../tooltip/tooltip';
 import styles from './button.module.css';
 
-interface ButtonProps extends React.PropsWithChildren {
-  htmlType?: 'button' | 'submit' | 'reset';
+type TButtonProps = React.PropsWithChildren<Omit<React.HTMLProps<HTMLButtonElement>, 'size'>> & {
+  htmlType: 'button' | 'submit' | 'reset';
   type?: 'primary' | 'secondary' | 'negative';
   size?: 'small' | 'large';
+  disabled?: boolean;
   className?: string;
   onClick?: () => void;
-}
+};
 
 export const Button = ({
   type = 'primary',
   size = 'large',
   children,
-  className,
+  className = '',
+  htmlType,
+  disabled,
   ...props
-}: ButtonProps) => {
-  let mode;
-  switch (type) {
-    case 'primary':
-      mode = `${styles.primary}`;
-      break;
-    case 'secondary':
-      mode = `${styles.secondary}`;
-      break;
-    case 'negative':
-      mode = `${styles.negative}`;
-      break;
-    default:
-      break;
-  }
+}: TButtonProps) => {
+  const styleType = disabled ? styles.disabled : styles[type];
 
-  className = className || '';
+  const extClassName = className ? className : '';
 
   return (
     <button
-      type="button"
-      className={`${styles.button} ${styles[size]} ${mode} ${className}`}
+      type={htmlType}
+      className={`${styles.button} ${styles[size]} ${styleType} ${extClassName}`}
+      disabled={disabled}
       {...props}
     >
       {children}
