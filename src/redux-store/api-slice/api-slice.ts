@@ -3,11 +3,12 @@ import { IResponceShifts, IshiftCreate, IInformation, IdefaultObject } from './t
 
 export const dataApi = createApi({
    reducerPath: 'dataApi',
-   tagTypes: [''],
+   tagTypes: ['data'],
    baseQuery: fetchBaseQuery({ baseUrl: 'http://51.250.32.125:8000' }),
    endpoints: (build) => ({
       getDefault: build.query<IdefaultObject, void>({
-         query: () => '/hello'
+         query: () => '/healthcheck',
+         providesTags: ['data']
       }),
       shiftsPost: build.mutation<IResponceShifts, IshiftCreate>({
          query: (body) => ({
@@ -15,9 +16,12 @@ export const dataApi = createApi({
             method: 'POST',
             body,
          }),
+         // invalidatesTags: ['data']
       }),
-      shiftsPostGet: build.query<IInformation, void>({
-         query: (shiftId) => `/shifts/${shiftId}`
+      shiftsPostGet: build.query<IInformation, string | undefined>({
+         query: (shiftId) => ({
+            url: `/shifts/${shiftId}`,
+         })
       })
    })
 })

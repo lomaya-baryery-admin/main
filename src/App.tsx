@@ -2,18 +2,18 @@
 import React, { useState, useEffect } from 'react';
 import reactLogo from './assets/react.svg';
 import './App.css';
-import { useGetDefaultQuery, useShiftsPostMutation } from './redux-store/api-slice/api-slice'
+import { useGetDefaultQuery, useShiftsPostMutation, useShiftsPostGetQuery } from './redux-store/api-slice/api-slice'
 
 function App() {
-
   const { data = '', isLoading, isError } = useGetDefaultQuery() //пример для get-запроса
-  const [shiftPost, { }] = useShiftsPostMutation() //пример для post-запроса
-
+  const [shiftPost, { data: shiftData }] = useShiftsPostMutation() //пример для post-запроса
+  const { data: obj } = useShiftsPostGetQuery(shiftData?.id)
+  console.log(obj)
 
   const handleShiftPost = async () => {
     await shiftPost({
-      started_at: "2022-10-30T16:55:31.422Z",
-      finished_at: "2022-10-30T16:55:31.422Z"
+      "started_at": "2022-11-02T17:00:32.625Z",
+      "finished_at": "2022-11-02T17:00:32.625Z"
     }).unwrap()
   }
 
