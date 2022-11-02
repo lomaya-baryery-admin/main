@@ -1,6 +1,6 @@
 import { getColor, IIconProps } from './utils';
 
-export const CloseIcon = ({ type, onClick }: IIconProps) => (
+export const CloseIcon = ({ type, onClick, ...props }: IIconProps) => (
   <svg
     width="24"
     height="24"
@@ -8,6 +8,7 @@ export const CloseIcon = ({ type, onClick }: IIconProps) => (
     fill={getColor(type)}
     onClick={onClick}
     xmlns="http://www.w3.org/2000/svg"
+    {...props}
   >
     <path
       fillRule="evenodd"

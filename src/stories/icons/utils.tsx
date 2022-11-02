@@ -1,3 +1,5 @@
+import { SVGProps } from 'react';
+
 type IconType =
   | 'link'
   | 'link-active'
@@ -30,11 +32,11 @@ export const getColor = (type: IconType) => {
     case 'error':
       return '#C53637';
     default:
-      return null;
+      return undefined;
   }
 };
 
-export interface IIconProps {
+export interface IIconProps extends SVGProps<SVGSVGElement> {
   type: IconType;
   size?: '24' | '18';
   onClick?: () => void;
