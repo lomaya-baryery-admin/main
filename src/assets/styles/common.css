@@ -8,6 +8,7 @@
   --colors-interface-yellow: #fdbd02;
   --colors-interface-red: #c53637;
   --colors-interface-green: #3ea745;
+  --colors-interface-border: #e2e4e8;
 
   --background: var(--colors-interface-gray-light);
 
@@ -15,6 +16,8 @@
   --text-color-secondary: var(--colors-interface-gray);
 
   --common-border-radius: 10px;
+  --common-border-width: 1px;
+  --common-element-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
 }
 
 ::-webkit-scrollbar {
@@ -37,7 +40,6 @@
 
 .text {
   margin: 0;
-  padding: 0;
 }
 
 .text_type_main-small {
