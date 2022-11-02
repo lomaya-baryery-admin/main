@@ -19,6 +19,34 @@ import { SearchIcon } from './search-icon';
 import { UserIcon } from './user-icon';
 import { UsersIcon } from './users-icon';
 import { ZoomIcon } from './zoom-icon';
+import type { IIconProps } from './utils';
+
+export type TIcons = {
+  AlertIcon: React.FC<IIconProps>;
+  ArrowLeftIcon: React.FC<IIconProps>;
+  ArrowRightIcon: React.FC<IIconProps>;
+  AwardIcon: React.FC<IIconProps>;
+  CalendarIcon: React.FC<IIconProps>;
+  CheckIcon: React.FC<IIconProps>;
+  ChevronDownIcon: React.FC<IIconProps>;
+  ChevronLeftIcon: React.FC<IIconProps>;
+  ChevronRightIcon: React.FC<IIconProps>;
+  CloseIcon: React.FC<IIconProps>;
+  EnterIcon: React.FC<IIconProps>;
+  FileCheckIcon: React.FC<IIconProps>;
+  NoteEditIcon: React.FC<IIconProps>;
+  PlusIcon: React.FC<IIconProps>;
+  SearchIcon: React.FC<IIconProps>;
+  UserIcon: React.FC<IIconProps>;
+  UsersIcon: React.FC<IIconProps>;
+  ZoomIcon: React.FC<IIconProps>;
+} & TStatusIcons;
+
+export type TStatusIcons = {
+  CircleCheckIcon: React.FC<IIconProps>;
+  CircleStopIcon: React.FC<IIconProps>;
+  CircleWarningIcon: React.FC<IIconProps>;
+};
 
 export {
   AlertIcon,

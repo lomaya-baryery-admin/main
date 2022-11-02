@@ -3,7 +3,7 @@ import headerStyles from './header.module.css';
 import '../../assets/styles/common.css';
 import '../../assets/fonts/fonts.css';
 import { EnterIcon } from '../../stories/icons/enter-icon';
-import { Logo } from '../../stories/logo';
+import { Logo } from '../../stories/logo/logo';
 import { UserIcon } from '../../stories/icons';
 
 export function Header() {

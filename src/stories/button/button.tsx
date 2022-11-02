@@ -1,41 +1,35 @@
 import React from 'react';
 import styles from './button.module.css';
 
-interface ButtonProps extends React.PropsWithChildren {
+export type TButtonProps = React.PropsWithChildren<
+  Omit<React.HTMLProps<HTMLButtonElement>, 'size'>
+> & {
   htmlType: 'button' | 'submit' | 'reset';
-  type?: 'primary' | 'secondary' | 'negative';
+  type?: 'primary' | 'secondary' | 'negative' | 'disabled';
   size?: 'small' | 'large';
   className?: string;
-  onClick?: () => void;
-}
+  onClick?: (() => void) | ((e: React.SyntheticEvent) => void);
+  disabled?: boolean;
+};
 
 export const Button = ({
   type = 'primary',
   size = 'large',
   children,
-  className,
+  className = '',
   htmlType,
+  disabled,
   ...props
-}: ButtonProps) => {
-  let mode;
-  switch (type) {
-    case 'primary':
-      mode = `${styles.primary}`;
-      break;
-    case 'secondary':
-      mode = `${styles.secondary}`;
-      break;
-    case 'negative':
-      mode = `${styles.negative}`;
-      break;
-  }
+}: TButtonProps) => {
+  const styleType = disabled || type === 'disabled' ? styles.disabled : styles[type];
 
-  className = className ? className : '';
+  const extClassName = className ? className : '';
 
   return (
     <button
       type={htmlType}
-      className={`${styles.button} ${styles[size]} ${mode} ${className}`}
+      className={`${styles.button} ${styles[size]} ${styleType} ${extClassName}`}
+      disabled={disabled}
       {...props}
     >
       {children}
