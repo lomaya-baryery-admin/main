@@ -22,9 +22,7 @@ jobs:
           cache: 'npm'
 
       - name: Install project dependencies
-        run: |
-          npm ci --prefer-offline
-          ls
+        run: npm ci --prefer-offline
 
       - name: ESLint
         run: npm run lint
