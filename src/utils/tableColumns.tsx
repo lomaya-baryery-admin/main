@@ -2,7 +2,8 @@ import { createColumnHelper } from '@tanstack/react-table';
 import { StatusLabel } from '../stories/status-label/status-label';
 import { statusLable } from './constants';
 import { ImagePreview } from '../stories/image-preview/ImagePreview';
-import { ReactElement } from 'react';
+import tableStyle from '../stories/table/Table.module.css';
+import { Button } from '../stories/button/button';
 // -----------------------------------------------типы
 
 // колонки для таблицы Смены TODO: скорректировать названия после того, как будет добавлен бэк!
@@ -21,7 +22,7 @@ type TAllReportsTable = {
   user_name: string,
   task_date: string,
   preview: string,
-  buttons?: any,
+  buttons: string[],
 }
 
 // типы для тестовой таблицы
@@ -86,14 +87,14 @@ export const AllReportsData:TAllReportsTable[] =[
     user_name: 'Иванов Иван',
     task_date: '00/00/0000',
     preview: 'https://i.pinimg.com/474x/09/79/84/097984d23edbf5290d611a270f944fd6.jpg',
-    buttons: '',
+    buttons: ['Принять','Отклонить'],
   },
   {
     task_name: 'Название задания 2',
     user_name: 'Иванов Иван 2',
     task_date: '00/00/0000',
     preview: 'https://i.pinimg.com/474x/09/79/84/097984d23edbf5290d611a270f944fd6.jpg',
-    buttons: '',
+    buttons: ['Принять','Отклонить'],
   },
 ]
 
@@ -158,11 +159,11 @@ export const shiftColumns = [
 export const allReportsColumns = [
   allReportsColumnsHelper.accessor(row => row.task_name, {
     header: 'Название задания',
-    cell: info => info.getValue(),
+    cell: info => <a href="#" className="text text_type_main-default spreadsheetLink">{info.getValue()}</a>,
   }),
   allReportsColumnsHelper.accessor(row => row.user_name, {
     header: 'Имя и фамилия',
-    cell: info => info.getValue(),
+    cell: info => <a href="#" className="text text_type_main-default spreadsheetLink">{info.getValue()}</a>,
   }),
   allReportsColumnsHelper.accessor(row => row.task_date, {
     header: 'Дата и время отправки',
@@ -174,6 +175,18 @@ export const allReportsColumns = [
   }),
   allReportsColumnsHelper.accessor(row => row.buttons, {
     header: ' ',
-    cell: 'тут будут кнопки',
+    cell: buttons => {
+      return (
+        <div className={tableStyle.table__buttonContainer}>
+          { buttons.getValue().map(button => <Button
+            htmlType="button"
+            onClick={() => {}}
+            size="small"
+            type="primary">
+            {button}
+          </Button>)}
+        </div>
+      )
+    },
   }),
 ]
