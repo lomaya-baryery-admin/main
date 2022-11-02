@@ -1,7 +1,9 @@
 import { createColumnHelper } from '@tanstack/react-table';
 import { StatusLabel } from '../stories/status-label/status-label';
 import { statusLable } from './constants';
-// типы
+import { ImagePreview } from '../stories/image-preview/ImagePreview';
+import { ReactElement } from 'react';
+// -----------------------------------------------типы
 
 // колонки для таблицы Смены TODO: скорректировать названия после того, как будет добавлен бэк!
 type TAllShiftColumns = {
@@ -12,6 +14,23 @@ type TAllShiftColumns = {
   count_members: number,
   status: string,
 };
+
+// типы для таблицы отчеты участников TODO: скорректировать названия после того, как будет добавлен бэк!
+type TAllReportsTable = {
+  task_name: string,
+  user_name: string,
+  task_date: string,
+  preview: string,
+  buttons?: any,
+}
+
+// типы для тестовой таблицы
+type TTestTable = {
+  one: string,
+  two: number,
+  three: string,
+}
+// ---------------------------------------------- хардкод
 
 // хардкод для таблицы Смены TODO: убрать после того, как данные будут приходить с сервера
 export const AllShiftData:TAllShiftColumns[] = [
@@ -41,13 +60,6 @@ export const AllShiftData:TAllShiftColumns[] = [
   },
 ]
 
-// типы для тестовой таблицы
-type TTestTable = {
-  one: string,
-  two: number,
-  three: string,
-}
-
 // хардкод для тестовой таблицы
 export const testData:TTestTable[] = [
   {
@@ -65,9 +77,31 @@ export const testData:TTestTable[] = [
     two: 444,
     three: 'блаблабла',
   },
+];
+
+// хардкод для таблицы ОТЧЕТЫ УЧАСТНИКОВ
+export const AllReportsData:TAllReportsTable[] =[
+  {
+    task_name: 'Название задания',
+    user_name: 'Иванов Иван',
+    task_date: '00/00/0000',
+    preview: 'https://i.pinimg.com/474x/09/79/84/097984d23edbf5290d611a270f944fd6.jpg',
+    buttons: '',
+  },
+  {
+    task_name: 'Название задания 2',
+    user_name: 'Иванов Иван 2',
+    task_date: '00/00/0000',
+    preview: 'https://i.pinimg.com/474x/09/79/84/097984d23edbf5290d611a270f944fd6.jpg',
+    buttons: '',
+  },
 ]
+
+// ----------------------------------тут начинаются даные для таблиц!
+
 const shiftColumnsHelper = createColumnHelper<TAllShiftColumns>();
 const testColumnsHelper = createColumnHelper<TTestTable>();
+const allReportsColumnsHelper = createColumnHelper<TAllReportsTable>();
 // дефолтные данные
 export const testColumns = [
   testColumnsHelper.accessor(row => row.one, {
@@ -117,5 +151,29 @@ export const shiftColumns = [
       const value = status.getValue();
       return <StatusLabel statusText={statusLable(value)} type={value} />
     },
+  }),
+]
+
+// все отчеты участников
+export const allReportsColumns = [
+  allReportsColumnsHelper.accessor(row => row.task_name, {
+    header: 'Название задания',
+    cell: info => info.getValue(),
+  }),
+  allReportsColumnsHelper.accessor(row => row.user_name, {
+    header: 'Имя и фамилия',
+    cell: info => info.getValue(),
+  }),
+  allReportsColumnsHelper.accessor(row => row.task_date, {
+    header: 'Дата и время отправки',
+    cell: info => info.getValue(),
+  }),
+  allReportsColumnsHelper.accessor(row => row.preview, {
+    header: 'Превью',
+    cell: info => <ImagePreview url={info.getValue()} title="Фотоотчет" />,
+  }),
+  allReportsColumnsHelper.accessor(row => row.buttons, {
+    header: ' ',
+    cell: 'тут будут кнопки',
   }),
 ]

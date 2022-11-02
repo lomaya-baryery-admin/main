@@ -5,11 +5,12 @@ import tableStyle from './Table.module.css';
 interface ITableProps {
   defaultData: object[];
   columnsData: any[];
+  rowHeight: number;
 }
 
 type TTableProps = ITableProps;
 
-export const Table: FC<TTableProps> = ({defaultData, columnsData}) => {
+export const Table: FC<TTableProps> = ({defaultData, columnsData, rowHeight}) => {
   const [data] = useState(() => [...defaultData])
   const table = useReactTable({
     data,
@@ -37,7 +38,7 @@ export const Table: FC<TTableProps> = ({defaultData, columnsData}) => {
         </thead>
         <tbody>
         {table.getRowModel().rows.map(row => (
-          <tr key={row.id} className={`${tableStyle.header__row}`}>
+          <tr key={row.id} className={`${tableStyle.header__row}`} data-row={rowHeight} >
             {row.getVisibleCells().map(cell => (
               <td key={cell.id}>
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}

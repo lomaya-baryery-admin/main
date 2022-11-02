@@ -17,9 +17,12 @@
 }
 
 .image__container {
+  position: absolute;
+  top: calc(50% - 30px);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 }
 
 .image__container:hover >.image__icon {

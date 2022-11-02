@@ -15,6 +15,7 @@ thead, tbody {
 }
 
 td, th {
+  position: relative;
   padding-left: 10px;
 }
 
@@ -25,9 +26,21 @@ td, th {
 }
 
 .header__row {
-  height: 60px;
+  /*height: 60px;*/
   padding: 0;
   border-bottom: var(--common-border-width) solid #E5E5E5;
+}
+
+.header__row[data-row='40']{
+  height: 40px;
+}
+
+.header__row[data-row='60']{
+  height: 60px;
+}
+
+.header__row[data-row='80']{
+  height: 80px;
 }
 
 .header__row:last-child {
