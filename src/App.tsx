@@ -5,6 +5,7 @@ import './App.css';
 import { useGetDefaultQuery, useShiftsPostMutation } from './redux-store/api-slice/api-slice'
 import { Table } from './stories/table/Table';
 import { AllShiftData, shiftColumns } from './utils/tableColumns';
+import { ImagePreview } from './stories/image-preview/ImagePreview';
 
 fetch('http://51.250.32.125:8000/hello')
   .then(res => res.json())
@@ -47,7 +48,8 @@ function App() {
     //   </div>
     //   <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
     // </div>
-    <Table defaultData={AllShiftData} columnsData={shiftColumns} />
+    // <Table defaultData={AllShiftData} columnsData={shiftColumns} />
+    <ImagePreview image="https://i.pinimg.com/originals/df/7c/ff/df7cff525fa17eb192652a82c0c20a8a.jpg" title="test"  />
   );
 }
 
