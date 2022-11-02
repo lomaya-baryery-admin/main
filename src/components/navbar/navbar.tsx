@@ -1,243 +1,82 @@
 import styles from './navbar.module.css';
-import { useState, useEffect } from 'react';
+import { FC } from 'react';
 import { useLocation, NavLink } from 'react-router-dom';
-import {
-  UsersIcon,
-  NoteEditIcon,
-  FileCheckIcon,
-  CalendarIcon,
-  ChevronDownIcon,
-} from '../../stories/icons';
+import { UsersIcon, NoteEditIcon, FileCheckIcon, CalendarIcon } from '../../stories/icons';
+import Slaider from '../slaider/slaider';
+import { INavbarElement } from '../../services/types/types';
+import { shift, report, invites } from '../../utils/utils';
 
-const Navbar = () => {
-  const [CalendarActive, setCalendarActive] = useState<boolean>(false);
-  const [NoteEditActive, setNoteEditActive] = useState<boolean>(false);
-  const [UsersActive, setUsersActive] = useState<boolean>(false);
-  const [FileCheckActive, setFileCheckActive] = useState<boolean>(false);
-
+const NavbarElement: FC<INavbarElement> = ({ name, link, section }) => {
   let location = useLocation();
-  useEffect(() => {
-    if (location.pathname.includes('shift')) {
-      setCalendarActive(true);
-    } else if (location.pathname.includes('invites')) {
-      setNoteEditActive(true);
-    } else if (location.pathname.includes('participants')) {
-      setUsersActive(true);
-    } else if (location.pathname.includes('report')) {
-      setFileCheckActive(true);
-    }
-  }, []);
 
-  function setActive(state: (any: boolean) => void) {
-    setCalendarActive(false);
-    setNoteEditActive(false);
-    setUsersActive(false);
-    setFileCheckActive(false);
-    state(true);
-  }
   let active = {
     background: `#FFFFFF`,
     borderRadius: `10px`,
   };
+
+  return (
+    <li className={`${styles.navbar__listElement}`}>
+      <NavLink
+        className={`${styles.navbar__link} ${
+          location.pathname.includes(section) ? styles.navbar__links_active : undefined
+        } text_type_main-medium`}
+        to={link}
+        style={({ isActive }) => (isActive ? active : undefined)}
+      >
+        {name}
+      </NavLink>
+    </li>
+  );
+};
+
+const Navbar = () => {
   return (
     <div className={styles.navbar}>
       <nav>
-        <div>
-          <button
-            className={styles.button}
-            onClick={ CalendarActive ? () => setCalendarActive(false) : () => {
-              setActive(setCalendarActive);
-            }}
-          >
-      
-            <div className={styles.button__container}>
-              <CalendarIcon type={CalendarActive ? 'link-active' : 'link'} />
-              <p
-                className={`${
-                  CalendarActive ? `${styles.button__text_active} ${styles.button__text}` : styles.button__text
-                } text_type_main-medium`}
-              >
-                Смены
-              </p>
-              {CalendarActive ? (
-                <div className={styles.Chevron}>
-                  <ChevronDownIcon type="link-active" />
-                </div>
-              ) : null}
-            </div>
-          </button>
-          {CalendarActive ? (
-            <ul className={styles.navbar__list}>
-              <li className={`${styles.navbar__listElement}`}>
-              
-                <NavLink
-                  className={`${styles.navbar__link}
-                   text_type_main-medium`}
-                  to="/shift/all"
-                  style={({ isActive }) => (isActive ? active : undefined)}
-                >
-                  Все
-                </NavLink>
-              </li>
-              <li className={styles.navbar__listElement}>
-             
-                <NavLink
-                  className={`${styles.navbar__link}
-                   text_type_main-medium`}
-                  to="/shift/current"
-                  style={({ isActive }) => (isActive ? active : undefined)}
-                >
-                  Текущая
-                </NavLink>
-              </li>
-              <li className={styles.navbar__listElement}>
-              
-                <NavLink
-                  className={`${styles.navbar__link}
-                   text_type_main-medium`}
-                  to="/shift/new"
-                  style={({ isActive }) => (isActive ? active : undefined)}
-                >
-                  Новая
-                </NavLink>
-              </li>
-            </ul>
-          ) : null}
-        </div>
-        <div>
-          <button
-            className={styles.button}
-            onClick={ NoteEditActive ? () => setNoteEditActive(false) : () => {
-              setActive(setNoteEditActive);
-            }}
-          >
-            {' '}
-            <div className={styles.button__container}>
-              <NoteEditIcon type={NoteEditActive ? 'link-active' : 'link'} />
-              <p
-                className={`${
-                  NoteEditActive ? `${styles.button__text} ${styles.button__text_active}` : styles.button__text
-                } text_type_main-medium`}
-              >
-                Заявки на участие
-              </p>
-              {NoteEditActive ? (
-                <div className={styles.Chevron}>
-                  <ChevronDownIcon type="link-active" />
-                </div>
-              ) : null}
-            </div>
-          </button>
-          {NoteEditActive ? (
-            <ul className={styles.navbar__list}>
-              <li className={`${styles.navbar__listElement} `}>
-           
-                <NavLink
-                  className={`${styles.navbar__link}
-                   text_type_main-medium`}
-                  to="/invites/active"
-                  style={({ isActive }) => (isActive ? active : undefined)}
-                >
-                  Активные
-                </NavLink>
-              </li>
-              <li className={styles.navbar__listElement}>
-                {' '}
-                <NavLink
-                  className={`${styles.navbar__link}
-                   text_type_main-medium`}
-                  to="/invites/reviewed"
-                  style={({ isActive }) => (isActive ? active : undefined)}
-                >
-                  Рассмотренные
-                </NavLink>
-              </li>
-            </ul>
-          ) : null}
-        </div>
-        <div>
-          <button
-            className={styles.button}
-            onClick={ UsersActive ? ()=> setUsersActive(false) : () => {
-              setActive(setUsersActive);
-            }}
-          >
-            {' '}
-            <div className={styles.button__container}>
-              <UsersIcon type={UsersActive ? 'link-active' : 'link'} />
-              <NavLink
-                className={`${UsersActive ? `${styles.button__text_active} ${styles.button__text}` : styles.button__text} 
-                   text_type_main-medium`}
-                to="/participants"
-              >
-                Участники проекта
-              </NavLink>
-            </div>
-          </button>
-        </div>
-        <div>
-          <button
-            className={styles.button}
-            onClick={ FileCheckActive ? ()=> setFileCheckActive(false) : () => {
-              setActive(setFileCheckActive);
-            }}
-          >
-            {' '}
-            <div className={styles.button__container}>
-              <FileCheckIcon type={FileCheckActive ? 'link-active' : 'link'} />
-
-              <p
-                className={`${
-                  FileCheckActive ? `${styles.button__text_active} ${styles.button__text}` : styles.button__text
-                } text_type_main-medium`}
-              >
-                Отчёты участников
-              </p>
-              {FileCheckActive ? (
-                <div className={styles.Chevron}>
-                  <ChevronDownIcon type="link-active" />
-                </div>
-              ) : null}
-            </div>
-          </button>
-          {FileCheckActive ? (
-            <ul className={styles.navbar__list}>
-              <li className={`${styles.navbar__listElement} `}>
-                {' '}
-                <NavLink
-                  className={`${styles.navbar__link}
-                   text_type_main-medium`}
-                  to="/report/noverified"
-                  style={({ isActive }) => (isActive ? active : undefined)}
-                >
-                  Ждут проверки
-                </NavLink>
-              </li>
-              <li className={styles.navbar__listElement}>
-                {' '}
-                <NavLink
-                  className={`${styles.navbar__link}
-                   text_type_main-medium`}
-                  to="/report/verified"
-                  style={({ isActive }) => (isActive ? active : undefined)}
-                >
-                  Проверенные
-                </NavLink>
-              </li>
-              <li className={styles.navbar__listElement}>
-                {' '}
-                <NavLink
-                  className={`${styles.navbar__link}
-                   text_type_main-medium`}
-                  to="/report/rejected"
-                  style={({ isActive }) => (isActive ? active : undefined)}
-                >
-                  Отклонённые
-                </NavLink>
-              </li>
-            </ul>
-          ) : null}
-        </div>
+        <Slaider
+          linkActive="shift"
+          text="Смены"
+          icon={<CalendarIcon type="link" />}
+          activeIcon={<CalendarIcon type="link-active" />}
+        >
+          <ul className={styles.navbar__list}>
+            {shift.map((link: any, index) => (
+              <NavbarElement section={link.section} key={index} name={link.name} link={link.link} />
+            ))}
+          </ul>
+        </Slaider>
+        <Slaider
+          linkActive="invites"
+          text="Заявки на участие"
+          icon={<NoteEditIcon type="link" />}
+          activeIcon={<NoteEditIcon type="link-active" />}
+        >
+          <ul className={styles.navbar__list}>
+            {invites.map((link: any, index) => (
+              <NavbarElement section={link.section} key={index} name={link.name} link={link.link} />
+            ))}
+          </ul>
+        </Slaider>
+        <NavLink to="/participants">
+          <Slaider
+            linkActive="participants"
+            text="Участники проекта"
+            icon={<UsersIcon type="link" />}
+            activeIcon={<UsersIcon type="link-active" />}
+          ></Slaider>
+        </NavLink>
+        <Slaider
+          linkActive="report"
+          text="Отчёты участников"
+          icon={<FileCheckIcon type="link" />}
+          activeIcon={<FileCheckIcon type="link-active" />}
+        >
+          <ul className={styles.navbar__list}>
+            {report.map((link: any, index) => (
+              <NavbarElement section={link.section} key={index} name={link.name} link={link.link} />
+            ))}
+          </ul>
+        </Slaider>
       </nav>
     </div>
   );
