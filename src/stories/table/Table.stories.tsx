@@ -7,7 +7,7 @@ import {
   testColumns,
   testData
 } from '../../utils/tableColumns';
-import { Table } from './Table';
+import { Table } from '../../ui/table/Table';
 
 export default {
   title: 'UITable',

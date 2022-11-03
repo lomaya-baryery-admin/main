@@ -1,6 +1,6 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ArrowLeftIcon } from './arrow-left-icon';
+import { ArrowLeftIcon } from '../../ui/icons/arrow-left-icon';
 
 export default {
   title: 'Icons',

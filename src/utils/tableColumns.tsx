@@ -2,7 +2,7 @@ import { createColumnHelper } from '@tanstack/react-table';
 import { StatusLabel } from '../stories/status-label/status-label';
 import { statusLable } from './constants';
 import { ImagePreview } from '../stories/image-preview/ImagePreview';
-import tableStyle from '../stories/table/Table.module.css';
+import tableStyle from '../ui/table/Table.module.css';
 import { Button } from '../stories/button/button';
 // -----------------------------------------------типы
 
