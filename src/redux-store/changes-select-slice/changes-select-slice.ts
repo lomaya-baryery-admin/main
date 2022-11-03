@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-//смены
+// смены
 interface IchangesState {
   changes: 'all' | 'current' | 'new' | '';
 }

@@ -1,5 +1,5 @@
-import { getColor, IIconProps } from './utils';
 import React from 'react';
+import { getColor, IIconProps } from './utils';
 
 export const ZoomIcon = ({ type }: IIconProps) => (
   <svg

@@ -6,6 +6,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import calendar from './calendar.module.css';
 import { Button } from '../button/button';
 import { CloseIcon } from '../icons/close-icon';
+
 registerLocale('ru', ru);
 
 export const Calendar = () => {
@@ -22,7 +23,7 @@ export const Calendar = () => {
     <div className={calendar.container}>
       <div className={calendar.header}>
         <h2 className={calendar.header__title}>Выбрать дату</h2>
-        <CloseIcon type={'interface-secondary'} />
+        <CloseIcon type="interface-secondary" />
       </div>
       <DatePicker
         locale={ru}
@@ -38,10 +39,14 @@ export const Calendar = () => {
         onCalendarClose={handleCalendarClose}
         onCalendarOpen={handleCalendarOpen}
         shouldCloseOnSelect={false}
-      ></DatePicker>
+      />
       <div className={calendar.footer}>
-        <Button htmlType="button" type={'secondary'} size={'small'} children={'Отменить'} />
-        <Button htmlType="button" type={'primary'} size={'small'} children={'Выбрать'} />
+        <Button htmlType="button" type="secondary" size="small">
+          Отменить
+        </Button>
+        <Button htmlType="button" type="primary" size="small">
+          Выбрать
+        </Button>
       </div>
     </div>
   );

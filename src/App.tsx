@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import reactLogo from './assets/react.svg';
+import { useState } from 'react';
 import './App.css';
 import { useGetDefaultQuery, useShiftsPostMutation } from './redux-store/api-slice/api-slice';
 
@@ -8,8 +7,8 @@ fetch('http://51.250.32.125:8000/hello')
   .then((data) => console.log(data));
 
 function App() {
-  const { data = '', isLoading, isError } = useGetDefaultQuery(); //пример для get-запроса
-  const [shiftPost, {}] = useShiftsPostMutation(); //пример для post-запроса
+  const { data = '', isLoading, isError } = useGetDefaultQuery(); // пример для get-запроса
+  const [shiftPost, varible = {}] = useShiftsPostMutation(); // пример для post-запроса
 
   const handleShiftPost = async () => {
     await shiftPost({

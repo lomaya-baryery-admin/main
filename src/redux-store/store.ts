@@ -15,5 +15,5 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(dataApi.middleware),
 });
 
-export type RootState = ReturnType<typeof store.getState>; //для селектора
-export type AppDispatch = typeof store.dispatch; //для диспатча
+export type RootState = ReturnType<typeof store.getState>; // для селектора
+export type AppDispatch = typeof store.dispatch; // для диспатча

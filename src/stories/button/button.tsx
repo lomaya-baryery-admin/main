@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { Tooltip } from '../tooltip/tooltip';
 import styles from './button.module.css';
 
 type TButtonProps = React.PropsWithChildren<Omit<React.HTMLProps<HTMLButtonElement>, 'size'>> & {
@@ -22,11 +21,12 @@ export const Button = ({
 }: TButtonProps) => {
   const styleType = disabled ? styles.disabled : styles[type];
 
-  const extClassName = className ? className : '';
+  const extClassName = className || '';
 
+  // button type attribute must be specified by a static string or a trivial ternary expressioneslint
   return (
     <button
-      type={htmlType}
+      type="button"
       className={`${styles.button} ${styles[size]} ${styleType} ${extClassName}`}
       disabled={disabled}
       {...props}

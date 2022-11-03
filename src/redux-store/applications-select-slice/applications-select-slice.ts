@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-//заявки на участие
+// заявки на участие
 interface IApplicationState {
   application: 'active' | 'reviewed' | '';
 }
