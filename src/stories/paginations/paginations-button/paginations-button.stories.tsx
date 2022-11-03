@@ -1,7 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { PaginationsButton } from './paginations-button';
 
-
 export default {
   title: 'Paginations-button',
   Comment: PaginationsButton,
@@ -11,7 +10,7 @@ export default {
       defaultValue: '1',
       description: 'имя кнопки',
     },
-    
+
     buttonActive: {
       type: 'string',
       description: 'определяет стиль рамки у кнопки и активность кнопки',
@@ -21,6 +20,7 @@ export default {
         type: 'radio',
       },
     },
+
     textActive: {
       type: 'string',
       description: 'определяет цвет текста у кнопки',
@@ -30,6 +30,7 @@ export default {
         type: 'radio',
       },
     },
+    
     onClick: {
       type: 'function',
       description: 'принимает значением функцию',
