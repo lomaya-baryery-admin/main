@@ -1,0 +1,53 @@
+.table {
+    font-family: 'Lato';
+    font-weight: 700;
+    color: var(--colors-interface-gray);
+    font-size: 14px;
+    line-height: 17px;
+}
+.header {
+    background: var(--colors-interface-gray-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 34px;
+    height: 30px;
+    border: 1px solid var(--colors-interface-border);
+    border-right: none;
+    border-bottom: none;
+    padding: 0;
+    box-sizing: border-box;
+}
+.cell:last-child {
+    border-right: 1px solid var(--colors-interface-border);
+}
+
+.row {
+    display: flex;
+}
+
+.row:last-child {
+    border-bottom: 1px solid var(--colors-interface-border);
+}
+
+.notActiveDay {
+    color: rgba(146, 158, 173, 0.5);
+    background: var(--colors-interface-gray-light);
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    background: var(--colors-interface-gray-light);
+    border: 1px solid var(--colors-interface-border);
+    color: #929EAD;
+    border-bottom: none;
+    padding: 6px 10px;
+}
