@@ -1,19 +1,22 @@
 import { useState } from 'react';
 import './App.css';
-import { useGetDefaultQuery, useShiftsPostMutation, useShiftsGetQuery } from './redux-store/api-slice/api-slice'
+import {
+  useGetDefaultQuery,
+  useShiftsPostMutation,
+  useShiftsGetQuery,
+} from './redux-store/api-slice/api-slice';
 
 function App() {
-  const { data, isLoading, isError } = useGetDefaultQuery()
-  const [shiftPost, { data: shiftData }] = useShiftsPostMutation()
-  const { data: obj } = useShiftsGetQuery(shiftData?.id)
-
+  const { data, isLoading, isError } = useGetDefaultQuery();
+  const [shiftPost, { data: shiftData }] = useShiftsPostMutation();
+  const { data: obj } = useShiftsGetQuery(shiftData?.id);
 
   const handleShiftPost = async () => {
     await shiftPost({
-      "started_at": "2022-11-02T17:00:32.625Z",
-      "finished_at": "2022-11-02T17:00:32.625Z"
-    }).unwrap()
-  }
+      started_at: '2022-11-02T17:00:32.625Z',
+      finished_at: '2022-11-02T17:00:32.625Z',
+    }).unwrap();
+  };
 
   const [count, setCount] = useState(0);
 
