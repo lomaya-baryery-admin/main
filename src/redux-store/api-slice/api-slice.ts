@@ -40,4 +40,4 @@ export const dataApi = createApi({
    })
 })
 
-export const { useGetDefaultQuery, useShiftsPostMutation, useShiftsGetQuery } = dataApi
+export const { useGetDefaultQuery, useShiftsPostMutation, useShiftsGetQuery, useShiftsPatchMutation, useShiftsPutMutation } = dataApi

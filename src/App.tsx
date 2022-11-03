@@ -3,9 +3,9 @@ import './App.css';
 import { useGetDefaultQuery, useShiftsPostMutation, useShiftsGetQuery } from './redux-store/api-slice/api-slice'
 
 function App() {
-  const { data = '', isLoading, isError } = useGetDefaultQuery() //пример для get-запроса
-  const [shiftPost, { data: shiftData }] = useShiftsPostMutation() //пример для post-запроса
-  const { data: obj } = useShiftsGetQuery(shiftData?.id) //пример
+  const { data, isLoading, isError } = useGetDefaultQuery()
+  const [shiftPost, { data: shiftData }] = useShiftsPostMutation()
+  const { data: obj } = useShiftsGetQuery(shiftData?.id)
 
 
   const handleShiftPost = async () => {
