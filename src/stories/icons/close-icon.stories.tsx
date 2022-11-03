@@ -1,6 +1,6 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { CloseIcon } from './close-icon';
+import { CloseIcon } from '../../ui/icons/close-icon';
 
 export default {
   title: 'Icons',

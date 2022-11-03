@@ -1,6 +1,6 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { UserIcon } from './user-icon';
+import { UserIcon } from '../../ui/icons/user-icon';
 
 export default {
   title: 'Icons',

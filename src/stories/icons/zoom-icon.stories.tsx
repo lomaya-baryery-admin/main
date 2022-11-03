@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ZoomIcon } from './zoom-icon';
+import { ZoomIcon } from '../../ui/icons/zoom-icon';
 
 export default {
   title: 'Icons',
