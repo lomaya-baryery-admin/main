@@ -11,12 +11,12 @@ export default {
     },
     title: {
       type: 'string',
-      description: 'alt для изображения'
-    }
-  }
-}
+      description: 'alt для изображения',
+    },
+  },
+};
 
-const Template: ComponentStory<typeof ImagePreview> = (args) => <ImagePreview {...args} />
+const Template: ComponentStory<typeof ImagePreview> = (args) => <ImagePreview {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

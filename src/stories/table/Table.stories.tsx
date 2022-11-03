@@ -5,7 +5,7 @@ import {
   AllShiftData,
   shiftColumns,
   testColumns,
-  testData
+  testData,
 } from '../../utils/tableColumns';
 import { Table } from '../../ui/table/Table';
 
@@ -19,7 +19,8 @@ export default {
     },
     columnsData: {
       type: 'array',
-      description: 'Массив с описанием колонок. Описываем самостоятельно по образцу. Подробное описание в документации: https://tanstack.com'
+      description:
+        'Массив с описанием колонок. Описываем самостоятельно по образцу. Подробное описание в документации: https://tanstack.com',
     },
     rowHeight: {
       type: 'number',
@@ -29,11 +30,11 @@ export default {
       control: {
         type: 'radio',
       },
-    }
-  }
-}
+    },
+  },
+};
 
-const Template: ComponentStory<typeof Table> = (args) => <Table {...args} />
+const Template: ComponentStory<typeof Table> = (args) => <Table {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

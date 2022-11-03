@@ -1,40 +1,40 @@
 import { createColumnHelper } from '@tanstack/react-table';
-import { StatusLabel } from '../stories/status-label/status-label';
+import { StatusLabel } from '../ui/status-label/status-label';
 import { statusLable } from './constants';
 import { ImagePreview } from '../stories/image-preview/ImagePreview';
 import tableStyle from '../ui/table/Table.module.css';
-import { Button } from '../stories/button/button';
+import { Button } from '../ui/button/button';
 // -----------------------------------------------типы
 
 // колонки для таблицы Смены TODO: скорректировать названия после того, как будет добавлен бэк!
 type TAllShiftColumns = {
-  number: number,
-  shift_name: string,
-  date_start: string,
-  date_end: string,
-  count_members: number,
-  status: string,
+  number: number;
+  shift_name: string;
+  date_start: string;
+  date_end: string;
+  count_members: number;
+  status: string;
 };
 
 // типы для таблицы отчеты участников TODO: скорректировать названия после того, как будет добавлен бэк!
 type TAllReportsTable = {
-  task_name: string,
-  user_name: string,
-  task_date: string,
-  preview: string,
-  buttons: string[],
-}
+  task_name: string;
+  user_name: string;
+  task_date: string;
+  preview: string;
+  buttons: string[];
+};
 
 // типы для тестовой таблицы
 type TTestTable = {
-  one: string,
-  two: number,
-  three: string,
-}
+  one: string;
+  two: number;
+  three: string;
+};
 // ---------------------------------------------- хардкод
 
 // хардкод для таблицы Смены TODO: убрать после того, как данные будут приходить с сервера
-export const AllShiftData:TAllShiftColumns[] = [
+export const AllShiftData: TAllShiftColumns[] = [
   {
     number: 1,
     shift_name: 'Радостная радость',
@@ -59,14 +59,14 @@ export const AllShiftData:TAllShiftColumns[] = [
     count_members: 175,
     status: 'current',
   },
-]
+];
 
 // хардкод для тестовой таблицы
-export const testData:TTestTable[] = [
+export const testData: TTestTable[] = [
   {
-  one: 'Петя Петров',
-  two: 33,
-  three: 'любит пельмени',
+    one: 'Петя Петров',
+    two: 33,
+    three: 'любит пельмени',
   },
   {
     one: 'Катя Иванова',
@@ -81,22 +81,22 @@ export const testData:TTestTable[] = [
 ];
 
 // хардкод для таблицы ОТЧЕТЫ УЧАСТНИКОВ
-export const AllReportsData:TAllReportsTable[] =[
+export const AllReportsData: TAllReportsTable[] = [
   {
     task_name: 'Название задания',
     user_name: 'Иванов Иван',
     task_date: '00/00/0000',
     preview: 'https://i.pinimg.com/474x/09/79/84/097984d23edbf5290d611a270f944fd6.jpg',
-    buttons: ['Принять','Отклонить'],
+    buttons: ['Принять', 'Отклонить'],
   },
   {
     task_name: 'Название задания 2',
     user_name: 'Иванов Иван 2',
     task_date: '00/00/0000',
     preview: 'https://i.pinimg.com/474x/09/79/84/097984d23edbf5290d611a270f944fd6.jpg',
-    buttons: ['Принять','Отклонить'],
+    buttons: ['Принять', 'Отклонить'],
   },
-]
+];
 
 // ----------------------------------тут начинаются даные для таблиц!
 
@@ -105,88 +105,100 @@ const testColumnsHelper = createColumnHelper<TTestTable>();
 const allReportsColumnsHelper = createColumnHelper<TAllReportsTable>();
 // дефолтные данные
 export const testColumns = [
-  testColumnsHelper.accessor(row => row.one, {
+  testColumnsHelper.accessor((row) => row.one, {
     header: 'Столбец 1',
-    cell: info => info.getValue(),
+    cell: (info) => info.getValue(),
   }),
-  testColumnsHelper.accessor(row => row.two, {
+  testColumnsHelper.accessor((row) => row.two, {
     header: 'Столбец 2',
-    cell: info => info.getValue(),
+    cell: (info) => info.getValue(),
   }),
-  testColumnsHelper.accessor(row => row.three, {
+  testColumnsHelper.accessor((row) => row.three, {
     header: 'Столбец 3',
-    cell: info => info.getValue(),
+    cell: (info) => info.getValue(),
   }),
-]
+];
 // смены
 export const shiftColumns = [
-  shiftColumnsHelper.accessor(row => row.number, {
+  shiftColumnsHelper.accessor((row) => row.number, {
     header: 'Номер смены',
     id: 'number',
-    cell: info => <a href="#" className="text text_type_main-default spreadsheetLink">{info.getValue()}</a>,
+    cell: (info) => (
+      <a href="/" className="text text_type_main-default spreadsheetLink">
+        {info.getValue()}
+      </a>
+    ),
   }),
-  shiftColumnsHelper.accessor(row => row.shift_name, {
+  shiftColumnsHelper.accessor((row) => row.shift_name, {
     id: 'shift-name',
     header: 'Название смены',
-    cell: info => <a href="#" className="text text_type_main-default spreadsheetLink">{info.getValue()}</a>,
+    cell: (info) => (
+      <a href="/" className="text text_type_main-default spreadsheetLink">
+        {info.getValue()}
+      </a>
+    ),
   }),
-  shiftColumnsHelper.accessor(row => row.date_start, {
+  shiftColumnsHelper.accessor((row) => row.date_start, {
     id: 'date_start',
     header: 'Дата старта',
-    cell: info => info.getValue(),
+    cell: (info) => info.getValue(),
   }),
-  shiftColumnsHelper.accessor(row => row.date_end, {
+  shiftColumnsHelper.accessor((row) => row.date_end, {
     id: 'date_end',
     header: 'Дата окончания',
-    cell: info => info.getValue(),
+    cell: (info) => info.getValue(),
   }),
-  shiftColumnsHelper.accessor(row => row.count_members, {
+  shiftColumnsHelper.accessor((row) => row.count_members, {
     id: 'count-members',
     header: 'К-во участников',
-    cell: info => info.getValue(),
+    cell: (info) => info.getValue(),
   }),
-  shiftColumnsHelper.accessor(row => row.status, {
+  shiftColumnsHelper.accessor((row) => row.status, {
     id: 'status',
     header: 'Статус',
-    cell: status => {
+    cell: (status) => {
       const value = status.getValue();
-      return <StatusLabel statusText={statusLable(value)} type={value} />
+      return <StatusLabel statusText={statusLable(value)} type={value} />;
     },
   }),
-]
+];
 
 // все отчеты участников
 export const allReportsColumns = [
-  allReportsColumnsHelper.accessor(row => row.task_name, {
+  allReportsColumnsHelper.accessor((row) => row.task_name, {
     header: 'Название задания',
-    cell: info => <a href="#" className="text text_type_main-default spreadsheetLink">{info.getValue()}</a>,
+    cell: (info) => (
+      <a href="/" className="text text_type_main-default spreadsheetLink">
+        {info.getValue()}
+      </a>
+    ),
   }),
-  allReportsColumnsHelper.accessor(row => row.user_name, {
+  allReportsColumnsHelper.accessor((row) => row.user_name, {
     header: 'Имя и фамилия',
-    cell: info => <a href="#" className="text text_type_main-default spreadsheetLink">{info.getValue()}</a>,
+    cell: (info) => (
+      <a href="/" className="text text_type_main-default spreadsheetLink">
+        {info.getValue()}
+      </a>
+    ),
   }),
-  allReportsColumnsHelper.accessor(row => row.task_date, {
+  allReportsColumnsHelper.accessor((row) => row.task_date, {
     header: 'Дата и время отправки',
-    cell: info => info.getValue(),
+    cell: (info) => info.getValue(),
   }),
-  allReportsColumnsHelper.accessor(row => row.preview, {
+  allReportsColumnsHelper.accessor((row) => row.preview, {
     header: 'Превью',
-    cell: info => <ImagePreview url={info.getValue()} title="Фотоотчет" />,
+    cell: (info) => <ImagePreview url={info.getValue()} title="Фотоотчет" />,
   }),
-  allReportsColumnsHelper.accessor(row => row.buttons, {
+  allReportsColumnsHelper.accessor((row) => row.buttons, {
     header: ' ',
-    cell: buttons => {
-      return (
-        <div className={tableStyle.table__buttonContainer}>
-          { buttons.getValue().map(button => <Button
-            htmlType="button"
-            onClick={() => {}}
-            size="small"
-            type="primary">
+    cell: (buttons) => (
+      <div className={tableStyle.table__buttonContainer}>
+        {buttons.getValue().map((button) => (
+          <Button htmlType="button" onClick={() => {}} size="small" type="primary">
             {button}
-          </Button>)}
-        </div>
-      )
-    },
+          </Button>
+        ))}
+      </div>
+    ),
   }),
-]
+];
