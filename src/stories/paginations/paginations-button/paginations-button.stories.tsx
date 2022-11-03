@@ -30,7 +30,7 @@ export default {
         type: 'radio',
       },
     },
-    
+
     onClick: {
       type: 'function',
       description: 'принимает значением функцию',
