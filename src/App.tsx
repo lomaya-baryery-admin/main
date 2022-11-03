@@ -2,13 +2,13 @@
 import React, { useState, useEffect } from 'react';
 import reactLogo from './assets/react.svg';
 import './App.css';
-import { useGetDefaultQuery, useShiftsPostMutation, useShiftsPostGetQuery } from './redux-store/api-slice/api-slice'
+import { useGetDefaultQuery, useShiftsPostMutation, useShiftsGetQuery } from './redux-store/api-slice/api-slice'
 
 function App() {
   const { data = '', isLoading, isError } = useGetDefaultQuery() //пример для get-запроса
   const [shiftPost, { data: shiftData }] = useShiftsPostMutation() //пример для post-запроса
-  const { data: obj } = useShiftsPostGetQuery(shiftData?.id)
-  console.log(obj)
+  const { data: obj } = useShiftsGetQuery(shiftData?.id) //пример
+
 
   const handleShiftPost = async () => {
     await shiftPost({

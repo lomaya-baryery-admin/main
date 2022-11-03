@@ -18,12 +18,26 @@ export const dataApi = createApi({
          }),
          // invalidatesTags: ['data']
       }),
-      shiftsPostGet: build.query<IInformation, string | undefined>({
+      shiftsGet: build.query<IInformation, string | undefined>({
          query: (shiftId) => ({
             url: `/shifts/${shiftId}`,
+         })
+      }),
+      shiftsPatch: build.mutation<IResponceShifts, { body: IResponceShifts; shiftId: string }>({
+         query: ({ body, shiftId }) => ({
+            url: `/shifts/${shiftId}`,
+            method: 'PATCH',
+            body
+         })
+      }),
+      shiftsPut: build.mutation<IResponceShifts, { body: IResponceShifts; shiftId: string }>({
+         query: ({ body, shiftId }) => ({
+            url: `/shifts/${shiftId}/actions/start`,
+            method: "PUT",
+            body
          })
       })
    })
 })
 
-export const { useGetDefaultQuery, useShiftsPostMutation, useShiftsPostGetQuery } = dataApi
+export const { useGetDefaultQuery, useShiftsPostMutation, useShiftsGetQuery } = dataApi
