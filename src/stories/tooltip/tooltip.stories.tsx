@@ -8,18 +8,16 @@ interface ITooltip {
   posY: number;
 }
 
-const Tooltip = React.forwardRef<HTMLParagraphElement, ITooltip>(({ text, posX, posY }, ref) => {
-  return (
-    <>
-      <p ref={ref} className={styles.tooltip} style={{ top: posY, left: posX, position: 'static' }}>
-        {text}
-      </p>
-      <h3 style={{ fontFamily: 'sans-serif', fontWeight: 400 }}>
-        Нажми Show code, чтобы посмотреть описание 👇
-      </h3>
-    </>
-  );
-});
+const Tooltip = React.forwardRef<HTMLParagraphElement, ITooltip>(({ text, posX, posY }, ref) => (
+  <>
+    <p ref={ref} className={styles.tooltip} style={{ top: posY, left: posX, position: 'static' }}>
+      {text}
+    </p>
+    <h3 style={{ fontFamily: 'sans-serif', fontWeight: 400 }}>
+      Нажми Show code, чтобы посмотреть описание 👇
+    </h3>
+  </>
+));
 
 export default {
   title: 'Tooltip(HOC)',
