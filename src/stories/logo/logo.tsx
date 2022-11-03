@@ -3,7 +3,7 @@ interface ILogoProps {
 }
 
 export const Logo = ({ className, ...props }: ILogoProps) => {
-  const elementClassName = className ? className : '';
+  const elementClassName = className || '';
 
   return (
     <svg

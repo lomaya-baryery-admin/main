@@ -7,8 +7,8 @@ fetch('http://51.250.32.125:8000/hello')
   .then((data) => console.log(data));
 
 function App() {
-  const { data = '', isLoading, isError } = useGetDefaultQuery(); //пример для get-запроса
-  const [shiftPost, {}] = useShiftsPostMutation(); //пример для post-запроса
+  const { data = '', isLoading, isError } = useGetDefaultQuery(); // пример для get-запроса
+  const [shiftPost, varible = {}] = useShiftsPostMutation(); // пример для post-запроса
 
   const handleShiftPost = async () => {
     await shiftPost({
@@ -23,7 +23,7 @@ function App() {
     <div className="App">
       <div>
         <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
+          <img src="./vite.svg" className="logo" alt="Vite logo" />
         </a>
         <a href="https://reactjs.org" target="_blank" rel="noreferrer">
           {/* <img src={reactLogo} className="logo react" alt="React logo" /> */}

@@ -11,14 +11,13 @@ interface ITooltip {
 const tooltipRoot = document.getElementById('tooltipRoot')!;
 
 export const Tooltip = React.forwardRef<HTMLParagraphElement, ITooltip>(
-  ({ text, posX, posY }, ref) => {
-    return createPortal(
+  ({ text, posX, posY }, ref) =>
+    createPortal(
       <p ref={ref} className={styles.tooltip} style={{ top: posY, left: posX }}>
         {text}
       </p>,
       tooltipRoot
-    );
-  }
+    )
 );
 
 type TTooltipHOC = {
