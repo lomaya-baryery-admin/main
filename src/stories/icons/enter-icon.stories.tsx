@@ -1,6 +1,6 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { EnterIcon } from './enter-icon';
+import { EnterIcon } from '../../ui/icons/enter-icon';
 
 export default {
   title: 'Icons',

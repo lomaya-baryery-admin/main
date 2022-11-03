@@ -2,9 +2,9 @@ import React from 'react';
 import headerStyles from './header.module.css';
 import '../../assets/styles/common.css';
 import '../../assets/fonts/fonts.css';
-import { EnterIcon } from '../../stories/icons/enter-icon';
-import { Logo } from '../../stories/logo/logo';
-import { UserIcon } from '../../stories/icons';
+import { EnterIcon } from '../../ui/icons/enter-icon';
+import { Logo } from '../../ui/logo/logo';
+import { UserIcon } from '../../ui/icons';
 
 export function Header() {
   return (
