@@ -16,13 +16,13 @@ export const PaginationsButton = ({
 }: IPaginationsButtonProps) => {
   const buttonActiveClass =
     buttonActive === 'active'
-      ? `${styles.button_active}`
+      ? styles.button_active
       : buttonActive === 'inactive'
-      ? `${styles.button_inactive}`
-      : `${styles.button_disabled}`;
+      ? styles.button_inactive
+      : styles.button_disabled;
 
   const textActiveClass =
-    textActive === 'active' ? `${styles.text_active}` : `${styles.text_inactive}`;
+    textActive === 'active' ? styles.text_active : styles.text_inactive;
 
   const currentClasses = [`${styles.button}`, `${buttonActiveClass}`, `${textActiveClass}`].join(
     ' '
