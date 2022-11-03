@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CloseIcon } from '../icons';
+import { CloseIcon } from '../../ui/icons/close-icon';
 import { Search } from '../icons/search-icon.stories';
 import styles from './search-input.module.css';
 

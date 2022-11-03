@@ -11,7 +11,7 @@ interface IStatusLabelProps {
 }
 
 export const StatusLabel = ({ type, icon, statusText, className }: IStatusLabelProps) => {
-  const HTMLClass = className ? className : '';
+  const HTMLClass = className || '';
 
   const typeStyle = styles[`status_type_${type}`];
 
@@ -22,20 +22,29 @@ export const StatusLabel = ({ type, icon, statusText, className }: IStatusLabelP
 
     const Icon = appIcons[icon];
 
-    const iconType: IIconProps['type'] =
-      type === 'approved' || type === 'current'
-        ? 'success'
-        : type === 'review'
-        ? 'pending'
-        : type === 'rejected'
-        ? 'error'
-        : type === 'new'
-        ? 'interface-black'
-        : 'interface-secondary';
+    const getIconType = (type: IStatusLabelProps['type']) => {
+      switch (type) {
+        case 'approved' || 'current': {
+          return 'success';
+        }
+        case 'review': {
+          return 'pending';
+        }
+        case 'rejected': {
+          return 'error';
+        }
+        case 'new': {
+          return 'interface-black';
+        }
+        default: {
+          return 'interface-secondary';
+        }
+      }
+    };
 
     return (
       <span className={styles.status__icon}>
-        <Icon size={'18'} type={iconType} />
+        <Icon size="18" type={getIconType(type)} />
       </span>
     );
   }, [icon]);

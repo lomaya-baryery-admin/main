@@ -1,28 +1,22 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-//смены
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+// смены
 interface IchangesState {
-  changes: "all" | "current" | "new" | "";
+  changes: 'all' | 'current' | 'new' | '';
 }
 const initialState: IchangesState = {
-  changes: ""
+  changes: '',
 };
 export const changesSelectSlice = createSlice({
-  name: "@@select/changes",
+  name: '@@select/changes',
   initialState,
   reducers: {
-    changesSelectAction: (
-      state,
-      action: PayloadAction<"all" | "current" | "new" | "">
-    ) => {
+    changesSelectAction: (state, action: PayloadAction<'all' | 'current' | 'new' | ''>) => {
       state.changes = action.payload;
     },
     clearChangesSelectAction: (state) => {
-      state.changes = "";
-    }
-  }
+      state.changes = '';
+    },
+  },
 });
 
-export const {
-  changesSelectAction,
-  clearChangesSelectAction
-} = changesSelectSlice.actions;
+export const { changesSelectAction, clearChangesSelectAction } = changesSelectSlice.actions;

@@ -1,6 +1,6 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { SearchIcon } from './search-icon';
+import { SearchIcon } from '../../ui/icons/search-icon';
 
 export default {
   title: 'Icons',
