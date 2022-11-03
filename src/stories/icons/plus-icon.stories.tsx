@@ -1,6 +1,6 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { PlusIcon } from './plus-icon';
+import { PlusIcon } from '../../ui/icons/plus-icon';
 
 export default {
   title: 'Icons',
