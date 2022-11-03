@@ -14,15 +14,15 @@ export const PaginationsButton = ({
   buttonActive = 'active',
   textActive = 'active',
 }: IPaginationsButtonProps) => {
-  let buttonActiveClass
+  let buttonActiveClass;
 
   if (buttonActive === 'active') {
-    buttonActiveClass = styles.button_active
+    buttonActiveClass = styles.button_active;
   } else if (buttonActive === 'inactive') {
-    buttonActiveClass = styles.button_inactive
+    buttonActiveClass = styles.button_inactive;
   } else {
-    buttonActiveClass = styles.button_disabled}
-      
+    buttonActiveClass = styles.button_disabled;
+  }
 
   const textActiveClass = textActive === 'active' ? styles.text_active : styles.text_inactive;
 

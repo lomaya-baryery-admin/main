@@ -13,58 +13,58 @@ export const Paginations = ({ counterPages, currentPage, setCurrentPage }: IPagi
 
   return (
     <div className={styles.content}>
-      {currentPage > 1 ? 
+      {currentPage > 1 ? (
         <>
           <PaginationsButton
-            buttonName='<<'
+            buttonName="<<"
             onClick={() => setCurrentPage(1)}
             buttonActive="inactive"
           />
           <PaginationsButton
-            buttonName='<'
+            buttonName="<"
             onClick={() => setCurrentPage(currentPage - 1)}
             buttonActive="inactive"
           />
         </>
-       : 
+      ) : (
         <>
-          <PaginationsButton buttonName='<' buttonActive="disabled" textActive="inactive" />
-          <PaginationsButton buttonName='<<' buttonActive="disabled" textActive="inactive" />
+          <PaginationsButton buttonName="<" buttonActive="disabled" textActive="inactive" />
+          <PaginationsButton buttonName="<<" buttonActive="disabled" textActive="inactive" />
         </>
-      }
+      )}
 
       {arrPages.map((page) =>
-        page === currentPage ? 
+        page === currentPage ? (
           <PaginationsButton key={page} buttonName={page} />
-         : 
+        ) : (
           <PaginationsButton
             key={page}
             buttonName={page}
             onClick={() => setCurrentPage(page)}
             buttonActive="inactive"
           />
-        
+        )
       )}
 
-      {currentPage < counterPages ? 
+      {currentPage < counterPages ? (
         <>
           <PaginationsButton
-            buttonName='>'
+            buttonName=">"
             onClick={() => setCurrentPage(currentPage + 1)}
             buttonActive="inactive"
           />
           <PaginationsButton
-            buttonName='>>'
+            buttonName=">>"
             onClick={() => setCurrentPage(counterPages)}
             buttonActive="inactive"
           />
         </>
-       : 
+      ) : (
         <>
-          <PaginationsButton buttonName='>' buttonActive="disabled" textActive="inactive" />
-          <PaginationsButton buttonName='>>' buttonActive="disabled" textActive="inactive" />
+          <PaginationsButton buttonName=">" buttonActive="disabled" textActive="inactive" />
+          <PaginationsButton buttonName=">>" buttonActive="disabled" textActive="inactive" />
         </>
-      }
+      )}
     </div>
   );
 };
