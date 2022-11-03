@@ -16,20 +16,20 @@ export const Paginations = ({ counterPages, currentPage, setCurrentPage }: IPagi
       {currentPage > 1 ? 
         <>
           <PaginationsButton
-            buttonName={'<<'}
+            buttonName='<<'
             onClick={() => setCurrentPage(1)}
             buttonActive="inactive"
           />
           <PaginationsButton
-            buttonName={'<'}
+            buttonName='<'
             onClick={() => setCurrentPage(currentPage - 1)}
             buttonActive="inactive"
           />
         </>
        : 
         <>
-          <PaginationsButton buttonName={'<'} buttonActive="disabled" textActive="inactive" />
-          <PaginationsButton buttonName={'<<'} buttonActive="disabled" textActive="inactive" />
+          <PaginationsButton buttonName='<' buttonActive="disabled" textActive="inactive" />
+          <PaginationsButton buttonName='<<' buttonActive="disabled" textActive="inactive" />
         </>
       }
 
@@ -49,20 +49,20 @@ export const Paginations = ({ counterPages, currentPage, setCurrentPage }: IPagi
       {currentPage < counterPages ? 
         <>
           <PaginationsButton
-            buttonName={'>'}
+            buttonName='>'
             onClick={() => setCurrentPage(currentPage + 1)}
             buttonActive="inactive"
           />
           <PaginationsButton
-            buttonName={'>>'}
+            buttonName='>>'
             onClick={() => setCurrentPage(counterPages)}
             buttonActive="inactive"
           />
         </>
        : 
         <>
-          <PaginationsButton buttonName={'>'} buttonActive="disabled" textActive="inactive" />
-          <PaginationsButton buttonName={'>>'} buttonActive="disabled" textActive="inactive" />
+          <PaginationsButton buttonName='>' buttonActive="disabled" textActive="inactive" />
+          <PaginationsButton buttonName='>>' buttonActive="disabled" textActive="inactive" />
         </>
       }
     </div>

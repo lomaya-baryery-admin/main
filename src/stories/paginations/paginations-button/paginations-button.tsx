@@ -21,12 +21,9 @@ export const PaginationsButton = ({
       ? styles.button_inactive
       : styles.button_disabled;
 
-  const textActiveClass =
-    textActive === 'active' ? styles.text_active : styles.text_inactive;
+  const textActiveClass = textActive === 'active' ? styles.text_active : styles.text_inactive;
 
-  const currentClasses = [`${styles.button}`, `${buttonActiveClass}`, `${textActiveClass}`].join(
-    ' '
-  );
+  const currentClasses = [styles.button, buttonActiveClass, textActiveClass].join(' ');
 
   return (
     <button className={currentClasses} onClick={onClick}>
