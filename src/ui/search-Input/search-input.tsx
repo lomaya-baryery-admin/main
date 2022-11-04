@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { CloseIcon, SearchIcon } from '../../ui/icons';
+import { CloseIcon, SearchIcon } from '../icons';
 import styles from './search-input.module.css';
 
 interface ISearchProps {
@@ -33,7 +33,7 @@ export const SearchInput = ({ value, onChange, onClear }: ISearchProps) => {
         className={styles.search__input}
         name="name"
         onChange={onChange}
-        autoComplete={'off'}
+        autoComplete="off"
         onFocus={() => setState(true)}
         onBlur={() => setState(false)}
       />
