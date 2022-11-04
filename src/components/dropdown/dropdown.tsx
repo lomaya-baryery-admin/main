@@ -1,12 +1,12 @@
-import styles from './slaider.module.css';
+import styles from './dropdown.module.css';
 import { FC } from 'react';
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ISlaider } from '../../services/types/types';
 import { ChevronDownIcon } from '../../stories/icons';
 
-const Slaider: FC<ISlaider> = ({ text, icon, activeIcon, children, linkActive }) => {
-  const [Active, setActive] = useState<boolean>(false);
+const  Dropdown: FC<ISlaider> = ({ text, icon, activeIcon, children, linkActive }) => {
+  const [active, setActive] = useState<boolean>(false);
 
   let location = useLocation();
 
@@ -15,11 +15,7 @@ const Slaider: FC<ISlaider> = ({ text, icon, activeIcon, children, linkActive })
       <button
         className={styles.button}
         onClick={
-          Active
-            ? () => setActive(false)
-            : () => {
-                setActive(true);
-              }
+         ()=> setActive(val => !val)
         }
       >
         <div className={styles.button__container}>
@@ -33,7 +29,7 @@ const Slaider: FC<ISlaider> = ({ text, icon, activeIcon, children, linkActive })
           >
             {text}
           </p>
-          {Active && children ? (
+          {active && children ? (
             <div className={styles.Chevron}>
               <ChevronDownIcon
                 type={location.pathname.includes(linkActive) ? 'link-active' : 'link'}
@@ -42,8 +38,8 @@ const Slaider: FC<ISlaider> = ({ text, icon, activeIcon, children, linkActive })
           ) : null}
         </div>
       </button>
-      {Active ? children : null}
+      {active ? children : null}
     </div>
   );
 };
-export default Slaider;
+export default Dropdown;

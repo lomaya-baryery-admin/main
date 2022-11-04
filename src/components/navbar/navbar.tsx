@@ -1,39 +1,15 @@
 import styles from './navbar.module.css';
-import { FC } from 'react';
-import { useLocation, NavLink } from 'react-router-dom';
+import {  NavLink } from 'react-router-dom';
 import { UsersIcon, NoteEditIcon, FileCheckIcon, CalendarIcon } from '../../stories/icons';
-import Slaider from '../slaider/slaider';
-import { INavbarElement } from '../../services/types/types';
-import { shift, report, invites } from '../../utils/utils';
+import Dropdown from '../dropdown/dropdown';
+import { shift, report, invites } from '../../utils/navbar-config';
+import { NavbarElement } from '../navbar-element/navbar-element';
 
-const NavbarElement: FC<INavbarElement> = ({ name, link, section }) => {
-  let location = useLocation();
-
-  let active = {
-    background: `#FFFFFF`,
-    borderRadius: `10px`,
-  };
-
-  return (
-    <li className={`${styles.navbar__listElement}`}>
-      <NavLink
-        className={`${styles.navbar__link} ${
-          location.pathname.includes(section) ? styles.navbar__links_active : undefined
-        } text_type_main-medium`}
-        to={link}
-        style={({ isActive }) => (isActive ? active : undefined)}
-      >
-        {name}
-      </NavLink>
-    </li>
-  );
-};
-
-const Navbar = () => {
+export const Navbar = () => {
   return (
     <div className={styles.navbar}>
       <nav>
-        <Slaider
+        <Dropdown
           linkActive="shift"
           text="Смены"
           icon={<CalendarIcon type="link" />}
@@ -44,8 +20,8 @@ const Navbar = () => {
               <NavbarElement section={link.section} key={index} name={link.name} link={link.link} />
             ))}
           </ul>
-        </Slaider>
-        <Slaider
+        </Dropdown>
+        <Dropdown
           linkActive="invites"
           text="Заявки на участие"
           icon={<NoteEditIcon type="link" />}
@@ -56,16 +32,16 @@ const Navbar = () => {
               <NavbarElement section={link.section} key={index} name={link.name} link={link.link} />
             ))}
           </ul>
-        </Slaider>
+        </Dropdown>
         <NavLink to="/participants">
-          <Slaider
+          <Dropdown
             linkActive="participants"
             text="Участники проекта"
             icon={<UsersIcon type="link" />}
             activeIcon={<UsersIcon type="link-active" />}
-          ></Slaider>
+          ></Dropdown>
         </NavLink>
-        <Slaider
+        <Dropdown
           linkActive="report"
           text="Отчёты участников"
           icon={<FileCheckIcon type="link" />}
@@ -76,9 +52,9 @@ const Navbar = () => {
               <NavbarElement section={link.section} key={index} name={link.name} link={link.link} />
             ))}
           </ul>
-        </Slaider>
+        </Dropdown>
       </nav>
     </div>
   );
 };
-export default Navbar;
+

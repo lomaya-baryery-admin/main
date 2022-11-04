@@ -13,28 +13,5 @@
   margin-left: 54px;
   padding: 0;
 }
-.navbar__listElement {
-  text-decoration: none;
-  list-style: none;
-  width: 210px;
-  display: flex;
-}
-.navbar__link {
-  text-decoration: none;
-  list-style: none;
-  width: 258px;
-  padding-top: 17px;
-  padding-left: 30px;
-  padding-bottom: 19px;
-  padding-right: 10px;
-  height: min-content;
-  color: #606c78;
-}
-.navbar__links_active {
-  color: #4154a4;
-}
 
-.navbar__link_active {
-  background: #ffffff;
-  border-radius: 10px;
-}
+
