@@ -1,23 +1,18 @@
-import styles from './dropdown.module.css';
+import { useLocation } from 'react-router-dom';
 import { FC } from 'react';
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import styles from './dropdown.module.css';
 import { ISlaider } from '../../services/types/types';
 import { ChevronDownIcon } from '../../ui/icons';
 
-const  Dropdown: FC<ISlaider> = ({ text, icon, activeIcon, children, linkActive }) => {
+const Dropdown: FC<ISlaider> = ({ text, icon, activeIcon, children, linkActive }) => {
   const [active, setActive] = useState<boolean>(false);
 
-  let location = useLocation();
+  const location = useLocation();
 
   return (
     <div>
-      <button
-        className={styles.button}
-        onClick={
-         ()=> setActive(val => !val)
-        }
-      >
+      <button type="button" className={styles.button} onClick={() => setActive((val) => !val)}>
         <div className={styles.button__container}>
           {location.pathname.includes(linkActive) ? activeIcon : icon}
           <p

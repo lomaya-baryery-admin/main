@@ -1,12 +1,12 @@
-import styles from './navbar-element.module.css';
-import { FC } from 'react';
 import { useLocation, NavLink } from 'react-router-dom';
+import { FC } from 'react';
+import styles from './navbar-element.module.css';
 import { INavbarElement } from '../../services/types/types';
 
 export const NavbarElement: FC<INavbarElement> = ({ name, link, section }) => {
-    let location = useLocation();
+    const location = useLocation();
   
-    let active = {
+    const active = {
       background: `#FFFFFF`,
       borderRadius: `10px`,
     };

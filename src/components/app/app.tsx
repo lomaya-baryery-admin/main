@@ -1,6 +1,5 @@
-import AppRoutes from '../app-routes/app-routes';
-import { HashRouter,BrowserRouter } from 'react-router-dom';
-
+import { BrowserRouter } from 'react-router-dom';
+import {AppRoutes} from '../app-routes/app-routes';
 import {
   useGetDefaultQuery,
   useShiftsPostMutation,
@@ -8,8 +7,6 @@ import {
 } from '../../redux-store/api-slice/api-slice';
 
 const App = () => {
-
-
   const { data, isLoading, isError } = useGetDefaultQuery();
   const [shiftPost, { data: shiftData }] = useShiftsPostMutation();
   const { data: obj } = useShiftsGetQuery(shiftData?.id);
@@ -24,8 +21,8 @@ const App = () => {
   return (
     <div>
       <BrowserRouter>
-      <AppRoutes />
-    </BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
     </div>
   );
 };
