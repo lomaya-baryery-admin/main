@@ -1,6 +1,6 @@
 import styles from './navbar.module.css';
 import {  NavLink } from 'react-router-dom';
-import { UsersIcon, NoteEditIcon, FileCheckIcon, CalendarIcon } from '../../stories/icons';
+import { UsersIcon, NoteEditIcon, FileCheckIcon, CalendarIcon } from '../../ui/icons';
 import Dropdown from '../dropdown/dropdown';
 import { shift, report, invites } from '../../utils/navbar-config';
 import { NavbarElement } from '../navbar-element/navbar-element';
