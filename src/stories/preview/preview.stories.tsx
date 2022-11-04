@@ -1,7 +1,7 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
-import imageDefault from './image5.jpg';
+import imageDefault from '../../ui/preview/image5.jpg';
 
-import { Preview } from './preview';
+import { Preview } from '../../ui/preview/preview';
 
 export default {
   title: 'Preview',
@@ -10,8 +10,8 @@ export default {
     image: {
       description: 'Cсылка на фото',
       defaultValue: imageDefault,
-    }
-  }
+    },
+  },
 } as ComponentMeta<typeof Preview>;
 
 export const Default: ComponentStory<typeof Preview> = (args) => <Preview {...args} />;

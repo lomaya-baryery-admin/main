@@ -1,19 +1,23 @@
 import AppRoutes from '../app-routes/app-routes';
 import { HashRouter,BrowserRouter } from 'react-router-dom';
-import { useGetDefaultQuery, useShiftsPostMutation } from '../../redux-store/api-slice/api-slice';
 
-fetch('http://51.250.32.125:8000/hello')
-  .then((res) => res.json())
-  .then((data) => console.log(data));
+import {
+  useGetDefaultQuery,
+  useShiftsPostMutation,
+  useShiftsGetQuery,
+} from '../../redux-store/api-slice/api-slice';
 
 const App = () => {
-  const { data = '', isLoading, isError } = useGetDefaultQuery(); //пример для get-запроса
-  const [shiftPost, {}] = useShiftsPostMutation(); //пример для post-запроса
+
+
+  const { data, isLoading, isError } = useGetDefaultQuery();
+  const [shiftPost, { data: shiftData }] = useShiftsPostMutation();
+  const { data: obj } = useShiftsGetQuery(shiftData?.id);
 
   const handleShiftPost = async () => {
     await shiftPost({
-      started_at: '2022-10-30T16:55:31.422Z',
-      finished_at: '2022-10-30T16:55:31.422Z',
+      started_at: '2022-11-02T17:00:32.625Z',
+      finished_at: '2022-11-02T17:00:32.625Z',
     }).unwrap();
   };
 
