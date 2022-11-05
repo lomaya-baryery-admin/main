@@ -9,5 +9,3 @@ export default {
 const Template: ComponentStory<typeof Breadcrumbs> = () => <Breadcrumbs />;
 
 export const PrimaryLarge = Template.bind({});
-
-
