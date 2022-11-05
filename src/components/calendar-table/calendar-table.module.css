@@ -1,70 +1,70 @@
 .table {
-    font-family: 'Lato';
-    font-weight: 700;
-    color: var(--colors-interface-gray);
-    font-size: 14px;
-    line-height: 17px;
-    width: 100%;
-    border-collapse: collapse;
+  font-family: 'Lato';
+  font-weight: 700;
+  color: var(--colors-interface-gray);
+  font-size: 14px;
+  line-height: 17px;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .header {
-    background: var(--colors-interface-gray-light);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background: var(--colors-interface-gray-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cell {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 34px;
-    height: 30px;
-    border: 1px solid var(--colors-interface-border);
-    border-right: none;
-    border-bottom: none;
-    padding: 0;
-    box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 34px;
+  height: 30px;
+  border: 1px solid var(--colors-interface-border);
+  border-right: none;
+  border-bottom: none;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .cell:last-child {
-    border-right: 1px solid var(--colors-interface-border);
+  border-right: 1px solid var(--colors-interface-border);
 }
 
 .row {
-    display: flex;
-    background: #FFFFFF;
+  display: flex;
+  background: #ffffff;
 }
 
 .row:last-child {
-    border-bottom: 1px solid var(--colors-interface-border);
+  border-bottom: 1px solid var(--colors-interface-border);
 }
 
 .notActiveDay {
-    color: rgba(146, 158, 173, 0.5);
-    background: var(--colors-interface-gray-light);
+  color: rgba(146, 158, 173, 0.5);
+  background: var(--colors-interface-gray-light);
 }
 
 .title {
-    display: flex;
-    align-items: center;
-    padding: 0 10px;
-    background: var(--colors-interface-gray-light);
-    border: 1px solid var(--colors-interface-border);
-    color: #929EAD;
-    border-bottom: none;
-    padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  background: var(--colors-interface-gray-light);
+  border: 1px solid var(--colors-interface-border);
+  color: var(--colors-interface-gray);
+  border-bottom: none;
+  padding: 6px 10px;
 }
 
 .withoutBorderTop {
-    border-top: none;
+  border-top: none;
 }
 
 .withoutBorderLeft {
-    border-left: none;
+  border-left: none;
 }
 
 .withoutBorderRight {
-    border-right: none !important;
+  border-right: none !important;
 }

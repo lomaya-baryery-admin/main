@@ -35,22 +35,33 @@ export default {
     },
     renderSubComponent: {
       type: 'function',
-      description: 'Функция для рендера контента подстроки'
+      description: 'Функция для рендера контента подстроки',
     },
     getRowCanExpand: {
       type: 'function',
-      description: 'Функция для установки параметра необходимости раскрытия строки'
+      description: 'Функция для установки параметра необходимости раскрытия строки',
     },
     initialExpandedRows: {
       type: 'object',
-      description: 'Параметр со списком строк раскрытых по-умолчанию. Принимает id строки как ключ'
-    }
+      description: 'Параметр со списком строк раскрытых по-умолчанию. Принимает id строки как ключ',
+    },
   },
 };
 
-const renderSubComponent = ({ row }: {row: object}) => <CalendarTable tableData={dataForCalendarTable} withoutExternalBorders isShowTitle tableBorderBottomRadius="10px"/>
+const renderSubComponent = ({ row }: { row: object }) => (
+  <CalendarTable
+    tableData={dataForCalendarTable}
+    withoutExternalBorders
+    isShowTitle
+    tableBorderBottomRadius="10px"
+  />
+);
 
-const Template: ComponentStory<typeof Table> = (args) => <div style={{width: '1090px'}}><Table {...args} /></div>;
+const Template: ComponentStory<typeof Table> = (args) => (
+  <div style={{ width: '1090px' }}>
+    <Table {...args} />
+  </div>
+);
 
 export const Default = Template.bind({});
 Default.args = {
@@ -79,6 +90,6 @@ TableWithCalendarTable.args = {
   columnsData: shiftColumns,
   rowHeight: 60,
   renderSubComponent,
-  getRowCanExpand: () => true, 
-  initialExpandedRows: {'1': true}
+  getRowCanExpand: () => true,
+  initialExpandedRows: { '1': true },
 };
