@@ -3,11 +3,12 @@ import { IResponceShifts, IshiftCreate, IInformation, IdefaultObject } from './t
 
 export const dataApi = createApi({
   reducerPath: 'dataApi',
-  tagTypes: [''],
+  tagTypes: ['data'],
   baseQuery: fetchBaseQuery({ baseUrl: 'http://51.250.32.125:8000' }),
   endpoints: (build) => ({
     getDefault: build.query<IdefaultObject, void>({
-      query: () => '/hello',
+      query: () => '/healthcheck',
+      providesTags: ['data'],
     }),
     shiftsPost: build.mutation<IResponceShifts, IshiftCreate>({
       query: (body) => ({
@@ -15,11 +16,34 @@ export const dataApi = createApi({
         method: 'POST',
         body,
       }),
+      // invalidatesTags: ['data']
     }),
-    shiftsPostGet: build.query<IInformation, void>({
-      query: (shiftId) => `/shifts/${shiftId}`,
+    shiftsGet: build.query<IInformation, string | undefined>({
+      query: (shiftId) => ({
+        url: `/shifts/${shiftId}`,
+      }),
+    }),
+    shiftsPatch: build.mutation<IResponceShifts, { body: IResponceShifts; shiftId: string }>({
+      query: ({ body, shiftId }) => ({
+        url: `/shifts/${shiftId}`,
+        method: 'PATCH',
+        body,
+      }),
+    }),
+    shiftsPut: build.mutation<IResponceShifts, { body: IResponceShifts; shiftId: string }>({
+      query: ({ body, shiftId }) => ({
+        url: `/shifts/${shiftId}/actions/start`,
+        method: 'PUT',
+        body,
+      }),
     }),
   }),
 });
 
-export const { useGetDefaultQuery, useShiftsPostMutation, useShiftsPostGetQuery } = dataApi;
+export const {
+  useGetDefaultQuery,
+  useShiftsPostMutation,
+  useShiftsGetQuery,
+  useShiftsPatchMutation,
+  useShiftsPutMutation,
+} = dataApi;

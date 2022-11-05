@@ -1,0 +1,15 @@
+.navbar {
+  width: 264px;
+  min-height: 262px;
+  padding-left: 20px;
+  padding-right: 20px;
+  row-gap: 10px;
+}
+.navbar__list {
+  color: #4154a4;
+  text-decoration: none;
+  list-style: none;
+  margin: 0;
+  margin-left: 54px;
+  padding: 0;
+}
