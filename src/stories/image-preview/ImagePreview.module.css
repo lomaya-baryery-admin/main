@@ -1,0 +1,39 @@
+.image {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: var(--common-border-radius);
+  object-fit: cover;
+  object-position: center center;
+  transition: all 0.5s ease-in-out;
+}
+
+.image:hover {
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  transition: all 0.5s ease-in-out;
+}
+
+.image__container {
+  position: absolute;
+  top: calc(50% - 30px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.image__container:hover > .image__icon {
+  visibility: hidden;
+}
+
+.image__icon {
+  position: absolute;
+}
+
+.image__icon:hover {
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
