@@ -3,7 +3,7 @@ import { useLocation, useNavigate, useMatch } from 'react-router-dom';
 import styles from './breadcrumbs.module.css';
 import { removeRemainingCrumbs } from './breadcrumbs-util';
 
-type TBreadcrumb = {
+export type TBreadcrumb = {
   path: string;
   url: string;
   title: string;
