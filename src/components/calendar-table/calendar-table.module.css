@@ -4,7 +4,10 @@
     color: var(--colors-interface-gray);
     font-size: 14px;
     line-height: 17px;
+    width: 100%;
+    border-collapse: collapse;
 }
+
 .header {
     background: var(--colors-interface-gray-light);
     display: flex;
@@ -16,7 +19,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 34px;
+    min-width: 34px;
     height: 30px;
     border: 1px solid var(--colors-interface-border);
     border-right: none;
@@ -24,12 +27,14 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 .cell:last-child {
     border-right: 1px solid var(--colors-interface-border);
 }
 
 .row {
     display: flex;
+    background: #FFFFFF;
 }
 
 .row:last-child {
@@ -50,4 +55,16 @@
     color: #929EAD;
     border-bottom: none;
     padding: 6px 10px;
+}
+
+.withoutBorderTop {
+    border-top: none;
+}
+
+.withoutBorderLeft {
+    border-left: none;
+}
+
+.withoutBorderRight {
+    border-right: none !important;
 }

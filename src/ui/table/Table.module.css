@@ -15,14 +15,12 @@ tbody {
   display: contents;
 }
 
-td,
-th {
+.table__cell {
   position: relative;
   padding-left: 10px;
 }
 
-td,
-th:last-child {
+.table__cell:last-child {
   padding-right: 10px;
 }
 
@@ -58,4 +56,16 @@ th:last-child {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.table__cell_subComponents {
+  padding: 0;
+}
+
+.table__row_cursorPointer {
+  cursor: pointer;
+}
+
+.table__row_cursorPointer:hover {
+  opacity: 0.7;
 }

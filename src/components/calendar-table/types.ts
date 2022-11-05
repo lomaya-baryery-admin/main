@@ -18,5 +18,6 @@ export interface ITasksCount {
     approved: number,
     declined: number,
     under_review: number
-
 }
+
+export type TTableBlock = 'title' | 'firstColumn' | 'lastColumn' | 'header';

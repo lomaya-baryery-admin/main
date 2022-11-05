@@ -8,6 +8,8 @@ import {
   testData,
 } from '../../utils/tableColumns';
 import { Table } from '../../ui/table/Table';
+import { CalendarTable } from '../../components/calendar-table/calendar-table';
+import { dataForCalendarTable } from '../../components/calendar-table/mockData';
 
 export default {
   title: 'UITable',
@@ -31,10 +33,24 @@ export default {
         type: 'radio',
       },
     },
+    renderSubComponent: {
+      type: 'function',
+      description: 'Функция для рендера контента подстроки'
+    },
+    getRowCanExpand: {
+      type: 'function',
+      description: 'Функция для установки параметра необходимости раскрытия строки'
+    },
+    initialExpandedRows: {
+      type: 'object',
+      description: 'Параметр со списком строк раскрытых по-умолчанию. Принимает id строки как ключ'
+    }
   },
 };
 
-const Template: ComponentStory<typeof Table> = (args) => <Table {...args} />;
+const renderSubComponent = ({ row }: {row: object}) => <CalendarTable tableData={dataForCalendarTable} withoutExternalBorders isShowTitle tableBorderBottomRadius="10px"/>
+
+const Template: ComponentStory<typeof Table> = (args) => <div style={{width: '1090px'}}><Table {...args} /></div>;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -55,4 +71,14 @@ AllReportsTable.args = {
   defaultData: AllReportsData,
   columnsData: allReportsColumns,
   rowHeight: 80,
+};
+
+export const TableWithCalendarTable = Template.bind({});
+TableWithCalendarTable.args = {
+  defaultData: AllShiftData,
+  columnsData: shiftColumns,
+  rowHeight: 60,
+  renderSubComponent,
+  getRowCanExpand: () => true, 
+  initialExpandedRows: {'1': true}
 };
