@@ -18,10 +18,6 @@ export default {
       description: 'Clear input',
       type: 'function',
     },
-    onFocus: {
-      description: 'Focus input',
-      type: 'function',
-    },
   },
 } as ComponentMeta<typeof SearchInput>;
 

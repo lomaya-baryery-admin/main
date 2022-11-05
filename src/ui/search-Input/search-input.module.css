@@ -10,10 +10,6 @@
   box-sizing: border-box;
 }
 
-.searchField_interact {
-  background: var(--colors-interface-white);
-}
-
 .search__searchIcon {
   flex-shrink: 0;
 }
@@ -32,7 +28,6 @@
 .search__input {
   background: transparent;
   border: none;
-  min-height: 40px;
   padding: 0 0 0 5px;
   outline: none;
   width: 100%;
@@ -40,6 +35,14 @@
   font-size: 16px;
   line-height: 19px;
   color: var(--colors-interface-gray);
+}
+
+.searchField:focus-within {
+  background: var(--colors-interface-white);
+}
+
+.search__input:focus {
+  background: var(--colors-interface-white);
 }
 
 .search__input::placeholder {
