@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentStory } from '@storybook/react';
-import styles from './tooltip.module.css';
+import styles from '../../ui/tooltip/tooltip.module.css';
 
 interface ITooltip {
   text: string;
@@ -35,8 +35,8 @@ Default.parameters = {
   docs: {
     source: {
       code: `//exapmle how use HOC with component Button
-import { withTooltip } from ./stories/tooltip.tsx;
-import { Button, TButtonProps } from ./stories/button/button.tsx;
+import { withTooltip } from ./ui/tooltip/tooltip.tsx;
+import { Button, TButtonProps } from ./ui/button/button.tsx;
 
 const ButtonWithTooltip = withTooltip<TButtonProps>(Button);
 
