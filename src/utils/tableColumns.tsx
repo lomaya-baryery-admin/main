@@ -1,5 +1,5 @@
 import { createColumnHelper } from '@tanstack/react-table';
-import { StatusLabel } from '../ui/status-label/status-label';
+import { IStatusLabelProps, StatusLabel } from '../ui/status-label/status-label';
 import { statusLable } from './constants';
 import { ImagePreview } from '../stories/image-preview/ImagePreview';
 import tableStyle from '../ui/table/Table.module.css';
@@ -13,7 +13,7 @@ type TAllShiftColumns = {
   date_start: string;
   date_end: string;
   count_members: number;
-  status: string;
+  status: IStatusLabelProps['type'];
 };
 
 // типы для таблицы отчеты участников TODO: скорректировать названия после того, как будет добавлен бэк!
