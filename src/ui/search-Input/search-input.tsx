@@ -9,14 +9,16 @@ interface ISearchProps {
 }
 
 export const SearchInput = ({ value, onChange, onClear }: ISearchProps) => {
-  const [onField, setState] = useState(false);
+  const [isFocusedInput, setIsFocusedInput] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
     <label
       htmlFor="name"
-      className={`${styles.searchField} ${value || onField ? styles.searchField_interact : null}`}
+      className={`${styles.searchField} ${
+        value || isFocusedInput ? styles.searchField_interact : null
+      }`}
     >
       <SearchIcon
         type="interface-secondary"
@@ -34,8 +36,8 @@ export const SearchInput = ({ value, onChange, onClear }: ISearchProps) => {
         name="name"
         onChange={onChange}
         autoComplete="off"
-        onFocus={() => setState(true)}
-        onBlur={() => setState(false)}
+        onFocus={() => setIsFocusedInput(true)}
+        onBlur={() => setIsFocusedInput(false)}
       />
       {value ? (
         <CloseIcon type="interface-black" className={styles.search__closeIcon} onClick={onClear} />
