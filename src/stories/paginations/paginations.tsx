@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
+=======
+import React from 'react';
+>>>>>>> 193e3a56f81db45a94d62601b28c0129d0064343
 import { PaginationsButton } from './paginations-button/paginations-button';
 import styles from './paginations.module.css';
 
@@ -11,6 +15,7 @@ interface IPaginationsProps {
 export const Paginations = ({ counterPages, currentPage, setCurrentPage }: IPaginationsProps) => {
   const arrPages = Array.from({ length: counterPages }, (v, i) => i + 1);
 
+<<<<<<< HEAD
   const [arrForButtonsPanel, setArrForButtonsPanel] = useState<Array<number | "...">>([])
 
   useEffect (() => {
@@ -42,12 +47,27 @@ export const Paginations = ({ counterPages, currentPage, setCurrentPage }: IPagi
   }, [currentPage])
 
 
+=======
+>>>>>>> 193e3a56f81db45a94d62601b28c0129d0064343
   return (
     <div className={styles.content}>
       {currentPage > 1 ? (
         <>
+<<<<<<< HEAD
           <PaginationsButton buttonName="<<" onClick={() => setCurrentPage(1)} buttonActive="inactive"/>
           <PaginationsButton buttonName="<" onClick={() => setCurrentPage(currentPage - 1)} buttonActive="inactive"/>
+=======
+          <PaginationsButton
+            buttonName="<<"
+            onClick={() => setCurrentPage(1)}
+            buttonActive="inactive"
+          />
+          <PaginationsButton
+            buttonName="<"
+            onClick={() => setCurrentPage(currentPage - 1)}
+            buttonActive="inactive"
+          />
+>>>>>>> 193e3a56f81db45a94d62601b28c0129d0064343
         </>
       ) : (
         <>
@@ -56,6 +76,7 @@ export const Paginations = ({ counterPages, currentPage, setCurrentPage }: IPagi
         </>
       )}
 
+<<<<<<< HEAD
       {arrForButtonsPanel.map((page, index) =>
         {if (page === '...') {
           return <PaginationsButton key={index} buttonName={page} buttonActive="disabled" textActive="inactive" />
@@ -64,12 +85,38 @@ export const Paginations = ({ counterPages, currentPage, setCurrentPage }: IPagi
          } else {
           return <PaginationsButton key={index} buttonName={page} onClick={() => setCurrentPage(page)} buttonActive="inactive"/>
         }}
+=======
+      {arrPages.map((page) =>
+        page === currentPage ? (
+          <PaginationsButton key={page} buttonName={page} />
+        ) : (
+          <PaginationsButton
+            key={page}
+            buttonName={page}
+            onClick={() => setCurrentPage(page)}
+            buttonActive="inactive"
+          />
+        )
+>>>>>>> 193e3a56f81db45a94d62601b28c0129d0064343
       )}
 
       {currentPage < counterPages ? (
         <>
+<<<<<<< HEAD
           <PaginationsButton buttonName=">" onClick={() => setCurrentPage(currentPage + 1)} buttonActive="inactive"/>
           <PaginationsButton buttonName=">>" onClick={() => setCurrentPage(counterPages)} buttonActive="inactive"/>
+=======
+          <PaginationsButton
+            buttonName=">"
+            onClick={() => setCurrentPage(currentPage + 1)}
+            buttonActive="inactive"
+          />
+          <PaginationsButton
+            buttonName=">>"
+            onClick={() => setCurrentPage(counterPages)}
+            buttonActive="inactive"
+          />
+>>>>>>> 193e3a56f81db45a94d62601b28c0129d0064343
         </>
       ) : (
         <>
