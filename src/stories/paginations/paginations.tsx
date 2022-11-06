@@ -34,13 +34,10 @@ export const Paginations = ({ counterPages, currentPage, setCurrentPage }: IPagi
     else if (currentPage > counterPages - 3 ) {
       const sliced = arrPages.slice(counterPages - 4)
       tempNumberOfPages = [1, "...", ...sliced]
-    }
+    }   
 
-
-   
     setArrForButtonsPanel(tempNumberOfPages)
   }, [currentPage])
-
 
   return (
     <div className={styles.content}>
@@ -56,13 +53,13 @@ export const Paginations = ({ counterPages, currentPage, setCurrentPage }: IPagi
         </>
       )}
 
-      {arrForButtonsPanel.map((page, index) =>
+      {arrForButtonsPanel.map((page) =>
         {if (page === '...') {
-          return <PaginationsButton key={index} buttonName={page} buttonActive="disabled" textActive="inactive" />
+          return <PaginationsButton key={Date.now()} buttonName={page} buttonActive="disabled" textActive="inactive" />
         } else if (page === currentPage) {
-          return <PaginationsButton key={index} buttonName={page} />
+          return <PaginationsButton key={Date.now()} buttonName={page} />
          } else {
-          return <PaginationsButton key={index} buttonName={page} onClick={() => setCurrentPage(page)} buttonActive="inactive"/>
+          return <PaginationsButton key={Date.now()} buttonName={page} onClick={() => setCurrentPage(page)} buttonActive="inactive"/>
         }}
       )}
 
@@ -80,3 +77,5 @@ export const Paginations = ({ counterPages, currentPage, setCurrentPage }: IPagi
     </div>
   );
 };
+
+
