@@ -25,10 +25,9 @@ export const Button = ({
 
   const extClassName = className || '';
 
-  // button type attribute must be specified by a static string or a trivial ternary expressioneslint
   return (
     <button
-      type="button"
+      type={htmlType}
       className={`${styles.button} ${styles[size]} ${styleType} ${extClassName}`}
       disabled={disabled}
       {...props}
