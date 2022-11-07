@@ -2,7 +2,7 @@ import { ITableData } from './types';
 // TODO перепроверить названия статусов после готовности бека
 export const dataForCalendarTable: ITableData = [
   {
-    taskStatuses: [
+    tasks: [
       {
         date: '2022-09-03',
         status: 'under_review',
@@ -14,7 +14,7 @@ export const dataForCalendarTable: ITableData = [
     ],
   },
   {
-    taskStatuses: [
+    tasks: [
       {
         date: '2022-02-01',
         status: 'declined',
@@ -26,7 +26,7 @@ export const dataForCalendarTable: ITableData = [
     ],
   },
   {
-    taskStatuses: [
+    tasks: [
       {
         date: '2022-10-01',
         status: 'declined',

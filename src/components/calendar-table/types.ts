@@ -5,7 +5,7 @@ export interface ITaskData {
   status: 'under_review' | 'approved' | 'declined';
 }
 export interface IRowData {
-  taskStatuses: ITaskData[];
+  tasks: ITaskData[];
 }
 
 export type ITableData = IRowData[];

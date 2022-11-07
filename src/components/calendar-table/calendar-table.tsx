@@ -1,8 +1,8 @@
 import React from 'react';
 import { CircleWarningIcon, CircleCheckIcon, CircleStopIcon } from '../../ui/icons';
-import { ITableData, IStatusIcons, IRowData, ITaskData, ITasksCount, TTableBlock } from './types';
+import { ITableData, IStatusIcons, IRowData, ITaskData, TTableBlock } from './types';
 import { maxDaysCount } from './consts';
-import { getCurrentWordForm } from './utils';
+import { getTableTitle } from './utils';
 import styles from './calendar-table.module.css';
 
 interface Props {
@@ -12,6 +12,12 @@ interface Props {
   tableBorderBottomRadius?: string;
 }
 
+const statusIcons: IStatusIcons = {
+  under_review: <CircleWarningIcon type="pending" size="24" />,
+  approved: <CircleCheckIcon type="success" size="24" />,
+  declined: <CircleStopIcon type="error" size="24" />,
+};
+
 export const CalendarTable: React.FC<Props> = ({
   tableData,
   isShowTitle,
@@ -19,28 +25,6 @@ export const CalendarTable: React.FC<Props> = ({
   tableBorderBottomRadius,
 }) => {
   const columnsCountToArray = Array.from(Array(maxDaysCount).keys());
-  const statusIcons: IStatusIcons = {
-    under_review: <CircleWarningIcon type="pending" size="24" />,
-    approved: <CircleCheckIcon type="success" size="24" />,
-    declined: <CircleStopIcon type="error" size="24" />,
-  };
-
-  const renderTitle = (): string => {
-    const tasksCount: ITasksCount = {
-      declined: 0,
-      approved: 0,
-      under_review: 0,
-    };
-    tableData.forEach((item: IRowData) => {
-      item.taskStatuses.forEach((task: ITaskData) => {
-        tasksCount[task.status] += 1;
-      });
-    });
-    const { approved, declined, under_review: review } = tasksCount;
-    return `Выполнил(а) ${approved} ${getCurrentWordForm(
-      approved
-    )}, ${declined} не прошли проверку, ${review} ожидают проверку`;
-  };
 
   const getWithoutBorderClasses = (tableBlock: TTableBlock) => {
     switch (tableBlock) {
@@ -75,10 +59,10 @@ export const CalendarTable: React.FC<Props> = ({
 
   const renderCells = (rowData: IRowData): React.ReactNode =>
     columnsCountToArray.map((_: number, index: number) => {
-      const date = new Date(rowData.taskStatuses[0]?.date);
+      const date = new Date(rowData.tasks[0]?.date);
       const countOfDaysInMonth = new Date(date?.getFullYear(), date?.getMonth() + 1, 0).getDate();
       const isNotActiveDay = index >= countOfDaysInMonth;
-      const task = rowData.taskStatuses.filter(
+      const task = rowData.tasks.filter(
         (item: ITaskData) => new Date(item?.date).getDate() === index + 1
       );
       const taskStatus = task[0]?.status;
@@ -123,7 +107,9 @@ export const CalendarTable: React.FC<Props> = ({
   return (
     <table className={styles.table}>
       {isShowTitle && (
-        <tr className={`${styles.title} ${getWithoutBorderClasses('title')}`}>{renderTitle()}</tr>
+        <tr className={`${styles.title} ${getWithoutBorderClasses('title')}`}>
+          {getTableTitle(tableData)}
+        </tr>
       )}
       <tr className={styles.row}>
         <th
