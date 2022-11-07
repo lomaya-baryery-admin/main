@@ -1,11 +1,9 @@
-import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Calendar } from './calendar';
+import { Calendar } from '../../ui/calendar/calendar';
 
 export default {
-  title: 'Example/Calendar',
+  title: 'Calendar',
   component: Calendar,
 } as ComponentMeta<typeof Calendar>;
 
-const Template: ComponentStory<typeof Calendar> = (args) => <Calendar />;
-export const Primary = Template.bind({});
+export const Default: ComponentStory<typeof Calendar> = (args) => <Calendar />;

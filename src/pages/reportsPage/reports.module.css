@@ -1,11 +1,11 @@
 .container {
-	width: 1117px;
+	min-width: 1116px;
+	width: 100%;
 	padding: 30px;
 	border-radius: 10px;
 	background-color: #fff;
 	font-family: 'Lato';
 	font-style: normal;
-	border: 1px solid #9c9c9c;
 	box-sizing: border-box;
 }
 
@@ -23,16 +23,4 @@
 	font-size: 30px;
 	line-height: 36px;
 	margin: 0;
-}
-
-.container__main {
-	min-height: 500px;
-	display: flex;
-	justify-content: center;
-	align-items: flex-start;
-}
-
-.container__table {
-	display: flex;
-	border: 1px solid #E2E4E8;
 }

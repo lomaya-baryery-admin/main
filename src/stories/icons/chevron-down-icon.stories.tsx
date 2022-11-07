@@ -1,6 +1,6 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ChevronDownIcon } from './chevron-down-icon';
+import { ChevronDownIcon } from '../../ui/icons/chevron-down-icon';
 
 export default {
   title: 'Icons',
