@@ -1,9 +1,6 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Search from '../../components/search/search';
 import { Table } from '../../ui/table/Table';
-
-//import { Alert } from '../../stories/alert/alert.stories';
-
 import styles from './reports.module.css';
 
 // type Props = {};
@@ -25,18 +22,35 @@ const r = [
   },
 ];
 
-const ReportsPage = () => {
-
+const ReportsPage: FC = () => {
   return (
-	<>
-	<section className={styles.container}>
+    <section className={styles.container}>
       <div className={styles.container__header}>
         <h2 className={styles.container__title}>Отчеты участников</h2>
         <Search />
       </div>
+      <Table
+        columnsData={[
+          {
+            header: 'Название задания',
+          },
+          {
+            header: 'Имя и фамилия',
+          },
+          {
+            header: 'Дата и время отправки',
+          },
+          {
+            header: 'Превью',
+          },
+          {
+            header: ' ',
+          },
+        ]}
+        defaultData={r}
+        rowHeight={80}
+      />
     </section>
-	</>
-    
   );
 };
 
