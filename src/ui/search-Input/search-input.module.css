@@ -10,6 +10,14 @@
   box-sizing: border-box;
 }
 
+.searchField_active {
+  background: var(--colors-interface-white);
+}
+
+.searchField:focus-within {
+  background: var(--colors-interface-white);
+}
+
 .search__searchIcon {
   flex-shrink: 0;
 }
@@ -37,7 +45,7 @@
   color: var(--colors-interface-gray);
 }
 
-.searchField:focus-within {
+.search__input_active {
   background: var(--colors-interface-white);
 }
 
