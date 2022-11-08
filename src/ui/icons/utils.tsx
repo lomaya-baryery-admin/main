@@ -9,8 +9,9 @@ type IconType =
   | 'interface-white'
   | 'success'
   | 'pending'
-  | 'error';
-
+  | 'error'
+  | 'interface-grey';
+  
 export const getColor = (type: IconType) => {
   switch (type) {
     case 'link':
@@ -31,6 +32,8 @@ export const getColor = (type: IconType) => {
       return '#FDBD02';
     case 'error':
       return '#C53637';
+    case 'interface-grey':
+      return '#c8ced6';
     default:
       return undefined;
   }

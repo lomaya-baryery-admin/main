@@ -1,0 +1,33 @@
+.list{
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
+  list-style: none;
+  overflow-y: auto;
+}
+
+.externalPopupClas{
+  display: flex;
+  flex-direction: column;
+}
+
+.externalButtonClass{
+  align-self: flex-end;
+  margin-top: 14px;
+}
+
+.lineInList{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.spanInLine{
+  padding-top: 3px;
+  padding-right: 21px;
+}
+
+.externalStatusLabelClass{
+  margin-left: 19px;
+}
