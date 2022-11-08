@@ -1,26 +1,26 @@
 .container {
-	min-width: 1116px;
-	width: 100%;
-	padding: 30px;
-	border-radius: 10px;
-	background-color: #fff;
-	font-family: 'Lato';
-	font-style: normal;
-	box-sizing: border-box;
+  min-width: 1116px;
+  width: 100%;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #fff;
+  font-family: 'Lato';
+  font-style: normal;
+  box-sizing: border-box;
 }
 
 .container__header {
-	display: flex;
-	text-align: center;
-	justify-content: space-between;
-	align-content: center;
-	align-items: center;
-	margin-bottom: 30px;
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  margin-bottom: 30px;
 }
 
 .container__title {
-	font-weight: 700;
-	font-size: 30px;
-	line-height: 36px;
-	margin: 0;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 36px;
+  margin: 0;
 }

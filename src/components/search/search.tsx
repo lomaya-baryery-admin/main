@@ -1,9 +1,7 @@
-import React, { FC } from 'react'
+import React, { FC } from 'react';
 
 const Search: FC = () => {
-	return (
-		<input type="Search" />
-	)
-}
+  return <input type="Search" />;
+};
 
-export default Search
+export default Search;

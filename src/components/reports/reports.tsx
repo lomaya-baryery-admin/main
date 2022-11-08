@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './reports.module.css'
+import styles from './reports.module.css';
 
 // interface IReports {
 //  title: string;
@@ -30,7 +30,11 @@ export const Reports = () => {
             <p className={styles.participantReports__text2}>Имя Фамилия</p>
             <p className={styles.participantReports__text3}>00.00.0000 в 00.00</p>
             <div className={styles.participantReports__image}>
-              <img className={styles.participantReports__img} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsaOpOGyiS-byWXEOsEwiKha8aA0lmeG1Aua-f_NZ-&s" alt="" />
+              <img
+                className={styles.participantReports__img}
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsaOpOGyiS-byWXEOsEwiKha8aA0lmeG1Aua-f_NZ-&s"
+                alt=""
+              />
             </div>
             <div className={styles.participantReports__buttons}>
               <button>1</button>
@@ -40,8 +44,7 @@ export const Reports = () => {
         </div>
       </div>
     </>
-  )
-
+  );
 };
 
 export default Reports;
