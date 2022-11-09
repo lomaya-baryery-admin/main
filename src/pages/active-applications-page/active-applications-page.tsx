@@ -9,7 +9,19 @@ import tableStyle from '../../ui/table/Table.module.css';
 // import { Alert } from '../../ui/alert/alert';
 import { Table } from '../../ui/table/Table';
 import { Button } from '../../ui/button/button';
+import { StatusLabel } from '../../ui/status-label/status-label';
 import { SearchInput } from '../../ui/search-Input/search-input';
+
+
+function selectNextStep(target: any) {
+  const parent = target.parentNode;
+  parent.innerHTML = "";
+  if (target.type === 'submit') {
+    parent.insertAdjacentHTML('beforeend', `<StatusLabel statusText='Участник одобрен' type='approved' icon='CircleCheckIcon' />`) 
+  } else {
+    parent.append(<StatusLabel statusText='Участник отклонён' type='rejected' icon='CircleStopIcon'/>)
+  }
+};
 
 // Структура данных, приходящих с сервера
 interface requestsColumnsNames {
@@ -125,11 +137,14 @@ export const applicationsColumns = [
     header: ' ',
     cell: (buttons) => (
       <div className={tableStyle.table__buttonContainer}>
-        {buttons.getValue().map((button) => (
-          <Button htmlType="button" onClick={() => {}} size="small" type="primary">
-            {button}
-          </Button>
-        ))}
+        {buttons.getValue().map((button) => {
+          const buttonType = button === 'Принять' ? 'submit' : 'reset';
+          return (
+            <Button htmlType={buttonType} onClick={(e: any) => {selectNextStep(e.target)}} size="small" type="primary">
+              {button}
+            </Button>
+          )
+        })}
       </div>
     ),
   }),
