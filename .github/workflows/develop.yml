@@ -65,7 +65,7 @@ jobs:
         run: npm ci --prefer-offline
 
       - name: Build
-        run: npm run build
+        run: npm run build-gh-pages
 
       - name: Add .nojekyll to dist folder
         if: github.event.pull_request.merged == true
