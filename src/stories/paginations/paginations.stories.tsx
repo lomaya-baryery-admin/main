@@ -20,7 +20,7 @@ export default {
     onClick: {
       type: 'function',
       description:
-        'необходимо использовать useState для узменения текущей страницы через setCurrentPage',
+        'необходимо использовать useState для изменения текущей страницы через setCurrentPage',
     },
   },
 } as ComponentMeta<typeof Paginations>;

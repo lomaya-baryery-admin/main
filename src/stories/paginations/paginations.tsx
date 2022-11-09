@@ -29,8 +29,8 @@ export const Paginations = ({ counterPages, currentPage, setCurrentPage }: IPagi
   useEffect(() => {
     let tempNumberOfPages: Array<number | '...'> = [...arrPages];
 
-    if (counterPages <= 5) {
-      tempNumberOfPages = arrPages
+    if (counterPages <= 7) {
+      tempNumberOfPages = arrPages;
     } else if (currentPage >= 1 && currentPage <= 3) {
       tempNumberOfPages = [1, 2, 3, 4, dots, counterPages];
     } else if (currentPage === 4) {
@@ -69,8 +69,6 @@ export const Paginations = ({ counterPages, currentPage, setCurrentPage }: IPagi
           <PaginationsButton buttonName="<<" buttonActive="disabled" textActive="inactive" />
         </>
       )}
-
-
 
       {arrForButtonsPanel.map((page) =>
         page === dots ? (
