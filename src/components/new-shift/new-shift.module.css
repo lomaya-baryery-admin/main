@@ -90,3 +90,49 @@
   font-size: 24px;
   line-height: 29px;
 }
+
+.table__container {
+  width: 100%;
+}
+
+.input {
+  width: 246px;
+  border: 1px solid #E2E4E8;
+  border-radius: 10px;
+  font-family: 'Lato', sans-serif;
+  padding: 10px;
+  color: #4154a4;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.input__active {
+  border: none;
+  border-radius: 10px;
+  width: 246px;
+  font-family: 'Lato', sans-serif;
+  padding: 10px;
+  color: #4154a4;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.date__container {
+  display: flex;
+}
+
+.date__text {
+  color: #000000;
+  margin-right: 10px;
+}
+
+.member__container{
+  display: flex;
+  align-items: center;
+}
+
+.member__name {
+  margin: 3px 0 0 13px;
+}
