@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { PaginationsButton } from './paginations-button/paginations-button';
 
 import styles from './paginations.module.css';
+
 interface IPaginationsProps {
   counterPages: number;
   currentPage: number;
@@ -12,6 +13,16 @@ export const Paginations = ({ counterPages, currentPage, setCurrentPage }: IPagi
   const arrPages = Array.from({ length: counterPages }, (v, i) => i + 1);
 
   const dots = '...';
+
+  const makeId = (length: number) => {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i += 1) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  };
 
   const [arrForButtonsPanel, setArrForButtonsPanel] = useState<Array<number | '...'>>([]);
 
@@ -33,7 +44,6 @@ export const Paginations = ({ counterPages, currentPage, setCurrentPage }: IPagi
     }
 
     setArrForButtonsPanel(tempNumberOfPages);
-    console.log(arrForButtonsPanel);
   }, [currentPage, counterPages]);
 
   return (
@@ -58,19 +68,19 @@ export const Paginations = ({ counterPages, currentPage, setCurrentPage }: IPagi
         </>
       )}
 
-      {arrForButtonsPanel.map((page, index) =>
+      {arrForButtonsPanel.map((page) =>
         page === dots ? (
           <PaginationsButton
-            key={index}
+            key={makeId(15)}
             buttonName={page}
             buttonActive="disabled"
             textActive="inactive"
           />
         ) : (
           <PaginationsButton
-            key={index}
+            key={makeId(15)}
             buttonName={page}
-            buttonActive={page !== currentPage ? 'disabled' : 'active'}
+            buttonActive={page !== currentPage ? 'inactive' : 'active'}
             textActive={page !== currentPage ? 'inactive' : 'active'}
           />
         )
