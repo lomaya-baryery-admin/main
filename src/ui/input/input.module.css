@@ -1,0 +1,44 @@
+.searchField {
+  max-width: 246px;
+  max-height: 40px;
+  background: var(--colors-interface-white);
+  border: 1px solid var(--colors-interface-border);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.input {
+  background: transparent;
+  border: none;
+  padding: 0 0 0 5px;
+  outline: none;
+  width: 100%;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--colors-interface-gray);
+  cursor: pointer;
+}
+
+.input:focus::-webkit-input-placeholder {
+  color: transparent;
+  transition: color 0.1s ease;
+}
+
+.input:focus::-moz-placeholder {
+  color: transparent;
+  transition: color 0.1s ease;
+}
+
+.input:focus:-moz-placeholder {
+  color: transparent;
+  transition: color 0.1s ease;
+}
+
+.input:focus:-ms-input-placeholder {
+  color: transparent;
+  transition: color 0.1s ease;
+}
