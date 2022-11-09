@@ -1,10 +1,5 @@
 import { FC, useState } from 'react';
-import {
-  createColumnHelper,
-  flexRender,
-  getCoreRowModel,
-  useReactTable,
-} from '@tanstack/react-table';
+import { flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
 import tableStyle from './Table.module.css';
 
 interface ITableProps {
@@ -16,43 +11,10 @@ interface ITableProps {
 type TTableProps = ITableProps;
 
 export const Table: FC<TTableProps> = ({ defaultData, columnsData, rowHeight }) => {
-  const columnHelper = createColumnHelper();
-  let a = columnsData[0]?.header;
-  let b = columnsData[1]?.header;
-  let c = columnsData[2]?.header;
-  let d = columnsData[3]?.header;
-
-  const columns = [
-    columnHelper.accessor('task_name', {
-      header: `${a}`,
-      cell: (info) => info.getValue(),
-      // footer: info => info.column.id,
-    }),
-    // columnHelper.accessor(row => row.lastName, {
-    //   id: 'lastName',
-    //   cell: info => <i>{info.getValue()}</i>,
-    //   header: () => <span>Last Name</span>,
-    //   footer: info => info.column.id,
-    // }),
-    columnHelper.accessor('user_name', {
-      header: `${b}`,
-      cell: (info) => info.renderValue(),
-      footer: (info) => info.column.id,
-    }),
-    columnHelper.accessor('task_date', {
-      header: `${c}`,
-      footer: (info) => info.column.id,
-    }),
-    columnHelper.accessor('preview', {
-      header: `${d}`,
-    }),
-  ];
-
   const [data] = useState(() => [...defaultData]);
-
   const table = useReactTable({
     data,
-    columns,
+    columns: columnsData,
     getCoreRowModel: getCoreRowModel(),
   });
   return (

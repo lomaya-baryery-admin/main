@@ -10,7 +10,6 @@ const App = () => {
   const { data, isLoading, isError } = useGetDefaultQuery();
   const [shiftPost, { data: shiftData }] = useShiftsPostMutation();
   const { data: obj } = useShiftsGetQuery(shiftData?.id);
-  console.log(data);
 
   const handleShiftPost = async () => {
     await shiftPost({
@@ -23,7 +22,6 @@ const App = () => {
     <div>
       <BrowserRouter>
         <AppRoutes />
-        <button type="submit" onClick={handleShiftPost}></button>
       </BrowserRouter>
     </div>
   );
