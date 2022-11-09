@@ -9,6 +9,7 @@ import tableStyle from '../../ui/table/Table.module.css';
 // import { Alert } from '../../ui/alert/alert';
 import { Table } from '../../ui/table/Table';
 import { Button } from '../../ui/button/button';
+import { SearchInput } from '../../ui/search-Input/search-input';
 
 // Структура данных, приходящих с сервера
 interface requestsColumnsNames {
@@ -157,6 +158,7 @@ export function ActiveApplicationsPage() {
     <article className={styles.main}>
       <section className={styles.header_content}>
         <h1 className={`${styles.header} text_type_main-extra-large`}>Заявки на участие</h1>
+        <SearchInput value='' onChange={() => {}} onClear={() => {}} />
       </section>
       <section className={styles.main_content}>
         {/* <Alert title="Активные заявки на участие отсутствуют" /> */}
