@@ -22,7 +22,7 @@ type TAllReportsTable = {
   user_name: string;
   task_date: string;
   preview: string;
-  buttons: string[];
+  buttons?: string[];
 };
 
 // типы для тестовой таблицы
@@ -87,14 +87,12 @@ export const AllReportsData: TAllReportsTable[] = [
     user_name: 'Иванов Иван',
     task_date: '00/00/0000',
     preview: 'https://i.pinimg.com/474x/09/79/84/097984d23edbf5290d611a270f944fd6.jpg',
-    buttons: ['Принять', 'Отклонить'],
   },
   {
     task_name: 'Название задания 2',
     user_name: 'Иванов Иван 2',
     task_date: '00/00/0000',
     preview: 'https://i.pinimg.com/474x/09/79/84/097984d23edbf5290d611a270f944fd6.jpg',
-    buttons: ['Принять', 'Отклонить'],
   },
 ];
 
@@ -193,11 +191,12 @@ export const allReportsColumns = [
     header: ' ',
     cell: (buttons) => (
       <div className={tableStyle.table__buttonContainer}>
-        {buttons.getValue().map((button) => (
-          <Button htmlType="button" onClick={() => {}} size="small" type="primary">
-            {button}
-          </Button>
-        ))}
+        <Button htmlType="button" onClick={() => {}} size="small" type="primary">
+          Принять
+        </Button>
+        <Button htmlType="button" onClick={() => {}} size="small" type="primary">
+          Отклонить
+        </Button>
       </div>
     ),
   }),
