@@ -1,0 +1,72 @@
+**Настройка eslint и prettier**
+
+##Команды для запуска
+
+```
+npm run lint
+npm run lint.fix
+npm run prettier
+npm run prettier-format
+```
+
+##Настройки .prettierrc.json
+{
+"semi": true, //если true, то в конце выражений добавляется точка с запятой
+"trailingComma": "all", //обеспечивает наличие запятой после последнего свойства объекта
+"singleQuote": true, //одинарные кавычки
+"printWidth": 80, //длина строки не должна превышать n символов.
+"tabWidth": 2, //ширина отступа, в пробелах
+"bracketSameLine": false, //отвечает за вставку пробелов между телом объекта и фигурными скобками в объектных литералах
+"arrowParens": "always" // скобки вокруг единственного параметра стрелочной функции
+}
+
+##Настройки .eslintrc.json
+"rules": {
+"@typescript-eslint/no-use-before-define": ["error"],
+"@typescript-eslint/ban-ts-comment": "off",
+"@typescript-eslint/no-empty-function": "off",
+"@typescript-eslint/no-shadow": "off",
+"@typescript-eslint/explicit-function-return-type": "off",
+"import/prefer-default-export": "off",
+"import/no-duplicates": "off",
+"import/no-relative-packages": "off",
+"import/no-extraneous-dependencies": [
+"error",
+{
+"devDependencies": true
+}
+],
+"import/extensions": [
+"error",
+"ignorePackages",
+{
+"js": "never",
+"jsx": "never",
+"ts": "never",
+"tsx": "never"
+}
+],
+"react/no-unstable-nested-components": "off",
+"react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
+"react/react-in-jsx-scope": "off",
+"react/prop-types": "off",
+"react/function-component-definition": "off",
+"react-hooks/rules-of-hooks": "error",
+"react-hooks/exhaustive-deps": "warn",
+"react/jsx-indent": "off",
+"react/jsx-props-no-spreading": "off",
+"react/jsx-indent-props": "off",
+"react/require-default-props": "off",
+"react/jsx-no-constructed-context-values": "off",
+"react/jsx-no-useless-fragment": "off",
+"react/button-has-type": "off",
+"jsx-a11y/click-events-have-key-events": "off",
+"jsx-a11y/no-static-element-interactions": "off",
+"no-shadow": "off",
+"no-use-before-define": "off",
+"no-unsafe-optional-chaining": "off",
+"indent": "off",
+"consistent-return": "off",
+"no-param-reassign": "off",
+"no-extra-boolean-cast": "off"
+}
