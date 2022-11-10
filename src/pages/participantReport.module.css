@@ -10,11 +10,6 @@
     border-radius: 10px;
     grid-template-columns: repeat(11, 1fr) 50px;
     grid-template-rows: 7% 7% 5% 6% 29% 18% 28%;
-
-
-    /*display: flex;*/
-    /*flex-direction: column;*/
-
     background-color: #FFFFFF;
 }
 
@@ -44,29 +39,12 @@
     /*align-items*/
 }
 
-/*.information {*/
-/*    margin: 33px 0;*/
-/*    padding: 0;*/
-/*}*/
-
-/*.user {*/
-/*    margin: 0;*/
-/*    padding: 0;*/
-
-/*    display: grid;*/
-
-
-/*    height: 60px;*/
-/*    width: 378px;*/
-/*    outline: 1px green solid;*/
-/*}*/
 .player {
     margin: 8px 0;
     padding: 0;
     grid-column: 1;
     grid-row: 3;
     align-self: self-end;
-
     font-family: 'Lato', sans-serif;
     font-style: normal;
     font-weight: 700;
@@ -81,7 +59,6 @@
     grid-row: 3;
     align-self: self-end;
     justify-self: self-start;
-
     font-family: 'Lato', sans-serif;
     font-style: normal;
     font-weight: 700;
@@ -94,7 +71,6 @@
     padding: 0;
     grid-row: 4;
     grid-column: 1 / 3;
-
     font-family: 'Lato', sans-serif;
     font-style: normal;
     font-weight: 700;
@@ -109,7 +85,6 @@
     grid-row: 4;
     grid-column: 3 / 5;
     justify-self: self-start;
-
     font-family: 'Lato', sans-serif;
     font-style: normal;
     font-weight: 700;
@@ -146,6 +121,59 @@
     justify-self: center;
 }
 
-.bottom {
+.buttonHistory {
+    margin: 8px 0 0;
+    grid-column: 5 / 7;
+    grid-row: 3 / 5;
+    justify-self: self-start;
+    align-self: center;
+    justify-content: center;
+}
 
+.buttonAccept {
+    margin: 0 6px 9px 0;
+    grid-column: 7 / 10;
+    grid-row: 3 / 5;
+    width: 220px;
+    height: 59px;
+    justify-self: center;
+    align-self: center;
+    justify-content: center;
+}
+
+.buttonCancel {
+    margin: 0 0 9px 0;
+    grid-column: 9 / 12;
+    grid-row: 3 / 5;
+    width: 220px;
+    height: 59px;
+    justify-self: self-end;
+    align-self: center;
+    justify-content: center;
+}
+
+.buttonLeft {
+    margin: 28px 0;
+    padding: 0;
+    grid-column: 1 / 5;
+    grid-row: 7;
+    width: 265px;
+    height: 59px;
+    justify-self: self-start;
+    align-self: self-start;
+    justify-content: center;
+
+}
+
+.buttonRight {
+    margin: 28px 0;
+    box-sizing: border-box;
+    padding: 0;
+    grid-column: 9 / 12;
+    grid-row: 7;
+    width: 265px;
+    height: 59px;
+    justify-self: self-end;
+    align-self: self-start;
+    justify-content: center;
 }

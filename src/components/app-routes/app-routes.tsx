@@ -1,8 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from '../layout/layout';
-// удалить импорт ниже
-import ParticipantReport from '../../pages/participantReport'
-// выше
+
 export const AppRoutes = () => (
   <div>
     <Routes>
@@ -17,9 +15,6 @@ export const AppRoutes = () => (
         <Route path="/report/verified" element={<div>8</div>} />
         <Route path="/report/rejected" element={<div>9</div>} />
         <Route path="*" element={<div>страница не найдена </div>} />
-        // потом удалить
-        <Route path="/report" element={<ParticipantReport />} />
-        // потом удалить
       </Route>
     </Routes>
   </div>
