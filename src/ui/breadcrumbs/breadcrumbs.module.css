@@ -1,0 +1,18 @@
+.item,
+.item a {
+  color: #929ead;
+  text-decoration: none;
+  font-family: 'Lato';
+  font-weight: 600px;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.item_last {
+  color: var(--colors-interface-black);
+  text-decoration: none;
+  font-family: 'Lato';
+  font-weight: 600px;
+  font-size: 16px;
+  line-height: 19px;
+}
