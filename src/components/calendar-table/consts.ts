@@ -7,3 +7,4 @@ export const taskWordForms = {
   many: 'заданий',
   other: 'заданий',
 };
+export const maxRowsCount = 3;

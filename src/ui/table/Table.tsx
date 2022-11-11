@@ -46,7 +46,7 @@ export const Table: FC<TTableProps> = ({
   return (
     <div className={tableStyle.table__container}>
       <table className={`${tableStyle.table} text_type_main-default`}>
-        <thead>
+        <thead className={tableStyle.thead}>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id} className={`${tableStyle.table__header}`}>
               {headerGroup.headers.map((header) => (
@@ -59,7 +59,7 @@ export const Table: FC<TTableProps> = ({
             </tr>
           ))}
         </thead>
-        <tbody>
+        <tbody className={tableStyle.tbody}>
           {table.getRowModel().rows.map((row) => (
             <>
               <tr

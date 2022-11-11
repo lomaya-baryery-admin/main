@@ -1,31 +1,27 @@
 import React from 'react';
-import { CircleWarningIcon, CircleCheckIcon, CircleStopIcon } from '../../ui/icons';
-import { ITableData, IStatusIcons, IRowData, ITaskData, TTableBlock } from './types';
-import { maxDaysCount } from './consts';
-import { getTableTitle } from './utils';
+import { format } from 'date-fns';
+import ru from 'date-fns/locale/ru';
+import { ITableData, ITaskData, TTableBlock } from './types';
+import { maxRowsCount } from './consts';
+import { getTableTitle, getDatesForHeaderCells } from './utils';
 import styles from './calendar-table.module.css';
+import { StatusIcon } from './status-icon/status-icon';
 
 interface Props {
   tableData: ITableData;
   isShowTitle?: boolean;
   withoutExternalBorders?: boolean;
   tableBorderBottomRadius?: string;
+  shiftStartDate: string;
 }
-
-const statusIcons: IStatusIcons = {
-  under_review: <CircleWarningIcon type="pending" size="24" />,
-  approved: <CircleCheckIcon type="success" size="24" />,
-  declined: <CircleStopIcon type="error" size="24" />,
-};
 
 export const CalendarTable: React.FC<Props> = ({
   tableData,
   isShowTitle,
   withoutExternalBorders,
   tableBorderBottomRadius,
+  shiftStartDate,
 }) => {
-  const columnsCountToArray = Array.from(Array(maxDaysCount).keys());
-
   const getWithoutBorderClasses = (tableBlock: TTableBlock) => {
     switch (tableBlock) {
       case 'title':
@@ -43,50 +39,56 @@ export const CalendarTable: React.FC<Props> = ({
     }
   };
 
-  const renderHeader = () =>
-    columnsCountToArray.map(
-      (item: number, index: number): React.ReactNode => (
+  const renderHeader = () => {
+    const columns = getDatesForHeaderCells(shiftStartDate);
+    return columns.map((item: string | number, index: number): React.ReactNode => {
+      const headerCellValue = typeof item === 'string' ? new Date(item).getDate() : item;
+      return (
         <th
           key={item}
           className={`${styles.cell} ${styles.header} 
-      ${index === columnsCountToArray.length - 1 ? getWithoutBorderClasses('lastColumn') : ''}
+      ${index === columns.length - 1 ? getWithoutBorderClasses('lastColumn') : ''}
       ${!isShowTitle ? getWithoutBorderClasses('header') : ''}`}
         >
-          {item + 1}
+          {headerCellValue}
         </th>
-      )
-    );
-
-  const renderCells = (rowData: IRowData): React.ReactNode =>
-    columnsCountToArray.map((_: number, index: number) => {
-      const date = new Date(rowData.tasks[0]?.date);
-      const countOfDaysInMonth = new Date(date?.getFullYear(), date?.getMonth() + 1, 0).getDate();
-      const isNotActiveDay = index >= countOfDaysInMonth;
-      const task = rowData.tasks.filter(
-        (item: ITaskData) => new Date(item?.date).getDate() === index + 1
       );
+    });
+  };
+
+  const renderCells = (rowIndex: number): React.ReactNode => {
+    const columns = getDatesForHeaderCells(shiftStartDate, rowIndex);
+    return columns.map((item: string | number, index: number) => {
+      const isNotActiveDay = typeof item === 'number';
+      const task = tableData.filter((task: ITaskData) => task?.date === item);
       const taskStatus = task[0]?.status;
-      const icon = statusIcons[taskStatus];
-      const key = countOfDaysInMonth + index;
+      const currentTaskDate = task[0]?.date;
+      const taskDate = currentTaskDate
+        ? format(new Date(currentTaskDate), 'dd.MM.yy', { locale: ru })
+        : '';
 
       return (
         <td
-          key={key}
+          key={item}
           className={`${styles.cell} ${isNotActiveDay ? styles.notActiveDay : ''} 
-        ${index === columnsCountToArray.length - 1 ? getWithoutBorderClasses('lastColumn') : ''}`}
+        ${index === columns.length - 1 ? getWithoutBorderClasses('lastColumn') : ''}`}
         >
-          {task.length > 0 ? icon : ''}
+          {task.length > 0 ? (
+            <StatusIcon status={taskStatus} tooltipText={`Дата выдачи: ${taskDate}`} />
+          ) : (
+            ''
+          )}
         </td>
       );
     });
+  };
 
   const renderRows = (): React.ReactNode =>
-    tableData.map((item: IRowData, index: number) => {
-      const key = Math.floor(Math.random() * index);
-      const month = `м${index + 1}`;
+    Array.from(Array(maxRowsCount).keys()).map((item, index) => {
+      const month = `М${item + 1}`;
       return (
         <tr
-          key={key}
+          key={item}
           className={styles.row}
           style={{
             borderBottomRightRadius: tableBorderBottomRadius,
@@ -99,29 +101,32 @@ export const CalendarTable: React.FC<Props> = ({
           >
             {month}
           </td>
-          {renderCells(item)}
+          {renderCells(index)}
         </tr>
       );
     });
 
   return (
     <table className={styles.table}>
-      {isShowTitle && (
-        <tr className={`${styles.title} ${getWithoutBorderClasses('title')}`}>
-          {getTableTitle(tableData)}
+      <thead>
+        {isShowTitle && (
+          <tr className={`${styles.title} ${getWithoutBorderClasses('title')}`}>
+            <th>{getTableTitle(tableData)}</th>
+          </tr>
+        )}
+
+        <tr className={styles.row}>
+          <th
+            className={`${styles.cell} ${styles.header} ${getWithoutBorderClasses('firstColumn')} ${
+              !isShowTitle ? getWithoutBorderClasses('header') : ''
+            }`}
+          >
+            №
+          </th>
+          {renderHeader()}
         </tr>
-      )}
-      <tr className={styles.row}>
-        <th
-          className={`${styles.cell} ${styles.header} ${getWithoutBorderClasses('firstColumn')} ${
-            !isShowTitle ? getWithoutBorderClasses('header') : ''
-          }`}
-        >
-          №
-        </th>
-        {renderHeader()}
-      </tr>
-      {renderRows()}
+      </thead>
+      <tbody className={styles.tbody}>{renderRows()}</tbody>
     </table>
   );
 };

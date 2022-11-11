@@ -2,39 +2,29 @@ import { ITableData } from './types';
 // TODO перепроверить названия статусов после готовности бека
 export const dataForCalendarTable: ITableData = [
   {
-    tasks: [
-      {
-        date: '2022-09-03',
-        status: 'under_review',
-      },
-      {
-        date: '2022-09-04',
-        status: 'approved',
-      },
-    ],
+    date: '2022-09-25',
+    status: 'under_review',
   },
   {
-    tasks: [
-      {
-        date: '2022-02-01',
-        status: 'declined',
-      },
-      {
-        date: '2022-02-02',
-        status: 'approved',
-      },
-    ],
+    date: '2022-09-26',
+    status: 'approved',
+  },
+
+  {
+    date: '2022-11-04',
+    status: 'declined',
   },
   {
-    tasks: [
-      {
-        date: '2022-10-01',
-        status: 'declined',
-      },
-      {
-        date: '2022-10-02',
-        status: 'under_review',
-      },
-    ],
+    date: '2022-11-05',
+    status: 'approved',
+  },
+
+  {
+    date: '2022-10-01',
+    status: 'declined',
+  },
+  {
+    date: '2022-10-02',
+    status: 'under_review',
   },
 ];

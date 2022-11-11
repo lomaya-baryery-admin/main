@@ -37,7 +37,7 @@
   background: #ffffff;
 }
 
-.row:last-child {
+.tbody {
   border-bottom: 1px solid var(--colors-interface-border);
 }
 

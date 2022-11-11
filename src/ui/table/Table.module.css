@@ -10,8 +10,8 @@
   border: var(--common-border-width) solid #e5e5e5;
 }
 
-thead,
-tbody {
+.thead,
+.tbody {
   display: contents;
 }
 

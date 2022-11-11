@@ -1,17 +1,16 @@
-import React from 'react';
+import { IIconProps } from '../../ui/icons/utils';
+import { TTooltipHOC } from '../../ui/tooltip/tooltip';
 
+export type TTaskStatus = 'under_review' | 'approved' | 'declined';
 export interface ITaskData {
   date: string;
-  status: 'under_review' | 'approved' | 'declined';
-}
-export interface IRowData {
-  tasks: ITaskData[];
+  status: TTaskStatus;
 }
 
-export type ITableData = IRowData[];
+export type ITableData = ITaskData[];
 
 export interface IStatusIcons {
-  [key: string]: React.ReactNode;
+  [key: string]: (arg: IIconProps & TTooltipHOC) => JSX.Element;
 }
 
 export interface ITasksCount {
@@ -21,3 +20,7 @@ export interface ITasksCount {
 }
 
 export type TTableBlock = 'title' | 'firstColumn' | 'lastColumn' | 'header';
+
+export interface IIconColors {
+  [key: string]: 'pending' | 'success' | 'error';
+}

@@ -37,4 +37,5 @@ export const Default = Template.bind({});
 Default.args = {
   tableData: dataForCalendarTable,
   isShowTitle: true,
+  shiftStartDate: '2022-09-25',
 };

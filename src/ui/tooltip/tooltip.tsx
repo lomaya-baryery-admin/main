@@ -20,7 +20,7 @@ export const Tooltip = React.forwardRef<HTMLParagraphElement, ITooltip>(
     )
 );
 
-type TTooltipHOC = {
+export type TTooltipHOC = {
   tooltipText: string;
   tooltipEnabled: boolean;
 };
