@@ -53,7 +53,7 @@ const renderSubComponent = ({ row }: { row: object }) => (
     tableData={dataForCalendarTable}
     withoutExternalBorders
     isShowTitle
-    shiftStartDate = '2022-09-25'
+    shiftStartDate="2022-09-25"
   />
 );
 

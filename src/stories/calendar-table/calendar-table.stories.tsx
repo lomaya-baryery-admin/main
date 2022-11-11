@@ -26,8 +26,7 @@ export default {
     },
     shiftStartDate: {
       type: 'string',
-      description:
-        'Дата началы смены в формате yyyy-mm-dd',
+      description: 'Дата началы смены в формате yyyy-mm-dd',
     },
   },
 };
