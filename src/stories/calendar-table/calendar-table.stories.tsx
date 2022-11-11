@@ -24,6 +24,11 @@ export default {
       description:
         'Размер радиуса нижних углов таблицы. Необходим при встраивании в другую таблицу',
     },
+    shiftStartDate: {
+      type: 'string',
+      description:
+        'Дата началы смены в формате yyyy-mm-dd',
+    },
   },
 };
 
