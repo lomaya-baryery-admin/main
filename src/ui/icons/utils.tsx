@@ -1,4 +1,4 @@
-import { SVGProps } from 'react';
+import { MouseEventHandler, SVGProps, SyntheticEvent } from 'react';
 
 type IconType =
   | 'link'
@@ -36,8 +36,9 @@ export const getColor = (type: IconType) => {
   }
 };
 
-export interface IIconProps extends SVGProps<SVGSVGElement> {
+export interface IIconProps {
   type: IconType;
   size?: '24' | '18';
-  onClick?: () => void;
+  className?: string;
+  onClick?: (() => void) | ((e: React.MouseEvent<SVGSVGElement, MouseEvent>) => void);
 }

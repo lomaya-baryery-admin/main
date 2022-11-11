@@ -3,9 +3,13 @@
   border-style: none;
   border-collapse: collapse;
   text-align: left;
+  background-color: var(--colors-interface-white);
 }
 
 .table__container {
+  width: 100%;
+  height: inherit;
+  overflow: hidden;
   border-radius: var(--common-border-radius);
   border: var(--common-border-width) solid #e5e5e5;
 }
