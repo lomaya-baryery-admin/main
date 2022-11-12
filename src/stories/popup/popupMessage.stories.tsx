@@ -1,20 +1,21 @@
-import React, { useState, useRef } from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { CSSTransition } from "react-transition-group";
-import { PopupMessage } from "../../components/popupMessage/popupMessage";
-import { Button } from "../../ui/button/button";
+import React, { useState, useRef } from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { CSSTransition } from 'react-transition-group';
+import { PopupMessage } from '../../components/popupMessage/popupMessage';
+import { Button } from '../../ui/button/button';
 
 export default {
   title: 'Popup',
   component: PopupMessage,
-  decorators: [(PopupMessage) => (
+  decorators: [
+    (PopupMessage) => (
       <>
-        <div id='app-root' style={{height: '450px'}}>
-          <PopupMessage/>
+        <div id="app-root" style={{ height: '450px' }}>
+          <PopupMessage />
         </div>
-        <div id='modal-root'/>
+        <div id="modal-root" />
       </>
-    )
+    ),
   ],
 } as ComponentMeta<typeof PopupMessage>;
 
@@ -25,26 +26,21 @@ const Template: ComponentStory<typeof PopupMessage> = () => {
   const popapRef = useRef(null);
   return (
     <>
-      <Button
-        htmlType="button"
-        onClick={openPopup}
-        size="small"
-        type="secondary"
-      >
+      <Button htmlType="button" onClick={openPopup} size="small" type="secondary">
         Финальное сообщение
       </Button>
       <CSSTransition
         nodeRef={popapRef}
         in={isPopapOpen}
         timeout={400}
-        classNames='smooth-popup'
+        classNames="smooth-popup"
         unmountOnExit
       >
-        < PopupMessage closePopup={closePopup} ref={popapRef} />
+        <PopupMessage closePopup={closePopup} ref={popapRef} />
       </CSSTransition>
     </>
-  )
-}; 
+  );
+};
 
 export const Message = Template.bind({});
 Message.parameters = {

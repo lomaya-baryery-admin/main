@@ -11,7 +11,7 @@ type IconType =
   | 'pending'
   | 'error'
   | 'interface-grey';
-  
+
 export const getColor = (type: IconType) => {
   switch (type) {
     case 'link':

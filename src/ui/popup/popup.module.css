@@ -1,4 +1,4 @@
-.popup{
+.popup {
   box-sizing: content-box;
   width: 550px;
   height: 340px;
@@ -14,7 +14,7 @@
   z-index: 999;
 }
 
-.title{
+.title {
   margin: 0;
   white-space: nowrap;
   overflow: hidden;
@@ -22,11 +22,11 @@
   margin-bottom: 18px;
 }
 
-.container{
+.container {
   display: flex;
   justify-content: space-between;
 }
 
-.closeIconExternalClass:hover{
+.closeIconExternalClass:hover {
   cursor: pointer;
 }

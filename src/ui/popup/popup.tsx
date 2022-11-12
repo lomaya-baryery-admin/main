@@ -12,43 +12,35 @@ interface IPopupProps {
   externalClassName?: string;
 }
 
-export const Popup = React.forwardRef<HTMLDivElement, IPopupProps>(({ 
-                        title, 
-                        children, 
-                        closePopup, 
-                        externalClassName
-                      }, ref) => {
-  
-  // находим DOM-узел для размещения попапа
-  const modalRoot = document.getElementById('modal-root');
+export const Popup = React.forwardRef<HTMLDivElement, IPopupProps>(
+  ({ title, children, closePopup, externalClassName }, ref) => {
+    // находим DOM-узел для размещения попапа
+    const modalRoot = document.getElementById('modal-root');
 
-  // разметка попапа
-  const popup = (
-    <Overlay closePopup={closePopup} ref={ref}>
-      <div className={classNames(externalClassName, styles.popup)}>
-        <div className={styles.container}>
-          <h1 
-            className={
-                        `text_type_main-medium 
+    // разметка попапа
+    const popup = (
+      <Overlay closePopup={closePopup} ref={ref}>
+        <div className={classNames(externalClassName, styles.popup)}>
+          <div className={styles.container}>
+            <h1
+              className={`text_type_main-medium 
                         text_color_primary 
-                        ${styles.title}`
-                      }
-          >
-            {title}
-          </h1>
-          <CloseIcon
-            onClick={closePopup}
-            size="24"
-            type='interface-grey'
-            className={styles.closeIconExternalClass}
-          />
+                        ${styles.title}`}
+            >
+              {title}
+            </h1>
+            <CloseIcon
+              onClick={closePopup}
+              size="24"
+              type="interface-grey"
+              className={styles.closeIconExternalClass}
+            />
+          </div>
+          {children}
         </div>
-        {children}
-      </div>
-    </Overlay>
-  );
+      </Overlay>
+    );
 
-  return modalRoot && createPortal(
-    popup,
-    modalRoot
-)});
+    return modalRoot && createPortal(popup, modalRoot);
+  }
+);

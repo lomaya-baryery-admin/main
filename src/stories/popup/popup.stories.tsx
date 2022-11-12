@@ -1,28 +1,29 @@
-import React, {useState, useRef} from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { CSSTransition } from "react-transition-group";
+import React, { useState, useRef } from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { CSSTransition } from 'react-transition-group';
 import { Popup } from '../../ui/popup/popup';
-import { Button } from "../../ui/button/button";
+import { Button } from '../../ui/button/button';
 
 export default {
   title: 'Popup',
   component: Popup,
-  decorators: [(Popup) => (
+  decorators: [
+    (Popup) => (
       <>
-        <div id='app-root' style={{ height: '450px' }}>
+        <div id="app-root" style={{ height: '450px' }}>
           <Popup />
         </div>
-        <div id='modal-root' />
+        <div id="modal-root" />
       </>
-    )
+    ),
   ],
   argTypes: {
     isPopapOpen: {
       control: {
-        type: null
-      }
-    }
-  }
+        type: null,
+      },
+    },
+  },
 } as ComponentMeta<typeof Popup>;
 
 const Template: ComponentStory<typeof Popup> = (args) => {
@@ -32,31 +33,26 @@ const Template: ComponentStory<typeof Popup> = (args) => {
   const popapRef = useRef(null);
   return (
     <>
-      <Button
-        htmlType="button"
-        onClick={openPopup}
-        size="small"
-        type="primary"
-      >
+      <Button htmlType="button" onClick={openPopup} size="small" type="primary">
         Открыть модальное окно
       </Button>
       <CSSTransition
         nodeRef={popapRef}
         in={isPopapOpen}
         timeout={400}
-        classNames='smooth-popup'
+        classNames="smooth-popup"
         unmountOnExit
       >
-        <Popup {...args} closePopup={closePopup} ref={popapRef}/>
+        <Popup {...args} closePopup={closePopup} ref={popapRef} />
       </CSSTransition>
     </>
-  )
+  );
 };
 
 export const Base = Template.bind({});
 Base.args = {
-  title: 'Введите текст'
-}
+  title: 'Введите текст',
+};
 
 Base.parameters = {
   docs: {

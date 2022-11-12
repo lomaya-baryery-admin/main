@@ -1,4 +1,4 @@
-.list{
+.list {
   margin: 0;
   padding: 0;
   flex-grow: 1;
@@ -6,28 +6,28 @@
   overflow-y: auto;
 }
 
-.externalPopupClas{
+.externalPopupClas {
   display: flex;
   flex-direction: column;
 }
 
-.externalButtonClass{
+.externalButtonClass {
   align-self: flex-end;
   margin-top: 14px;
 }
 
-.lineInList{
+.lineInList {
   display: flex;
   flex-direction: row;
   align-items: center;
   padding-top: 10px;
 }
 
-.spanInLine{
+.spanInLine {
   padding-top: 3px;
   padding-right: 21px;
 }
 
-.externalStatusLabelClass{
+.externalStatusLabelClass {
   margin-left: 19px;
 }
