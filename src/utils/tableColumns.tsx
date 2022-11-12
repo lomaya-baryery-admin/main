@@ -83,7 +83,7 @@ export const testData: TTestTable[] = [
 // хардкод для таблицы ОТЧЕТЫ УЧАСТНИКОВ
 export const AllReportsData: TAllReportsTable[] = [
   {
-    task_name: 'Название задания',
+    task_name: 'Помой посуду',
     user_name: 'Иванов Иван',
     task_date: '00/00/0000',
     preview: 'https://i.pinimg.com/474x/09/79/84/097984d23edbf5290d611a270f944fd6.jpg',

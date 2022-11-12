@@ -1,6 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from '../layout/layout';
-import ParticipantReport from "../../pages/participantReport/participantReport";
+import ReportsPage from '../../pages/reportsPage/ReportsPage';
+import ParticipantReport from '../../pages/participantReport/participantReport';
+
 
 export const AppRoutes = () => (
   <div>
@@ -12,8 +14,8 @@ export const AppRoutes = () => (
         <Route path="/invites/active" element={<div>4</div>} />
         <Route path="/invites/reviewed" element={<div>5</div>} />
         <Route path="/participants" element={<div>6</div>} />
-        <Route path="/report/noverified" element={<div>7</div>} />
-        <Route path="/report/verified" element={<ParticipantReport/>} />
+        <Route path="/report/noverified" element={<ReportsPage />} />
+        <Route path="/report/verified" element={<ParticipantReport />} />
         <Route path="/report/rejected" element={<div>9</div>} />
         <Route path="*" element={<div>страница не найдена </div>} />
       </Route>
