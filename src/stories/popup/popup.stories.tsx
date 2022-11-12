@@ -1,5 +1,6 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { CSSTransition } from "react-transition-group";
 import { Popup } from '../../ui/popup/popup';
 import { Button } from "../../ui/button/button";
 
@@ -7,9 +8,12 @@ export default {
   title: 'Popup',
   component: Popup,
   decorators: [(Popup) => (
-      <div style={{height: '450px'}}>
-        <Popup/>
-      </div>
+      <>
+        <div id='app-root' style={{ height: '450px' }}>
+          <Popup />
+        </div>
+        <div id='modal-root' />
+      </>
     )
   ],
   argTypes: {
@@ -25,6 +29,7 @@ const Template: ComponentStory<typeof Popup> = (args) => {
   const [isPopapOpen, setIsPopapOpen] = useState<boolean>(false);
   const openPopup = () => setIsPopapOpen(true);
   const closePopup = () => setIsPopapOpen(false);
+  const popapRef = useRef(null);
   return (
     <>
       <Button
@@ -35,7 +40,15 @@ const Template: ComponentStory<typeof Popup> = (args) => {
       >
         Открыть модальное окно
       </Button>
-      <Popup {...args} isPopapOpen={isPopapOpen} closePopup={closePopup}/>
+      <CSSTransition
+        nodeRef={popapRef}
+        in={isPopapOpen}
+        timeout={400}
+        classNames='smooth-popup'
+        unmountOnExit
+      >
+        <Popup {...args} closePopup={closePopup} ref={popapRef}/>
+      </CSSTransition>
     </>
   )
 };
@@ -49,7 +62,13 @@ Base.parameters = {
   docs: {
     source: {
       code: `//пример использования
-() => {
+        
+import React, {useState, useRef} from "react";
+import { CSSTransition } from "react-transition-group";
+import { Popup } from '../../ui/popup/popup';
+import { Button } from "../../ui/button/button";
+
+const myComponent = () => {
   const [isPopapOpen, setIsPopapOpen] = useState<boolean>(false);
   const openPopup = () => setIsPopapOpen(true);
   const closePopup = () => setIsPopapOpen(false);
@@ -63,8 +82,12 @@ Base.parameters = {
       >
         Открыть модальное окно
       </Button>
-      <Popup title='Текст заголовка' isPopapOpen={isPopapOpen} closePopup={closePopup}>
-        ...
+      <Popup 
+        title='Текст заголовка' 
+        isPopapOpen={isPopapOpen} 
+        closePopup={closePopup}
+      >
+        {/* Ваш код содержания модального окна*/}
       <Popup/>
     </>
   )

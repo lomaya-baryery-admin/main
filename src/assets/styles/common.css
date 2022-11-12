@@ -96,3 +96,21 @@
   text-decoration: underline solid 1px;
   text-decoration-skip-ink: none;
 }
+
+.smooth-popup-enter {
+  opacity: 0;
+}
+
+.smooth-popup-enter-active {
+  opacity: 1;
+  transition: opacity 400ms;
+}
+
+.smooth-popup-exit {
+  opacity: 1;
+}
+
+.smooth-popup-exit-active {
+  opacity: 0;
+  transition: opacity 400ms;
+}

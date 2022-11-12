@@ -1,13 +1,12 @@
 import React from "react";
 import { nanoid } from '@reduxjs/toolkit';
 import styles from './popupHistoryReport.module.css';
-import { Popup } from './popup';
-import { Button } from "../button/button";
-import { ArrowRightIcon } from "../icons";
-import { StatusLabel } from "../status-label/status-label";
+import { Popup } from '../../ui/popup/popup';
+import { Button } from "../../ui/button/button";
+import { ArrowRightIcon } from "../../ui/icons";
+import { StatusLabel } from "../../ui/status-label/status-label";
 
 interface IPopupHistoryReportProps {
-  isPopapOpen: boolean;
   closePopup: () => void;
   dataAboutReports: {[name: string]: string}[];
 }
@@ -17,11 +16,11 @@ type TStatusLabelOptions = {
   type: "rejected" | "approved" | "review";
 };
 
-export const PopupHistoryReport = ({
-                                    isPopapOpen, 
+export const PopupHistoryReport = 
+  React.forwardRef<HTMLDivElement, IPopupHistoryReportProps>(({
                                     closePopup,
                                     dataAboutReports
-                                   }: IPopupHistoryReportProps) => {
+                                   }, ref) => {
 
   // формирование списка данных об отчетах по заданию
   const liste: JSX.Element[] = dataAboutReports.reduce((accumulator, item) => {
@@ -79,10 +78,10 @@ export const PopupHistoryReport = ({
   }, [] as JSX.Element[]);
 
   return (
-    <Popup  title='История отправки задания'  
-            isPopapOpen={isPopapOpen} 
+    <Popup  title='История отправки задания' 
             closePopup={closePopup}
             externalClassName={styles.externalPopupClas}
+            ref={ref}
     >
       <>
         <ul className={styles.list}>
@@ -100,4 +99,4 @@ export const PopupHistoryReport = ({
       </>
     </Popup>
   )
-};
+});

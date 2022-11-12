@@ -1,14 +1,15 @@
 import React, { useRef } from 'react';
 import styles from './popupMessage.module.css';
-import { Popup } from './popup';
-import { Button } from '../button/button';
+import { Popup } from '../../ui/popup/popup';
+import { Button } from '../../ui/button/button';
 
 interface IPopupMessageProps {
-  isPopapOpen: boolean;
   closePopup: () => void;
 }
 
-export const PopupMessage = ({isPopapOpen, closePopup}: IPopupMessageProps) => {
+export const PopupMessage = React.forwardRef<HTMLDivElement, IPopupMessageProps>(
+  ({ closePopup }, ref) => {
+
   const textareaRef = useRef<null | HTMLTextAreaElement>(null);
 
   // закрытие попапа с очищением textarea
@@ -30,8 +31,8 @@ export const PopupMessage = ({isPopapOpen, closePopup}: IPopupMessageProps) => {
   return (
     <Popup 
       title='Добавить сообщение' 
-      isPopapOpen={isPopapOpen} 
       closePopup={closePopup}
+      ref={ref}
     >
       <form 
         name='message'
@@ -55,7 +56,7 @@ export const PopupMessage = ({isPopapOpen, closePopup}: IPopupMessageProps) => {
             Отменить
           </Button>
           <Button
-            htmlType="submit" // пока не работает, надо изменять в элементе Button
+            htmlType="submit"
             size="small"
             type="primary"
           >
@@ -65,4 +66,4 @@ export const PopupMessage = ({isPopapOpen, closePopup}: IPopupMessageProps) => {
       </form>
     </Popup>
   )
-};
+});
