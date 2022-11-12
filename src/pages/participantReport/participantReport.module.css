@@ -3,13 +3,13 @@
   padding: 0 0 0 30px;
   box-sizing: border-box;
   width: 100%;
-  height: 90vw;
-  max-height: 925px;
+  height: 90vh;
+  /*max-height: 925px;*/
   max-width: 1440px;
   display: grid;
   border-radius: 10px;
   grid-template-columns: repeat(11, 1fr) 50px;
-  grid-template-rows: 7% 7% 5% 6% 29% 18% 28%;
+  grid-template-rows: 7% 7% 5% 6% 270px 165px 1fr;
   background-color: #ffffff;
 }
 
