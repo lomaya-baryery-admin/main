@@ -1,11 +1,11 @@
 import React, {FC} from 'react';
 import participantReportStyle from './participantReport.module.css';
-import imageDefault from "../ui/preview/image5.jpg";
+import imageDefault from "../../ui/preview/image5.jpg";
 import imageSmallDefault from "./images/imgSmall.jpg"
-import {Button} from "../ui/button/button";
-import {ArrowLeftIcon, ArrowRightIcon, CheckIcon, CloseIcon} from "../ui/icons";
+import {Button} from "../../ui/button/button";
+import {ArrowLeftIcon, ArrowRightIcon, CheckIcon, CloseIcon} from "../../ui/icons";
 
-const ParticipantReport: FC = () => {
+function ParticipantReport(){
     return (
         <section className={participantReportStyle.container}>
             <p className={participantReportStyle.touch}>Отчёты участников / Название задания</p>
@@ -14,14 +14,14 @@ const ParticipantReport: FC = () => {
             <p className={participantReportStyle.send}>Отправлено</p>
             <p className={participantReportStyle.name}>Ivanov Ivanov</p>
             <p className={participantReportStyle.time}> 00.00.00 b 00.00 </p>
-            <Button htmlType={'button'} type="secondary" size={'small'} className={participantReportStyle.buttonHistory}>
+            <Button htmlType='button' type="secondary" size='small' className={participantReportStyle.buttonHistory}>
                 История отправки
             </Button>
-            <Button htmlType={'button'} size={'large'} className={participantReportStyle.buttonAccept}>
+            <Button htmlType='button' size='large' className={participantReportStyle.buttonAccept}>
                 <CheckIcon type="interface-white" />
                 Одобрить
             </Button>
-            <Button htmlType={'button'} size={'large'} className={participantReportStyle.buttonCancel}>
+            <Button htmlType='button' size='large' className={participantReportStyle.buttonCancel}>
                 <CloseIcon type="interface-white" />
                 Отклонить
             </Button>
@@ -29,11 +29,11 @@ const ParticipantReport: FC = () => {
                 <img alt={imageSmallDefault} src={imageSmallDefault} className={participantReportStyle.smallImg} />
                 <img alt={imageDefault} src={imageDefault} className={participantReportStyle.pictureImg}/>
             </div>
-            <Button htmlType={'button'} type="secondary" size={'small'} className={participantReportStyle.buttonLeft}>
+            <Button htmlType='button' type="secondary" size='small' className={participantReportStyle.buttonLeft}>
                 <ArrowLeftIcon type="link-active"/>
                 Предыдущее задание
             </Button>
-            <Button htmlType={'button'} type="secondary" size={'small'} className={participantReportStyle.buttonRight}>
+            <Button htmlType='button' type="secondary" size='small' className={participantReportStyle.buttonRight}>
                 Следующее задание
                 <ArrowRightIcon type="link-active"/>
             </Button>
