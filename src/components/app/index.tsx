@@ -1,10 +1,11 @@
-import { BrowserRouter } from 'react-router-dom';
-import { AppRoutes } from '../app-routes/app-routes';
+import { AppRoutes } from '../pages';
 import {
   useGetDefaultQuery,
   useShiftsPostMutation,
   useShiftsGetQuery,
 } from '../../redux-store/api-slice/api-slice';
+import { withProviders } from './providers';
+import './styles/index.css';
 
 const App = () => {
   const { data, isLoading, isError } = useGetDefaultQuery();
@@ -18,12 +19,6 @@ const App = () => {
     }).unwrap();
   };
 
-  return (
-    <div>
-      <BrowserRouter>
-        <AppRoutes />
-      </BrowserRouter>
-    </div>
-  );
+  return <AppRoutes />;
 };
-export default App;
+export default withProviders(App);
