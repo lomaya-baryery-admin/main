@@ -56,6 +56,7 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 .container__header {
   display: flex;
@@ -81,8 +82,8 @@
 .calendar__container {
   z-index: 10;
   position: absolute;
-  top: 281px;
-  right: 164px;
+  top: 203px;
+  right: 26px;
 }
 
 .container__name {
