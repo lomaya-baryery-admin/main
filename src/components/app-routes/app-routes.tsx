@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from '../layout/layout';
-import {NewShift} from "../new-shift/new-shift";
+import {NewShift} from "../../pages/newShift/new-shift";
 
 export const AppRoutes = () => (
   <div>

@@ -118,7 +118,7 @@ export const NewShift: FC = () => {
   const handleNameShift = (e: ChangeEvent<HTMLInputElement>) => {
     setNameShift(e.target.value);
   };
-  const openCalendar = () => {
+  const handleOpenCalendar = () => {
     setCalendar(!calendar);
   };
 
@@ -155,7 +155,7 @@ export const NewShift: FC = () => {
             responseColumnsHelper.accessor((row) => row, {
               header: 'Дата старта/окончания',
               cell: () => (
-                <div className={style.date__container}>
+                <div className={style.date}>
                   <p className={style.date__text}>
                     {' '}
                     {`${date.toLocaleDateString()} - ${shiftDate()}`}
@@ -164,8 +164,8 @@ export const NewShift: FC = () => {
                     type="secondary"
                     size="small"
                     htmlType="button"
-                    className={style.button}
-                    onClick={openCalendar}
+                    className={style.date__button}
+                    onClick={handleOpenCalendar}
                   >
                     {date ? 'Изменить' : 'Выбрать дату'}
                   </Button>

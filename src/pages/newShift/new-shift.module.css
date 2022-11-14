@@ -1,43 +1,9 @@
-.tablet {
-  width: 100%;
-  border: 1px solid #e2e4e8;
-  border-radius: 10px;
-  position: relative;
-}
-
-.list_names {
-  border: 1px solid #e2e4e8;
-  color: #929ead;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 19px;
-  margin: 0;
-  padding: 10px;
-  text-align: left;
-  display: flex;
-  list-style-type: none;
-  background-color: #f7f6f9;
-  align-items: center;
-}
 .item {
   flex: 1;
   display: block;
 }
 
-.list_shift {
-  color: #4154a4;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 19px;
-  margin: 0;
-  padding: 10px;
-  text-align: left;
-  display: flex;
-  list-style-type: none;
-  align-items: center;
-}
-
-.button {
+.date__button {
   padding: 10px 15px;
   color: #4154a4;
   border-radius: 10px;
@@ -122,7 +88,7 @@
   line-height: 19px;
 }
 
-.date__container {
+.date {
   margin-left: 10px;
   display: flex;
 }
@@ -130,11 +96,6 @@
 .date__text {
   color: #000000;
   margin-right: 10px;
-}
-
-.member__container {
-  display: flex;
-  align-items: center;
 }
 
 .member__name {
