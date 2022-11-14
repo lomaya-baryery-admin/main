@@ -20,3 +20,11 @@
   margin: 0;
   padding: 0;
 }
+
+.buttonContainer {
+  min-width: 217px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  column-gap: 10px;
+}

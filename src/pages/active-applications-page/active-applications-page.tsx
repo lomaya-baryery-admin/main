@@ -2,26 +2,11 @@ import React from 'react';
 import { createColumnHelper } from '@tanstack/react-table';
 
 import styles from './active-applications-page.module.css';
-import tableStyle from '../../ui/table/Table.module.css';
 
-// import { testData, AllReportsData, testColumns, allReportsColumns } from '../../utils/tableColumns';
-
-// import { Alert } from '../../ui/alert/alert';
 import { Table } from '../../ui/table/Table';
 import { Button } from '../../ui/button/button';
-import { StatusLabel } from '../../ui/status-label/status-label';
 import { SearchInput } from '../../ui/search-Input/search-input';
 
-
-function selectNextStep(target: any) {
-  const parent = target.parentNode;
-  parent.innerHTML = "";
-  if (target.type === 'submit') {
-    parent.insertAdjacentHTML('beforeend', `<StatusLabel statusText='Участник одобрен' type='approved' icon='CircleCheckIcon' />`) 
-  } else {
-    parent.append(<StatusLabel statusText='Участник отклонён' type='rejected' icon='CircleStopIcon'/>)
-  }
-};
 
 // Структура данных, приходящих с сервера
 interface requestsColumnsNames {
@@ -46,7 +31,7 @@ const defaultData: requestsColumnsNames[] = [
     city: 'Ленинград',
     phone: '+79998887766',
     request_id: 'dkfkd943904004fdjfd3438',
-    status: 'approved',
+    status: 'pending',
   },
   {
     user_id: 'dkfkd943904004fdjfd3439',
@@ -70,9 +55,11 @@ const defaultData: requestsColumnsNames[] = [
   },
 ];
 
+const pendingData = defaultData.filter(user => user.status === 'pending');
+
 // TApplicationsTable, applicationsData, applicationsColumnsHelper, applicationsColumns
 // Это переменные, отвечающие за работу таблицы с нашими данными. По идее, такое должны написать чуваки,
-// которые пишут таблицу. Но они пока этого не сделали
+// которые пишут таблицу. Но они пока этого не сделали и, видимо, не будут
 
 // Структура данных таблицы (by lizonkisel)
 type TApplicationsTable = {
@@ -83,78 +70,11 @@ type TApplicationsTable = {
   buttons: string[];
 };
 
-// Захардкоженный массив данных для таблицы (by lizonkisel)
-const applicationsData: TApplicationsTable[] = [
-  {
-    user_name: 'Иван Павлов',
-    city: 'Ленинград',
-    phone: '+79998887766',
-    date_of_birth: '26.09.1849',
-    buttons: ['Принять', 'Отклонить'],
-  },
-  {
-    user_name: 'Дмитрий Менделеев',
-    city: 'Санкт-Петербург',
-    phone: '+79998887755',
-    date_of_birth: '08.02.1834',
-    buttons: ['Принять', 'Отклонить'],
-  },
-  {
-    user_name: 'Софья Ковалевская',
-    city: 'Москва',
-    phone: '+79998887744',
-    date_of_birth: '15.01.1850',
-    buttons: ['Принять', 'Отклонить'],
-  },
-];
-
-// Вспомогательная функция из либы @tanstack/react-table (by lizonkisel)
-const applicationsColumnsHelper = createColumnHelper<TApplicationsTable>();
-
-// Описание структуры и внешнего вида таблицы (описание колонок) (by lizonkisel)
-export const applicationsColumns = [
-  applicationsColumnsHelper.accessor((row) => row.user_name, {
-    header: 'Имя и фамилия',
-    cell: (info) => (
-      <a href="/" className="text text_type_main-default spreadsheetLink">
-        {info.getValue()}
-      </a>
-    ),
-  }),
-  applicationsColumnsHelper.accessor((row) => row.city, {
-    header: 'Город',
-    cell: (info) => info.getValue(),
-  }),
-  applicationsColumnsHelper.accessor((row) => row.phone, {
-    header: 'Телефон',
-    cell: (info) => info.getValue(),
-  }),
-  applicationsColumnsHelper.accessor((row) => row.date_of_birth, {
-    header: 'Дата рождения',
-    cell: (info) => info.getValue(),
-  }),
-  applicationsColumnsHelper.accessor((row) => row.buttons, {
-    header: ' ',
-    cell: (buttons) => (
-      <div className={tableStyle.table__buttonContainer}>
-        {buttons.getValue().map((button) => {
-          const buttonType = button === 'Принять' ? 'submit' : 'reset';
-          return (
-            <Button htmlType={buttonType} onClick={(e: any) => {selectNextStep(e.target)}} size="small" type="primary">
-              {button}
-            </Button>
-          )
-        })}
-      </div>
-    ),
-  }),
-];
-
 const dataForTable: TApplicationsTable[] = [];
 
 // Функция, которая преобразует данные бэкенда в данные для таблицы
 function makeDataForTable() {
-  defaultData.forEach((user) => {
+  pendingData.forEach((user) => {
     const userForTable = {
       user_name: `${user.name} ${user.surname}`,
       city: user.city,
@@ -168,7 +88,63 @@ function makeDataForTable() {
 
 makeDataForTable();
 
+function customDispatch(button) {
+  const buttonType = button.type;
+  if (buttonType === 'submit') {
+    console.log('submit');
+    // Тут будет вызываться функция, которая будет диспатчить экшн, меняющий статус юзера. Пока консоль лог как заглушка
+  } if (buttonType === 'reset') {
+    console.log('reset');
+    // Тут будет вызываться функция, которая будет диспатчить экшн, меняющий статус юзера. Пока консоль лог как заглушка
+  }
+}
+
 export function ActiveApplicationsPage() {
+
+  // Вспомогательная функция из либы @tanstack/react-table (by lizonkisel)
+  const applicationsColumnsHelper = createColumnHelper<TApplicationsTable>();
+
+  // Описание структуры и внешнего вида таблицы (описание колонок) (by lizonkisel)
+  const applicationsColumns = [
+    applicationsColumnsHelper.accessor((row) => row.user_name, {
+      header: 'Имя и фамилия',
+      cell: (info) => (
+        <a href="/" className="text text_type_main-default spreadsheetLink">
+          {info.getValue()}
+        </a>
+      ),
+    }),
+    applicationsColumnsHelper.accessor((row) => row.city, {
+      header: 'Город',
+      cell: (info) => info.getValue(),
+    }),
+    applicationsColumnsHelper.accessor((row) => row.phone, {
+      header: 'Телефон',
+      cell: (info) => info.getValue(),
+    }),
+    applicationsColumnsHelper.accessor((row) => row.date_of_birth, {
+      header: 'Дата рождения',
+      cell: (info) => info.getValue(),
+    }),
+    applicationsColumnsHelper.accessor((row) => row.buttons, {
+      header: ' ',
+      // Внутри cell код, вероятнее всего, нужно будет переписывать после подключения store. 
+      // Для этого потребуются эксперименты с готовым store-ом
+      cell: (buttons) => (
+        <div className={styles.buttonContainer}>
+          {buttons.getValue().map((button) => {
+            const buttonType = button === 'Принять' ? 'submit' : 'reset';
+            return (
+              <Button htmlType={buttonType} onClick={(e: React.SyntheticEvent): void => {customDispatch(e.target)}} size="small" type="primary">
+                {button}
+              </Button>
+            )
+          })}
+        </div>
+      ),
+    }),
+  ];
+
   return (
     <article className={styles.main}>
       <section className={styles.header_content}>
@@ -176,10 +152,9 @@ export function ActiveApplicationsPage() {
         <SearchInput value='' onChange={() => {}} onClear={() => {}} />
       </section>
       <section className={styles.main_content}>
-        {/* <Alert title="Активные заявки на участие отсутствуют" /> */}
-        <Table defaultData={dataForTable} columnsData={applicationsColumns} rowHeight={60} />
+        <Table defaultData={dataForTable} columnsData={applicationsColumns} rowHeight={60} getRowCanExpand={() => false} />
       </section>
-      <section className={styles.footer_content}>Footer</section>
+      <section className={styles.footer_content}/>
     </article>
   );
 }
