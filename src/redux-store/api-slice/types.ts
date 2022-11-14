@@ -18,3 +18,7 @@ export interface IInformation {
   started_at: string;
   finished_at: string;
 }
+
+export interface IShiftsAll extends IInformation {
+  total_users: number
+}

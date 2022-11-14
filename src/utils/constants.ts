@@ -2,13 +2,22 @@
 
 export const statusLable = (value: string): string => {
   switch (value) {
-    case 'current':
+    case 'started':
       return 'Текущая';
-    case 'new':
+    case 'preparing':
       return 'Новая';
-    case 'past':
+    case 'finished':
       return 'Прошедшая';
+    case 'cancelled':
+        return 'Отмененная';
     default:
       return value;
   }
 };
+
+export const statusMapLabelType: {[key: string]: 'current' | 'new' | 'past' | 'approved' | 'rejected' | 'review'} = {
+  started: 'approved',
+  preparing: 'new',
+  finished: 'past',
+  cancelled: 'rejected'
+}

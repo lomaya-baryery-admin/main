@@ -6,9 +6,8 @@ import { ISlaider } from '../../services/types/types';
 import { ChevronDownIcon } from '../../ui/icons';
 
 const Dropdown: FC<ISlaider> = ({ text, icon, activeIcon, children, linkActive }) => {
-  const [active, setActive] = useState<boolean>(false);
-
   const location = useLocation();
+  const [active, setActive] = useState<boolean>(location.pathname.includes(linkActive));
 
   return (
     <div>

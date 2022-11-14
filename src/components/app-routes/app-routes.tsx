@@ -1,11 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from '../layout/layout';
+import { AllShiftsPage } from '../../pages/all-shifts/all-shifts';
 
 export const AppRoutes = () => (
   <div>
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route path="/shift/all" element={<div>1</div>} />
+        <Route path="/shift/all" element={<AllShiftsPage />} />
         <Route path="/shift/current" element={<div>2</div>} />
         <Route path="/shift/new" element={<div>3</div>} />
         <Route path="/invites/active" element={<div>4</div>} />
