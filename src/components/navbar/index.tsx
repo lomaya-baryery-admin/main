@@ -1,12 +1,9 @@
 import { NavLink } from 'react-router-dom';
-import styles from './navbar.module.css';
+import styles from './styles.module.css';
 import { UsersIcon, NoteEditIcon, FileCheckIcon, CalendarIcon } from '../../ui/icons';
-import Dropdown from '../dropdown/dropdown';
-import { shift, report, invites } from '../../utils/navbar-config';
-import { NavbarElement } from '../navbar-element/navbar-element';
-
-/* eslint-disable */
-/* eslint react/prop-types: 0 */
+import Dropdown from '../dropdown';
+import { shift, report, invites } from './lib';
+import { NavbarElement } from '../navbar-element';
 
 export const Navbar = () => (
   <div className={styles.navbar}>

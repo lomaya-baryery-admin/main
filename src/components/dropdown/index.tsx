@@ -1,9 +1,16 @@
 import { useLocation } from 'react-router-dom';
 import { FC } from 'react';
 import { useState } from 'react';
-import styles from './dropdown.module.css';
-import { ISlaider } from '../../services/types/types';
+import styles from './styles.module.css';
 import { ChevronDownIcon } from '../../ui/icons';
+
+export interface ISlaider {
+  text: string;
+  icon: JSX.Element;
+  activeIcon: JSX.Element;
+  children?: JSX.Element;
+  linkActive: string;
+}
 
 const Dropdown: FC<ISlaider> = ({ text, icon, activeIcon, children, linkActive }) => {
   const [active, setActive] = useState<boolean>(false);

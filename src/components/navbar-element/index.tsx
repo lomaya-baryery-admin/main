@@ -1,7 +1,12 @@
-import { useLocation, NavLink } from 'react-router-dom';
 import { FC } from 'react';
-import styles from './navbar-element.module.css';
-import { INavbarElement } from '../../services/types/types';
+import { useLocation, NavLink } from 'react-router-dom';
+import styles from './styles.module.css';
+
+export interface INavbarElement {
+  name: string;
+  link: string;
+  section: string;
+}
 
 export const NavbarElement: FC<INavbarElement> = ({ name, link, section }) => {
   const location = useLocation();
