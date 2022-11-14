@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { CSSTransition } from 'react-transition-group';
 import { PopupHistoryReport } from '../../components/popupHistoryReport/popupHistoryReport';
@@ -8,10 +8,10 @@ export default {
   title: 'Popup',
   component: PopupHistoryReport,
   decorators: [
-    (PopupHistoryReport) => (
+    (Story) => (
       <>
         <div id="app-root" style={{ height: '450px' }}>
-          <PopupHistoryReport />
+          <Story />
         </div>
         <div id="modal-root" />
       </>
@@ -46,7 +46,7 @@ const Template: ComponentStory<typeof PopupHistoryReport> = () => {
       <CSSTransition
         nodeRef={popapRef}
         in={isPopapOpen}
-        timeout={400}
+        timeout={250}
         classNames="smooth-popup"
         unmountOnExit
       >
@@ -105,7 +105,7 @@ const myComponent = () => {
       <CSSTransition
         nodeRef={popapRef}
         in={isPopapOpen}
-        timeout={400}
+        timeout={250}
         classNames='smooth-popup'
         unmountOnExit
       >

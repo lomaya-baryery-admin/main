@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { CSSTransition } from 'react-transition-group';
 import { PopupMessage } from '../../components/popupMessage/popupMessage';
@@ -8,10 +8,10 @@ export default {
   title: 'Popup',
   component: PopupMessage,
   decorators: [
-    (PopupMessage) => (
+    (Story) => (
       <>
         <div id="app-root" style={{ height: '450px' }}>
-          <PopupMessage />
+          <Story />
         </div>
         <div id="modal-root" />
       </>
@@ -32,7 +32,7 @@ const Template: ComponentStory<typeof PopupMessage> = () => {
       <CSSTransition
         nodeRef={popapRef}
         in={isPopapOpen}
-        timeout={400}
+        timeout={250}
         classNames="smooth-popup"
         unmountOnExit
       >
@@ -71,7 +71,7 @@ const myComponent = () => {
       <CSSTransition
         nodeRef={popapRef}
         in={isPopapOpen}
-        timeout={400}
+        timeout={250}
         classNames='smooth-popup'
         unmountOnExit
       >

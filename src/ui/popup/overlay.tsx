@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, FC, MouseEventHandler } from 'react';
+import React, { useEffect, MouseEventHandler } from 'react';
 import styles from './overlay.module.css';
 
 interface IOverlay {

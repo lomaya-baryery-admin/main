@@ -103,7 +103,7 @@
 
 .smooth-popup-enter-active {
   opacity: 1;
-  transition: opacity 400ms;
+  transition: opacity 250ms;
 }
 
 .smooth-popup-exit {
@@ -112,5 +112,5 @@
 
 .smooth-popup-exit-active {
   opacity: 0;
-  transition: opacity 400ms;
+  transition: opacity 250ms;
 }

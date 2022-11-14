@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { CSSTransition } from 'react-transition-group';
 import { Popup } from '../../ui/popup/popup';
@@ -8,10 +8,10 @@ export default {
   title: 'Popup',
   component: Popup,
   decorators: [
-    (Popup) => (
+    (Story) => (
       <>
         <div id="app-root" style={{ height: '450px' }}>
-          <Popup />
+          <Story />
         </div>
         <div id="modal-root" />
       </>
@@ -39,7 +39,7 @@ const Template: ComponentStory<typeof Popup> = (args) => {
       <CSSTransition
         nodeRef={popapRef}
         in={isPopapOpen}
-        timeout={400}
+        timeout={250}
         classNames="smooth-popup"
         unmountOnExit
       >
@@ -68,26 +68,35 @@ const myComponent = () => {
   const [isPopapOpen, setIsPopapOpen] = useState<boolean>(false);
   const openPopup = () => setIsPopapOpen(true);
   const closePopup = () => setIsPopapOpen(false);
+  const popapRef = useRef(null);
   return (
     <>
-      <Button
-        htmlType="button"
-        onClick={openPopup}
-        size="small"
+      <Button 
+        htmlType="button" 
+        onClick={openPopup} 
+        size="small" 
         type="primary"
       >
         Открыть модальное окно
       </Button>
-      <Popup 
-        title='Текст заголовка' 
-        isPopapOpen={isPopapOpen} 
-        closePopup={closePopup}
+      <CSSTransition
+        nodeRef={popapRef}
+        in={isPopapOpen}
+        timeout={250}
+        classNames="smooth-popup"
+        unmountOnExit
       >
-        {/* Ваш код содержания модального окна*/}
-      <Popup/>
+        <Popup 
+          title='Текст заголовка' 
+          closePopup={closePopup} 
+          ref={popapRef} 
+        >
+          {/* Ваш код содержания модального окна*/}
+        </Popup>
+      </CSSTransition>
     </>
-  )
-}
+  );
+};
       `,
       language: 'tsx',
       type: 'auto',
