@@ -122,11 +122,11 @@ export const NewShift: FC = () => {
     setCalendar(!calendar);
   };
 
-  function shiftDate() {
+  const shiftDate = () => {
     const D = new Date();
     D.setMonth(D.getMonth() + 3);
     return D.toLocaleDateString();
-  }
+  };
 
   const usersColumnsHelper = createColumnHelper<TUsers>();
   const responseColumnsHelper = createColumnHelper<TShifts>();
