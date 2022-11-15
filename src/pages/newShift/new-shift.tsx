@@ -5,35 +5,7 @@ import { Button } from '../../ui/button/button';
 import { Calendar } from '../../ui/calendar/calendar';
 import { Table } from '../../ui/table/Table';
 import { Paginations } from '../../stories/paginations/paginations';
-
-type TShifts = {
-  id: string;
-  title: string;
-  final_message: string;
-  status: string;
-  started_at: Date;
-  finished_at: Date;
-  total_users: number;
-  page: number;
-  total_page: number;
-  users: TUsers[];
-};
-
-type TUsers = {
-  user_id: string;
-  name: string;
-  surname: string;
-  date_of_birth: number;
-  city: string;
-  phone: string;
-  user_tasks: TUserTasks[];
-};
-
-type TUserTasks = {
-  user_task_id: string;
-  status: string;
-  task_date: Date;
-};
+import { TShifts, TUsers } from '../../services/types/types';
 
 const testResponse = {
   id: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
@@ -64,7 +36,7 @@ const testResponse = {
   ],
 };
 
-const users = [
+const testUsers = [
   {
     user_id: '1',
     name: 'Андрей',
@@ -238,7 +210,7 @@ export const NewShift: FC = () => {
                 ),
               }),
             ]}
-            defaultData={users}
+            defaultData={testUsers}
             rowHeight={60}
             getRowCanExpand={() => true}
           />
