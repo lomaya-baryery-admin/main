@@ -14,6 +14,18 @@ export default {
       description: 'Optional change handler',
       type: 'function',
     },
+    placeholder: {
+      description: 'Тест для плейсхолдера',
+      type: 'string',
+    },
+    name: {
+      description: 'Название для инпута',
+      type: 'string',
+    },
+    required: {
+      description: 'Параметр обязательности заполнения инпута',
+      type: 'boolean',
+    },
   },
 } as ComponentMeta<typeof Input>;
 

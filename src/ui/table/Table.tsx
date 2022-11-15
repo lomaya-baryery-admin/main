@@ -13,7 +13,7 @@ interface ITableProps {
   columnsData: any[];
   rowHeight: number;
   renderSubComponent?: ({ row }: { row: object }) => React.ReactNode;
-  getRowCanExpand: () => boolean;
+  getRowCanExpand?: () => boolean;
   initialExpandedRows?: {
     [key: string]: boolean;
   };
@@ -71,7 +71,9 @@ export const Table: FC<TTableProps> = ({
                 onClick={row.getCanExpand() ? row.getToggleExpandedHandler() : () => {}}
               >
                 {row.getVisibleCells().map((cell) => (
-                  <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+                  <td key={cell.id} className={tableStyle.table__cell}>
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </td>
                 ))}
               </tr>
               {renderSubComponent && row.getIsExpanded() && (

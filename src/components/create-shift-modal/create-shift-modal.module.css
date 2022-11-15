@@ -1,0 +1,87 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--colors-interface-gray);
+}
+
+.inputWrap {
+  width: 402px;
+}
+
+.dateInputsWrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.input {
+  border-radius: 10px;
+}
+
+.input:hover {
+  border: 1px solid var(--colors-interface-gray);
+}
+
+.input:focus {
+  border: 1px solid var(--colors-interface-blue);
+}
+
+.input > input {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--colors-interface-black);
+  padding: 0;
+}
+
+.line {
+  width: 12px;
+  border: 1px solid var(--colors-interface-black);
+  height: 0;
+}
+
+.dateInput {
+  width: 100px;
+  box-sizing: border-box;
+}
+
+.dateInput > input {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 16px;
+}
+
+.daysCount {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.formError {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: var(--colors-interface-red);
+  margin-left: 10px;
+}

@@ -1,5 +1,5 @@
 .searchField {
-  max-width: 246px;
+  min-width: 100px;
   max-height: 40px;
   background: var(--colors-interface-white);
   border: 1px solid var(--colors-interface-border);

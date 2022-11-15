@@ -15,6 +15,7 @@ const App = () => {
     await shiftPost({
       started_at: '2022-11-02T17:00:32.625Z',
       finished_at: '2022-11-02T17:00:32.625Z',
+      title: 'Новая смена',
     }).unwrap();
   };
 

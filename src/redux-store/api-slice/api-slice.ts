@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { IResponceShifts, IshiftCreate, IInformation, IdefaultObject, IShiftsAll } from './types';
+import { IResponceShifts, IShiftCreate, IInformation, IdefaultObject, IShifts } from './types';
 
 export const dataApi = createApi({
   reducerPath: 'dataApi',
@@ -10,7 +10,7 @@ export const dataApi = createApi({
       query: () => '/healthcheck',
       providesTags: ['data'],
     }),
-    shiftsPost: build.mutation<IResponceShifts, IshiftCreate>({
+    shiftsPost: build.mutation<IResponceShifts, IShiftCreate>({
       query: (body) => ({
         url: '/shifts/',
         method: 'POST',
@@ -37,12 +37,7 @@ export const dataApi = createApi({
         body,
       }),
     }),
-    /* shiftsAllGet: build.query<IShiftsAll, void>({
-      query: () => ({
-        url: `/shifts`,
-      }),
-    }), */
-    shiftsAllGet: build.mutation<IResponceShifts, number>({
+    shiftsAllGet: build.mutation<IShifts, number>({
       query: (page) => ({
         url: `/shifts/?page=${page}`,
         method: 'GET',

@@ -2,23 +2,33 @@ export interface IdefaultObject {
   answer: string;
 }
 
-export interface IshiftCreate {
+export interface IShiftCreate {
   started_at: string;
   finished_at: string;
+  title: string;
 }
 
-export interface IResponceShifts extends IshiftCreate {
+export type TTaskStatus = 'started' | 'finished' | 'preparing' | 'cancelled';
+
+export interface IResponceShifts extends IShiftCreate {
   id: string;
-  status: 'started' | 'finished' | 'preparing' | 'cancelled' | '';
+  status: TTaskStatus;
 }
 
 export interface IInformation {
   id: string;
-  status: 'started' | 'finished' | 'preparing' | 'cancelled';
+  status: TTaskStatus;
+  title: string;
   started_at: string;
   finished_at: string;
 }
 
-export interface IShiftsAll extends IInformation {
-  total_users: number
+export interface IShiftData extends IInformation {
+  total_users: number;
+}
+
+export interface IShifts {
+  page: number;
+  total_page: number;
+  shifts: Array<IShiftData>;
 }

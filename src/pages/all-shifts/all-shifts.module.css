@@ -1,38 +1,38 @@
 .pageConteiner {
-    width: 1116px;
-    background: #FFFFFF;
-    border-radius: 10px;
-    padding: 20px 30px;
-    box-sizing: border-box;
-    height: calc(100vh - 117px);
-    display: flex;
-    flex-direction: column;
+  width: 1116px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px 30px;
+  box-sizing: border-box;
+  height: calc(100vh - 117px);
+  display: flex;
+  flex-direction: column;
 }
 
 .pageHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .title {
-    margin: 0;
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 30px;
-    line-height: 36px;
+  margin: 0;
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 36px;
 }
 .buttonText {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .buttonText > p {
-    margin: 0;
+  margin: 0;
 }
 
 .tableWrapper {
-    flex: 1 1 auto;
-    margin-top: 20px;
+  flex: 1 1 auto;
+  margin-top: 20px;
 }
