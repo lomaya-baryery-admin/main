@@ -13,8 +13,6 @@ import { SearchInput } from '../../ui/search-Input/search-input';
 import { Table } from '../../ui/table/Table';
 import { tmpData } from './tmp';
 
-
-
 // TApplicationsTable, applicationsData, applicationsColumnsHelper, applicationsColumns
 // Это переменные, отвечающие за работу таблицы с нашими данными. По идее, такое должны написать чуваки,
 // которые пишут таблицу. Но они пока этого не сделали и, видимо, не будут
@@ -54,7 +52,6 @@ export function ActiveApplicationsPage() {
 
   makeDataForTable();
 
-  
   async function customDispatch(button: any) {
     const buttonType = button.type;
     if (buttonType === 'submit') {

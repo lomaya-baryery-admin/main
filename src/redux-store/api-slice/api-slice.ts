@@ -5,7 +5,7 @@ import {
   IInformation,
   IResponceShifts,
   IShiftCreate,
-  IShifts
+  IShifts,
 } from './types';
 
 export const dataApi = createApi({
@@ -79,5 +79,5 @@ export const {
   useShiftsAllGetMutation,
   useFetchApplicationsQuery,
   useApplicationPutchApproveMutation,
-  useApplicationPutchDeclineMutation
+  useApplicationPutchDeclineMutation,
 } = dataApi;
