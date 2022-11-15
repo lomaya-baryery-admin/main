@@ -71,5 +71,5 @@ export const {
   useShiftsPutMutation,
   useFetchApplicationsQuery,
   useApplicationPutchApproveMutation,
-  useApplicationPutchDeclineMutation
+  useApplicationPutchDeclineMutation,
 } = dataApi;
