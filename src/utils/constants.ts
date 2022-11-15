@@ -21,3 +21,15 @@ export const statusMapLabelType: {[key: string]: 'current' | 'new' | 'past' | 'a
   finished: 'past',
   cancelled: 'rejected'
 }
+// лейблы для статусов таблицы рассматренных заявок
+
+export const applicationLabel = (value: 'approved' | 'declined'): string => {
+  switch (value) {
+    case 'approved':
+      return 'Участник одобрен'
+    case 'declined':
+      return 'Участник отклонён';
+    default:
+      return value;
+  }
+}

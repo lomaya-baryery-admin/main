@@ -32,3 +32,22 @@ export interface IShifts {
   total_page: number;
   shifts: Array<IShiftData>;
 }
+
+// enum ApplicationsStatus {
+//   PENDING = 'pending',
+//   APPROVED = 'approved',
+//   DECLINED = 'declined',
+// }
+
+
+
+export interface IApplicationsResponce {
+  user_id: string;
+  name: string;
+  surname: string;
+  date_of_birth: string;
+  city: string;
+  phone: string;
+  request_id: string;
+  status: 'pending'|'approved'|'declined';
+}

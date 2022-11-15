@@ -1,0 +1,13 @@
+.main {
+  margin: 0;
+  padding: 30px 30px 20px 30px;
+  width: calc(1116 / 1440 * 100vw);
+  background: var(--colors-interface-white);
+  border-radius: var(--common-border-radius);
+}
+
+.header_content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
