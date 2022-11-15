@@ -108,6 +108,85 @@ export const NewShift: FC = () => {
 
   const usersColumnsHelper = createColumnHelper<TUsers>();
   const responseColumnsHelper = createColumnHelper<TShifts>();
+
+  const newShiftsColumn = [
+    responseColumnsHelper.accessor((row) => row, {
+      header: 'Название  смены',
+      cell: () => (
+        <input
+          className={nameShift.length > 0 ? style.input__active : style.input}
+          type="text"
+          value={nameShift}
+          onChange={handleNameShift}
+          placeholder="Введите название"
+        />
+      ),
+    }),
+    responseColumnsHelper.accessor((row) => row, {
+      header: 'Дата старта/окончания',
+      cell: () => (
+        <div className={style.date}>
+          <p className={style.date__text}> {`${date.toLocaleDateString()} - ${shiftDate()}`}</p>
+          <Button
+            type="secondary"
+            size="small"
+            htmlType="button"
+            className={style.date__button}
+            onClick={handleOpenCalendar}
+          >
+            {date ? 'Изменить' : 'Выбрать дату'}
+          </Button>
+          {calendar && (
+            <div className={style.calendar__container}>
+              <Calendar />
+            </div>
+          )}
+        </div>
+      ),
+    }),
+    responseColumnsHelper.accessor((row) => row.total_users, {
+      header: 'Кол-во участников',
+      cell: (info) => <div className={style.cell}> {info.getValue()} </div>,
+    }),
+  ];
+  const membersColumn = [
+    usersColumnsHelper.accessor((row) => row.name, {
+      header: 'Имя и фамилия',
+      cell: (info) => (
+        <p key={info.getValue()} className={style.member__name}>
+          {info.getValue()}
+        </p>
+      ),
+    }),
+    usersColumnsHelper.accessor((row) => row.city, {
+      header: 'Город',
+      cell: (info) => (
+        <div key={info.getValue()} className={style.cell}>
+          {' '}
+          {info.getValue()}{' '}
+        </div>
+      ),
+    }),
+    usersColumnsHelper.accessor((row) => row.phone, {
+      header: 'Телефон',
+      cell: (info) => (
+        <div key={info.getValue()} className={style.cell}>
+          {' '}
+          {info.getValue()}{' '}
+        </div>
+      ),
+    }),
+    usersColumnsHelper.accessor((row) => row.date_of_birth, {
+      header: 'Дата рождения',
+      cell: (info) => (
+        <div key={info.getValue()} className={style.cell}>
+          {' '}
+          {info.getValue()}{' '}
+        </div>
+      ),
+    }),
+  ];
+
   return (
     <div className={style.body}>
       <div className={style.container}>
@@ -120,49 +199,7 @@ export const NewShift: FC = () => {
         </div>
         <Table
           defaultData={[testResponse]}
-          columnsData={[
-            responseColumnsHelper.accessor((row) => row, {
-              header: 'Название  смены',
-              cell: () => (
-                <input
-                  className={nameShift.length > 0 ? style.input__active : style.input}
-                  type="text"
-                  value={nameShift}
-                  onChange={handleNameShift}
-                  placeholder="Введите название"
-                />
-              ),
-            }),
-            responseColumnsHelper.accessor((row) => row, {
-              header: 'Дата старта/окончания',
-              cell: () => (
-                <div className={style.date}>
-                  <p className={style.date__text}>
-                    {' '}
-                    {`${date.toLocaleDateString()} - ${shiftDate()}`}
-                  </p>
-                  <Button
-                    type="secondary"
-                    size="small"
-                    htmlType="button"
-                    className={style.date__button}
-                    onClick={handleOpenCalendar}
-                  >
-                    {date ? 'Изменить' : 'Выбрать дату'}
-                  </Button>
-                  {calendar && (
-                    <div className={style.calendar__container}>
-                      <Calendar />
-                    </div>
-                  )}
-                </div>
-              ),
-            }),
-            responseColumnsHelper.accessor((row) => row.total_users, {
-              header: 'Кол-во участников',
-              cell: (info) => <div className={style.cell}> {info.getValue()} </div>,
-            }),
-          ]}
+          columnsData={newShiftsColumn}
           rowHeight={60}
           getRowCanExpand={() => true}
         />
@@ -173,43 +210,7 @@ export const NewShift: FC = () => {
         </div>
         <div className={style.table__container}>
           <Table
-            columnsData={[
-              usersColumnsHelper.accessor((row) => row.name, {
-                header: 'Имя и фамилия',
-                cell: (info) => (
-                  <p key={info.getValue()} className={style.member__name}>
-                    {info.getValue()}
-                  </p>
-                ),
-              }),
-              usersColumnsHelper.accessor((row) => row.city, {
-                header: 'Город',
-                cell: (info) => (
-                  <div key={info.getValue()} className={style.cell}>
-                    {' '}
-                    {info.getValue()}{' '}
-                  </div>
-                ),
-              }),
-              usersColumnsHelper.accessor((row) => row.phone, {
-                header: 'Телефон',
-                cell: (info) => (
-                  <div key={info.getValue()} className={style.cell}>
-                    {' '}
-                    {info.getValue()}{' '}
-                  </div>
-                ),
-              }),
-              usersColumnsHelper.accessor((row) => row.date_of_birth, {
-                header: 'Дата рождения',
-                cell: (info) => (
-                  <div key={info.getValue()} className={style.cell}>
-                    {' '}
-                    {info.getValue()}{' '}
-                  </div>
-                ),
-              }),
-            ]}
+            columnsData={membersColumn}
             defaultData={testUsers}
             rowHeight={60}
             getRowCanExpand={() => true}
@@ -220,7 +221,7 @@ export const NewShift: FC = () => {
         </p>
         <div className={style.pagination}>
           <Paginations
-            counterPages={testResponse.total_page}
+            counterPages={testResponse.total_page} // количество страниц приходит с бэка
             currentPage={page}
             setCurrentPage={handleSwitchPage}
           />{' '}
