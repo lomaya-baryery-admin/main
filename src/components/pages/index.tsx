@@ -1,20 +1,23 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useMatch } from 'react-router-dom';
 import { Layout } from './layout';
+import { PageShiftsAll } from './shifts';
 
-export const AppRoutes = () => (
-  <Routes>
-    <Route path="/" element={<Layout />}>
-      <Route index element={<Navigate to={'shift/all'} replace />} />
-      <Route path="shift/all" element={<div>1</div>} />
-      <Route path="shift/current" element={<div>2</div>} />
-      <Route path="shift/new" element={<div>3</div>} />
-      <Route path="invites/active" element={<div>4</div>} />
-      <Route path="invites/reviewed" element={<div>5</div>} />
-      <Route path="participants" element={<div>6</div>} />
-      <Route path="report/noverified" element={<div>7</div>} />
-      <Route path="report/verified" element={<div>8</div>} />
-      <Route path="report/rejected" element={<div>9</div>} />
-      <Route path="*" element={<div>страница не найдена </div>} />
-    </Route>
-  </Routes>
-);
+export const AppRoutes = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Navigate to={'shifts/all'} replace />} />
+        <Route path="shifts/all" element={<PageShiftsAll />} />
+        <Route path="shifts/started" element={<div>2</div>} />
+        <Route path="shifts/preparing" element={<div>3</div>} />
+        <Route path="requests/pending" element={<div>4</div>} />
+        <Route path="requests/considered" element={<div>5</div>} />
+        <Route path="users" element={<div>6</div>} />
+        <Route path="tasks/under_review" element={<div>7</div>} />
+        <Route path="tasks/reviewed" element={<div>8</div>} />
+        <Route path="tasks/declined" element={<div>9</div>} />
+        <Route path="*" element={<div>страница не найдена </div>} />
+      </Route>
+    </Routes>
+  );
+};

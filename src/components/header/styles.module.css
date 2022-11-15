@@ -14,11 +14,11 @@
   display: flex;
   align-items: center;
   color: var(--colors-interface-gray-dark);
-  transition: opacity 200ms ease-out;
+  transition: var(--transition-hover);
 }
 
 .header__link:hover {
-  opacity: 0.6;
+  opacity: var(--hover-opacity);
 }
 
 .header__linkIcon {

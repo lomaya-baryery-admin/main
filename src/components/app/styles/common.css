@@ -15,6 +15,8 @@
   --text-color-primary: var(--colors-interface-black);
   --text-color-secondary: var(--colors-interface-gray);
 
+  --transition-hover: opacity 100ms ease-out;
+  --hover-opacity: 0.75;
   --common-border-radius: 10px;
   --common-border-width: 1px;
   --common-element-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 10px 20px -5px rgba(0, 0, 0, 0.4);
@@ -40,6 +42,15 @@
 
 .m-0 {
   margin: 0;
+}
+
+.p-0 {
+  padding: 0;
+}
+
+.list {
+  list-style: none;
+  list-style-type: none;
 }
 
 .text {

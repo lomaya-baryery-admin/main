@@ -1,4 +1,14 @@
 .main {
+  padding: 0 20px;
   display: flex;
-  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.navigation {
+  flex-basis: 264px;
+}
+
+.content {
+  padding-left: 20px;
+  flex-basis: 1116px;
 }
