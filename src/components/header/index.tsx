@@ -1,25 +1,31 @@
 import styles from './styles.module.css';
+import cn from 'classnames';
 import { EnterIcon, UserIcon } from '../../ui/icons/';
 import { Logo } from '../../ui/logo/logo';
+import { Link, NavLink } from 'react-router-dom';
 
 export function Header() {
   return (
     <header className={styles.header}>
-      <div className={styles.logoContainer}>
-        <Logo className={styles.logo} />
-      </div>
-      <div className={styles.links}>
-        {/* Указать ссылки /profile/ и состояние */}
-        <button type="button" className={`${styles.button} text_type_main-medium`}>
-          <UserIcon type="link" />
+      <Link to={{ pathname: '/' }}>
+        <Logo className={styles.header__logo} />
+      </Link>
+      <nav className={styles.header__nav}>
+        <NavLink
+          to={{ pathname: '/profile' }}
+          className={cn('text', 'text_type_main-medium', 'm-1', 'link', styles.header__link)}
+        >
+          <UserIcon className={styles.header__linkIcon} type="link" />
           Аккаунт
-        </button>
-        {/* Указать ссылки /logout/ и состояние */}
-        <button type="button" className={`${styles.button} text_type_main-medium`}>
-          <EnterIcon type="link" />
+        </NavLink>
+        <NavLink
+          to={{ pathname: '/logout' }}
+          className={cn('text', 'text_type_main-medium', 'link', styles.header__link)}
+        >
+          <EnterIcon className={styles.header__linkIcon} type="link" />
           Выйти
-        </button>
-      </div>
+        </NavLink>
+      </nav>
     </header>
   );
 }
