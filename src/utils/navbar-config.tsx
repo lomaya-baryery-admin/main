@@ -4,8 +4,8 @@ export const shift = [
   { link: '/shift/new', name: ' Новая', section: 'shift' },
 ];
 export const invites = [
-  { link: '/invites/reviewed', name: 'Актуальные', section: 'invites' },
-  { link: '/invites/active', name: ' Рассмотренные', section: 'invites' },
+  { link: '/invites/active', name: 'Активные', section: 'invites' },
+  { link: '/invites/reviewed', name: ' Рассмотренные', section: 'invites' },
 ];
 export const report = [
   { link: '/report/noverified', name: 'Ждут проверки', section: 'report' },
