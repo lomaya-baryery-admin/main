@@ -9,7 +9,7 @@ import * as Icons from '../../ui/icons';
 interface ISideBarAccordion {
   title: string;
   icon: keyof TIcons;
-  expanded?: boolean;
+  expandOnMount?: boolean;
   list?: Array<{
     title: string;
     to: To;
@@ -17,13 +17,17 @@ interface ISideBarAccordion {
   to?: To;
 }
 
-const SideBarAccordion: React.FC<ISideBarAccordion> = ({ title, icon, to, list, expanded }) => {
-  const [disclosed, setToggleDisclose] = useState(expanded);
+const SideBarAccordion: React.FC<ISideBarAccordion> = ({
+  title,
+  icon,
+  to,
+  list,
+  expandOnMount,
+}) => {
+  const [disclosed, setToggleDisclose] = useState(expandOnMount);
 
   const paths = list ? list.map((item) => item.to) : [to];
-
   const location = useLocation();
-
   const isCurrentBranch = paths?.includes(location.pathname);
 
   const handleToggle = () => {
@@ -101,27 +105,27 @@ const SideBarAccordion: React.FC<ISideBarAccordion> = ({ title, icon, to, list, 
 };
 
 export const SideBar = () => {
+  //из стейта получить инфо о текущей и новой смене
+
   const { pathname } = useLocation();
 
-  const currentRoute = pathname === '/' ? 'shifts' : pathname.split('/', 2)[1];
-
-  const [activeBranch, setActiveBranch] = useState(currentRoute);
+  const initRoute = pathname === '/' ? 'shifts' : pathname.split('/', 2)[1];
 
   return (
     <ul className={cn(styles.sidebar, 'm-0', 'p-0', 'list')}>
       <SideBarAccordion
         title={'Смены'}
-        expanded={activeBranch === 'shifts'}
+        expandOnMount={initRoute === 'shifts'}
         list={[
           { title: 'Все', to: '/shifts/all' },
-          { title: 'Текущая', to: '/shifts/started' },
-          { title: 'Новая', to: '/shifts/preparing' },
+          { title: 'Текущая', to: '/shifts/started' }, //рендер при условии что такая смена есть, хранить в отдельном слайсе?
+          { title: 'Новая', to: '/shifts/preparing' }, //рендер при условии что такая смена есть, хранить в отдельном слайсе?
         ]}
         icon={'CalendarIcon'}
       />
       <SideBarAccordion
         title={'Заявки на участие'}
-        expanded={activeBranch === 'requests'}
+        expandOnMount={initRoute === 'requests'}
         list={[
           { title: 'Активные', to: '/requests/pending' },
           { title: 'Рассмотренные', to: '/requests/considered' },
@@ -131,7 +135,7 @@ export const SideBar = () => {
       <SideBarAccordion title={'Участники проекта'} icon={'UsersIcon'} to={'/users'} />
       <SideBarAccordion
         title={'Отчёты участников'}
-        expanded={activeBranch === 'tasks'}
+        expandOnMount={initRoute === 'tasks'}
         list={[
           { title: 'Ждут проверки', to: '/tasks/under_review' },
           { title: 'Проверенные', to: '/tasks/reviewed' },
