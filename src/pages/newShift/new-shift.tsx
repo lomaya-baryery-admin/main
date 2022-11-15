@@ -4,6 +4,7 @@ import style from './new-shift.module.css';
 import { Button } from '../../ui/button/button';
 import { Calendar } from '../../ui/calendar/calendar';
 import { Table } from '../../ui/table/Table';
+import { Paginations } from '../../stories/paginations/paginations';
 
 type TShifts = {
   id: string;
@@ -115,12 +116,17 @@ export const NewShift: FC = () => {
   const [calendar, setCalendar] = useState(false);
   const [nameShift, setNameShift] = useState('');
   const [date, setDate] = useState(new Date());
+  const [page, setPage] = useState(1);
   const handleNameShift = (e: ChangeEvent<HTMLInputElement>) => {
     setNameShift(e.target.value);
   };
   const handleOpenCalendar = () => {
     setCalendar(!calendar);
   };
+  const handleSwitchPage = (e: number) => {
+    setPage(e);
+  };
+  const startShift = () => {};
 
   const shiftDate = () => {
     const D = new Date();
@@ -135,7 +141,10 @@ export const NewShift: FC = () => {
       <div className={style.container}>
         <div className={style.container__header}>
           <h2 className={style.container__title}>Новая смена</h2>
-          <Button htmlType="button"> Создать</Button>
+          <Button htmlType="button" onClick={startShift}>
+            {' '}
+            Создать
+          </Button>
         </div>
         <Table
           defaultData={[testResponse]}
@@ -186,7 +195,7 @@ export const NewShift: FC = () => {
           getRowCanExpand={() => true}
         />
       </div>
-      <div className={style.container}>
+      <div className={`${style.container} ${style.container__height}`}>
         <div className={style.container__header}>
           <h2 className={style.container__name}>Участники</h2>
         </div>
@@ -233,6 +242,16 @@ export const NewShift: FC = () => {
             rowHeight={60}
             getRowCanExpand={() => true}
           />
+        </div>
+        <p className={style.pagination__text}>
+          Показывается {page} из {testResponse.total_page}
+        </p>
+        <div className={style.pagination}>
+          <Paginations
+            counterPages={testResponse.total_page}
+            currentPage={page}
+            setCurrentPage={handleSwitchPage}
+          />{' '}
         </div>
       </div>
     </div>

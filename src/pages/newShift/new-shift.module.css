@@ -24,6 +24,9 @@
   flex-direction: column;
   position: relative;
 }
+.container__height {
+  height: 685px;
+}
 .container__header {
   display: flex;
   justify-content: space-between;
@@ -105,4 +108,21 @@
 
 .cell {
   margin-left: 10px;
+}
+
+.pagination {
+  padding: 20px 30px;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.pagination__text {
+  position: absolute;
+  bottom: 0;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #929ead;
 }
