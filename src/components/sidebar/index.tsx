@@ -27,8 +27,8 @@ const SideBarAccordion: React.FC<ISideBarAccordion> = ({
   const [disclosed, setToggleDisclose] = useState(expandOnMount);
 
   const paths = list ? list.map((item) => item.to) : [to];
-  const location = useLocation();
-  const isCurrentBranch = paths?.includes(location.pathname);
+  const branch = useLocation().pathname.split('/')[1];
+  const isCurrentBranch = paths.some((path) => path?.toString().includes(branch));
 
   const handleToggle = () => {
     setToggleDisclose((initState) => !initState);

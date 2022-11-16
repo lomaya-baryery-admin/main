@@ -7,3 +7,17 @@
   border-radius: var(--common-border-radius);
   background-color: var(--colors-interface-white);
 }
+
+.shift__table {
+  margin-top: 20px;
+}
+
+.shift__tableColumns {
+  grid-template-columns: 120px 3fr 2fr 2fr 2fr 2fr;
+}
+
+.shift__scrollSection {
+  height: calc(100vh - 300px);
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}

@@ -1,12 +1,10 @@
 import { useMemo } from 'react';
 import * as appIcons from '../icons';
-import { IIconProps } from '../icons/utils';
 import styles from './status-label.module.css';
 
 export interface IStatusLabelProps {
   statusText: string;
   type: 'current' | 'new' | 'past' | 'approved' | 'rejected' | 'review';
-  // type: string;
   className?: string;
   icon?: keyof appIcons.TStatusIcons;
 }

@@ -24,6 +24,8 @@
 
   --colors-button-disabled: var(--colors-interface-gray-light);
 
+  --colors-table-border: #e5e5e5;
+
   --background: var(--colors-interface-gray-light);
 
   --text-color-primary: var(--colors-interface-black);
@@ -120,4 +122,12 @@
 .spreadsheetLink:hover {
   text-decoration: underline solid 1px;
   text-decoration-skip-ink: none;
+}
+
+.tableContentRow {
+  border-top: var(--common-border-width) solid var(--colors-table-border);
+}
+
+.tableContentRow:first-child {
+  border-top: none;
 }

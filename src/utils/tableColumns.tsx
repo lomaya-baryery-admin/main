@@ -1,5 +1,5 @@
 import { createColumnHelper } from '@tanstack/react-table';
-import { IStatusLabelProps, StatusLabel } from '../ui/status-label/status-label';
+import { IStatusLabelProps, StatusLabel } from '../ui/status-label';
 import { statusLable } from './constants';
 import { ImagePreview } from '../stories/image-preview/ImagePreview';
 import tableStyle from '../ui/table/Table.module.css';
