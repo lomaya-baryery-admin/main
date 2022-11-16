@@ -5,13 +5,13 @@ import styles from './input.module.css';
 export interface IInputProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  className?: string;
+  extClassName?: string;
 }
 
-export const Input = ({ value, onChange, className }: IInputProps) => {
+export const Input = ({ value, onChange, extClassName }: IInputProps) => {
   const inputId = nanoid();
   return (
-    <label htmlFor={inputId} className={cn(styles.searchField)}>
+    <label htmlFor={inputId} className={cn(styles.searchField, extClassName)}>
       <input
         id={inputId}
         type="text"

@@ -1,10 +1,10 @@
-import styles from './styles.module.css';
+import React, { useState } from 'react';
 import cn from 'classnames';
 import { NavLink, useLocation } from 'react-router-dom';
 import type { To } from 'react-router-dom';
 import { ChevronRightIcon, TIcons } from '../../ui/icons';
-import React, { useState } from 'react';
 import * as Icons from '../../ui/icons';
+import styles from './styles.module.css';
 
 interface ISideBarAccordion {
   title: string;
@@ -59,49 +59,46 @@ const SideBarAccordion: React.FC<ISideBarAccordion> = ({
           />
         </button>
         {disclosed
-          ? list.map((link) => {
-              return (
-                <li className={styles.accordion__listItemWrapper} key={link.title}>
-                  <NavLink
-                    to={link.to}
-                    className={({ isActive }) =>
-                      cn(
-                        styles.accordion__listItem,
-                        {
-                          [styles.accordion__listItem_active]: isActive,
-                        },
-                        'text',
-                        'text_type_main-medium'
-                      )
-                    }
-                  >
-                    {link.title}
-                  </NavLink>
-                </li>
-              );
-            })
+          ? list.map((link) => (
+              <li className={styles.accordion__listItemWrapper} key={link.title}>
+                <NavLink
+                  to={link.to}
+                  className={({ isActive }) =>
+                    cn(
+                      styles.accordion__listItem,
+                      {
+                        [styles.accordion__listItem_active]: isActive,
+                      },
+                      'text',
+                      'text_type_main-medium'
+                    )
+                  }
+                >
+                  {link.title}
+                </NavLink>
+              </li>
+            ))
           : null}
       </ul>
     );
-  } else {
-    return (
-      <li>
-        <NavLink to={to as To} className={styles.accordion__button}>
-          <RenderIcon
-            type={isCurrentBranch ? 'link-active' : 'link'}
-            className={styles.accordion__buttonIcon}
-          />
-          <span
-            className={cn('text', 'text_type_main-medium', styles.accordion__text, {
-              [styles.accordion__text_active]: isCurrentBranch,
-            })}
-          >
-            {title}
-          </span>
-        </NavLink>
-      </li>
-    );
   }
+  return (
+    <li>
+      <NavLink to={to as To} className={styles.accordion__button}>
+        <RenderIcon
+          type={isCurrentBranch ? 'link-active' : 'link'}
+          className={styles.accordion__buttonIcon}
+        />
+        <span
+          className={cn('text', 'text_type_main-medium', styles.accordion__text, {
+            [styles.accordion__text_active]: isCurrentBranch,
+          })}
+        >
+          {title}
+        </span>
+      </NavLink>
+    </li>
+  );
 };
 
 export const SideBar = () => {
@@ -114,34 +111,34 @@ export const SideBar = () => {
   return (
     <ul className={cn(styles.sidebar, 'm-0', 'p-0', 'list')}>
       <SideBarAccordion
-        title={'Смены'}
+        title="Смены"
         expandOnMount={initRoute === 'shifts'}
         list={[
           { title: 'Все', to: '/shifts/all' },
           { title: 'Текущая', to: '/shifts/started' }, //рендер при условии что такая смена есть, хранить в отдельном слайсе?
           { title: 'Новая', to: '/shifts/preparing' }, //рендер при условии что такая смена есть, хранить в отдельном слайсе?
         ]}
-        icon={'CalendarIcon'}
+        icon="CalendarIcon"
       />
       <SideBarAccordion
-        title={'Заявки на участие'}
+        title="Заявки на участие"
         expandOnMount={initRoute === 'requests'}
         list={[
           { title: 'Активные', to: '/requests/pending' },
           { title: 'Рассмотренные', to: '/requests/considered' },
         ]}
-        icon={'NoteEditIcon'}
+        icon="NoteEditIcon"
       />
-      <SideBarAccordion title={'Участники проекта'} icon={'UsersIcon'} to={'/users'} />
+      <SideBarAccordion title="Участники проекта" icon="UsersIcon" to="/users" />
       <SideBarAccordion
-        title={'Отчёты участников'}
+        title="Отчёты участников"
         expandOnMount={initRoute === 'tasks'}
         list={[
           { title: 'Ждут проверки', to: '/tasks/under_review' },
           { title: 'Проверенные', to: '/tasks/reviewed' },
           { title: 'Отклонённые', to: '/tasks/declined' },
         ]}
-        icon={'FileCheckIcon'}
+        icon="FileCheckIcon"
       />
     </ul>
   );

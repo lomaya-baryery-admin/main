@@ -1,8 +1,8 @@
-import styles from './styles.module.css';
 import cn from 'classnames';
-import { EnterIcon, UserIcon } from '../../ui/icons/';
-import { Logo } from '../../ui/logo/logo';
 import { Link, NavLink } from 'react-router-dom';
+import { EnterIcon, UserIcon } from '../../ui/icons';
+import { Logo } from '../../ui/logo/logo';
+import styles from './styles.module.css';
 
 export function Header() {
   return (

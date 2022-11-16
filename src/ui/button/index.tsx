@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './styles.module.css';
 import cn from 'classnames';
+import styles from './styles.module.css';
 
 export type TButtonProps = React.PropsWithChildren<
   Omit<React.HTMLProps<HTMLButtonElement>, 'size'>

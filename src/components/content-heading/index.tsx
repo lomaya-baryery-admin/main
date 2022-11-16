@@ -1,26 +1,24 @@
-import styles from './styles.module.css';
+import React from 'react';
 import cn from 'classnames';
-import React, { PropsWithChildren } from 'react';
+import styles from './styles.module.css';
 
-interface IContentHeadingProps extends PropsWithChildren {
+interface IContentHeadingProps extends React.PropsWithChildren {
   title: string;
 }
 
-export const ContentHeading: React.FC<IContentHeadingProps> = ({ title, children }) => {
-  return (
-    <div className={styles.contentHeading}>
-      <h1
-        className={cn(
-          styles.contentHeading__title,
-          'text',
-          'text_type_main-extra-large',
-          'p-0',
-          'm-0'
-        )}
-      >
-        {title}
-      </h1>
-      <div className={styles.contentHeadig__controls}>{children}</div>
-    </div>
-  );
-};
+export const ContentHeading: React.FC<IContentHeadingProps> = ({ title, children }) => (
+  <div className={styles.contentHeading}>
+    <h1
+      className={cn(
+        styles.contentHeading__title,
+        'text',
+        'text_type_main-extra-large',
+        'p-0',
+        'm-0'
+      )}
+    >
+      {title}
+    </h1>
+    <div className={styles.contentHeadig__controls}>{children}</div>
+  </div>
+);

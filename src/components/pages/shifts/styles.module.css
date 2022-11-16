@@ -1,23 +1,27 @@
 .shifts {
-  padding: 20px 18px 30px 30px;
+  padding: 20px 18px 20px 30px;
   margin-bottom: 20px;
-  height: calc(100vh - 160px);
+  height: calc(100vh - 140px);
   overflow-y: auto;
   scrollbar-gutter: stable;
   border-radius: var(--common-border-radius);
   background-color: var(--colors-interface-white);
 }
 
-.shift__table {
+.shifts__table {
   margin-top: 20px;
 }
 
-.shift__tableColumns {
+.shifts__tableColumns {
   grid-template-columns: 120px 3fr 2fr 2fr 2fr 2fr;
 }
 
-.shift__scrollSection {
-  height: calc(100vh - 300px);
+.shifts__scrollSection {
+  height: calc(100vh - 305px);
   overflow-y: scroll;
   scrollbar-gutter: stable;
+}
+
+.shifts__pagination {
+  margin-top: 10px;
 }

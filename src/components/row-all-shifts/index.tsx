@@ -1,8 +1,8 @@
-import { CellLink, CellText } from '../../ui/table-native';
-import cn from 'classnames';
-import styles from './index.module.css';
 import React, { useCallback } from 'react';
+import cn from 'classnames';
+import { CellLink, CellText } from '../../ui/table-native';
 import { StatusLabel } from '../../ui/status-label';
+import styles from './index.module.css';
 
 interface IShift {
   id: string;
@@ -20,33 +20,31 @@ interface IRowsAllShifts {
 }
 
 export const RowsAllShifts: React.FC<IRowsAllShifts> = ({ extClassName, data }) => {
-  const renderStatusLabel = useCallback(
-    (status: IShift['status']) => {
-      switch (status) {
-        case 'preparing':
-          return <StatusLabel statusText={'Новая'} type={'new'} />;
-        case 'started':
-          return <StatusLabel statusText={'Текущая'} type={'current'} />;
-        case 'finished':
-          return <StatusLabel statusText={'Прошедшая'} type={'past'} />;
-      }
-    },
-    [data]
-  );
+  const renderStatusLabel = useCallback((status: IShift['status']) => {
+    switch (status) {
+      case 'preparing':
+        return <StatusLabel statusText="Новая" type="new" />;
+      case 'started':
+        return <StatusLabel statusText="Текущая" type="current" />;
+      case 'finished':
+        return <StatusLabel statusText="Прошедшая" type="past" />;
+      default:
+        return null;
+    }
+  }, []);
 
-  const getRoutePath = useCallback(
-    (shift: IShift) => {
-      switch (shift.status) {
-        case 'preparing':
-          return `/shifts/preparing/${shift.id}`;
-        case 'started':
-          return `/shifts/started/${shift.id}`;
-        case 'finished':
-          return `/shifts/finished/${shift.id}`;
-      }
-    },
-    [data]
-  );
+  const getRoutePath = useCallback((shift: IShift) => {
+    switch (shift.status) {
+      case 'preparing':
+        return `/shifts/preparing/${shift.id}`;
+      case 'started':
+        return `/shifts/started/${shift.id}`;
+      case 'finished':
+        return `/shifts/finished/${shift.id}`;
+      default:
+        return '/';
+    }
+  }, []);
 
   return (
     <>
