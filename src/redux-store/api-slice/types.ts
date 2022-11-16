@@ -25,8 +25,6 @@ export interface IInformation {
 //   DECLINED = 'declined',
 // }
 
-
-
 export interface IApplicationsResponce {
   user_id: string;
   name: string;
@@ -35,5 +33,5 @@ export interface IApplicationsResponce {
   city: string;
   phone: string;
   request_id: string;
-  status: 'pending'|'approved'|'declined';
+  status: 'pending' | 'approved' | 'declined';
 }
