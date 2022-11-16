@@ -10,12 +10,27 @@
   --colors-interface-green: #3ea745;
   --colors-interface-border: #e2e4e8;
 
+  --colors-button-primary-default: var(--colors-interface-blue);
+  --colors-button-primary-hover: #4154a4cc;
+  --colors-button-primary-active: #344383;
+
+  --colors-button-secondary-default: #eceef6;
+  --colors-button-secondary-hover: #4154a433;
+  --colors-button-secondary-active: var(--colors-interface-blue);
+
+  --colors-button-negative-default: var(--colors-button-secondary-hover);
+  --colors-button-negative-hover: #c536371a;
+  --colors-button-negative-active: var(--colors-interface-red);
+
+  --colors-button-disabled: var(--colors-interface-gray-light);
+
   --background: var(--colors-interface-gray-light);
 
   --text-color-primary: var(--colors-interface-black);
   --text-color-secondary: var(--colors-interface-gray);
 
   --transition-hover: opacity 100ms ease-out;
+  --transition-background-color: background-color 100ms ease-out;
   --hover-opacity: 0.75;
   --common-border-radius: 10px;
   --common-border-width: 1px;

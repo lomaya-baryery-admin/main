@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from './button.module.css';
+import styles from './styles.module.css';
+import cn from 'classnames';
 
 export type TButtonProps = React.PropsWithChildren<
   Omit<React.HTMLProps<HTMLButtonElement>, 'size'>
@@ -7,7 +8,7 @@ export type TButtonProps = React.PropsWithChildren<
   htmlType: 'button' | 'submit' | 'reset';
   type?: 'primary' | 'secondary' | 'negative' | 'disabled';
   size?: 'small' | 'large';
-  className?: string;
+  extClassName?: string;
   onClick?: (() => void) | ((e: React.SyntheticEvent) => void);
   disabled?: boolean;
 };
@@ -16,19 +17,17 @@ export const Button = ({
   type = 'primary',
   size = 'large',
   children,
-  className = '',
+  extClassName,
   htmlType,
   disabled,
   ...props
 }: TButtonProps) => {
   const styleType = disabled || type === 'disabled' ? styles.disabled : styles[type];
 
-  const extClassName = className || '';
-
   return (
     <button
       type={htmlType}
-      className={`${styles.button} ${styles[size]} ${styleType} ${extClassName}`}
+      className={cn(styles.button, styles[size], styleType, extClassName)}
       disabled={disabled}
       {...props}
     >

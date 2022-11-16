@@ -3,7 +3,7 @@ import { IStatusLabelProps, StatusLabel } from '../ui/status-label/status-label'
 import { statusLable } from './constants';
 import { ImagePreview } from '../stories/image-preview/ImagePreview';
 import tableStyle from '../ui/table/Table.module.css';
-import { Button } from '../ui/button/button';
+import { Button } from '../ui/button';
 // -----------------------------------------------типы
 
 // колонки для таблицы Смены TODO: скорректировать названия после того, как будет добавлен бэк!
