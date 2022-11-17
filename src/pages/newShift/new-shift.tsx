@@ -112,6 +112,7 @@ export const NewShift: FC = () => {
   const newShiftsColumn = [
     responseColumnsHelper.accessor((row) => row, {
       header: 'Название  смены',
+      id: "nameShift",
       cell: () => (
         <input
           className={nameShift.length > 0 ? style.input__active : style.input}
@@ -124,6 +125,7 @@ export const NewShift: FC = () => {
     }),
     responseColumnsHelper.accessor((row) => row, {
       header: 'Дата старта/окончания',
+      id: "startDate",
       cell: () => (
         <div className={style.date}>
           <p className={style.date__text}> {`${date.toLocaleDateString()} - ${shiftDate()}`}</p>
@@ -146,12 +148,14 @@ export const NewShift: FC = () => {
     }),
     responseColumnsHelper.accessor((row) => row.total_users, {
       header: 'Кол-во участников',
+      id: "numberMembers",
       cell: (info) => <div className={style.cell}> {info.getValue()} </div>,
     }),
   ];
   const membersColumn = [
     usersColumnsHelper.accessor((row) => row.name, {
       header: 'Имя и фамилия',
+      id: "nameMembers",
       cell: (info) => (
         <p key={info.getValue()} className={style.member__name}>
           {info.getValue()}
@@ -160,6 +164,7 @@ export const NewShift: FC = () => {
     }),
     usersColumnsHelper.accessor((row) => row.city, {
       header: 'Город',
+      id: "city",
       cell: (info) => (
         <div key={info.getValue()} className={style.cell}>
           {' '}
@@ -169,6 +174,7 @@ export const NewShift: FC = () => {
     }),
     usersColumnsHelper.accessor((row) => row.phone, {
       header: 'Телефон',
+      id: "phones",
       cell: (info) => (
         <div key={info.getValue()} className={style.cell}>
           {' '}
@@ -178,6 +184,7 @@ export const NewShift: FC = () => {
     }),
     usersColumnsHelper.accessor((row) => row.date_of_birth, {
       header: 'Дата рождения',
+      id: "birthday",
       cell: (info) => (
         <div key={info.getValue()} className={style.cell}>
           {' '}
@@ -217,11 +224,11 @@ export const NewShift: FC = () => {
           />
         </div>
         <p className={style.pagination__text}>
-          Показывается {page} из {testResponse.total_page}
+          Показывается {page} из {testResponse?.total_page || 1}
         </p>
         <div className={style.pagination}>
           <Paginations
-            counterPages={testResponse.total_page} // количество страниц приходит с бэка
+            counterPages={testResponse?.total_page || 1} // количество страниц приходит с бэка
             currentPage={page}
             setCurrentPage={handleSwitchPage}
           />{' '}
