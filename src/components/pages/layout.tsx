@@ -8,12 +8,10 @@ import { SideBar } from '../sidebar';
 import styles from './layout.module.css';
 
 export const Layout = () => {
-  const { isLoading, isError } = useGetAllShiftsQuery(1);
+  const { isError } = useGetAllShiftsQuery('1');
 
   const content = useMemo(() => {
-    if (isLoading) {
-      return <Spinner />;
-    } else if (isError) {
+    if (isError) {
       return <h1 className={cn('text', 'text_type_main-extra-large')}>Сервер не доступен</h1>;
     } else {
       return (
@@ -27,7 +25,7 @@ export const Layout = () => {
         </>
       );
     }
-  }, [isLoading, isError]);
+  }, [isError]);
 
   return (
     <>

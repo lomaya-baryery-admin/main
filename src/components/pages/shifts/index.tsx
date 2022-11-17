@@ -7,13 +7,16 @@ import { RowsAllShifts } from '../../row-all-shifts';
 import { Pagination } from '../../../ui/pagination';
 import styles from './styles.module.css';
 import { useGetAllShiftsQuery } from '../../../redux-store/api';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../../redux-store/hooks';
 import { selectCurrentShifts } from '../../../redux-store/current-shifts';
+import { deserializeQuery } from '../../../utils';
 
 export const PageShiftsAll = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const page = Number(searchParams.get('page'));
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { pathname: currentPath, search } = location;
+  const page = deserializeQuery<{ page: string }>(search).page;
   const { data } = useGetAllShiftsQuery(page);
   const { preparing: isPreparingShift } = useAppSelector(selectCurrentShifts);
 
@@ -27,7 +30,7 @@ export const PageShiftsAll = () => {
   ];
 
   const handleSetPage = (page: number) => {
-    setSearchParams({ page: String(page) });
+    navigate({ pathname: currentPath, search: `page=${page}` });
   };
 
   return (
@@ -37,7 +40,13 @@ export const PageShiftsAll = () => {
           htmlType="button"
           type={isPreparingShift ? 'disabled' : 'primary'}
           disabled={Boolean(isPreparingShift)}
-          onClick={() => alert('create new shift')}
+          onClick={() =>
+            navigate('/shifts/create', {
+              state: {
+                background: location,
+              },
+            })
+          }
         >
           <PlusIcon type={isPreparingShift ? 'interface-secondary' : 'interface-white'} />
           Создать смену
@@ -60,8 +69,8 @@ export const PageShiftsAll = () => {
       />
       <Pagination
         extClassName={styles.shifts__pagination}
-        page={page}
-        total={10}
+        page={Number(page)}
+        total={data?.total_page || 0}
         next={handleSetPage}
         prev={handleSetPage}
       />

@@ -6,8 +6,8 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'http://127.0.0.1:3000' }),
   tagTypes: ['shifts'],
   endpoints: (builder) => ({
-    getAllShifts: builder.query<IShifts, number | string | undefined>({
-      query: (page = 1) => '/shifts', // for poduction `/shifts?page=${page}`
+    getAllShifts: builder.query<IShifts, string | undefined>({
+      query: (page = '1') => `/shiftspage=${page}`, // for poduction `/shifts?page=${page}`
       providesTags: ['shifts'],
     }),
   }),
