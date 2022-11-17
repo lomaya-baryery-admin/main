@@ -17,7 +17,7 @@ export const Button = ({
   size = 'large',
   children,
   className = '',
-  htmlType,
+  htmlType = 'button',
   disabled,
   ...props
 }: TButtonProps) => {
