@@ -17,6 +17,7 @@ import { IFilteredApplicationsResponce } from './tmp';
 // Это переменные, отвечающие за работу таблицы с нашими данными. По идее, такое должны написать коллеги,
 // которые пишут таблицу. Но они пока этого не сделали и, видимо, не будут
 
+
 // Структура данных таблицы (by lizonkisel)
 type TApplicationsTable = {
   user_name: string;
