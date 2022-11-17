@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import cn from 'classnames';
 import { NavLink, useLocation } from 'react-router-dom';
 import type { To } from 'react-router-dom';
 import { ChevronRightIcon, TIcons } from '../../ui/icons';
 import * as Icons from '../../ui/icons';
 import styles from './styles.module.css';
+import { useAppSelector } from '../../redux-store/hooks';
+import { selectCurrentShifts } from '../../redux-store/current-shifts';
 
 interface ISideBarAccordion {
   title: string;
@@ -102,7 +104,23 @@ const SideBarAccordion: React.FC<ISideBarAccordion> = ({
 };
 
 export const SideBar = () => {
-  //из стейта получить инфо о текущей и новой смене
+  const currentShifts = useAppSelector(selectCurrentShifts);
+
+  const shiftsList = useMemo(() => {
+    let list: ISideBarAccordion['list'] = [
+      { title: 'Все', to: { pathname: '/shifts/all', search: 'page=1' } },
+    ];
+
+    if (currentShifts.started) {
+      list.push({ title: 'Текущая', to: '/shifts/started' });
+    }
+
+    if (currentShifts.preparing) {
+      list.push({ title: 'Новая', to: '/shifts/preparing' });
+    }
+
+    return list;
+  }, [currentShifts]);
 
   const { pathname } = useLocation();
 
@@ -113,11 +131,7 @@ export const SideBar = () => {
       <SideBarAccordion
         title="Смены"
         expandOnMount={initRoute === 'shifts'}
-        list={[
-          { title: 'Все', to: '/shifts/all' },
-          { title: 'Текущая', to: '/shifts/started' }, //рендер при условии что такая смена есть, хранить в отдельном слайсе?
-          { title: 'Новая', to: '/shifts/preparing' }, //рендер при условии что такая смена есть, хранить в отдельном слайсе?
-        ]}
+        list={shiftsList}
         icon="CalendarIcon"
       />
       <SideBarAccordion

@@ -1,12 +1,12 @@
+import { useGetAllShiftsQuery } from '../../redux-store/api';
 import { AppRoutes } from '../pages';
-import {
-  useGetDefaultQuery,
-  useShiftsPostMutation,
-  useShiftsGetQuery,
-} from '../../redux-store/api-slice/api-slice';
 import { withProviders } from './providers';
 import './styles/index.css';
 
-const App = () => <AppRoutes />;
+const App = () => {
+  useGetAllShiftsQuery(1);
+
+  return <AppRoutes />;
+};
 
 export default withProviders(App);

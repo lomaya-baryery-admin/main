@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Spinner } from '../../ui/spinner/spinner';
+import { Spinner } from '../../ui/spinner';
 
 export default {
   title: 'Spinner',

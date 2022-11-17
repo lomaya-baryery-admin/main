@@ -7,7 +7,7 @@ interface ITable extends React.PropsWithChildren {
   gridClassName: string;
   header: string[];
   extClassName?: string;
-  renderRows: (tableRowStyles: CSSModuleClasses[string]) => JSX.Element;
+  renderRows: (tableRowStyles: CSSModuleClasses[string]) => JSX.Element | null;
 }
 
 export const Table: React.FC<ITable> = ({

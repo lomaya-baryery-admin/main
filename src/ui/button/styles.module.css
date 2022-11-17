@@ -47,6 +47,7 @@
 .disabled {
   color: var(--colors-interface-gray);
   background-color: var(--colors-button-disabled);
+  cursor: default;
 }
 
 .small {
