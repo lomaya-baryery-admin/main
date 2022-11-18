@@ -10,6 +10,9 @@ import { StatusLabel } from '../../ui/status-label/status-label';
 import { Table } from '../../ui/table/Table';
 import { tmpData } from './tmp';
 
+import { IApplicationsResponce } from '../../redux-store/api-slice/types';
+import { IFilteredApplicationsResponce } from './tmp';
+
 // TApplicationsTable, applicationsData, applicationsColumnsHelper, applicationsColumns
 // Это переменные, отвечающие за работу таблицы с нашими данными. По идее, такое должны написать коллеги,
 // которые пишут таблицу. Но они пока этого не сделали и, видимо, не будут
@@ -20,13 +23,22 @@ type TApplicationsTable = {
   city: string;
   phone: string;
   date_of_birth: string;
-  status: string;
+  status: 'approved' | 'declined';
 };
 
 export function ReviewedApplicationsPage() {
   const { data: responceData, isSuccess } = useFetchApplicationsQuery(''); //
 
-  const checkedData = isSuccess ? responceData : tmpData;
+  function filterResponseData(
+    responceData: IApplicationsResponce[]
+  ): IFilteredApplicationsResponce[] {
+    const filteredResponseData = JSON.parse(
+      JSON.stringify(responceData.filter((user) => user.status !== 'pending'))
+    );
+    return filteredResponseData;
+  }
+
+  const checkedData = isSuccess ? filterResponseData(responceData) : tmpData;
 
   const dataForTable: TApplicationsTable[] = [];
 
@@ -76,7 +88,7 @@ export function ReviewedApplicationsPage() {
       // Внутри cell код, вероятнее всего, нужно будет переписывать после подключения store.
       // Для этого потребуются эксперименты с готовым store-ом
       cell: (status) => {
-        const value: 'approved' | 'declined' = status.getValue();
+        const value = status.getValue();
         let typeValue: 'approved' | 'rejected';
         if (value === 'declined') {
           typeValue = 'rejected';

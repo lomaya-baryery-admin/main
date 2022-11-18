@@ -1,5 +1,18 @@
+import { IApplicationsResponce } from '../../redux-store/api-slice/types';
+
 // Структура данных, приходящих с сервера
-interface requestsColumnsNames {
+// interface requestsColumnsNames {
+//   user_id: string;
+//   name: string;
+//   surname: string;
+//   date_of_birth: string;
+//   city: string;
+//   phone: string;
+//   request_id: string;
+//   status: 'approved' | 'declined' | 'pending';
+// }
+
+export interface IFilteredApplicationsResponce {
   user_id: string;
   name: string;
   surname: string;
@@ -7,12 +20,12 @@ interface requestsColumnsNames {
   city: string;
   phone: string;
   request_id: string;
-  status: string;
+  status: 'approved' | 'declined';
 }
 
 // Захардкоженный массив данных, приходящих с сервера.
 // Он нужен просто для образца, в код таблицы идут преобразованные данные с бэка. Про них - ниже
-const defaultData: requestsColumnsNames[] = [
+const defaultData: IApplicationsResponce[] = [
   {
     user_id: 'dkfkd943904004fdjfd3438',
     name: 'Иван',
@@ -45,4 +58,6 @@ const defaultData: requestsColumnsNames[] = [
   },
 ];
 
-export const tmpData = defaultData.filter((user) => user.status !== 'pending');
+export const tmpData: IFilteredApplicationsResponce[] = JSON.parse(
+  JSON.stringify(defaultData.filter((user) => user.status !== 'pending'))
+);
