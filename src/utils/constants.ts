@@ -18,10 +18,10 @@ export const statusLable = (value: string): string => {
 export const applicationLabel = (value: 'approved' | 'declined'): string => {
   switch (value) {
     case 'approved':
-      return 'Участник одобрен'
+      return 'Участник одобрен';
     case 'declined':
       return 'Участник отклонён';
     default:
       return value;
   }
-}
+};
