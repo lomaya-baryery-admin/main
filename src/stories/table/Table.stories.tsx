@@ -7,9 +7,9 @@ import {
   testColumns,
   testData,
 } from '../../utils/tableColumns';
-import { Table } from '../../ui/table/Table';
-import { CalendarTable } from '../../components/calendar-table/calendar-table';
-import { dataForCalendarTable } from '../../components/calendar-table/mockData';
+import { Table } from '../../ui/table_deprecated/Table';
+import { CalendarTable } from '../../components/calendar-table_to-refactor/calendar-table';
+import { dataForCalendarTable } from '../../components/calendar-table_to-refactor/mockData';
 
 export default {
   title: 'UITable',

@@ -11,6 +11,7 @@ export type TButtonProps = React.PropsWithChildren<
   extClassName?: string;
   onClick?: (() => void) | ((e: React.SyntheticEvent) => void);
   disabled?: boolean;
+  loading?: boolean;
 };
 
 export const Button = ({
@@ -20,14 +21,23 @@ export const Button = ({
   extClassName,
   htmlType,
   disabled,
+  loading,
   ...props
 }: TButtonProps) => {
-  const styleType = disabled || type === 'disabled' ? styles.disabled : styles[type];
+  const sizeStyle = styles[`button_size_${size}`];
+  const typeStyle = styles[`button_type_${type}`];
 
   return (
     <button
       type={htmlType}
-      className={cn(styles.button, styles[size], styleType, extClassName)}
+      className={cn(
+        styles.button,
+        sizeStyle,
+        typeStyle,
+        { [styles.button_loading]: loading },
+        { [styles.button_disabled]: disabled },
+        extClassName
+      )}
       disabled={disabled}
       {...props}
     >

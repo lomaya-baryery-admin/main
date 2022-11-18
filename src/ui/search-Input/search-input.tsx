@@ -3,7 +3,7 @@ import { nanoid } from '@reduxjs/toolkit';
 import cn from 'classnames';
 import { CloseIcon, SearchIcon } from '../icons';
 import styles from './search-input.module.css';
-import { IInputProps } from '../input/input';
+import { IInputProps } from '../inputText';
 
 interface ISearchProps extends IInputProps {
   onClear: () => void;

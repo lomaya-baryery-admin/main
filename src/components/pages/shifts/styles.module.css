@@ -1,11 +1,6 @@
 .shifts {
-  padding: 20px 18px 20px 30px;
   margin-bottom: 20px;
   height: calc(100vh - 140px);
-  overflow-y: auto;
-  scrollbar-gutter: stable;
-  border-radius: var(--common-border-radius);
-  background-color: var(--colors-interface-white);
 }
 
 .shifts__table {

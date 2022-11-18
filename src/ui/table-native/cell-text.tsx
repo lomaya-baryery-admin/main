@@ -4,7 +4,7 @@ import styles from './cell-text.module.css';
 
 export interface ICellTextProps {
   text: string | number;
-  type?: 'primary' | 'secondary';
+  type?: 'primary' | 'secondary' | 'accent';
   extClassName?: string;
 }
 

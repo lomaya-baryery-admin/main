@@ -15,3 +15,9 @@ export interface IShifts {
   total_page: 10;
   shifts: IShift[];
 }
+
+export interface ICreateShift {
+  title: string;
+  started_at: Date;
+  finished_at: Date;
+}

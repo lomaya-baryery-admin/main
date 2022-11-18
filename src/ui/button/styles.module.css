@@ -10,52 +10,66 @@
   transition: var(--transition-background-color);
 }
 
-.primary {
+.button_loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(/src/ui/loader/button-loader.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
+}
+
+.button_type_primary {
   color: var(--colors-interface-white);
   background-color: var(--colors-button-primary-default);
 }
-.primary:hover {
+.button_type_primary:hover {
   background-color: var(--colors-button-primary-hover);
 }
-.primary:active {
+.button_type_primary:active {
   background-color: var(--colors-button-primary-active);
 }
-.secondary {
+.button_type_secondary {
   color: var(--colors-interface-blue);
   background-color: var(--colors-button-secondary-default);
 }
-.secondary:hover {
+.button_type_secondary:hover {
   background-color: var(--colors-button-secondary-hover);
 }
-.secondary:active {
+.button_type_secondary:active {
   color: var(--colors-interface-white);
   background-color: var(--colors-interface-blue);
 }
-.negative {
+.button_type_negative {
   color: var(--colors-interface-blue);
   background-color: var(--colors-button-negative-default);
 }
-.negative:hover {
+.button_type_negative:hover {
   color: var(--colors-interface-red);
   background-color: var(--colors-button-negative-hover);
 }
-.negative:active {
+.button_type_negative:active {
   color: var(--colors-interface-white);
   background-color: var(--colors-button-negative-active);
 }
 
-.disabled {
+.button_disabled,
+.button_disabled:hover {
   color: var(--colors-interface-gray);
   background-color: var(--colors-button-disabled);
   cursor: default;
 }
 
-.small {
+.button_size_small {
   font-size: 16px;
   line-height: 19px;
   padding: 10px 15px;
 }
-.large {
+.button_size_large {
   font-size: 18px;
   line-height: 22px;
   padding: 18px 56px;

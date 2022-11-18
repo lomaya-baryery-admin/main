@@ -1,9 +1,9 @@
 import cn from 'classnames';
 import { Button } from '../../../ui/button';
 import { PlusIcon } from '../../../ui/icons';
-import { ContentHeading } from '../../content-heading';
+import { ContentHeading } from '../../../ui/content-heading';
 import { Table } from '../../../ui/table-native';
-import { RowsAllShifts } from '../../row-all-shifts';
+import { RowsAllShifts } from '../../shift-row';
 import { Pagination } from '../../../ui/pagination';
 import styles from './styles.module.css';
 import { useGetAllShiftsQuery } from '../../../redux-store/api';
@@ -11,6 +11,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../../redux-store/hooks';
 import { selectCurrentShifts } from '../../../redux-store/current-shifts';
 import { deserializeQuery } from '../../../utils';
+import { ContentContainer } from '../../../ui/content-container';
 
 export const PageShiftsAll = () => {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ export const PageShiftsAll = () => {
   };
 
   return (
-    <div className={cn(styles.shifts)}>
+    <ContentContainer extClassName={styles.shifts}>
       <ContentHeading title={'Смены'}>
         <Button
           htmlType="button"
@@ -74,6 +75,6 @@ export const PageShiftsAll = () => {
         next={handleSetPage}
         prev={handleSetPage}
       />
-    </div>
+    </ContentContainer>
   );
 };

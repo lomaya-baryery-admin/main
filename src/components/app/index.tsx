@@ -4,7 +4,7 @@ import { withProviders } from './providers';
 import './styles/index.css';
 
 const App = () => {
-  useGetAllShiftsQuery(1);
+  useGetAllShiftsQuery('1');
 
   return <AppRoutes />;
 };

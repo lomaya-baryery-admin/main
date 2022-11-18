@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import type { IShifts } from './models';
+import { ICreateShift, IShift, IShifts } from './models';
 
 export const api = createApi({
   reducerPath: 'api',
@@ -7,10 +7,18 @@ export const api = createApi({
   tagTypes: ['shifts'],
   endpoints: (builder) => ({
     getAllShifts: builder.query<IShifts, string | undefined>({
-      query: (page = '1') => `/shiftspage=${page}`, // for poduction `/shifts?page=${page}`
+      query: (page = '1') => `/shiftspage=${page}`, // for poduction (GET)../shifts?page=1
       providesTags: ['shifts'],
+    }),
+    createNewShift: builder.mutation<Omit<IShift, 'total_users'>, ICreateShift>({
+      query: (data) => ({
+        url: '/shiftspage=6', //for production (POST)../shifts
+        method: 'POST',
+        body: data,
+      }),
+      invalidatesTags: ['shifts'],
     }),
   }),
 });
 
-export const { useGetAllShiftsQuery } = api;
+export const { useGetAllShiftsQuery, useCreateNewShiftMutation } = api;
