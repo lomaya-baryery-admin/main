@@ -5,9 +5,9 @@ import styles from './shift-current.module.css';
 import { Table } from '../../ui/table/Table';
 import { StatusLabel } from '../../ui/status-label/status-label';
 import { Calendar } from '../../ui/calendar/calendar';
-import { CalendarTable } from '../calendar-table/calendar-table';
-import { dataForCalendarTable } from '../calendar-table/mockData';
-
+import { CalendarTable } from '../../components/calendar-table/calendar-table';
+import { dataForCalendarTable } from '../../components/calendar-table/mockData';
+import { Paginations } from '../../stories/paginations/paginations';
 
 export const ShiftCurrent = () => {
   const [isCalendarOpen, setCalendarOpen] = useState(false);
@@ -23,8 +23,8 @@ export const ShiftCurrent = () => {
   );
 
   return (
-    <div className={styles.shift_page}>
-      <div className={styles.shift_container}>
+    <section className={styles.shift_page}>
+      <section className={styles.shift_container}>
         <div className={styles.shift_header}>
           <h1 className="text_type_main-extra-large text">Смена 1</h1>
           <div className={styles.shift_buttons}>
@@ -86,8 +86,8 @@ export const ShiftCurrent = () => {
             rowHeight={60}
           />
         </div>
-      </div>
-      <div className={styles.users_container}>
+      </section>
+      <section className={styles.users_container}>
         <h2 className={styles.users_subtitle}>Участники</h2>
         <div className={styles.users_table_container}>
           <Table
@@ -114,16 +114,18 @@ export const ShiftCurrent = () => {
                 user_name: 'фамилия',
                 user_city: 'Название города',
               },
-              
             ]}
             renderSubComponent={renderSubComponent}
-            getRowCanExpand= {() => true}
-            // initialExpandedRows= {{ '1': true, '2': true }}
+            getRowCanExpand={() => true}
             rowHeight={60}
           />
         </div>
-        <p>123</p>
-      </div>
-    </div>
+      </section>
+      <footer className={styles.footer}>
+        <p className= {styles.footer_title}>Показывается 2 из 3</p>
+        <Paginations counterPages={3} currentPage={2} setCurrentPage={() => {}} />
+      </footer>
+    </section>
   );
 };
+

@@ -1,5 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { IResponceShifts, IshiftCreate, IInformation, IdefaultObject } from './types';
+import {
+  IApplicationsResponce,
+  IdefaultObject,
+  IInformation,
+  IResponceShifts,
+  IshiftCreate,
+} from './types';
 
 export const dataApi = createApi({
   reducerPath: 'dataApi',
@@ -37,6 +43,23 @@ export const dataApi = createApi({
         body,
       }),
     }),
+    fetchApplications: build.query<IApplicationsResponce[], string | undefined>({
+      query: (shiftId) => ({
+        url: `/shifts/${shiftId}/requests`,
+      }),
+    }),
+    applicationPutchApprove: build.mutation<IApplicationsResponce, string | undefined>({
+      query: (requestId) => ({
+        url: `/requests/${requestId}/approve`,
+        method: 'PATCH',
+      }),
+    }),
+    applicationPutchDecline: build.mutation<IApplicationsResponce, string | undefined>({
+      query: (requestId) => ({
+        url: `/requests/${requestId}/decline`,
+        method: 'PATCH',
+      }),
+    }),
   }),
 });
 
@@ -46,4 +69,7 @@ export const {
   useShiftsGetQuery,
   useShiftsPatchMutation,
   useShiftsPutMutation,
+  useFetchApplicationsQuery,
+  useApplicationPutchApproveMutation,
+  useApplicationPutchDeclineMutation
 } = dataApi;
