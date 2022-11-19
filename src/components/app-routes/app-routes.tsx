@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from '../layout/layout';
-import {ActiveApplicationsPage} from "../../pages/active-applications-page/active-applications-page";
-import {ReviewedApplicationsPage} from "../../pages/reviewed-applications-page/reviewed-applications-page";
-import {NewShift} from "../../pages/new-shift/new-shift";
+import { ActiveApplicationsPage } from '../../pages/active-applications-page/active-applications-page';
+import { ReviewedApplicationsPage } from '../../pages/reviewed-applications-page/reviewed-applications-page';
+import { NewShift } from '../../pages/new-shift/new-shift';
 
 export const AppRoutes = () => (
   <div>
