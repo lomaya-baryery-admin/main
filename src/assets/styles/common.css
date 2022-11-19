@@ -2,6 +2,7 @@
   --colors-interface-white: #fff;
   --colors-interface-black: #000;
   --colors-interface-gray-light: #f7f6f9;
+  --colors-interface-gray-light-dark: #e2e4e8;
   --colors-interface-gray: #929ead;
   --colors-interface-gray-dark: #606c78;
   --colors-interface-blue: #4154a4;
@@ -94,4 +95,22 @@
 .spreadsheetLink:hover {
   text-decoration: underline solid 1px;
   text-decoration-skip-ink: none;
+}
+
+.smooth-popup-enter {
+  opacity: 0;
+}
+
+.smooth-popup-enter-active {
+  opacity: 1;
+  transition: opacity 250ms;
+}
+
+.smooth-popup-exit {
+  opacity: 1;
+}
+
+.smooth-popup-exit-active {
+  opacity: 0;
+  transition: opacity 250ms;
 }

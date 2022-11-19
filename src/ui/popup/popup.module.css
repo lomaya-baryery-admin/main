@@ -1,0 +1,32 @@
+.popup {
+  box-sizing: content-box;
+  width: 550px;
+  height: 340px;
+  border-radius: var(--common-border-radius);
+  border: 1px solid var(--colors-interface-gray-light-dark);
+  box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.05);
+  padding: 18px 24px;
+  background-color: var(--colors-interface-white);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+}
+
+.title {
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 18px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.closeIconExternalClass:hover {
+  cursor: pointer;
+}
