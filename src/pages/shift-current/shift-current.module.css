@@ -1,7 +1,6 @@
 .shift_page {
   position: relative;
   width: 1120px;
-
 }
 
 .shift_container {
@@ -104,7 +103,6 @@
   padding-bottom: 20px;
   padding-right: 30px;
   box-sizing: border-box;
-
 }
 
 .footer_title {
@@ -112,6 +110,6 @@
   font-size: 16px;
   line-height: 19px;
   font-weight: 600;
-  color: #929EAD;
+  color: #929ead;
   padding-right: 220px;
 }

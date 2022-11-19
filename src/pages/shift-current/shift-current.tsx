@@ -9,9 +9,22 @@ import { CalendarTable } from '../../components/calendar-table/calendar-table';
 import { dataForCalendarTable } from '../../components/calendar-table/mockData';
 import { Paginations } from '../../stories/paginations/paginations';
 
+type TShiftTable = {
+  count_members: number;
+  date_start_end: string;
+  status: string;
+};
+
+type TUsersTable = {
+  user_name: string;
+  user_city: string;
+};
+
 export const ShiftCurrent = () => {
   const [isCalendarOpen, setCalendarOpen] = useState(false);
-  const columnsHelper = createColumnHelper();
+  const columnsHelperShift = createColumnHelper<TShiftTable>();
+  const columnsHelperUsersUsers = createColumnHelper<TUsersTable>();
+
 
   const renderSubComponent = () => (
     <CalendarTable
@@ -39,7 +52,7 @@ export const ShiftCurrent = () => {
         <div className={styles.shift_table_container}>
           <Table
             columnsData={[
-              columnsHelper.accessor((row) => row.status, {
+              columnsHelperShift.accessor((row) => row.status, {
                 header: 'Статус смены',
                 cell: () => (
                   <span className={styles.table_cell}>
@@ -47,7 +60,7 @@ export const ShiftCurrent = () => {
                   </span>
                 ),
               }),
-              columnsHelper.accessor((row) => row.date_start_end, {
+              columnsHelperShift.accessor((row) => row.date_start_end, {
                 header: 'Дата старта/окончания',
                 cell: (info) => (
                   <>
@@ -71,7 +84,7 @@ export const ShiftCurrent = () => {
                   </>
                 ),
               }),
-              columnsHelper.accessor((row) => row.count_members, {
+              columnsHelperShift.accessor((row) => row.count_members, {
                 header: 'Кол-во участников',
                 cell: (info) => <span className={styles.table_cell}>{info.getValue()}</span>,
               }),
@@ -84,6 +97,7 @@ export const ShiftCurrent = () => {
               },
             ]}
             rowHeight={60}
+            getRowCanExpand={() => false}
           />
         </div>
       </section>
@@ -92,11 +106,11 @@ export const ShiftCurrent = () => {
         <div className={styles.users_table_container}>
           <Table
             columnsData={[
-              columnsHelper.accessor((row) => row.user_name, {
-                header: 'Имя и фамилия',
-                cell: (info) => <span className={styles.table_cell_name}>{info.getValue()}</span>,
-              }),
-              columnsHelper.accessor((row) => row.user_city, {
+              columnsHelperUsersUsers.accessor((row) => row.user_name, {
+              header: 'Имя и фамилия',
+              cell: (info) => <span className={styles.table_cell_name}>{info.getValue()}</span>,
+            }),
+              columnsHelperUsersUsers.accessor((row) => row.user_city, {
                 header: 'Город',
                 cell: (info) => <span className={styles.table_cell}>{info.getValue()}</span>,
               }),
@@ -122,10 +136,9 @@ export const ShiftCurrent = () => {
         </div>
       </section>
       <footer className={styles.footer}>
-        <p className= {styles.footer_title}>Показывается 2 из 3</p>
+        <p className={styles.footer_title}>Показывается 2 из 3</p>
         <Paginations counterPages={3} currentPage={2} setCurrentPage={() => {}} />
       </footer>
     </section>
   );
 };
-

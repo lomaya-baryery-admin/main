@@ -17,7 +17,7 @@ export default {
       description: 'Класс',
     },
     htmlType: {
-      defaultValue: 'button'
+      defaultValue: 'button',
     },
     disabled: {
       type: 'boolean',
