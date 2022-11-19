@@ -112,7 +112,7 @@ export const NewShift: FC = () => {
   const newShiftsColumn = [
     responseColumnsHelper.accessor((row) => row, {
       header: 'Название  смены',
-      id: "nameShift",
+      id: 'nameShift',
       cell: () => (
         <input
           className={nameShift.length > 0 ? style.input__active : style.input}
@@ -125,7 +125,7 @@ export const NewShift: FC = () => {
     }),
     responseColumnsHelper.accessor((row) => row, {
       header: 'Дата старта/окончания',
-      id: "startDate",
+      id: 'startDate',
       cell: () => (
         <div className={style.date}>
           <p className={style.date__text}> {`${date.toLocaleDateString()} - ${shiftDate()}`}</p>
@@ -148,14 +148,14 @@ export const NewShift: FC = () => {
     }),
     responseColumnsHelper.accessor((row) => row.total_users, {
       header: 'Кол-во участников',
-      id: "numberMembers",
+      id: 'numberMembers',
       cell: (info) => <div className={style.cell}> {info.getValue()} </div>,
     }),
   ];
   const membersColumn = [
     usersColumnsHelper.accessor((row) => row.name, {
       header: 'Имя и фамилия',
-      id: "nameMembers",
+      id: 'nameMembers',
       cell: (info) => (
         <p key={info.getValue()} className={style.member__name}>
           {info.getValue()}
@@ -164,7 +164,7 @@ export const NewShift: FC = () => {
     }),
     usersColumnsHelper.accessor((row) => row.city, {
       header: 'Город',
-      id: "city",
+      id: 'city',
       cell: (info) => (
         <div key={info.getValue()} className={style.cell}>
           {' '}
@@ -174,7 +174,7 @@ export const NewShift: FC = () => {
     }),
     usersColumnsHelper.accessor((row) => row.phone, {
       header: 'Телефон',
-      id: "phones",
+      id: 'phones',
       cell: (info) => (
         <div key={info.getValue()} className={style.cell}>
           {' '}
@@ -184,7 +184,7 @@ export const NewShift: FC = () => {
     }),
     usersColumnsHelper.accessor((row) => row.date_of_birth, {
       header: 'Дата рождения',
-      id: "birthday",
+      id: 'birthday',
       cell: (info) => (
         <div key={info.getValue()} className={style.cell}>
           {' '}
