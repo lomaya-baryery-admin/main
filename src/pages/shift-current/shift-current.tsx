@@ -25,7 +25,6 @@ export const ShiftCurrent = () => {
   const columnsHelperShift = createColumnHelper<TShiftTable>();
   const columnsHelperUsersUsers = createColumnHelper<TUsersTable>();
 
-
   const renderSubComponent = () => (
     <CalendarTable
       tableData={dataForCalendarTable}
@@ -107,9 +106,9 @@ export const ShiftCurrent = () => {
           <Table
             columnsData={[
               columnsHelperUsersUsers.accessor((row) => row.user_name, {
-              header: 'Имя и фамилия',
-              cell: (info) => <span className={styles.table_cell_name}>{info.getValue()}</span>,
-            }),
+                header: 'Имя и фамилия',
+                cell: (info) => <span className={styles.table_cell_name}>{info.getValue()}</span>,
+              }),
               columnsHelperUsersUsers.accessor((row) => row.user_city, {
                 header: 'Город',
                 cell: (info) => <span className={styles.table_cell}>{info.getValue()}</span>,
