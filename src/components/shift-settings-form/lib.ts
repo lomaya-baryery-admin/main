@@ -1,8 +1,8 @@
-import { IShiftConfigFormProps } from '.';
+import { IShiftSettingsFormProps } from '.';
 import { ICurrentShiftState } from '../../redux-store/current-shifts';
 
 export function getTitle(
-  shiftStatus: IShiftConfigFormProps['shiftStatus'],
+  shiftStatus: IShiftSettingsFormProps['shiftStatus'],
   currentShifts: ICurrentShiftState
 ): string {
   switch (shiftStatus) {
@@ -42,6 +42,7 @@ export function getStartDate(props: ICreateAndStartedProps | IPreparingProps) {
   } else {
     const { formType, startedFinishAt, startedStartAt } = props;
     let startDate: Date = new Date();
+    startDate.setDate(startDate.getDate() + 1);
 
     if (formType === 'creating' && startedFinishAt) {
       startDate = new Date(startedFinishAt);
@@ -62,7 +63,7 @@ export function getFinishDate(props: ICreateAndStartedProps | IPreparingProps) {
 
     let finishDate: Date = new Date();
 
-    finishDate.setDate(finishDate.getDate() + 1);
+    finishDate.setDate(finishDate.getDate() + 2);
 
     if (formType === 'creating' && startedFinishAt) {
       finishDate = new Date(startedFinishAt);

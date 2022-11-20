@@ -9,6 +9,8 @@
 }
 
 .content {
-  padding-left: 20px;
+  margin-left: 20px;
   flex-basis: 1116px;
+  height: calc(100vh - 80px);
+  overflow-y: scroll;
 }

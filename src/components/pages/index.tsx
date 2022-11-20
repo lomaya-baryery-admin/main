@@ -1,9 +1,10 @@
 import { Location, Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { useGetAllShiftsQuery } from '../../redux-store/api';
+import { Loader } from '../../ui/loader';
 import { Modal } from '../../ui/modal';
 import { Spinner } from '../../ui/spinner';
 import { IAppLocation } from '../../utils';
-import { ShiftConfigForm } from '../shift-config-form';
+import { ShiftSettingsForm } from '../shift-settings-form';
 import { Layout } from './layout';
 import { PageFinishedShift } from './shift-finished';
 import { PagePreparingShift } from './shift-preparing';
@@ -19,7 +20,9 @@ export const AppRoutes = () => {
   const rootLocation = state?.background || pathname.concat(search);
 
   return isLoading ? (
-    <Spinner />
+    <>
+      <Loader fullScreen />
+    </>
   ) : (
     <>
       <Routes location={rootLocation}>
@@ -47,7 +50,7 @@ export const AppRoutes = () => {
             path="shifts/create"
             element={
               <Modal title={'Новая смена'} close={() => navigate(-1)}>
-                <ShiftConfigForm shiftStatus="creating" />
+                <ShiftSettingsForm shiftStatus="creating" />
               </Modal>
             }
           />

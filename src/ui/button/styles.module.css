@@ -41,8 +41,7 @@
   background-color: var(--colors-button-secondary-hover);
 }
 .button_type_secondary:active {
-  color: var(--colors-interface-white);
-  background-color: var(--colors-interface-blue);
+  background-color: var(--colors-button-secondary-active);
 }
 .button_type_negative {
   color: var(--colors-interface-blue);

@@ -5,13 +5,14 @@ import { StatusLabel } from '../../ui/status-label';
 import styles from './index.module.css';
 import { IShift, IShifts } from '../../redux-store/api/models';
 import { getShiftNumber } from './lib';
+import { CellDate } from '../../ui/table-native/cell-date';
 
-interface IRowsAllShifts {
+interface IShiftRow {
   extClassName?: string;
   data: IShifts;
 }
 
-export const RowsAllShifts: React.FC<IRowsAllShifts> = ({ extClassName, data }) => {
+export const ShiftRow: React.FC<IShiftRow> = ({ extClassName, data }) => {
   const renderStatusLabel = useCallback((status: IShift['status']) => {
     switch (status) {
       case 'preparing':
@@ -45,8 +46,8 @@ export const RowsAllShifts: React.FC<IRowsAllShifts> = ({ extClassName, data }) 
         <div key={shift.id} className={cn(styles.row, extClassName, 'tableContentRow')}>
           <CellText text={getShiftNumber(shift.id)} />
           <CellLink text={shift.title} routeTo={getRoutePath(shift)} />
-          <CellText text={shift.started_at} />
-          <CellText text={shift.finished_at} />
+          <CellDate date={shift.started_at} />
+          <CellDate date={shift.finished_at} />
           <CellText text={shift.total_users} />
           {renderStatusLabel(shift.status)}
         </div>

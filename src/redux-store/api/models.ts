@@ -21,3 +21,23 @@ export interface ICreateShift {
   started_at: Date;
   finished_at: Date;
 }
+
+export interface IUserTask {
+  task_id: string;
+  status: 'under_review' | 'approved' | 'declined';
+  task_date: string;
+}
+
+export interface IShiftUser {
+  user_id: string;
+  name: string;
+  surname: string;
+  date_of_birth: string;
+  city: string;
+  phone: string;
+  user_tasks: IUserTask[];
+}
+
+export interface IShiftUsers extends IShift {
+  users: IShiftUser[];
+}

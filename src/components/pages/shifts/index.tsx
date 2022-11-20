@@ -3,7 +3,7 @@ import { Button } from '../../../ui/button';
 import { PlusIcon } from '../../../ui/icons';
 import { ContentHeading } from '../../../ui/content-heading';
 import { Table } from '../../../ui/table-native';
-import { RowsAllShifts } from '../../shift-row';
+import { ShiftRow } from '../../shift-row';
 import { Pagination } from '../../../ui/pagination';
 import styles from './styles.module.css';
 import { useGetAllShiftsQuery } from '../../../redux-store/api';
@@ -60,10 +60,7 @@ export const PageShiftsAll = () => {
         renderRows={(rowStyles) => {
           return data ? (
             <div className={cn(styles.shifts__scrollSection, 'custom-scroll')}>
-              <RowsAllShifts
-                data={data}
-                extClassName={cn(rowStyles, styles.shifts__tableColumns)}
-              />
+              <ShiftRow data={data} extClassName={rowStyles} />
             </div>
           ) : null;
         }}

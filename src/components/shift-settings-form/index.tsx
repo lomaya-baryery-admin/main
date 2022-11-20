@@ -11,12 +11,15 @@ import { useCreateNewShiftMutation } from '../../redux-store/api';
 import { Navigate, useLocation } from 'react-router-dom';
 import { IAppLocation } from '../../utils';
 
-export interface IShiftConfigFormProps {
+export interface IShiftSettingsFormProps {
   shiftStatus: 'creating' | 'started' | 'preparing';
   extClassName?: string;
 }
 
-export const ShiftConfigForm: React.FC<IShiftConfigFormProps> = ({ shiftStatus, extClassName }) => {
+export const ShiftSettingsForm: React.FC<IShiftSettingsFormProps> = ({
+  shiftStatus,
+  extClassName,
+}) => {
   const { state: locationState }: IAppLocation = useLocation();
 
   const { started, preparing } = useAppSelector(selectCurrentShifts);

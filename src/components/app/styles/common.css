@@ -16,7 +16,7 @@
 
   --colors-button-secondary-default: #eceef6;
   --colors-button-secondary-hover: #4154a433;
-  --colors-button-secondary-active: var(--colors-interface-blue);
+  --colors-button-secondary-active: #4154a459;
 
   --colors-button-negative-default: var(--colors-button-secondary-hover);
   --colors-button-negative-hover: #c536371a;
@@ -142,9 +142,9 @@
 }
 
 .tableContentRow {
-  border-top: var(--common-border-width) solid var(--colors-table-border);
+  border-bottom: var(--common-border-width) solid var(--colors-table-border);
 }
 
-.tableContentRow:first-child {
-  border-top: none;
+.tableContentRow:last-child {
+  border-bottom: none;
 }

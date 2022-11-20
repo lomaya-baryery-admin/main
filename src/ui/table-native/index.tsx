@@ -17,7 +17,10 @@ export const Table: React.FC<ITable> = ({
   renderRows,
   children,
 }) => {
-  const renderingRows = useCallback(() => renderRows(styles.table__row), [renderRows]);
+  const renderingRows = useCallback(
+    () => renderRows(cn(styles.table__row, gridClassName)),
+    [renderRows]
+  );
 
   return (
     <section className={cn(styles.table, extClassName)}>

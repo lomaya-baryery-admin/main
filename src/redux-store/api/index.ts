@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { ICreateShift, IShift, IShifts } from './models';
+import { ICreateShift, IShift, IShifts, IShiftUsers } from './models';
 
 export const api = createApi({
   reducerPath: 'api',
@@ -18,7 +18,10 @@ export const api = createApi({
       }),
       invalidatesTags: ['shifts'],
     }),
+    getShiftUsers: builder.query<IShiftUsers, IShift['id']>({
+      query: (shiftId) => '/preparingshift', //for production (GET)../shifts/{shift_id}/users (пока без пагинации)
+    }),
   }),
 });
 
-export const { useGetAllShiftsQuery, useCreateNewShiftMutation } = api;
+export const { useGetAllShiftsQuery, useCreateNewShiftMutation, useGetShiftUsersQuery } = api;
