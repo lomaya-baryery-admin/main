@@ -7,14 +7,17 @@ export default {
   argTypes: {
     size: {
       description: 'Размер кнопки',
-      defaultValue: 'large',
     },
     type: {
       description: 'Тип кнопки',
-      defaultValue: 'primary',
+      options: ['primary', 'secondary', 'negative', 'disabled'],
+      control: { type: 'radio' },
     },
     className: {
       description: 'Класс',
+    },
+    htmlType: {
+      defaultValue: 'button',
     },
     disabled: {
       type: 'boolean',
