@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { ICreateShift, IShift, IShifts, IShiftUsers } from './models';
+import { ICreateShift, IShift, IShifts, IShiftUsers, TUpdateShiftSettings } from './models';
 
 export const api = createApi({
   reducerPath: 'api',
@@ -8,7 +8,7 @@ export const api = createApi({
   endpoints: (builder) => ({
     getAllShifts: builder.query<IShifts, string | undefined>({
       query: (page = '1') => `/shiftspage=${page}`, // for poduction (GET)../shifts?page=1
-      providesTags: ['shifts'],
+      providesTags: (result, error, arg) => (result ? [{ type: 'shifts', id: arg }] : ['shifts']),
     }),
     createNewShift: builder.mutation<Omit<IShift, 'total_users'>, ICreateShift>({
       query: (data) => ({
@@ -16,12 +16,34 @@ export const api = createApi({
         method: 'POST',
         body: data,
       }),
-      invalidatesTags: ['shifts'],
+      invalidatesTags: [{ type: 'shifts' }],
     }),
     getShiftUsers: builder.query<IShiftUsers, IShift['id']>({
       query: (shiftId) => '/preparingshift', //for production (GET)../shifts/{shift_id}/users (пока без пагинации)
     }),
+    updateShiftSettings: builder.mutation<Omit<IShift, 'total_users'>, TUpdateShiftSettings>({
+      query: ({ shiftId, ...body }) => ({
+        url: '/shiftspage=7', //for production (PATCH)../shifts/{shift_id}
+        method: 'PATCH',
+        body,
+      }),
+      invalidatesTags: [{ type: 'shifts', id: '1' }],
+    }),
+    forcedShiftStart: builder.mutation<Omit<IShift, 'total_users'>, TUpdateShiftSettings>({
+      query: ({ shiftId, ...body }) => ({
+        url: '/shiftspage=8', // for QA (PUT)../shifts/{shift_id}/actions/start, don't forget exlude for production
+        method: 'PUT',
+        body,
+      }),
+      invalidatesTags: [{ type: 'shifts', id: '1' }],
+    }),
   }),
 });
 
-export const { useGetAllShiftsQuery, useCreateNewShiftMutation, useGetShiftUsersQuery } = api;
+export const {
+  useGetAllShiftsQuery,
+  useCreateNewShiftMutation,
+  useGetShiftUsersQuery,
+  useUpdateShiftSettingsMutation,
+  useForcedShiftStartMutation,
+} = api;

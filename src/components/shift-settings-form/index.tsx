@@ -7,7 +7,7 @@ import { useAppSelector } from '../../redux-store/hooks';
 import { selectCurrentShifts } from '../../redux-store/current-shifts';
 import { Button } from '../../ui/button';
 import { getTitle, getDiffInDays, getFinishDate, getStartDate, validateLength } from './lib';
-import { useCreateNewShiftMutation } from '../../redux-store/api';
+import { useCreateNewShiftMutation, useUpdateShiftSettingsMutation } from '../../redux-store/api';
 import { Navigate, useLocation } from 'react-router-dom';
 import { IAppLocation } from '../../utils';
 
@@ -24,7 +24,15 @@ export const ShiftSettingsForm: React.FC<IShiftSettingsFormProps> = ({
 
   const { started, preparing } = useAppSelector(selectCurrentShifts);
 
-  const [createShift, { isError, isLoading, isSuccess }] = useCreateNewShiftMutation();
+  const [
+    createShift,
+    { isError: isCreateError, isLoading: isCreateLoading, isSuccess: isCreateSuccess },
+  ] = useCreateNewShiftMutation();
+
+  const [
+    updateShift,
+    { isError: isUpdateError, isLoading: isUpdateLoading, isSuccess: isUpdateSuccess },
+  ] = useUpdateShiftSettingsMutation();
 
   const initShifTitle = useMemo(
     () => getTitle(shiftStatus, { started, preparing }),
@@ -62,12 +70,19 @@ export const ShiftSettingsForm: React.FC<IShiftSettingsFormProps> = ({
   const handleSubmit: FormEventHandler<HTMLFormElement> = (evt) => {
     evt.preventDefault();
 
+    const shiftSettings = {
+      title: titleFieldValue.trim(),
+      started_at: startFieldValue,
+      finished_at: finishFieldValue,
+    } as const;
+
     if (validateTitle(titleFieldValue)) {
-      createShift({
-        title: titleFieldValue.trim(),
-        started_at: startFieldValue,
-        finished_at: finishFieldValue,
-      });
+      shiftStatus === 'creating'
+        ? createShift(shiftSettings)
+        : updateShift({
+            shiftId: shiftStatus === 'preparing' ? preparing!.id : started!.id,
+            ...shiftSettings,
+          });
     } else {
       handleValidateTitle();
     }
@@ -77,7 +92,7 @@ export const ShiftSettingsForm: React.FC<IShiftSettingsFormProps> = ({
     setToggleTextFieldError(!validateTitle(titleFieldValue));
   };
 
-  if (isSuccess) {
+  if (isCreateSuccess || isUpdateSuccess) {
     return <Navigate to={locationState?.background || '/'} replace />;
   }
 
@@ -140,11 +155,11 @@ export const ShiftSettingsForm: React.FC<IShiftSettingsFormProps> = ({
       <Button
         htmlType="submit"
         size="small"
-        disabled={isLoading}
-        loading={isLoading}
+        disabled={isCreateLoading || isUpdateLoading}
+        loading={isCreateLoading || isUpdateLoading}
         extClassName={styles.shiftForm__button}
       >
-        Создать
+        {shiftStatus === 'creating' ? 'Создать' : 'Готово'}
       </Button>
     </form>
   );

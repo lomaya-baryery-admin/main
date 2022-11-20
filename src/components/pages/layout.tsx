@@ -2,7 +2,6 @@ import cn from 'classnames';
 import { useMemo } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useGetAllShiftsQuery } from '../../redux-store/api';
-import { Spinner } from '../../ui/spinner';
 import { Header } from '../header';
 import { SideBar } from '../sidebar';
 import styles from './layout.module.css';
@@ -19,7 +18,7 @@ export const Layout = () => {
           <nav className={styles.navigation}>
             <SideBar />
           </nav>
-          <section className={styles.content}>
+          <section className={cn(styles.content, 'custom-scroll')}>
             <Outlet />
           </section>
         </>

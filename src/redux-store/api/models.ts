@@ -22,6 +22,10 @@ export interface ICreateShift {
   finished_at: Date;
 }
 
+export type TUpdateShiftSettings = Partial<ICreateShift> & {
+  shiftId: string;
+};
+
 export interface IUserTask {
   task_id: string;
   status: 'under_review' | 'approved' | 'declined';

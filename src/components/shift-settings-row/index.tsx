@@ -6,10 +6,11 @@ import { CellDate } from '../../ui/table-native/cell-date';
 import { Button } from '../../ui/button';
 
 interface IShiftSettingsRow {
-  extClassName: string;
+  extClassName?: string;
   title: string;
   start: string;
   finish: string;
+  onButtonClick: () => void;
   participants: number;
 }
 
@@ -18,6 +19,7 @@ export const ShiftSettingsRow: React.FC<IShiftSettingsRow> = ({
   title,
   start,
   finish,
+  onButtonClick,
   participants,
 }) => {
   return (
@@ -34,6 +36,7 @@ export const ShiftSettingsRow: React.FC<IShiftSettingsRow> = ({
           htmlType="button"
           type="secondary"
           size="small"
+          onClick={onButtonClick}
         >
           Изменить
         </Button>

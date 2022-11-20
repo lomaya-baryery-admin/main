@@ -6,8 +6,12 @@
   margin-bottom: 10px;
 }
 
+.shift__heading {
+  min-height: 58px;
+}
+
 .shift__headingTable {
-  margin-top: 10px;
+  margin-top: 20px;
   margin-bottom: 10px;
 }
 
@@ -24,7 +28,7 @@
 .shift__participantsContainer {
   margin-top: 10px;
   margin-bottom: 20px;
-  min-height: calc(100vh - 372px);
+  min-height: calc(100vh - 382px);
 }
 
 .shift__participantsTable {

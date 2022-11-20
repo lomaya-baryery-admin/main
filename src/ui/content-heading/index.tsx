@@ -4,10 +4,15 @@ import styles from './styles.module.css';
 
 interface IContentHeadingProps extends React.PropsWithChildren {
   title: string;
+  extClassName?: string;
 }
 
-export const ContentHeading: React.FC<IContentHeadingProps> = ({ title, children }) => (
-  <div className={styles.contentHeading}>
+export const ContentHeading: React.FC<IContentHeadingProps> = ({
+  title,
+  extClassName,
+  children,
+}) => (
+  <div className={cn(styles.contentHeading, extClassName)}>
     <h1
       className={cn(
         styles.contentHeading__title,

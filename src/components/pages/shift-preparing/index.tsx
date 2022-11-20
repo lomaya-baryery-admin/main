@@ -1,3 +1,4 @@
+import { useCallback, useMemo } from 'react';
 import cn from 'classnames';
 import styles from './styles.module.css';
 import { ContentContainer } from '../../../ui/content-container';
@@ -5,16 +6,17 @@ import { ContentHeading } from '../../../ui/content-heading';
 import { Table } from '../../../ui/table-native';
 import { Button } from '../../../ui/button';
 import { ShiftSettingsRow } from '../../shift-settings-row';
-import { Alert } from '../../../ui/alert';
-import { useAppSelector } from '../../../redux-store/hooks';
-import { selectCurrentShifts } from '../../../redux-store/current-shifts';
 import { PreparingShiftRow } from '../../preparing-shift-row';
-import { useGetShiftUsersQuery } from '../../../redux-store/api';
-import { Spinner } from '../../../ui/spinner';
+import { Alert } from '../../../ui/alert';
 import { Loader } from '../../../ui/loader';
-import { useMemo } from 'react';
+import { selectCurrentShifts } from '../../../redux-store/current-shifts';
+import { useForcedShiftStartMutation, useGetShiftUsersQuery } from '../../../redux-store/api';
+import { useAppSelector } from '../../../redux-store/hooks';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const PagePreparingShift = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const { preparing } = useAppSelector(selectCurrentShifts); //убедиться что стор обновится после патча смены
 
   if (!preparing) {
@@ -25,14 +27,26 @@ export const PagePreparingShift = () => {
 
   const { data, isLoading, isError } = useGetShiftUsersQuery(preparing.id);
 
+  const [forceStart, { isLoading: isStartLoading }] = useForcedShiftStartMutation();
+
+  const openShiftSettings = useCallback(
+    () =>
+      navigate('/shifts/preparing/settings', {
+        state: {
+          background: location.pathname,
+        },
+      }),
+    []
+  );
+
   const participantsTable = useMemo(() => {
     if (isLoading) {
       return <Loader extClassName={styles.shift__loader} />;
     } else if (isError || !data) {
-      return <Alert extClassName={styles.participants__alert} title="Что-то пошло не так..." />;
+      return <Alert extClassName={styles.participants__alert} title="Что-то пошло не так" />;
     } else if (data.users.length === 0) {
       return (
-        <Alert extClassName={styles.participants__alert} title="Нет принятый заявок на участие" />
+        <Alert extClassName={styles.participants__alert} title="Нет принятых заявок на участие" />
       );
     } else {
       return (
@@ -51,12 +65,19 @@ export const PagePreparingShift = () => {
   return (
     <>
       <ContentContainer extClassName={styles.shift__headingContainer}>
-        <ContentHeading title="Новая смена">
-          <Button
+        <ContentHeading title="Новая смена" extClassName={styles.shift__heading}>
+          <Button //специально для QA, на проде ее быть не должно
             htmlType="button"
-            disabled={false}
-            loading={false}
-            onClick={() => alert('handle start')}
+            disabled={isStartLoading}
+            loading={isStartLoading}
+            onClick={() =>
+              forceStart({
+                shiftId: preparing.id,
+                title: preparing.title,
+                started_at: new Date(preparing.started_at),
+                finished_at: new Date(preparing.finished_at),
+              })
+            }
           >
             Начать смену
           </Button>
@@ -71,6 +92,7 @@ export const PagePreparingShift = () => {
               title={title}
               start={started_at}
               finish={finished_at}
+              onButtonClick={openShiftSettings}
               participants={total_users}
             />
           )}

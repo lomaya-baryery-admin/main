@@ -54,6 +54,14 @@ export const AppRoutes = () => {
               </Modal>
             }
           />
+          <Route
+            path="shifts/preparing/settings"
+            element={
+              <Modal title={'Настройка смены'} close={() => navigate(-1)}>
+                <ShiftSettingsForm shiftStatus="preparing" />
+              </Modal>
+            }
+          />
         </Routes>
       )}
     </>
