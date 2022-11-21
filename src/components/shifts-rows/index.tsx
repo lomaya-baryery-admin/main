@@ -7,12 +7,12 @@ import { IShift, IShifts } from '../../redux-store/api/models';
 import { getShiftNumber } from './lib';
 import { CellDate } from '../../ui/table-native/cell-date';
 
-interface IShiftRow {
+interface IShiftsRows {
   extClassName?: string;
   data: IShifts;
 }
 
-export const ShiftRow: React.FC<IShiftRow> = ({ extClassName, data }) => {
+export const ShiftsRows: React.FC<IShiftsRows> = ({ extClassName, data }) => {
   const renderStatusLabel = useCallback((status: IShift['status']) => {
     switch (status) {
       case 'preparing':

@@ -10,6 +10,10 @@
   min-height: 58px;
 }
 
+.shift__messageButton {
+  margin-right: 10px;
+}
+
 .shift__headingTable {
   margin-top: 20px;
   margin-bottom: 10px;
@@ -29,6 +33,9 @@
   margin-top: 10px;
   margin-bottom: 20px;
   min-height: calc(100vh - 382px);
+}
+
+.shift__participantsTable {
 }
 
 .participants__tableColumns {

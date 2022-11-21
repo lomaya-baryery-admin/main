@@ -5,7 +5,7 @@ import { ContentContainer } from '../../../ui/content-container';
 import { ContentHeading } from '../../../ui/content-heading';
 import { Table } from '../../../ui/table-native';
 import { ShiftSettingsRow } from '../../shift-settings-row';
-import { PreparingShiftRow } from '../../preparing-shift-row';
+import { PreparingShiftRows } from '../../preparing-shift-rows';
 import { Alert } from '../../../ui/alert';
 import { Loader } from '../../../ui/loader';
 import { selectCurrentShifts } from '../../../redux-store/current-shifts';
@@ -16,7 +16,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 export const PagePreparingShift = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { preparing } = useAppSelector(selectCurrentShifts); //убедиться что стор обновится после патча смены
+  const { preparing } = useAppSelector(selectCurrentShifts);
 
   if (!preparing) {
     return <Alert extClassName={styles.shift__alert} title="Что-то пошло не так" />;
@@ -52,7 +52,7 @@ export const PagePreparingShift = () => {
           gridClassName={styles.participants__tableColumns}
           header={['Имя и фамилия', 'Город', 'Телефон', 'Дата рождения']}
           renderRows={(rowStyles) => (
-            <PreparingShiftRow extClassName={rowStyles} data={data?.users} />
+            <PreparingShiftRows extClassName={rowStyles} data={data?.users} />
           )}
         />
       );

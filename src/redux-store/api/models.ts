@@ -29,7 +29,7 @@ export type TUpdateShiftSettings = Partial<ICreateShift> & {
 export interface IUserTask {
   task_id: string;
   status: 'under_review' | 'approved' | 'declined';
-  task_date: string;
+  task_date: string; //"2022-09-09T09:10:19.890Z"
 }
 
 export interface IShiftUser {

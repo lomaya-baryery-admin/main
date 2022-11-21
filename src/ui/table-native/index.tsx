@@ -37,3 +37,5 @@ export const Table: React.FC<ITable> = ({
 
 export { CellText } from './cell-text';
 export { CellLink } from './cell-link';
+export { CellDate } from './cell-date';
+export { CellTasksStat } from './cell-tasks-stat';

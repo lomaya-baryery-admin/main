@@ -2,7 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 import styles from './styles.module.css';
 import { CellText } from '../../ui/table-native';
-import { CellDate } from '../../ui/table-native/cell-date';
+import { CellDate } from '../../ui/table-native';
 import { Button } from '../../ui/button';
 
 interface IShiftSettingsRow {

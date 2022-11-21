@@ -3,14 +3,14 @@ import cn from 'classnames';
 import styles from './styles.module.css';
 import { IShiftUser } from '../../redux-store/api/models';
 import { CellText } from '../../ui/table-native';
-import { CellDate } from '../../ui/table-native/cell-date';
+import { CellDate } from '../../ui/table-native';
 
-interface IPreparingShiftRowProps {
+interface IPreparingShiftRowsProps {
   extClassName?: string;
   data: IShiftUser[];
 }
 
-export const PreparingShiftRow: React.FC<IPreparingShiftRowProps> = ({ extClassName, data }) => {
+export const PreparingShiftRows: React.FC<IPreparingShiftRowsProps> = ({ extClassName, data }) => {
   return (
     <>
       {data.map((participant) => (

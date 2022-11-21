@@ -1,0 +1,7 @@
+.userRow {
+  user-select: none;
+}
+
+.userRow__data {
+  grid-template-rows: 80px;
+}

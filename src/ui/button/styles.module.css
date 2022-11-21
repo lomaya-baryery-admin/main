@@ -52,7 +52,6 @@
   background-color: var(--colors-button-negative-hover);
 }
 .button_type_negative:active {
-  color: var(--colors-interface-white);
   background-color: var(--colors-button-negative-active);
 }
 
@@ -71,5 +70,5 @@
 .button_size_large {
   font-size: 18px;
   line-height: 22px;
-  padding: 18px 56px;
+  padding: 18px 32px;
 }

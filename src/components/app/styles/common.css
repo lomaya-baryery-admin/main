@@ -18,10 +18,9 @@
   --colors-button-secondary-hover: #4154a433;
   --colors-button-secondary-active: #4154a459;
 
-  --colors-button-negative-default: var(--colors-button-secondary-hover);
+  --colors-button-negative-default: var(--colors-button-secondary-default);
   --colors-button-negative-hover: #c536371a;
-  --colors-button-negative-active: var(--colors-interface-red);
-
+  --colors-button-negative-active: #c5363740;
   --colors-button-disabled: var(--colors-interface-gray-light);
 
   --colors-table-border: #e5e5e5;

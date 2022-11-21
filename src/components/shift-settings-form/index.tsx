@@ -1,4 +1,4 @@
-import React, { FormEventHandler, useMemo, useRef, useState } from 'react';
+import React, { FormEventHandler, useMemo, useState } from 'react';
 import { InputText } from '../../ui/inputText';
 import cn from 'classnames';
 import styles from './styles.module.css';
@@ -173,7 +173,7 @@ export const ShiftSettingsForm: React.FC<IShiftSettingsFormProps> = ({
         loading={isCreateLoading || isUpdateLoading}
         extClassName={styles.shiftForm__button}
       >
-        {shiftStatus === 'creating' ? 'Создать' : 'Готово'}
+        {shiftStatus === 'creating' ? 'Создать' : 'Сохранить'}
       </Button>
     </form>
   );
