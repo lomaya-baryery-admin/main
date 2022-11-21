@@ -1,8 +1,5 @@
-import { Location, Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { useGetAllShiftsQuery } from '../../redux-store/api';
-import { Loader } from '../../ui/loader';
+import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { Modal } from '../../ui/modal';
-import { Spinner } from '../../ui/spinner';
 import { IAppLocation } from '../../utils';
 import { ShiftSettingsForm } from '../shift-settings-form';
 import { Layout } from './layout';
@@ -12,18 +9,12 @@ import { PageStartedShift } from './shift-started';
 import { PageShiftsAll } from './shifts';
 
 export const AppRoutes = () => {
-  const { isLoading } = useGetAllShiftsQuery('1');
-
   const { state, pathname, search }: IAppLocation = useLocation();
   const navigate = useNavigate();
 
   const rootLocation = state?.background || pathname.concat(search);
 
-  return isLoading ? (
-    <>
-      <Loader fullScreen />
-    </>
-  ) : (
+  return (
     <>
       <Routes location={rootLocation}>
         <Route path="/" element={<Layout />}>

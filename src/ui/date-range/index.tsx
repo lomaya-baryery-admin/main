@@ -1,4 +1,4 @@
-import { FC, ReactNode, useRef } from 'react';
+import { FC, ReactNode } from 'react';
 import ReactDatePicker, { ReactDatePickerCustomHeaderProps } from 'react-datepicker';
 import './react-datepicker.css';
 import ru from 'date-fns/locale/ru';
@@ -47,6 +47,7 @@ export interface IDateRange {
   finishValue: Date;
   changeStartDate: (date: Date) => void;
   changeFinishDate: (date: Date) => void;
+  filterStart: Date;
   disabledStart?: boolean;
   className?: string;
 }
@@ -56,63 +57,60 @@ export const DateRange: FC<IDateRange> = ({
   finishValue,
   changeStartDate,
   changeFinishDate,
+  filterStart,
   disabledStart,
   className,
-}) => {
-  const startDateValueRef = useRef(startValue);
-
-  return (
-    <div className={cn(className, styles.dateRange)}>
-      <ReactDatePicker
-        name="startDate"
-        showPopperArrow={false}
-        locale={ru}
-        selected={startValue}
-        onChange={(date) => {
-          if (date) {
-            changeStartDate(date);
-            if (finishValue <= date) {
-              const finishDate = new Date(date);
-              finishDate.setDate(date.getDate() + 1);
-              changeFinishDate(finishDate);
-            }
+}) => (
+  <div className={cn(className, styles.dateRange)}>
+    <ReactDatePicker
+      name="startDate"
+      showPopperArrow={false}
+      locale={ru}
+      selected={startValue}
+      onChange={(date) => {
+        if (date) {
+          changeStartDate(date);
+          if (finishValue <= date) {
+            const finishDate = new Date(date);
+            finishDate.setDate(date.getDate() + 1);
+            changeFinishDate(finishDate);
           }
-        }}
-        wrapperClassName={styles.datePicker}
-        className={cn(
-          styles.datePicker__input,
-          {
-            [styles.dataPicker__input_disabled]: disabledStart,
-          },
-          'text',
-          'text_type_extra_default'
-        )}
-        calendarClassName={styles.dataPicker__calendar}
-        dateFormat="dd.MM.yyyy"
-        fixedHeight
-        renderCustomHeader={customHeader}
-        dayClassName={() => styles.dataPicker__calendarWeekDay}
-        formatWeekDay={(formattedDate) => getShortenWeekDay(formattedDate)}
-        filterDate={(date) => date >= startDateValueRef.current}
-        disabled={disabledStart}
-      />
-      <span className={styles.dateRange__divider} />
-      <ReactDatePicker
-        name="finishDate"
-        showPopperArrow={false}
-        locale={ru}
-        selected={finishValue}
-        onChange={(date) => changeFinishDate(date!)}
-        wrapperClassName={styles.datePicker}
-        className={cn(styles.datePicker__input, 'text', 'text_type_extra_default')}
-        calendarClassName={styles.dataPicker__calendar}
-        dateFormat="dd.MM.yyyy"
-        fixedHeight
-        renderCustomHeader={customHeader}
-        dayClassName={() => styles.dataPicker__calendarWeekDay}
-        formatWeekDay={(formattedDate) => getShortenWeekDay(formattedDate)}
-        filterDate={(date) => date > startValue}
-      />
-    </div>
-  );
-};
+        }
+      }}
+      wrapperClassName={styles.datePicker}
+      className={cn(
+        styles.datePicker__input,
+        {
+          [styles.dataPicker__input_disabled]: disabledStart,
+        },
+        'text',
+        'text_type_extra_default'
+      )}
+      calendarClassName={styles.dataPicker__calendar}
+      dateFormat="dd.MM.yyyy"
+      fixedHeight
+      renderCustomHeader={customHeader}
+      dayClassName={() => styles.dataPicker__calendarWeekDay}
+      formatWeekDay={(formattedDate) => getShortenWeekDay(formattedDate)}
+      filterDate={(date) => date >= filterStart}
+      disabled={disabledStart}
+    />
+    <span className={styles.dateRange__divider} />
+    <ReactDatePicker
+      name="finishDate"
+      showPopperArrow={false}
+      locale={ru}
+      selected={finishValue}
+      onChange={(date) => changeFinishDate(date!)}
+      wrapperClassName={styles.datePicker}
+      className={cn(styles.datePicker__input, 'text', 'text_type_extra_default')}
+      calendarClassName={styles.dataPicker__calendar}
+      dateFormat="dd.MM.yyyy"
+      fixedHeight
+      renderCustomHeader={customHeader}
+      dayClassName={() => styles.dataPicker__calendarWeekDay}
+      formatWeekDay={(formattedDate) => getShortenWeekDay(formattedDate)}
+      filterDate={(date) => date > startValue}
+    />
+  </div>
+);

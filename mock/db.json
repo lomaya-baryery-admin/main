@@ -8,18 +8,18 @@
         "status": "preparing",
         "title": "Смена Задорная",
         "final_message": "string",
-        "started_at": "2022-11-29",
-        "finished_at": "2022-12-30",
+        "started_at": "2022-11-25",
+        "finished_at": "2022-12-25",
         "total_users": 300
       },
       {
         "id": "3fa85f64-6659-4562-6afa6",
-        "status": "finished",
-        "title": "Смена Задорная",
+        "status": "started",
+        "title": "Смена Осенняя",
         "final_message": "string",
-        "started_at": "2022-10-15",
-        "finished_at": "2022-11-29",
-        "total_users": 817
+        "started_at": "2022-10-01",
+        "finished_at": "2022-11-24",
+        "total_users": 117
       },
       {
         "id": "3fa85f64-559-4562-b3fc-2ca6",
@@ -570,9 +570,9 @@
     ]
   },
   "shiftspage=6": {
-    "title": "Смена Задорная",
-    "started_at": "1986-11-30T21:00:00.000Z",
-    "finished_at": "1986-11-30T21:00:00.000Z"
+    "title": "asdfasdfasdf",
+    "started_at": "2022-11-21T21:00:00.000Z",
+    "finished_at": "2022-11-22T21:00:00.000Z"
   },
   "shiftspage=7": {
     "title": "Смена Задорная",

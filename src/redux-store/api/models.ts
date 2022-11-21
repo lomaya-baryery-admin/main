@@ -11,8 +11,8 @@ export interface IShift {
 }
 
 export interface IShifts {
-  page: 1;
-  total_page: 10;
+  page: number;
+  total_page: number;
   shifts: IShift[];
 }
 

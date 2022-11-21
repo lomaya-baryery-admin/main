@@ -4,13 +4,12 @@ import styles from './styles.module.css';
 import { ContentContainer } from '../../../ui/content-container';
 import { ContentHeading } from '../../../ui/content-heading';
 import { Table } from '../../../ui/table-native';
-import { Button } from '../../../ui/button';
 import { ShiftSettingsRow } from '../../shift-settings-row';
 import { PreparingShiftRow } from '../../preparing-shift-row';
 import { Alert } from '../../../ui/alert';
 import { Loader } from '../../../ui/loader';
 import { selectCurrentShifts } from '../../../redux-store/current-shifts';
-import { useForcedShiftStartMutation, useGetShiftUsersQuery } from '../../../redux-store/api';
+import { useGetShiftUsersQuery } from '../../../redux-store/api';
 import { useAppSelector } from '../../../redux-store/hooks';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -26,8 +25,6 @@ export const PagePreparingShift = () => {
   const { title, started_at, finished_at, total_users } = preparing;
 
   const { data, isLoading, isError } = useGetShiftUsersQuery(preparing.id);
-
-  const [forceStart, { isLoading: isStartLoading }] = useForcedShiftStartMutation();
 
   const openShiftSettings = useCallback(
     () =>
@@ -65,23 +62,7 @@ export const PagePreparingShift = () => {
   return (
     <>
       <ContentContainer extClassName={styles.shift__headingContainer}>
-        <ContentHeading title="Новая смена" extClassName={styles.shift__heading}>
-          <Button //специально для QA, на проде ее быть не должно
-            htmlType="button"
-            disabled={isStartLoading}
-            loading={isStartLoading}
-            onClick={() =>
-              forceStart({
-                shiftId: preparing.id,
-                title: preparing.title,
-                started_at: new Date(preparing.started_at),
-                finished_at: new Date(preparing.finished_at),
-              })
-            }
-          >
-            Начать смену
-          </Button>
-        </ContentHeading>
+        <ContentHeading title="Новая смена" extClassName={styles.shift__heading} />
         <Table
           extClassName={styles.shift__headingTable}
           header={['Название смены', 'Дата старта/окончания', 'Кол-во участников']}

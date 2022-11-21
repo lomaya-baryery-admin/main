@@ -38,7 +38,10 @@ function isPreparing(prop: ICreateAndStartedProps | IPreparingProps): prop is IP
 
 export function getStartDate(props: ICreateAndStartedProps | IPreparingProps) {
   if (isPreparing(props)) {
-    return new Date(1986, 11, 1); //for debugging
+    const { preparingStartAt } = props;
+    return preparingStartAt
+      ? new Date(preparingStartAt)
+      : new Date(new Date().setHours(0, 0, 0, 0));
   } else {
     const { formType, startedFinishAt, startedStartAt } = props;
     let startDate: Date = new Date();
@@ -57,7 +60,10 @@ export function getStartDate(props: ICreateAndStartedProps | IPreparingProps) {
 
 export function getFinishDate(props: ICreateAndStartedProps | IPreparingProps) {
   if (isPreparing(props)) {
-    return new Date(1986, 11, 1); //for debugging
+    const { preparingFinishAt } = props;
+    return preparingFinishAt
+      ? new Date(preparingFinishAt)
+      : new Date(new Date().setHours(0, 0, 0, 0));
   } else {
     const { formType, startedFinishAt } = props;
 

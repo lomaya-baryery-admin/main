@@ -18,7 +18,7 @@ export const PageShiftsAll = () => {
   const location = useLocation();
   const { pathname: currentPath, search } = location;
   const page = deserializeQuery<{ page: string }>(search).page;
-  const { data } = useGetAllShiftsQuery(page);
+  const { data } = useGetAllShiftsQuery(Number(page));
   const { preparing: isPreparingShift } = useAppSelector(selectCurrentShifts);
 
   const titles = [

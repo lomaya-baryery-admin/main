@@ -6,8 +6,8 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'http://127.0.0.1:3000' }),
   tagTypes: ['shifts'],
   endpoints: (builder) => ({
-    getAllShifts: builder.query<IShifts, string | undefined>({
-      query: (page = '1') => `/shiftspage=${page}`, // for poduction (GET)../shifts?page=1
+    getAllShifts: builder.query<IShifts, number | undefined>({
+      query: (page = 1) => `/shiftspage=${page}`, // for poduction (GET)../shifts?page=1
       providesTags: (result, error, arg) => (result ? [{ type: 'shifts', id: arg }] : ['shifts']),
     }),
     createNewShift: builder.mutation<Omit<IShift, 'total_users'>, ICreateShift>({
@@ -27,15 +27,7 @@ export const api = createApi({
         method: 'PATCH',
         body,
       }),
-      invalidatesTags: [{ type: 'shifts', id: '1' }],
-    }),
-    forcedShiftStart: builder.mutation<Omit<IShift, 'total_users'>, TUpdateShiftSettings>({
-      query: ({ shiftId, ...body }) => ({
-        url: '/shiftspage=8', // for QA (PUT)../shifts/{shift_id}/actions/start, don't forget exlude for production
-        method: 'PUT',
-        body,
-      }),
-      invalidatesTags: [{ type: 'shifts', id: '1' }],
+      invalidatesTags: [{ type: 'shifts', id: 1 }],
     }),
   }),
 });
@@ -45,5 +37,4 @@ export const {
   useCreateNewShiftMutation,
   useGetShiftUsersQuery,
   useUpdateShiftSettingsMutation,
-  useForcedShiftStartMutation,
 } = api;
