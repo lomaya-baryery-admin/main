@@ -5,6 +5,7 @@
 
 .shifts__table {
   margin-top: 20px;
+  height: calc(100vh - 264px);
 }
 
 .shifts__tableColumns {
@@ -12,7 +13,6 @@
 }
 
 .shifts__scrollSection {
-  height: calc(100vh - 305px);
   overflow-y: scroll;
   scrollbar-gutter: stable;
 }

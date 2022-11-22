@@ -3,16 +3,16 @@ import cn from 'classnames';
 import { CellLink, CellText } from '../../ui/table-native';
 import { StatusLabel } from '../../ui/status-label';
 import styles from './index.module.css';
-import { IShift, IShifts } from '../../redux-store/api/models';
+import { IShift } from '../../redux-store/api/models';
 import { getShiftNumber } from './lib';
 import { CellDate } from '../../ui/table-native/cell-date';
 
-interface IShiftsRows {
+interface IShiftsRow {
   extClassName?: string;
-  data: IShifts;
+  shiftData: IShift;
 }
 
-export const ShiftsRows: React.FC<IShiftsRows> = ({ extClassName, data }) => {
+export const ShiftsRow: React.FC<IShiftsRow> = ({ extClassName, shiftData }) => {
   const renderStatusLabel = useCallback((status: IShift['status']) => {
     switch (status) {
       case 'preparing':
@@ -38,20 +38,15 @@ export const ShiftsRows: React.FC<IShiftsRows> = ({ extClassName, data }) => {
         return '/';
     }
   }, []);
-  const test = data.shifts[1].id.match(/\d{4}/g);
 
   return (
-    <>
-      {data.shifts.map((shift) => (
-        <div key={shift.id} className={cn(styles.row, extClassName, 'tableContentRow')}>
-          <CellText text={getShiftNumber(shift.id)} />
-          <CellLink text={shift.title} routeTo={getRoutePath(shift)} />
-          <CellDate date={shift.started_at} />
-          <CellDate date={shift.finished_at} />
-          <CellText text={shift.total_users} />
-          {renderStatusLabel(shift.status)}
-        </div>
-      ))}
-    </>
+    <div className={cn(styles.row, extClassName, 'tableContentRow')}>
+      <CellText text={getShiftNumber(shiftData.id)} />
+      <CellLink text={shiftData.title} routeTo={getRoutePath(shiftData)} />
+      <CellDate date={shiftData.started_at} />
+      <CellDate date={shiftData.finished_at} />
+      <CellText text={shiftData.total_users} />
+      {renderStatusLabel(shiftData.status)}
+    </div>
   );
 };

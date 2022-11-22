@@ -13,7 +13,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
+  margin-bottom: 20px;
 }
 
 .alert__icon::before {
@@ -27,6 +28,6 @@
 }
 
 .alert__text {
-  width: 205px;
+  max-width: 284px;
   text-align: center;
 }

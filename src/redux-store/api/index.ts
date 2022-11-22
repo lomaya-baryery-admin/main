@@ -29,6 +29,13 @@ export const api = createApi({
       }),
       invalidatesTags: [{ type: 'shifts', id: 1 }],
     }),
+    finishShift: builder.mutation<Omit<IShift, 'total_users'>, string>({
+      query: (shiftId) => ({
+        url: '/shiftspage=8', //for production (PATCH)../shifts/{shift_id}/finish
+        method: 'PATCH',
+      }),
+      invalidatesTags: [{ type: 'shifts', id: 1 }],
+    }),
   }),
 });
 
@@ -37,4 +44,5 @@ export const {
   useCreateNewShiftMutation,
   useGetShiftUsersQuery,
   useUpdateShiftSettingsMutation,
+  useFinishShiftMutation,
 } = api;

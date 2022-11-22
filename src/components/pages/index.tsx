@@ -1,6 +1,8 @@
+import { useCallback } from 'react';
 import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { Modal } from '../../ui/modal';
 import { IAppLocation } from '../../utils';
+import { FinalMessageForm } from '../final-message-form';
 import { ShiftSettingsForm } from '../shift-settings-form';
 import { Layout } from './layout';
 import { PagePreparingShift } from './shift-preparing';
@@ -13,6 +15,8 @@ export const AppRoutes = () => {
 
   const rootLocation = state?.background || pathname.concat(search);
 
+  const handleCloseModal = useCallback(() => navigate(-1), []);
+
   return (
     <>
       <Routes location={rootLocation}>
@@ -23,8 +27,8 @@ export const AppRoutes = () => {
           />
           <Route path="shifts/all" element={<PageShiftsAll />} />
           <Route path="shifts/preparing/" element={<PagePreparingShift />} />
-          <Route path="shifts/started/" element={<PageStartedShift />} />
-          {/* <Route path="shifts/finished/:id" element={<PageFinishedShift />} /> */}
+          <Route path="shifts/started/*" element={<PageStartedShift />} />
+          <Route path="shifts/finished/:id" element={<p>finished shift page</p>} />
           <Route path="requests/pending" element={<div>4</div>} />
           <Route path="requests/considered" element={<div>5</div>} />
           <Route path="users" element={<div>6</div>} />
@@ -39,7 +43,7 @@ export const AppRoutes = () => {
           <Route
             path="shifts/create"
             element={
-              <Modal title={'Новая смена'} close={() => navigate(-1)}>
+              <Modal title={'Новая смена'} close={handleCloseModal}>
                 <ShiftSettingsForm shiftStatus="creating" />
               </Modal>
             }
@@ -47,7 +51,7 @@ export const AppRoutes = () => {
           <Route
             path="shifts/preparing/settings"
             element={
-              <Modal title={'Редактировать смену'} close={() => navigate(-1)}>
+              <Modal title={'Редактировать смену'} close={handleCloseModal}>
                 <ShiftSettingsForm shiftStatus="preparing" />
               </Modal>
             }
@@ -55,8 +59,16 @@ export const AppRoutes = () => {
           <Route
             path="shifts/started/settings"
             element={
-              <Modal title={'Редактировать смену'} close={() => navigate(-1)}>
+              <Modal title={'Редактировать смену'} close={handleCloseModal}>
                 <ShiftSettingsForm shiftStatus="started" />
+              </Modal>
+            }
+          />
+          <Route
+            path="shifts/started/message"
+            element={
+              <Modal title={'Редактировать сообщение'} close={handleCloseModal}>
+                <FinalMessageForm />
               </Modal>
             }
           />

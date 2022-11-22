@@ -2,23 +2,25 @@ import React, { useMemo, useState } from 'react';
 import cn from 'classnames';
 import { CellDate } from '../../ui/table-native/cell-date';
 import styles from './styles.module.css';
-import { IShiftUser, IShiftUsers } from '../../redux-store/api/models';
+import { IShiftUser } from '../../redux-store/api/models';
 import { CellTasksStat, CellText } from '../../ui/table-native';
+import { TasksCalendar } from '../../ui/tasks-calendar';
+import { ChevronRightIcon } from '../../ui/icons';
 
-interface IUserTasksRowProps {
+interface IStartedShiftRowProps {
   shiftStart: string;
   shiftFinish: string;
   userData: IShiftUser;
   cellsClassName: string;
 }
 
-export const UserTasksRow: React.FC<IUserTasksRowProps> = ({
+export const StartedShiftRow: React.FC<IStartedShiftRowProps> = ({
   userData,
   shiftStart,
   shiftFinish,
   cellsClassName,
 }) => {
-  const [toggleOpened, setToggleOpened] = useState(false);
+  const [toggle, setToggle] = useState(false);
 
   const statistics = useMemo(() => {
     return userData.user_tasks.reduce(
@@ -31,17 +33,25 @@ export const UserTasksRow: React.FC<IUserTasksRowProps> = ({
   }, [userData]);
 
   return (
-    <div
-      className={cn(styles.userRow, 'tableContentRow')}
-      onClick={() => setToggleOpened((toggle) => !toggle)}
-    >
-      <div className={cn(styles.userRow__data, cellsClassName)}>
-        <CellText type="accent" text={`${userData.name} ${userData.surname}`} />
+    <div className={cn(styles.startedShiftRow, 'tableContentRow')}>
+      <div className={cn(styles.startedShiftRow__data, cellsClassName)}>
+        <div className={styles.startedShiftRow__name}>
+          <ChevronRightIcon
+            onClick={() => setToggle((toggle) => !toggle)}
+            type="interface-primary"
+            className={cn(styles.startedShiftRow__nameIcon, {
+              [styles.startedShiftRow__nameIcon_rotated]: toggle,
+            })}
+          />
+          <CellText type="accent" text={`${userData.name} ${userData.surname}`} />
+        </div>
         <CellText text={userData.city} />
         <CellDate date={userData.date_of_birth} />
         <CellTasksStat data={statistics} />
       </div>
-      {toggleOpened ? 'tasksCalendar' : null}
+      {toggle ? (
+        <TasksCalendar start={shiftStart} finish={shiftFinish} userTasks={userData.user_tasks} />
+      ) : null}
     </div>
   );
 };

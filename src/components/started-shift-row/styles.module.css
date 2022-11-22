@@ -1,7 +1,23 @@
-.userRow {
-  user-select: none;
+.startedShiftRow__data {
+  grid-template-rows: 80px;
 }
 
-.userRow__data {
-  grid-template-rows: 80px;
+.startedShiftRow__name {
+  display: flex;
+  align-items: center;
+}
+
+.startedShiftRow__nameIcon {
+  margin-right: 12px;
+  padding: 8px;
+  cursor: pointer;
+  transition: var(--transition-common);
+}
+
+.startedShiftRow__nameIcon:hover {
+  opacity: var(--hover-opacity);
+}
+
+.startedShiftRow__nameIcon_rotated {
+  transform: rotate(90deg);
 }

@@ -20,6 +20,7 @@ export interface ICreateShift {
   title: string;
   started_at: Date;
   finished_at: Date;
+  final_message: string;
 }
 
 export type TUpdateShiftSettings = Partial<ICreateShift> & {
@@ -29,7 +30,7 @@ export type TUpdateShiftSettings = Partial<ICreateShift> & {
 export interface IUserTask {
   task_id: string;
   status: 'under_review' | 'approved' | 'declined';
-  task_date: string; //"2022-09-09T09:10:19.890Z"
+  task_date: string;
 }
 
 export interface IShiftUser {

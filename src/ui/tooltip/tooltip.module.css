@@ -9,8 +9,7 @@
   line-height: 17px;
   font-weight: 600;
   color: var(--colors-interface-gray);
-  border: solid var(--colors-interface-border) var(--common-border-width);
   border-radius: var(--common-border-radius);
   background-color: var(--colors-interface-gray-light);
-  box-shadow: var(--common-element-shadow);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 5px 15px -5px rgba(0, 0, 0, 0.2);
 }

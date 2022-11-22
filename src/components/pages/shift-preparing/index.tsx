@@ -5,7 +5,7 @@ import { ContentContainer } from '../../../ui/content-container';
 import { ContentHeading } from '../../../ui/content-heading';
 import { Table } from '../../../ui/table-native';
 import { ShiftSettingsRow } from '../../shift-settings-row';
-import { PreparingShiftRows } from '../../preparing-shift-rows';
+import { PreparingShiftRow } from '../../preparing-shift-row';
 import { Alert } from '../../../ui/alert';
 import { Loader } from '../../../ui/loader';
 import { selectCurrentShifts } from '../../../redux-store/current-shifts';
@@ -28,7 +28,7 @@ export const PagePreparingShift = () => {
 
   const openShiftSettings = useCallback(
     () =>
-      navigate('/shifts/preparing/settings', {
+      navigate('settings', {
         state: {
           background: location.pathname,
         },
@@ -52,7 +52,11 @@ export const PagePreparingShift = () => {
           gridClassName={styles.participants__tableColumns}
           header={['Имя и фамилия', 'Город', 'Телефон', 'Дата рождения']}
           renderRows={(rowStyles) => (
-            <PreparingShiftRows extClassName={rowStyles} data={data?.users} />
+            <>
+              {data.users.map((user) => (
+                <PreparingShiftRow key={user.user_id} extClassName={rowStyles} userData={user} />
+              ))}
+            </>
           )}
         />
       );
