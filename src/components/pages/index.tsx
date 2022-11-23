@@ -5,6 +5,7 @@ import { IAppLocation } from '../../utils';
 import { FinalMessageForm } from '../final-message-form';
 import { ShiftSettingsForm } from '../shift-settings-form';
 import { Layout } from './layout';
+import { PageFinishedShift } from './shift-finished';
 import { PagePreparingShift } from './shift-preparing';
 import { PageStartedShift } from './shift-started';
 import { PageShiftsAll } from './shifts';
@@ -28,7 +29,7 @@ export const AppRoutes = () => {
           <Route path="shifts/all" element={<PageShiftsAll />} />
           <Route path="shifts/preparing/" element={<PagePreparingShift />} />
           <Route path="shifts/started/*" element={<PageStartedShift />} />
-          <Route path="shifts/finished/:id" element={<p>finished shift page</p>} />
+          <Route path="shifts/finished/:id" element={<PageFinishedShift />} />
           <Route path="requests/pending" element={<div>4</div>} />
           <Route path="requests/considered" element={<div>5</div>} />
           <Route path="users" element={<div>6</div>} />
