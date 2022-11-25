@@ -1,5 +1,13 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { ICreateShift, IShift, IShifts, IShiftUsers, TUpdateShiftSettings } from './models';
+import { secondsToMilliseconds } from 'date-fns';
+import {
+  ICreateShift,
+  IRequest,
+  IShift,
+  IShifts,
+  IShiftUsers,
+  TUpdateShiftSettings,
+} from './models';
 
 export const api = createApi({
   reducerPath: 'api',
@@ -36,6 +44,55 @@ export const api = createApi({
       }),
       invalidatesTags: [{ type: 'shifts', id: 1 }],
     }),
+    getPendingRequests: builder.query<IRequest[], string>({
+      query: (shiftId) => '/requests_pending?status=pending', //for production (GET)../shifts/{shift_id}/requests?status=pending
+    }),
+    approveRequest: builder.mutation<IRequest, { requestId: string; shiftId: string }>({
+      //shiftId for manual cache update
+      query: (arg) => ({
+        url: `/requests_pending/${arg.requestId}`, //for production (PATCH)../requests/{request_id}/approve
+        method: 'PATCH',
+        body: { status: 'approved' }, //delete before production
+      }),
+      async onQueryStarted({ requestId, shiftId }, { dispatch, queryFulfilled }) {
+        try {
+          const { data: updatedRequest } = await queryFulfilled;
+          dispatch(
+            api.util.updateQueryData('getPendingRequests', shiftId, (draft) => {
+              const requests = draft.map((request) =>
+                request.id === requestId ? updatedRequest : request
+              );
+              return requests;
+            })
+          );
+        } catch (error) {
+          console.log(error);
+        }
+      },
+    }),
+    declineRequest: builder.mutation<IRequest, { requestId: string; shiftId: string }>({
+      //shiftId for manual cache update
+      query: (arg) => ({
+        url: `/requests_pending/${arg.requestId}`, //for production (PATCH)../requests/{request_id}/decline
+        method: 'PATCH',
+        body: { status: 'declined' }, //delete before production
+      }),
+      async onQueryStarted({ requestId, shiftId }, { dispatch, queryFulfilled }) {
+        try {
+          const { data: updatedRequest } = await queryFulfilled;
+          dispatch(
+            api.util.updateQueryData('getPendingRequests', shiftId, (draft) => {
+              const requests = draft.map((request) =>
+                request.id === requestId ? updatedRequest : request
+              );
+              return requests;
+            })
+          );
+        } catch (error) {
+          console.log(error);
+        }
+      },
+    }),
   }),
 });
 
@@ -45,4 +102,7 @@ export const {
   useGetShiftUsersQuery,
   useUpdateShiftSettingsMutation,
   useFinishShiftMutation,
+  useGetPendingRequestsQuery,
+  useApproveRequestMutation,
+  useDeclineRequestMutation,
 } = api;

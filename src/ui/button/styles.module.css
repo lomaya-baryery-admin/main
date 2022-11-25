@@ -76,3 +76,7 @@
   line-height: 22px;
   padding: 18px 32px;
 }
+
+.button_size_micro {
+  padding: 8px;
+}

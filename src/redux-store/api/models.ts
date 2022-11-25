@@ -1,3 +1,12 @@
+export interface IUser {
+  user_id: string;
+  name: string;
+  surname: string;
+  date_of_birth: string;
+  city: string;
+  phone: string;
+}
+
 export type TShiftStatus = 'started' | 'finished' | 'preparing';
 
 export interface IShift {
@@ -33,16 +42,17 @@ export interface IUserTask {
   task_date: string;
 }
 
-export interface IShiftUser {
-  user_id: string;
-  name: string;
-  surname: string;
-  date_of_birth: string;
-  city: string;
-  phone: string;
+export interface IShiftUser extends IUser {
   user_tasks: IUserTask[];
 }
 
 export interface IShiftUsers extends IShift {
   users: IShiftUser[];
+}
+
+export type TRequestStatus = 'pending' | 'approved' | 'declined';
+
+export interface IRequest extends IUser {
+  id: string; //for production rename on request_id
+  status: TRequestStatus;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-import styles from './step-button-styles.module.css';
+import styles from './styles.module.css';
 
 type TIconArrow = {
   dirrection: 'right' | 'left';

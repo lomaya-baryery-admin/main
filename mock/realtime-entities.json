@@ -1,0 +1,27 @@
+{
+  "id": "3fa85f64a6",
+  "status": "preparing",
+  "title": "Смена Задорная",
+  "final_message": "string",
+  "started_at": "2022-12-01",
+  "finished_at": "2023-01-30",
+  "total_users": 300
+},
+{
+  "id": "3fa85f64-6659-4562-6afa6",
+  "status": "started",
+  "title": "Смена Осенняя",
+  "final_message": "Lorem ipsum dolor sit amet consectetur adipisicing elit. At distinctio sint aut quos dolore veritatis nisi sequi, laboriosam ab eaque.",
+  "started_at": "2022-10-15",
+  "finished_at": "2022-11-30",
+  "total_users": 117
+},
+{
+  "id": "3fa85f64-6659-4562-6afa6",
+  "status": "preparing",
+  "title": "Смена Осенняя",
+  "final_message": "Lorem ipsum dolor sit amet consectetur adipisicing elit. At distinctio sint aut quos dolore veritatis nisi sequi, laboriosam ab eaque.",
+  "started_at": "2022-11-24",
+  "finished_at": "2022-12-30",
+  "total_users": 117
+},

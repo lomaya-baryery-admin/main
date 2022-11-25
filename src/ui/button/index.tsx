@@ -7,7 +7,7 @@ export type TButtonProps = React.PropsWithChildren<
 > & {
   htmlType: 'button' | 'submit' | 'reset';
   type?: 'primary' | 'secondary' | 'negative' | 'disabled';
-  size?: 'small' | 'large';
+  size?: 'small' | 'large' | 'micro';
   extClassName?: string;
   onClick?: (() => void) | ((e: React.SyntheticEvent) => void);
   disabled?: boolean;

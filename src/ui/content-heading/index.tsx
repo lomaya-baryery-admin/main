@@ -12,7 +12,7 @@ export const ContentHeading: React.FC<IContentHeadingProps> = ({
   extClassName,
   children,
 }) => (
-  <div className={cn(styles.contentHeading, extClassName)}>
+  <div className={cn(extClassName, styles.contentHeading)}>
     <h1
       className={cn(
         styles.contentHeading__title,
