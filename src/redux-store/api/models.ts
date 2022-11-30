@@ -29,7 +29,7 @@ export interface ICreateShift {
   title: string;
   started_at: Date;
   finished_at: Date;
-  final_message: string;
+  final_message?: string;
 }
 
 export type TUpdateShiftSettings = Partial<ICreateShift> & {

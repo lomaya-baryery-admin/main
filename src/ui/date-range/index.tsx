@@ -47,7 +47,8 @@ export interface IDateRange {
   finishValue: Date;
   changeStartDate: (date: Date) => void;
   changeFinishDate: (date: Date) => void;
-  filterStart: Date;
+  filterStart?: Date;
+  filterFinish?: Date;
   disabledStart?: boolean;
   className?: string;
 }
@@ -58,6 +59,7 @@ export const DateRange: FC<IDateRange> = ({
   changeStartDate,
   changeFinishDate,
   filterStart,
+  filterFinish,
   disabledStart,
   className,
 }) => (
@@ -92,7 +94,7 @@ export const DateRange: FC<IDateRange> = ({
       renderCustomHeader={customHeader}
       dayClassName={() => styles.dataPicker__calendarWeekDay}
       formatWeekDay={(formattedDate) => getShortenWeekDay(formattedDate)}
-      filterDate={(date) => date >= filterStart}
+      filterDate={filterStart ? (date) => date >= filterStart : undefined}
       disabled={disabledStart}
     />
     <span className={styles.dateRange__divider} />
@@ -110,7 +112,7 @@ export const DateRange: FC<IDateRange> = ({
       renderCustomHeader={customHeader}
       dayClassName={() => styles.dataPicker__calendarWeekDay}
       formatWeekDay={(formattedDate) => getShortenWeekDay(formattedDate)}
-      filterDate={(date) => date > startValue}
+      filterDate={filterFinish ? (date) => date >= filterFinish : (date) => date > startValue}
     />
   </div>
 );

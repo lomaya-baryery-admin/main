@@ -55,7 +55,7 @@ export const ShiftSettingsForm: React.FC<IShiftSettingsFormProps> = ({
   const [startFieldValue, setStartFieldValue] = useState(initStartDate);
   const [finishFieldValue, setfinishFieldValue] = useState(initFinishDate);
 
-  const filterDate = useMemo(() => {
+  const filterStartDate = useMemo(() => {
     if (shiftStatus === 'preparing') {
       if (started) {
         return new Date(started.finished_at);
@@ -66,6 +66,14 @@ export const ShiftSettingsForm: React.FC<IShiftSettingsFormProps> = ({
       return initStartDate;
     }
   }, [started, initStartDate]);
+
+  const filterFinishDate = useMemo(() => {
+    if (shiftStatus === 'started') {
+      return new Date(new Date().setHours(24, 0, 0, 0));
+    } else {
+      return undefined;
+    }
+  }, [shiftStatus]);
 
   const dayCount = useMemo(
     () => getDiffInDays(finishFieldValue, startFieldValue),
@@ -86,7 +94,7 @@ export const ShiftSettingsForm: React.FC<IShiftSettingsFormProps> = ({
       title: titleFieldValue.trim(),
       started_at: startFieldValue,
       finished_at: finishFieldValue,
-    } as const;
+    };
 
     if (validateTitle(titleFieldValue)) {
       shiftStatus === 'creating'
@@ -149,7 +157,8 @@ export const ShiftSettingsForm: React.FC<IShiftSettingsFormProps> = ({
           finishValue={finishFieldValue}
           changeStartDate={setStartFieldValue}
           changeFinishDate={setfinishFieldValue}
-          filterStart={filterDate}
+          filterStart={filterStartDate}
+          filterFinish={filterFinishDate}
           disabledStart={shiftStatus === 'started'}
         />
       </div>
