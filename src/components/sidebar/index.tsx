@@ -6,7 +6,7 @@ import { ChevronRightIcon, TIcons } from '../../ui/icons';
 import * as Icons from '../../ui/icons';
 import styles from './styles.module.css';
 import { useAppSelector } from '../../redux-store/hooks';
-import { selectCurrentShifts } from '../../redux-store/current-shifts';
+import { selectRootShifts } from '../../redux-store/root-shifts';
 
 interface ISideBarAccordion {
   title: string;
@@ -104,23 +104,23 @@ const SideBarAccordion: React.FC<ISideBarAccordion> = ({
 };
 
 export const SideBar = () => {
-  const currentShifts = useAppSelector(selectCurrentShifts);
+  const rootShifts = useAppSelector(selectRootShifts);
 
   const shiftsList = useMemo(() => {
     let list: ISideBarAccordion['list'] = [
       { title: 'Все', to: { pathname: '/shifts/all', search: 'page=1' } },
     ];
 
-    if (currentShifts.started) {
+    if (rootShifts.started) {
       list.push({ title: 'Текущая', to: '/shifts/started' });
     }
 
-    if (currentShifts.preparing) {
+    if (rootShifts.preparing) {
       list.push({ title: 'Новая', to: '/shifts/preparing' });
     }
 
     return list;
-  }, [currentShifts]);
+  }, [rootShifts]);
 
   const { pathname } = useLocation();
 

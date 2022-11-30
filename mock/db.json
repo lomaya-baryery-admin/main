@@ -8,7 +8,7 @@
         "status": "preparing",
         "title": "Смена Задорная",
         "final_message": "string",
-        "started_at": "2022-12-01",
+        "started_at": "2022-12-15",
         "finished_at": "2023-01-30",
         "total_users": 300
       },
@@ -18,7 +18,7 @@
         "title": "Смена Осенняя",
         "final_message": "Lorem ipsum dolor sit amet consectetur adipisicing elit. At distinctio sint aut quos dolore veritatis nisi sequi, laboriosam ab eaque.",
         "started_at": "2022-10-15",
-        "finished_at": "2022-11-30",
+        "finished_at": "2022-12-05",
         "total_users": 117
       },
       {
@@ -592,9 +592,9 @@
     }
   },
   "shiftspage=7": {
-    "title": "Смена Осенняя",
-    "started_at": "2022-11-14T21:00:00.000Z",
-    "finished_at": "2023-03-11T21:00:00.000Z",
+    "title": "Смена Задорная",
+    "started_at": "2022-12-01T00:00:00.000Z",
+    "finished_at": "2023-01-30T00:00:00.000Z",
     "final_message": "Lorem ipsum dolor sit amet consectetur adipisicing elit. At distinctio sint aut quos dolore veritatis nisi sequi, laboriosam ab eaque."
   },
   "shiftspage=8": {
@@ -3354,7 +3354,35 @@
       }
     ]
   },
-  "requests_pending_": [],
+  "tasks_under_review": [],
+  "tasks_under_review_": [
+    {
+      "shift_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "shift_status": "started",
+      "id": "1",
+      "user_task_created_at": "2022-11-30T09:10:19.890Z",
+      "user_name": "Дамир",
+      "user_surname": "Баймуратов",
+      "task_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "task_description": "Помой посуду",
+      "task_url": "task image url",
+      "photo_url": "https://assets.thefurnish.ru/system/uploads/product_image/image/412784/9cca5df3967d31785ae3959204a26d04.jpeg",
+      "task_status": "approved"
+    },
+    {
+      "shift_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "shift_status": "started",
+      "id": "2",
+      "user_task_created_at": "2022-11-30T10:10:19.890Z",
+      "user_name": "Закир",
+      "user_surname": "Курбангалеев",
+      "task_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "task_description": "Застелить кровать",
+      "task_url": "task image url",
+      "photo_url": "https://www.stroy-podskazka.ru/images/article/orig/2017/10/osobennosti-razdvizhnyh-krovatej-ikea-31.jpg",
+      "task_status": "declined"
+    }
+  ],
   "requests_pending": [
     {
       "user_id": "965713-0",
@@ -3364,7 +3392,7 @@
       "city": "Салават",
       "phone": "+79579873411",
       "id": "512081-0",
-      "status": "pending"
+      "status": "approved"
     },
     {
       "user_id": "130080-1",
@@ -3374,7 +3402,29 @@
       "city": "Стерлитамак",
       "phone": "+79579873411",
       "id": "558294-1",
-      "status": "pending"
+      "status": "approved"
+    }
+  ],
+  "requests_pending_": [
+    {
+      "user_id": "965713-0",
+      "name": "Закир",
+      "surname": "Курбангалеев",
+      "date_of_birth": "2012-07-11",
+      "city": "Салават",
+      "phone": "+79579873411",
+      "id": "512081-0",
+      "status": "approved"
+    },
+    {
+      "user_id": "130080-1",
+      "name": "Дамир",
+      "surname": "Баймуратов",
+      "date_of_birth": "2012-10-07",
+      "city": "Стерлитамак",
+      "phone": "+79579873411",
+      "id": "558294-1",
+      "status": "declined"
     },
     {
       "user_id": "717246-2",
@@ -3384,7 +3434,7 @@
       "city": "Стерлитамак",
       "phone": "+79875642277",
       "id": "556041-2",
-      "status": "pending"
+      "status": "declined"
     },
     {
       "user_id": "982564-3",
@@ -3394,7 +3444,7 @@
       "city": "Стерлитамак",
       "phone": "+79579873411",
       "id": "266363-3",
-      "status": "pending"
+      "status": "approved"
     },
     {
       "user_id": "55546-4",
@@ -3404,7 +3454,7 @@
       "city": "Уфа",
       "phone": "+79579873411",
       "id": "661289-4",
-      "status": "pending"
+      "status": "approved"
     },
     {
       "user_id": "252694-5",
@@ -3414,7 +3464,7 @@
       "city": "Нефтекамск",
       "phone": "+79558761423",
       "id": "282771-5",
-      "status": "pending"
+      "status": "approved"
     },
     {
       "user_id": "674667-6",
@@ -3424,7 +3474,7 @@
       "city": "Салават",
       "phone": "+79558761423",
       "id": "533715-6",
-      "status": "pending"
+      "status": "declined"
     },
     {
       "user_id": "793278-7",
@@ -3454,7 +3504,7 @@
       "city": "Октябрьский",
       "phone": "+79558761423",
       "id": "559324-9",
-      "status": "pending"
+      "status": "approved"
     },
     {
       "user_id": "508311-10",

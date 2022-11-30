@@ -7,7 +7,7 @@ import { Table } from '../../../ui/table-native';
 import { ShiftSettingsRow } from '../../shift-settings-row';
 import { Alert } from '../../../ui/alert';
 import { Loader } from '../../../ui/loader';
-import { selectCurrentShifts } from '../../../redux-store/current-shifts';
+import { selectRootShifts } from '../../../redux-store/root-shifts';
 import { useFinishShiftMutation, useGetShiftUsersQuery } from '../../../redux-store/api';
 import { useAppSelector } from '../../../redux-store/hooks';
 import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
@@ -18,7 +18,7 @@ import { ModalAlert } from '../../../ui/modal-alert';
 export const PageStartedShift = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { started } = useAppSelector(selectCurrentShifts);
+  const { started } = useAppSelector(selectRootShifts);
 
   if (!started) {
     return <Navigate to={'/shifts/all'} replace />;

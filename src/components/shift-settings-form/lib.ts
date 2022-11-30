@@ -1,17 +1,17 @@
 import { IShiftSettingsFormProps } from '.';
-import { ICurrentShiftState } from '../../redux-store/current-shifts';
+import { IRootShiftsState } from '../../redux-store/root-shifts';
 
 export function getTitle(
   shiftStatus: IShiftSettingsFormProps['shiftStatus'],
-  currentShifts: ICurrentShiftState
+  rootShifts: IRootShiftsState
 ): string {
   switch (shiftStatus) {
     case 'creating':
       return '';
     case 'preparing':
-      return currentShifts.preparing?.title || '';
+      return rootShifts.preparing?.title || '';
     case 'started':
-      return currentShifts.started?.title || '';
+      return rootShifts.started?.title || '';
     default:
       const _exhaustive: never = shiftStatus;
       return '';

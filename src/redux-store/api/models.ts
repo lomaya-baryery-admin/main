@@ -56,3 +56,17 @@ export interface IRequest extends IUser {
   id: string; //for production rename on request_id
   status: TRequestStatus;
 }
+
+export interface ITask {
+  shift_id: string;
+  shift_status: TShiftStatus;
+  id: string; //for production rename on user_task_id
+  user_task_created_at: string;
+  user_name: string;
+  user_surname: string;
+  task_id: string;
+  task_description: string;
+  task_url: string;
+  photo_url: string;
+  task_status?: IUserTask['status']; //not in backend response
+}

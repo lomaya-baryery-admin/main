@@ -3,18 +3,18 @@ import { RootState } from '..';
 import { api } from '../api';
 import { IShift } from '../api/models';
 
-export interface ICurrentShiftState {
+export interface IRootShiftsState {
   started: IShift | null;
   preparing: IShift | null;
 }
 
-const initialState: ICurrentShiftState = {
+const initialState: IRootShiftsState = {
   started: null,
   preparing: null,
 };
 
-const currentShiftsSlice = createSlice({
-  name: 'currentShifts',
+const rootShiftsSlice = createSlice({
+  name: 'rootShifts',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -30,5 +30,5 @@ const currentShiftsSlice = createSlice({
   },
 });
 
-export const currentShiftsReducer = currentShiftsSlice.reducer;
-export const selectCurrentShifts = (state: RootState) => state.currentShifts;
+export const rootShiftsReducer = rootShiftsSlice.reducer;
+export const selectRootShifts = (state: RootState) => state.rootShifts;

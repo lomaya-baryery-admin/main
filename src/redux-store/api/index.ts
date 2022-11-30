@@ -6,6 +6,8 @@ import {
   IShift,
   IShifts,
   IShiftUsers,
+  ITask,
+  IUserTask,
   TUpdateShiftSettings,
 } from './models';
 
@@ -93,6 +95,67 @@ export const api = createApi({
         }
       },
     }),
+    getTasksUnderReview: builder.query<ITask[], string>({
+      query: (shiftId) => '/tasks_under_review', //for production (GET)../user_tasks?status=under_review&shift_id={shift_id}
+    }),
+    approveTask: builder.mutation<
+      ITask,
+      { taskId: string; shiftId: string; patch: { task_status: IUserTask['status'] } }
+    >({
+      //shiftId for manual cache update
+      query: (arg) => ({
+        url: `/tasks_under_review/${arg.taskId}`, //for production (PATCH)../requests/{request_id}/approve
+        method: 'PATCH',
+        body: arg.patch, //delete before production
+      }),
+      async onQueryStarted({ taskId, shiftId, patch }, { dispatch, queryFulfilled }) {
+        try {
+          await queryFulfilled;
+          dispatch(
+            api.util.updateQueryData('getTasksUnderReview', shiftId, (draft) => {
+              const tasks = draft.map((task) =>
+                task.id === taskId ? { ...task, ...patch } : task
+              );
+              return tasks;
+            })
+          );
+        } catch (error) {
+          console.log(error);
+        }
+      },
+    }),
+    declineTask: builder.mutation<
+      ITask,
+      {
+        taskId: string;
+        shiftId: string;
+        patch: {
+          task_status: IUserTask['status'];
+        };
+      }
+    >({
+      //shiftId for manual cache update
+      query: (arg) => ({
+        url: `/tasks_under_review/${arg.taskId}`, //for production (PATCH)../requests/{request_id}/decline
+        method: 'PATCH',
+        body: arg.patch, //delete before production
+      }),
+      async onQueryStarted({ taskId, shiftId, patch }, { dispatch, queryFulfilled }) {
+        try {
+          await queryFulfilled;
+          dispatch(
+            api.util.updateQueryData('getTasksUnderReview', shiftId, (draft) => {
+              const tasks = draft.map((task) =>
+                task.id === taskId ? { ...task, ...patch } : task
+              );
+              return tasks;
+            })
+          );
+        } catch (error) {
+          console.log(error);
+        }
+      },
+    }),
   }),
 });
 
@@ -105,4 +168,7 @@ export const {
   useGetPendingRequestsQuery,
   useApproveRequestMutation,
   useDeclineRequestMutation,
+  useGetTasksUnderReviewQuery,
+  useApproveTaskMutation,
+  useDeclineTaskMutation,
 } = api;

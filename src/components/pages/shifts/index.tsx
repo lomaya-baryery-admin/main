@@ -9,7 +9,7 @@ import styles from './styles.module.css';
 import { useGetAllShiftsQuery } from '../../../redux-store/api';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../../redux-store/hooks';
-import { selectCurrentShifts } from '../../../redux-store/current-shifts';
+import { selectRootShifts } from '../../../redux-store/root-shifts';
 import { deserializeQuery } from '../../../utils';
 import { ContentContainer } from '../../../ui/content-container';
 
@@ -19,7 +19,7 @@ export const PageShiftsAll = () => {
   const { pathname: currentPath, search } = location;
   const page = deserializeQuery<{ page: string }>(search).page;
   const { data } = useGetAllShiftsQuery(Number(page));
-  const { preparing: isPreparingShift } = useAppSelector(selectCurrentShifts);
+  const { preparing: isPreparingShift } = useAppSelector(selectRootShifts);
 
   const titles = [
     'Номер смены',

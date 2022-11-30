@@ -4,7 +4,7 @@ import cn from 'classnames';
 import styles from './styles.module.css';
 import { DateRange } from '../../ui/date-range';
 import { useAppSelector } from '../../redux-store/hooks';
-import { selectCurrentShifts } from '../../redux-store/current-shifts';
+import { selectRootShifts } from '../../redux-store/root-shifts';
 import { Button } from '../../ui/button';
 import { getTitle, getDiffInDays, getFinishDate, getStartDate, validateLength } from './lib';
 import { useCreateNewShiftMutation, useUpdateShiftSettingsMutation } from '../../redux-store/api';
@@ -22,7 +22,7 @@ export const ShiftSettingsForm: React.FC<IShiftSettingsFormProps> = ({
 }) => {
   const { state: locationState }: IAppLocation = useLocation();
 
-  const { started, preparing } = useAppSelector(selectCurrentShifts);
+  const { started, preparing } = useAppSelector(selectRootShifts);
 
   const [
     createShift,

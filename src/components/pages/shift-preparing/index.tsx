@@ -8,7 +8,7 @@ import { ShiftSettingsRow } from '../../shift-settings-row';
 import { PreparingShiftRow } from '../../preparing-shift-row';
 import { Alert } from '../../../ui/alert';
 import { Loader } from '../../../ui/loader';
-import { selectCurrentShifts } from '../../../redux-store/current-shifts';
+import { selectRootShifts } from '../../../redux-store/root-shifts';
 import { useGetShiftUsersQuery } from '../../../redux-store/api';
 import { useAppSelector } from '../../../redux-store/hooks';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -16,7 +16,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 export const PagePreparingShift = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { preparing } = useAppSelector(selectCurrentShifts);
+  const { preparing } = useAppSelector(selectRootShifts);
 
   if (!preparing) {
     return <Alert extClassName={styles.shift__alert} title="Что-то пошло не так" />;

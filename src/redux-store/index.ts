@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { api } from './api';
-import { currentShiftsReducer } from './current-shifts';
+import { rootShiftsReducer } from './root-shifts';
 
 export const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
-    currentShifts: currentShiftsReducer,
+    rootShifts: rootShiftsReducer,
   },
   devTools: true,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware),

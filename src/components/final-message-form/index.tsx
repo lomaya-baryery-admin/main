@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 import styles from './styles.module.css';
 import { useAppSelector } from '../../redux-store/hooks';
-import { selectCurrentShifts } from '../../redux-store/current-shifts';
+import { selectRootShifts } from '../../redux-store/root-shifts';
 import { Button } from '../../ui/button';
 import { useUpdateShiftSettingsMutation } from '../../redux-store/api';
 import { Navigate, useLocation } from 'react-router-dom';
@@ -11,7 +11,7 @@ import { Loader } from '../../ui/loader';
 
 export const FinalMessageForm: React.FC = () => {
   const { state: locationState }: IAppLocation = useLocation();
-  const { started } = useAppSelector(selectCurrentShifts);
+  const { started } = useAppSelector(selectRootShifts);
   const [saveMessage, { isLoading, isSuccess }] = useUpdateShiftSettingsMutation();
 
   const [inputValue, changeInputnValue] = useState(started?.final_message);
