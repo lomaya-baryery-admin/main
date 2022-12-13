@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 import { ITask } from '../../redux-store/api/models';
 import { StatusLabel } from '../../ui/status-label';
 import { Button } from '../../ui/button';
-import { CellDate, CellText } from '../../ui/table-native';
+import { CellDate, CellLink, CellText } from '../../ui/table-native';
 import { Link } from 'react-router-dom';
 import { ZoomIcon } from '../../ui/icons';
 
@@ -59,7 +59,7 @@ export const TaskRow: React.FC<ITaskRowProps> = ({ taskData, approve, decline, e
 
   return (
     <div className={cn(styles.taskRow, extClassName, 'tableContentRow')}>
-      <CellText type="accent" text={taskData.task_description} />
+      <CellLink routeTo={taskData.id} text={taskData.task_description} />
       <CellText type="accent" text={`${taskData.user_name} ${taskData.user_surname}`} />
       <CellDate type="withTime" date={taskData.user_task_created_at} />
       <CellPreview img={taskData.photo_url} id={taskData.id} />

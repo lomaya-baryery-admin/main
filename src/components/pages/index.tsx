@@ -10,6 +10,7 @@ import { PageFinishedShift } from './shift-finished';
 import { PagePreparingShift } from './shift-preparing';
 import { PageStartedShift } from './shift-started';
 import { PageShiftsAll } from './shifts';
+import { PageTasksSlider } from './tasks-slider';
 import { PageTasksUnderReview } from './tasks-under-review';
 
 export const AppRoutes = () => {
@@ -39,8 +40,11 @@ export const AppRoutes = () => {
           />
           <Route path="users" element={<div>6</div>} />
           <Route path="tasks/under_review" element={<PageTasksUnderReview />} />
+          <Route path="tasks/under_review/:id" element={<PageTasksSlider />} />
           <Route path="tasks/reviewed" element={<div>8</div>} />
+          <Route path="tasks/reviewed/:id" element={<div>8</div>} />
           <Route path="tasks/declined" element={<div>9</div>} />
+          <Route path="tasks/declined/:id" element={<div>9</div>} />
           <Route path="*" element={<div>страница не найдена </div>} />
         </Route>
       </Routes>

@@ -1,12 +1,13 @@
 .button {
   position: relative;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
   font-family: 'Lato';
   font-weight: 700;
   border: none;
   border-radius: var(--common-border-radius);
   cursor: pointer;
-  display: flex;
-  align-items: center;
   transition: var(--transition-background-color);
 }
 

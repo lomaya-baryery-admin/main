@@ -3354,8 +3354,21 @@
       }
     ]
   },
-  "tasks_under_review": [],
   "tasks_under_review_": [
+    {
+      "shift_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "shift_status": "started",
+      "id": "3",
+      "user_task_created_at": "2022-11-30T10:10:19.890Z",
+      "user_name": "Габдулла",
+      "user_surname": "Гилимханов",
+      "task_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "task_description": "Застелить кровать",
+      "task_url": "https://lh3.googleusercontent.com/fife/AAbDypDHZNgt08AwwVMKxaXQGhPDRZbLkPSJ5174tOYaCXX7_UQlVN21i7wqtYBvQi-mhg3zVWXbclB1yc8K1MWdH8d-QBlWEXdukZG6wE2x5-SAdJ_yZYYWslj6ZCRHqQprdZcmJhqiPMGeDagUBa3yVcbB13kEy3YZT8br0413fWpf4LxDY7o0SkNJYkaBpt97QAUjT3FAcfLBP2wHcVcyDS06uiHMHYZywcqUBcmyPxjOsh4iim424Yh5HUPbHLiFiR0PXDifqpixKS5tQu8zovQS9LjxGEdHi9s3ea1QfTTk3DpMRURbwpPPm1kpzD5fugoN61Yx0-U8hzXEJUdOiMg5-5AKqi_leA5ecxywLPFQihOzFwd2OQVlsMJUEKy_tmirez2DoBad-WsvYxrLgj5LaMrbhb1N1n5uRisSH3RPhOl_6Bcww-NbWbMEKVa86RgR29vc2EFIaXsS6o29ce-yjREfkDlG15GhVCy3li2E6L1lDbLimt3w_SNxl3-kLWrKD-TMA77j5HNSsorvQMg_qYUBVJ80-InnVCKsEF0LLWz26OzvXOhdWX24LRssM2lqZjwbMVibdJU6TLfX9ERb6QhBpeQHRTkXYe3iEUMgREPNhl4HZWrZzmJo-VEQ43PuKpy8wuVHzhVYLu1wPbjX4QnAy6LQOvFMnMpsBS4U3h6ZteJzDMIQrWJDNkZc1e7tC1W3G7irRoomFUJGWS1WdrqIhfrxjQERyU4OsVovAIE4dNOdx_RbKsn8_BNkSaPB91TQWTQkaRKFu2w0RlQtlIq9es9R7S8iWNhq8VhAslp9ihmZsSzr39wpFbvDsCfVyXV0FgALZTumV_9HgfskRzaE_xrCGXSRHCYE2VEKoeIUjDihYY7f1BGcGfkkjiOrcAZUvvurM5kqPEP3em397C66lrL6zLP__Yd2pSs7mOKTL08dUlTDiUqgK3Ki7gCpl8htTZYFdMgxPidHPkK5L6JwCzkrm1PC-ToHvr2SFzyosvFUb5HYbNOsZ9QqKc3y4pcj2nqocaSjwh1eCp5g3Zh_qVtZEMT7vPNSxWCJuCcxO6Y1_XBeKvzG8KouXzjYRR416HIiDFwQEh6pWdAmCpykyAmtkSx6LDfx69O8e5lzwZSTelUgtPZtAtdF3eKlwr7s2qtKVLfyv2WUOzsCpRDM5y8o7AZnog3mO1j1SKuI0PCihRBqu-A7fWJmpU3EFxxX9WBohbYizFbRAibUphttUJ6PEjrEWZFjePpT8zGrHB_tDtPzdLm7UoQyZIiO_k7jKiDPNgC4ZS2ymrzjnLVpuQAO_-UwPLZpcEtl1ZBel6PbgC1FtplS0BdM66LS1Dchan6OtyLt_4SDYa9alp4WRYdfj-jrX3BLYPewcFrSwHGmKaJGpfJhvm4Y8G7I9cheg1vNBVQVeFVWNEHkpRtuMOSwof-2YW2DFyKU0m6maiOLogUojaXLlth_5JrmO7s1aT6eqJkXCkg=w3584-h1806",
+      "photo_url": "https://decor-murom.ru/upload/iblock/a0d/a0df2dabc39eab2b5b8994c59a723369.jpg"
+    }
+  ],
+  "tasks_under_review": [
     {
       "shift_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
       "shift_status": "started",
@@ -3365,9 +3378,8 @@
       "user_surname": "Баймуратов",
       "task_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
       "task_description": "Помой посуду",
-      "task_url": "task image url",
-      "photo_url": "https://assets.thefurnish.ru/system/uploads/product_image/image/412784/9cca5df3967d31785ae3959204a26d04.jpeg",
-      "task_status": "approved"
+      "task_url": "https://lh3.googleusercontent.com/fife/AAbDypCORSAk8p_SussBL0Xke9ofl_9DFquQ8LBpK_gKS1m61526DQq4Wm2GFrkb3iKKIJzTvlhusQo_9svMYplRGtOFBLi11wyVu0A3k1A52yM9FgkWyKSsqIUaW-aSniXOEFlSNWCq3GFmh4i8m7Ae0v8wjuGT3xC4YMap93xoqytxodpn9yuGGv4hsrjGQjFloArWoj1hl_ByHxp-fLJvxhNKrp2jlpeyHoYMFnz312P87EcbmooCKYQrwGCQWqAR3h2OOWsQo_AX9O-sD0va7hA_giiw2-GC-PyOlZfld_gslLvxqWkNNHVS6PHJBRF7jx9rj47hTA72LrjOGt3L0-ep1JTAVgRYj0MjcIjbTd6VZ7RNRydWAx8Appkkvw1WOBYte_jik1Ws4sGbj61VA-E8VO7laFY-SC9rsPcOPxugTk0YbARcnf8uMzWJPZk2P4t2wd0yeMmhlEQ-BqlIgWx74REk_3e66oeQG_cE_iybOp0e_FiRmdXzi3L4Bgh0pOxd4gETXZRGFpfjHAlzE8UZlPyAH0UzkYU_XWT-aoFOC6dsTP08_KD-pkslNl3DnxXhUOMBc5l6myFQyuWlan9n9hurvE1Ykg0_4RmF3n92CwhIncQPlZw2uDJiFnD7FDdoaNu2-2IkxxO3SCxqNRedqUNp2TY9joPVueXEnCH-s_2yGOFTN-y30vOYGs817U5O-9t5K2SsfAepkOivZGCObysWtQfH_LkCN9ULgzCr5PPJeFgVrqzn7OylIp4EFlAnjsC7n3-QNXWZEIFoD_VkV4SlyWgvosGnfVy0-Y3RzjEa3RcOpBcDAz9E0UJ7ghGEJk1Li1JjlYF5Vzp21rLXrK2ppLR8FHFl7pq-VDvmr7RVbAq4rb9a5ed3eFHnivGY6SQYXovTaJoyULryB4LdQ4krmADvMeHlQeJN36hZ2ThibwV93lV30zlPMyeLYgCBLUpo59LQ3-3JVJT48oms7n4eS2vc0eqLRoHyJcOXmBPfXqR0Sev14-ivb-GbS0sGJNApiZ0eE5ZCTN1w3muflQ3ralx-dnyhrjNGUxPOqq8fEMw6-zFv7vHzGRfAmdfvPCHT9Wxm1cz4PBByTnr0pemIFfLcQIkYn69DybnQNGl9ui5QifY6nOVvCga89HLop6VyubzNw3fCu_PA-cb1OiLMdqekb3rsdgmzxEmRIxwoyPpLg6lh7rVYM5JDINzPOlc4iwLWBc5_kbrBLz-K4-UJG9YAS1A64Mgc9wOVMeSILOa0fgV4_M87S9JlAWdbnuGJJlIbq6KP5aK27AOYx3tCcemStwB5hk38x_QXlfKL8uJfB1Fm1UwXsMTrs_35fko54mnhiszc4JaFtbTdL4amOfrG3j55agDGUVYgDuNAEKDmx8dkA-DANRK5OTCDPE5YrGO3kYvaHTX6pZE9r9jnrGaSBKl0YQ5Qx9iyOb3b-gEnqp5sbjHTS5OuauzIrB5KSSo-WOP7KvI=w3584-h1806",
+      "photo_url": "https://assets.thefurnish.ru/system/uploads/product_image/image/412784/9cca5df3967d31785ae3959204a26d04.jpeg"
     },
     {
       "shift_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
@@ -3378,9 +3390,32 @@
       "user_surname": "Курбангалеев",
       "task_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
       "task_description": "Застелить кровать",
-      "task_url": "task image url",
-      "photo_url": "https://www.stroy-podskazka.ru/images/article/orig/2017/10/osobennosti-razdvizhnyh-krovatej-ikea-31.jpg",
-      "task_status": "declined"
+      "task_url": "https://lh3.googleusercontent.com/fife/AAbDypDHZNgt08AwwVMKxaXQGhPDRZbLkPSJ5174tOYaCXX7_UQlVN21i7wqtYBvQi-mhg3zVWXbclB1yc8K1MWdH8d-QBlWEXdukZG6wE2x5-SAdJ_yZYYWslj6ZCRHqQprdZcmJhqiPMGeDagUBa3yVcbB13kEy3YZT8br0413fWpf4LxDY7o0SkNJYkaBpt97QAUjT3FAcfLBP2wHcVcyDS06uiHMHYZywcqUBcmyPxjOsh4iim424Yh5HUPbHLiFiR0PXDifqpixKS5tQu8zovQS9LjxGEdHi9s3ea1QfTTk3DpMRURbwpPPm1kpzD5fugoN61Yx0-U8hzXEJUdOiMg5-5AKqi_leA5ecxywLPFQihOzFwd2OQVlsMJUEKy_tmirez2DoBad-WsvYxrLgj5LaMrbhb1N1n5uRisSH3RPhOl_6Bcww-NbWbMEKVa86RgR29vc2EFIaXsS6o29ce-yjREfkDlG15GhVCy3li2E6L1lDbLimt3w_SNxl3-kLWrKD-TMA77j5HNSsorvQMg_qYUBVJ80-InnVCKsEF0LLWz26OzvXOhdWX24LRssM2lqZjwbMVibdJU6TLfX9ERb6QhBpeQHRTkXYe3iEUMgREPNhl4HZWrZzmJo-VEQ43PuKpy8wuVHzhVYLu1wPbjX4QnAy6LQOvFMnMpsBS4U3h6ZteJzDMIQrWJDNkZc1e7tC1W3G7irRoomFUJGWS1WdrqIhfrxjQERyU4OsVovAIE4dNOdx_RbKsn8_BNkSaPB91TQWTQkaRKFu2w0RlQtlIq9es9R7S8iWNhq8VhAslp9ihmZsSzr39wpFbvDsCfVyXV0FgALZTumV_9HgfskRzaE_xrCGXSRHCYE2VEKoeIUjDihYY7f1BGcGfkkjiOrcAZUvvurM5kqPEP3em397C66lrL6zLP__Yd2pSs7mOKTL08dUlTDiUqgK3Ki7gCpl8htTZYFdMgxPidHPkK5L6JwCzkrm1PC-ToHvr2SFzyosvFUb5HYbNOsZ9QqKc3y4pcj2nqocaSjwh1eCp5g3Zh_qVtZEMT7vPNSxWCJuCcxO6Y1_XBeKvzG8KouXzjYRR416HIiDFwQEh6pWdAmCpykyAmtkSx6LDfx69O8e5lzwZSTelUgtPZtAtdF3eKlwr7s2qtKVLfyv2WUOzsCpRDM5y8o7AZnog3mO1j1SKuI0PCihRBqu-A7fWJmpU3EFxxX9WBohbYizFbRAibUphttUJ6PEjrEWZFjePpT8zGrHB_tDtPzdLm7UoQyZIiO_k7jKiDPNgC4ZS2ymrzjnLVpuQAO_-UwPLZpcEtl1ZBel6PbgC1FtplS0BdM66LS1Dchan6OtyLt_4SDYa9alp4WRYdfj-jrX3BLYPewcFrSwHGmKaJGpfJhvm4Y8G7I9cheg1vNBVQVeFVWNEHkpRtuMOSwof-2YW2DFyKU0m6maiOLogUojaXLlth_5JrmO7s1aT6eqJkXCkg=w3584-h1806",
+      "photo_url": "https://www.stroy-podskazka.ru/images/article/orig/2017/10/osobennosti-razdvizhnyh-krovatej-ikea-31.jpg"
+    },
+    {
+      "shift_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "shift_status": "started",
+      "id": "3",
+      "user_task_created_at": "2022-11-30T10:10:19.890Z",
+      "user_name": "Габдулла",
+      "user_surname": "Гилимханов",
+      "task_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "task_description": "Застелить кровать",
+      "task_url": "https://lh3.googleusercontent.com/fife/AAbDypDHZNgt08AwwVMKxaXQGhPDRZbLkPSJ5174tOYaCXX7_UQlVN21i7wqtYBvQi-mhg3zVWXbclB1yc8K1MWdH8d-QBlWEXdukZG6wE2x5-SAdJ_yZYYWslj6ZCRHqQprdZcmJhqiPMGeDagUBa3yVcbB13kEy3YZT8br0413fWpf4LxDY7o0SkNJYkaBpt97QAUjT3FAcfLBP2wHcVcyDS06uiHMHYZywcqUBcmyPxjOsh4iim424Yh5HUPbHLiFiR0PXDifqpixKS5tQu8zovQS9LjxGEdHi9s3ea1QfTTk3DpMRURbwpPPm1kpzD5fugoN61Yx0-U8hzXEJUdOiMg5-5AKqi_leA5ecxywLPFQihOzFwd2OQVlsMJUEKy_tmirez2DoBad-WsvYxrLgj5LaMrbhb1N1n5uRisSH3RPhOl_6Bcww-NbWbMEKVa86RgR29vc2EFIaXsS6o29ce-yjREfkDlG15GhVCy3li2E6L1lDbLimt3w_SNxl3-kLWrKD-TMA77j5HNSsorvQMg_qYUBVJ80-InnVCKsEF0LLWz26OzvXOhdWX24LRssM2lqZjwbMVibdJU6TLfX9ERb6QhBpeQHRTkXYe3iEUMgREPNhl4HZWrZzmJo-VEQ43PuKpy8wuVHzhVYLu1wPbjX4QnAy6LQOvFMnMpsBS4U3h6ZteJzDMIQrWJDNkZc1e7tC1W3G7irRoomFUJGWS1WdrqIhfrxjQERyU4OsVovAIE4dNOdx_RbKsn8_BNkSaPB91TQWTQkaRKFu2w0RlQtlIq9es9R7S8iWNhq8VhAslp9ihmZsSzr39wpFbvDsCfVyXV0FgALZTumV_9HgfskRzaE_xrCGXSRHCYE2VEKoeIUjDihYY7f1BGcGfkkjiOrcAZUvvurM5kqPEP3em397C66lrL6zLP__Yd2pSs7mOKTL08dUlTDiUqgK3Ki7gCpl8htTZYFdMgxPidHPkK5L6JwCzkrm1PC-ToHvr2SFzyosvFUb5HYbNOsZ9QqKc3y4pcj2nqocaSjwh1eCp5g3Zh_qVtZEMT7vPNSxWCJuCcxO6Y1_XBeKvzG8KouXzjYRR416HIiDFwQEh6pWdAmCpykyAmtkSx6LDfx69O8e5lzwZSTelUgtPZtAtdF3eKlwr7s2qtKVLfyv2WUOzsCpRDM5y8o7AZnog3mO1j1SKuI0PCihRBqu-A7fWJmpU3EFxxX9WBohbYizFbRAibUphttUJ6PEjrEWZFjePpT8zGrHB_tDtPzdLm7UoQyZIiO_k7jKiDPNgC4ZS2ymrzjnLVpuQAO_-UwPLZpcEtl1ZBel6PbgC1FtplS0BdM66LS1Dchan6OtyLt_4SDYa9alp4WRYdfj-jrX3BLYPewcFrSwHGmKaJGpfJhvm4Y8G7I9cheg1vNBVQVeFVWNEHkpRtuMOSwof-2YW2DFyKU0m6maiOLogUojaXLlth_5JrmO7s1aT6eqJkXCkg=w3584-h1806",
+      "photo_url": "https://decor-murom.ru/upload/iblock/a0d/a0df2dabc39eab2b5b8994c59a723369.jpg"
+    },
+    {
+      "shift_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "shift_status": "started",
+      "id": "4",
+      "user_task_created_at": "2022-11-30T10:10:19.890Z",
+      "user_name": "Ибрагим",
+      "user_surname": "Мухамедьяров",
+      "task_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "task_description": "Застелить кровать",
+      "task_url": "https://lh3.googleusercontent.com/fife/AAbDypDHZNgt08AwwVMKxaXQGhPDRZbLkPSJ5174tOYaCXX7_UQlVN21i7wqtYBvQi-mhg3zVWXbclB1yc8K1MWdH8d-QBlWEXdukZG6wE2x5-SAdJ_yZYYWslj6ZCRHqQprdZcmJhqiPMGeDagUBa3yVcbB13kEy3YZT8br0413fWpf4LxDY7o0SkNJYkaBpt97QAUjT3FAcfLBP2wHcVcyDS06uiHMHYZywcqUBcmyPxjOsh4iim424Yh5HUPbHLiFiR0PXDifqpixKS5tQu8zovQS9LjxGEdHi9s3ea1QfTTk3DpMRURbwpPPm1kpzD5fugoN61Yx0-U8hzXEJUdOiMg5-5AKqi_leA5ecxywLPFQihOzFwd2OQVlsMJUEKy_tmirez2DoBad-WsvYxrLgj5LaMrbhb1N1n5uRisSH3RPhOl_6Bcww-NbWbMEKVa86RgR29vc2EFIaXsS6o29ce-yjREfkDlG15GhVCy3li2E6L1lDbLimt3w_SNxl3-kLWrKD-TMA77j5HNSsorvQMg_qYUBVJ80-InnVCKsEF0LLWz26OzvXOhdWX24LRssM2lqZjwbMVibdJU6TLfX9ERb6QhBpeQHRTkXYe3iEUMgREPNhl4HZWrZzmJo-VEQ43PuKpy8wuVHzhVYLu1wPbjX4QnAy6LQOvFMnMpsBS4U3h6ZteJzDMIQrWJDNkZc1e7tC1W3G7irRoomFUJGWS1WdrqIhfrxjQERyU4OsVovAIE4dNOdx_RbKsn8_BNkSaPB91TQWTQkaRKFu2w0RlQtlIq9es9R7S8iWNhq8VhAslp9ihmZsSzr39wpFbvDsCfVyXV0FgALZTumV_9HgfskRzaE_xrCGXSRHCYE2VEKoeIUjDihYY7f1BGcGfkkjiOrcAZUvvurM5kqPEP3em397C66lrL6zLP__Yd2pSs7mOKTL08dUlTDiUqgK3Ki7gCpl8htTZYFdMgxPidHPkK5L6JwCzkrm1PC-ToHvr2SFzyosvFUb5HYbNOsZ9QqKc3y4pcj2nqocaSjwh1eCp5g3Zh_qVtZEMT7vPNSxWCJuCcxO6Y1_XBeKvzG8KouXzjYRR416HIiDFwQEh6pWdAmCpykyAmtkSx6LDfx69O8e5lzwZSTelUgtPZtAtdF3eKlwr7s2qtKVLfyv2WUOzsCpRDM5y8o7AZnog3mO1j1SKuI0PCihRBqu-A7fWJmpU3EFxxX9WBohbYizFbRAibUphttUJ6PEjrEWZFjePpT8zGrHB_tDtPzdLm7UoQyZIiO_k7jKiDPNgC4ZS2ymrzjnLVpuQAO_-UwPLZpcEtl1ZBel6PbgC1FtplS0BdM66LS1Dchan6OtyLt_4SDYa9alp4WRYdfj-jrX3BLYPewcFrSwHGmKaJGpfJhvm4Y8G7I9cheg1vNBVQVeFVWNEHkpRtuMOSwof-2YW2DFyKU0m6maiOLogUojaXLlth_5JrmO7s1aT6eqJkXCkg=w3584-h1806",
+      "photo_url": "https://mebliki.ru/upload/iblock/e5f/e5f08fffa99abd892690cf79fd019181.png"
     }
   ],
   "requests_pending": [
