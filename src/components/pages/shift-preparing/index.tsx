@@ -39,10 +39,15 @@ export const PagePreparingShift = () => {
     if (isLoading) {
       return <Loader extClassName={styles.shift__loader} />;
     } else if (isError || !data) {
-      return <Alert extClassName={styles.participants__alert} title="Что-то пошло не так" />;
+      return (
+        <Alert extClassName={styles.participants__alert} title={'Что-то пошло не\u00A0 так'} />
+      );
     } else if (data.members.length === 0) {
       return (
-        <Alert extClassName={styles.participants__alert} title="Нет принятых заявок на участие" />
+        <Alert
+          extClassName={styles.participants__alert}
+          title={'Нет принятых заявок на\u00A0участие'}
+        />
       );
     } else {
       return (
