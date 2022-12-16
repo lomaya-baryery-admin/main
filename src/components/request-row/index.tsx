@@ -51,7 +51,7 @@ export const RequestRow: React.FC<IRequestRowProps> = ({
     <div className={cn(styles.requestRow, extClassName, 'tableContentRow')}>
       <CellText type="accent" text={`${requestData.name} ${requestData.surname}`} />
       <CellText text={requestData.city} />
-      <CellText text={requestData.phone} />
+      <CellText text={requestData.phone_number} />
       <CellDate date={requestData.date_of_birth} />
       {actions}
     </div>
