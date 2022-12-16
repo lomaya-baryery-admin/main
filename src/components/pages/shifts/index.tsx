@@ -1,24 +1,24 @@
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../../../redux-store/hooks';
 import cn from 'classnames';
 import { Button } from '../../../ui/button';
 import { PlusIcon } from '../../../ui/icons';
 import { ContentHeading } from '../../../ui/content-heading';
 import { Table } from '../../../ui/table-native';
 import { ShiftsRow } from '../../shifts-row';
-import { Pagination } from '../../../ui/pagination';
-import styles from './styles.module.css';
+// import { Pagination } from '../../../ui/pagination';
 import { useGetAllShiftsQuery } from '../../../redux-store/api';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useAppSelector } from '../../../redux-store/hooks';
 import { selectRootShifts } from '../../../redux-store/root-shifts';
-import { deserializeQuery } from '../../../utils';
+// import { deserializeQuery } from '../../../utils';
 import { ContentContainer } from '../../../ui/content-container';
+import styles from './styles.module.css';
 
 export const PageShiftsAll = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const { pathname: currentPath, search } = location;
-  const page = deserializeQuery<{ page: string }>(search).page;
-  const { data } = useGetAllShiftsQuery(Number(page));
+  // const location = useLocation();
+  // const { pathname: currentPath, search } = location;
+  // const page = deserializeQuery<{ page: string }>(search).page;
+  const { data } = useGetAllShiftsQuery();
   const { preparing: isPreparingShift } = useAppSelector(selectRootShifts);
 
   const titles = [
@@ -30,9 +30,9 @@ export const PageShiftsAll = () => {
     'Статус',
   ];
 
-  const handleSetPage = (page: number) => {
-    navigate({ pathname: currentPath, search: `page=${page}` });
-  };
+  // const handleSetPage = (page: number) => {
+  //   navigate({ pathname: currentPath, search: `page=${page}` });
+  // };
 
   return (
     <ContentContainer extClassName={styles.shifts}>
@@ -60,20 +60,20 @@ export const PageShiftsAll = () => {
         renderRows={(rowStyles) =>
           data ? (
             <div className={cn(styles.shifts__scrollSection, 'custom-scroll')}>
-              {data.shifts.map((shift) => (
+              {data.map((shift) => (
                 <ShiftsRow key={shift.id} shiftData={shift} extClassName={rowStyles} />
               ))}
             </div>
           ) : null
         }
       />
-      <Pagination
+      {/* <Pagination //to be
         extClassName={styles.shifts__pagination}
         page={Number(page)}
-        total={data?.total_page || 0}
+        total={0}
         next={handleSetPage}
         prev={handleSetPage}
-      />
+      /> */}
     </ContentContainer>
   );
 };

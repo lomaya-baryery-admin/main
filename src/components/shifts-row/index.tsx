@@ -3,8 +3,7 @@ import cn from 'classnames';
 import { CellLink, CellText } from '../../ui/table-native';
 import { StatusLabel } from '../../ui/status-label';
 import styles from './index.module.css';
-import { IShift } from '../../redux-store/api/models';
-import { getShiftNumber } from './lib';
+import { IShift, TShiftStatus } from '../../redux-store/api/models';
 import { CellDate } from '../../ui/table-native/cell-date';
 
 interface IShiftsRow {
@@ -13,7 +12,7 @@ interface IShiftsRow {
 }
 
 export const ShiftsRow: React.FC<IShiftsRow> = ({ extClassName, shiftData }) => {
-  const renderStatusLabel = useCallback((status: IShift['status']) => {
+  const renderStatusLabel = useCallback((status: TShiftStatus) => {
     switch (status) {
       case 'preparing':
         return <StatusLabel statusText="Новая" type="new" />;
@@ -41,7 +40,7 @@ export const ShiftsRow: React.FC<IShiftsRow> = ({ extClassName, shiftData }) => 
 
   return (
     <div className={cn(styles.row, extClassName, 'tableContentRow')}>
-      <CellText text={getShiftNumber(shiftData.id)} />
+      <CellText text={shiftData.sequence_number} />
       <CellLink text={shiftData.title} routeTo={getRoutePath(shiftData)} />
       <CellDate date={shiftData.started_at} />
       <CellDate date={shiftData.finished_at} />

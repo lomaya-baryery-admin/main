@@ -25,10 +25,7 @@ export const AppRoutes = () => {
     <>
       <Routes location={rootLocation}>
         <Route path="/" element={<Layout />}>
-          <Route
-            index
-            element={<Navigate to={{ pathname: 'shifts/all', search: 'page=1' }} replace />}
-          />
+          <Route index element={<Navigate to="shifts/all" replace />} />
           <Route path="shifts/all" element={<PageShiftsAll />} />
           <Route path="shifts/preparing/" element={<PagePreparingShift />} />
           <Route path="shifts/started/*" element={<PageStartedShift />} />

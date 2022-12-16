@@ -107,9 +107,7 @@ export const SideBar = () => {
   const rootShifts = useAppSelector(selectRootShifts);
 
   const shiftsList = useMemo(() => {
-    let list: ISideBarAccordion['list'] = [
-      { title: 'Все', to: { pathname: '/shifts/all', search: 'page=1' } },
-    ];
+    let list: ISideBarAccordion['list'] = [{ title: 'Все', to: '/shifts/all' }];
 
     if (rootShifts.started) {
       list.push({ title: 'Текущая', to: '/shifts/started' });

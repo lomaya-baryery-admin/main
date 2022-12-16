@@ -19,13 +19,11 @@ const rootShiftsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addMatcher(api.endpoints.getAllShifts.matchFulfilled, (state, { payload }) => {
-      if (payload.page === 1) {
-        const preparingShift = payload.shifts.find((shift) => shift.status === 'preparing') || null;
-        const startedShift = payload.shifts.find((shift) => shift.status === 'started') || null;
+      const preparingShift = payload.find((shift) => shift.status === 'preparing') || null;
+      const startedShift = payload.find((shift) => shift.status === 'started') || null;
 
-        state.preparing = preparingShift;
-        state.started = startedShift;
-      }
+      state.preparing = preparingShift;
+      state.started = startedShift;
     });
   },
 });

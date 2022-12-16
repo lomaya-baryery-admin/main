@@ -8,7 +8,7 @@ import { SideBar } from '../sidebar';
 import styles from './layout.module.css';
 
 export const Layout = () => {
-  const { isLoading, isError } = useGetAllShiftsQuery(1);
+  const { isLoading, isError } = useGetAllShiftsQuery();
 
   const content = useMemo(() => {
     if (isLoading) {

@@ -41,7 +41,7 @@ export const PagePreparingShift = () => {
       return <Loader extClassName={styles.shift__loader} />;
     } else if (isError || !data) {
       return <Alert extClassName={styles.participants__alert} title="Что-то пошло не так" />;
-    } else if (data.users.length === 0) {
+    } else if (data.members.length === 0) {
       return (
         <Alert extClassName={styles.participants__alert} title="Нет принятых заявок на участие" />
       );
@@ -53,8 +53,12 @@ export const PagePreparingShift = () => {
           header={['Имя и фамилия', 'Город', 'Телефон', 'Дата рождения']}
           renderRows={(rowStyles) => (
             <>
-              {data.users.map((user) => (
-                <PreparingShiftRow key={user.user_id} extClassName={rowStyles} userData={user} />
+              {data.members.map((member) => (
+                <PreparingShiftRow
+                  key={member.id}
+                  extClassName={rowStyles}
+                  userData={member.user}
+                />
               ))}
             </>
           )}

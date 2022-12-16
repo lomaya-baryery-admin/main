@@ -1,17 +1,9 @@
-export interface IUser {
-  user_id: string;
-  name: string;
-  surname: string;
-  date_of_birth: string;
-  city: string;
-  phone: string;
-}
-
-export type TShiftStatus = 'started' | 'finished' | 'preparing';
+export type TShiftStatus = 'started' | 'finished' | 'preparing' | 'cancelled';
 
 export interface IShift {
   id: string;
-  status: TShiftStatus;
+  sequence_number: number;
+  status: Exclude<TShiftStatus, 'candelled'>;
   title: string;
   final_message: string;
   started_at: string;
@@ -19,22 +11,20 @@ export interface IShift {
   total_users: number;
 }
 
-export interface IShifts {
-  page: number;
-  total_page: number;
-  shifts: IShift[];
-}
-
 export interface ICreateShift {
   title: string;
   started_at: Date;
   finished_at: Date;
-  final_message?: string;
 }
 
-export type TUpdateShiftSettings = Partial<ICreateShift> & {
-  shiftId: string;
-};
+export interface IUser {
+  id: string;
+  name: string;
+  surname: string;
+  date_of_birth: string;
+  city: string;
+  phone_number: string;
+}
 
 export interface IUserTask {
   task_id: string;
@@ -42,13 +32,19 @@ export interface IUserTask {
   task_date: string;
 }
 
-export interface IShiftUser extends IUser {
-  user_tasks: IUserTask[];
+export interface IShiftUsers {
+  shift: Omit<IShift, 'total_users' | 'sequence_number'>;
+  members: {
+    id: string;
+    status: string;
+    reports: IUserTask[];
+    user: IUser;
+  }[];
 }
 
-export interface IShiftUsers extends IShift {
-  users: IShiftUser[];
-}
+export type TUpdateShiftSettings = Partial<ICreateShift> & {
+  shiftId: string;
+};
 
 export type TRequestStatus = 'pending' | 'approved' | 'declined';
 

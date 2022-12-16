@@ -4,32 +4,36 @@ import {
   ICreateShift,
   IRequest,
   IShift,
-  IShifts,
   IShiftUsers,
   ITask,
   IUserTask,
+  TShiftStatus,
   TUpdateShiftSettings,
 } from './models';
 
 export const api = createApi({
   reducerPath: 'api',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://127.0.0.1:3000' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://lombaryery.tk' }),
   tagTypes: ['shifts'],
   endpoints: (builder) => ({
-    getAllShifts: builder.query<IShifts, number | undefined>({
-      query: (page = 1) => `/shiftspage=${page}`, // for poduction (GET)../shifts?page=1
-      providesTags: (result, error, arg) => (result ? [{ type: 'shifts', id: arg }] : ['shifts']),
+    getAllShifts: builder.query<IShift[], void>({
+      query: () => '/shifts/',
+      transformResponse: (response: (Omit<IShift, 'status'> & { status: TShiftStatus })[]) => {
+        const transformedResponse = response.filter((shift) => shift.status !== 'cancelled');
+        return transformedResponse;
+      },
+      providesTags: ['shifts'],
     }),
     createNewShift: builder.mutation<Omit<IShift, 'total_users'>, ICreateShift>({
       query: (data) => ({
-        url: '/shiftspage=6', //for production (POST)../shifts
+        url: '/shifts/',
         method: 'POST',
         body: data,
       }),
       invalidatesTags: [{ type: 'shifts' }],
     }),
-    getShiftUsers: builder.query<IShiftUsers, IShift['id']>({
-      query: (shiftId) => '/preparingshift', //for production (GET)../shifts/{shift_id}/users (пока без пагинации)
+    getShiftUsers: builder.query<IShiftUsers, string>({
+      query: (shiftId) => `/shifts/${shiftId}/users`,
     }),
     updateShiftSettings: builder.mutation<Omit<IShift, 'total_users'>, TUpdateShiftSettings>({
       query: ({ shiftId, ...body }) => ({
