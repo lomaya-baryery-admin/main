@@ -19,6 +19,7 @@ import { SearchIcon } from './search-icon';
 import { UserIcon } from './user-icon';
 import { UsersIcon } from './users-icon';
 import { ZoomIcon } from './zoom-icon';
+import { RefreshIcon } from './refresh-icon';
 import type { IIconProps } from './utils';
 
 export type TIcons = {
@@ -40,6 +41,7 @@ export type TIcons = {
   UserIcon: React.FC<IIconProps>;
   UsersIcon: React.FC<IIconProps>;
   ZoomIcon: React.FC<IIconProps>;
+  RefreshIcon: React.FC<IIconProps>;
 } & TStatusIcons;
 
 export type TStatusIcons = {
@@ -70,4 +72,5 @@ export {
   UserIcon,
   UsersIcon,
   ZoomIcon,
+  RefreshIcon,
 };

@@ -1,5 +1,5 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
-import { StatusLabel } from '../../ui/status-label/status-label';
+import { StatusLabel } from '../../ui/status-label';
 
 export default {
   title: 'StatusLabel',
