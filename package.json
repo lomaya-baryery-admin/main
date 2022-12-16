@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "build-gh-pages": "tsc && vite build --base=/main/",
+    "deploy": "sh deploy.sh",
     "lint": "eslint --ext .ts,.tsx src",
     "lint.fix": "npm run lint --fix",
     "preview": "vite preview",
