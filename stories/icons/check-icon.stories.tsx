@@ -1,6 +1,6 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { CheckIcon } from '../../ui/icons/check-icon';
+import { CheckIcon } from '../../src/ui/icons/check-icon';
 
 export default {
   title: 'Icons',

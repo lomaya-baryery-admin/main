@@ -1,6 +1,6 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { CircleCheckIcon } from '../../ui/icons/circle-check-icon';
+import { CircleCheckIcon } from '../../src/ui/icons/circle-check-icon';
 
 export default {
   title: 'Icons',

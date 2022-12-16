@@ -1,6 +1,5 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
-
-import { Alert } from '../../ui/alert';
+import { Alert } from '../../src/ui/alert';
 
 export default {
   title: 'Alert',

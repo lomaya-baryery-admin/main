@@ -1,6 +1,6 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { AlertIcon } from '../../ui/icons/alert-icon';
+import { AlertIcon } from '../../src/ui/icons/alert-icon';
 
 export default {
   title: 'Icons',

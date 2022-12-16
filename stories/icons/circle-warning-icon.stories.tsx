@@ -1,6 +1,6 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { CircleWarningIcon } from '../../ui/icons/circle-warning-icon';
+import { CircleWarningIcon } from '../../src/ui/icons/circle-warning-icon';
 
 export default {
   title: 'Icons',

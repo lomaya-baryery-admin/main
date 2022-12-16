@@ -1,6 +1,6 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { NoteEditIcon } from '../../ui/icons/note-edit-icon';
+import { NoteEditIcon } from '../../src/ui/icons/note-edit-icon';
 
 export default {
   title: 'Icons',

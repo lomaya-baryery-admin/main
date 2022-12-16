@@ -1,6 +1,6 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { AwardIcon } from '../../ui/icons/award-icon';
+import { AwardIcon } from '../../src/ui/icons/award-icon';
 
 export default {
   title: 'Icons',

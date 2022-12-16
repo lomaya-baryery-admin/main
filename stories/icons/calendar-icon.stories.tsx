@@ -1,6 +1,6 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { CalendarIcon } from '../../ui/icons/calendar-icon';
+import { CalendarIcon } from '../../src/ui/icons/calendar-icon';
 
 export default {
   title: 'Icons',

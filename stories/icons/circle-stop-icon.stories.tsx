@@ -1,6 +1,6 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { CircleStopIcon } from '../../ui/icons/circle-stop-icon';
+import { CircleStopIcon } from '../../src/ui/icons/circle-stop-icon';
 
 export default {
   title: 'Icons',
