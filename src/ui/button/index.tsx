@@ -18,13 +18,8 @@ export const Button = ({
   type = 'primary',
   size = 'large',
   children,
-<<<<<<< HEAD:src/ui/button/button.tsx
-  className = '',
-  htmlType = 'button',
-=======
   extClassName,
   htmlType,
->>>>>>> refactor:src/ui/button/index.tsx
   disabled,
   loading,
   ...props
