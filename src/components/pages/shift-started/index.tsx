@@ -1,6 +1,5 @@
 import { useCallback, useMemo } from 'react';
 import cn from 'classnames';
-import styles from './styles.module.css';
 import { ContentContainer } from '../../../ui/content-container';
 import { ContentHeading } from '../../../ui/content-heading';
 import { Table } from '../../../ui/table-native';
@@ -14,23 +13,19 @@ import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-
 import { Button } from '../../../ui/button';
 import { StartedShiftRow } from '../../started-shift-row';
 import { ModalAlert } from '../../../ui/modal-alert';
+import { skipToken } from '@reduxjs/toolkit/query/react';
+import styles from './styles.module.css';
 
 export const PageStartedShift = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { started } = useAppSelector(selectRootShifts);
 
-  if (!started) {
-    return <Navigate to={'/shifts/all'} replace />;
-  }
-
-  const { title, started_at, finished_at, total_users } = started;
-
   const {
-    data: usersData,
+    data,
     isLoading: isUsersLoading,
     isError: isUsersError,
-  } = useGetShiftUsersQuery(started.id);
+  } = useGetShiftUsersQuery(started?.id ?? skipToken);
 
   const [
     setFinishShift,
@@ -60,13 +55,17 @@ export const PageStartedShift = () => {
   const finishShift = useCallback(() => navigate('finish'), []);
 
   const participantsTable = useMemo(() => {
+    if (!started) {
+      return <Navigate to={'/shifts/all'} replace />;
+    }
+
     if (isUsersLoading) {
       return <Loader extClassName={styles.shift__loader} />;
-    } else if (isUsersError || !usersData) {
+    } else if (isUsersError || !data) {
       return (
         <Alert extClassName={styles.participants__alert} title={'Что-то пошло не\u00A0 так'} />
       );
-    } else if (usersData.users.length === 0) {
+    } else if (data.members.length === 0) {
       return (
         <Alert
           extClassName={styles.participants__alert}
@@ -81,11 +80,12 @@ export const PageStartedShift = () => {
           header={['Имя и фамилия', 'Город', 'Дата рождения', 'Статусы заданий']}
           renderRows={(rowStyles) => (
             <>
-              {usersData.users.map((user) => (
+              {data.members.map((member) => (
                 <StartedShiftRow
-                  key={user.user_id}
+                  key={member.id}
                   cellsClassName={rowStyles}
-                  userData={user}
+                  userData={member.user}
+                  tasksData={member.reports}
                   shiftStart={started.started_at}
                   shiftFinish={started.finished_at}
                 />
@@ -95,9 +95,11 @@ export const PageStartedShift = () => {
         />
       );
     }
-  }, [isUsersLoading, isUsersError, usersData]);
+  }, [isUsersLoading, isUsersError, data, started]);
 
-  return (
+  return !started ? (
+    <Navigate to={'/shifts/all'} replace />
+  ) : (
     <>
       <ContentContainer extClassName={styles.shift__headingContainer}>
         <ContentHeading title="Текущая смена" extClassName={styles.shift__heading}>
@@ -125,10 +127,14 @@ export const PageStartedShift = () => {
             <Route
               path={'finish'}
               element={
-                <ModalAlert
-                  closeModal={() => navigate(-1)}
-                  closeShift={() => setFinishShift(started.id)}
-                />
+                started ? (
+                  <ModalAlert
+                    closeModal={() => navigate(-1)}
+                    closeShift={() => setFinishShift(started.id)}
+                  />
+                ) : (
+                  <Navigate to={'/shifts/all'} replace />
+                )
               }
             />
           </Routes>
@@ -140,11 +146,11 @@ export const PageStartedShift = () => {
           renderRows={(rowStyles) => (
             <ShiftSettingsRow
               extClassName={rowStyles}
-              title={title}
-              start={started_at}
-              finish={finished_at}
+              title={started.title}
+              start={started.started_at}
+              finish={started.finished_at}
               onButtonClick={openShiftSettings}
-              participants={total_users}
+              participants={started.total_users}
             />
           )}
         />

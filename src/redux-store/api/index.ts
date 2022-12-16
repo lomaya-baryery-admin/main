@@ -35,20 +35,23 @@ export const api = createApi({
     getShiftUsers: builder.query<IShiftUsers, string>({
       query: (shiftId) => `/shifts/${shiftId}/users`,
     }),
-    updateShiftSettings: builder.mutation<Omit<IShift, 'total_users'>, TUpdateShiftSettings>({
+    updateShiftSettings: builder.mutation<
+      Omit<IShift, 'total_users' | 'sequence_number'>,
+      TUpdateShiftSettings
+    >({
       query: ({ shiftId, ...body }) => ({
-        url: '/shiftspage=7', //for production (PATCH)../shifts/{shift_id}
+        url: `/shifts/${shiftId}`,
         method: 'PATCH',
         body,
       }),
-      invalidatesTags: [{ type: 'shifts', id: 1 }],
+      invalidatesTags: [{ type: 'shifts' }],
     }),
     finishShift: builder.mutation<Omit<IShift, 'total_users'>, string>({
       query: (shiftId) => ({
-        url: '/shiftspage=8', //for production (PATCH)../shifts/{shift_id}/finish
+        url: `/shifts/${shiftId}/finish`,
         method: 'PATCH',
       }),
-      invalidatesTags: [{ type: 'shifts', id: 1 }],
+      invalidatesTags: [{ type: 'shifts' }],
     }),
     getPendingRequests: builder.query<IRequest[], string>({
       query: (shiftId) => '/requests_pending?status=pending', //for production (GET)../shifts/{shift_id}/requests?status=pending

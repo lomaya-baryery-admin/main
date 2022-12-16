@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react';
 import cn from 'classnames';
 import { CellDate } from '../../ui/table-native/cell-date';
 import styles from './styles.module.css';
-import { IShiftUser } from '../../redux-store/api/models';
+import { IUser, IUserTask } from '../../redux-store/api/models';
 import { CellTasksStat, CellText } from '../../ui/table-native';
 import { TasksCalendar } from '../../ui/tasks-calendar';
 import { ChevronRightIcon } from '../../ui/icons';
@@ -10,12 +10,14 @@ import { ChevronRightIcon } from '../../ui/icons';
 interface IStartedShiftRowProps {
   shiftStart: string;
   shiftFinish: string;
-  userData: IShiftUser;
+  userData: IUser;
+  tasksData: IUserTask[];
   cellsClassName: string;
 }
 
 export const StartedShiftRow: React.FC<IStartedShiftRowProps> = ({
   userData,
+  tasksData,
   shiftStart,
   shiftFinish,
   cellsClassName,
@@ -23,7 +25,7 @@ export const StartedShiftRow: React.FC<IStartedShiftRowProps> = ({
   const [toggle, setToggle] = useState(false);
 
   const statistics = useMemo(() => {
-    return userData.user_tasks.reduce(
+    return tasksData.reduce(
       (acc, curr) => {
         acc[curr.status]++;
         return acc;
@@ -50,7 +52,7 @@ export const StartedShiftRow: React.FC<IStartedShiftRowProps> = ({
         <CellTasksStat data={statistics} />
       </div>
       {toggle ? (
-        <TasksCalendar start={shiftStart} finish={shiftFinish} userTasks={userData.user_tasks} />
+        <TasksCalendar start={shiftStart} finish={shiftFinish} userTasks={tasksData} />
       ) : null}
     </div>
   );

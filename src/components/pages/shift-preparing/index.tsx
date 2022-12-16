@@ -11,20 +11,15 @@ import { Loader } from '../../../ui/loader';
 import { selectRootShifts } from '../../../redux-store/root-shifts';
 import { useGetShiftUsersQuery } from '../../../redux-store/api';
 import { useAppSelector } from '../../../redux-store/hooks';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { skipToken } from '@reduxjs/toolkit/query/react';
 
 export const PagePreparingShift = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { preparing } = useAppSelector(selectRootShifts);
 
-  if (!preparing) {
-    return <Alert extClassName={styles.shift__alert} title="Что-то пошло не так" />;
-  }
-
-  const { title, started_at, finished_at, total_users } = preparing;
-
-  const { data, isLoading, isError } = useGetShiftUsersQuery(preparing.id);
+  const { data, isLoading, isError } = useGetShiftUsersQuery(preparing?.id ?? skipToken);
 
   const openShiftSettings = useCallback(
     () =>
@@ -37,6 +32,10 @@ export const PagePreparingShift = () => {
   );
 
   const participantsTable = useMemo(() => {
+    if (!preparing) {
+      return <Navigate to="/shifts/all" replace />;
+    }
+
     if (isLoading) {
       return <Loader extClassName={styles.shift__loader} />;
     } else if (isError || !data) {
@@ -65,9 +64,11 @@ export const PagePreparingShift = () => {
         />
       );
     }
-  }, [isLoading, isError, data]);
+  }, [isLoading, isError, data, preparing]);
 
-  return (
+  return !preparing ? (
+    <Navigate to="/shifts/all" replace />
+  ) : (
     <>
       <ContentContainer extClassName={styles.shift__headingContainer}>
         <ContentHeading title="Новая смена" extClassName={styles.shift__heading} />
@@ -78,11 +79,11 @@ export const PagePreparingShift = () => {
           renderRows={(rowStyles) => (
             <ShiftSettingsRow
               extClassName={rowStyles}
-              title={title}
-              start={started_at}
-              finish={finished_at}
+              title={preparing.title}
+              start={preparing.started_at}
+              finish={preparing.finished_at}
               onButtonClick={openShiftSettings}
-              participants={total_users}
+              participants={preparing.total_users}
             />
           )}
         />

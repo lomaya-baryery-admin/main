@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
 import cn from 'classnames';
-import styles from './styles.module.css';
 import { IUserTask } from '../../redux-store/api/models';
 import { withTooltip } from '../tooltip';
 import { CircleCheckIcon, CircleStopIcon, CircleWarningIcon } from '../icons';
+import styles from './styles.module.css';
 
 interface IStatusCellProps {
   status: IUserTask['status'];

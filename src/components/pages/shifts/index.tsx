@@ -15,7 +15,7 @@ import styles from './styles.module.css';
 
 export const PageShiftsAll = () => {
   const navigate = useNavigate();
-  // const location = useLocation();
+  const location = useLocation();
   // const { pathname: currentPath, search } = location;
   // const page = deserializeQuery<{ page: string }>(search).page;
   const { data } = useGetAllShiftsQuery();

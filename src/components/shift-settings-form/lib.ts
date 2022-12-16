@@ -95,3 +95,8 @@ export const validateLength = (str: string, min: number, max: number): boolean =
 
   return true;
 };
+
+export const formatDate = (date: Date) => {
+  const formatter = new Intl.DateTimeFormat('sv-SE');
+  return formatter.format(date);
+};

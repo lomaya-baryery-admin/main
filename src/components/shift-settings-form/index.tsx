@@ -6,7 +6,14 @@ import { DateRange } from '../../ui/date-range';
 import { useAppSelector } from '../../redux-store/hooks';
 import { selectRootShifts } from '../../redux-store/root-shifts';
 import { Button } from '../../ui/button';
-import { getTitle, getDiffInDays, getFinishDate, getStartDate, validateLength } from './lib';
+import {
+  getTitle,
+  getDiffInDays,
+  getFinishDate,
+  getStartDate,
+  validateLength,
+  formatDate,
+} from './lib';
 import { useCreateNewShiftMutation, useUpdateShiftSettingsMutation } from '../../redux-store/api';
 import { Navigate, useLocation } from 'react-router-dom';
 import { IAppLocation } from '../../utils';
@@ -92,17 +99,22 @@ export const ShiftSettingsForm: React.FC<IShiftSettingsFormProps> = ({
 
     const shiftSettings = {
       title: titleFieldValue.trim(),
-      started_at: startFieldValue,
-      finished_at: finishFieldValue,
+      started_at: formatDate(startFieldValue),
+      finished_at: formatDate(finishFieldValue),
     };
 
     if (validateTitle(titleFieldValue)) {
-      shiftStatus === 'creating'
-        ? createShift(shiftSettings)
-        : updateShift({
-            shiftId: shiftStatus === 'preparing' ? preparing!.id : started!.id,
-            ...shiftSettings,
-          });
+      if (shiftStatus === 'creating') {
+        createShift(shiftSettings);
+      } else {
+        const { id, final_message } = shiftStatus === 'preparing' ? preparing! : started!;
+
+        updateShift({
+          shiftId: id,
+          final_message,
+          ...shiftSettings,
+        });
+      }
     } else {
       handleValidateTitle();
     }

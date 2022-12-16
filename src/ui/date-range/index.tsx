@@ -94,7 +94,13 @@ export const DateRange: FC<IDateRange> = ({
       renderCustomHeader={customHeader}
       dayClassName={() => styles.dataPicker__calendarWeekDay}
       formatWeekDay={(formattedDate) => getShortenWeekDay(formattedDate)}
-      filterDate={filterStart ? (date) => date >= filterStart : undefined}
+      filterDate={
+        filterStart
+          ? (date) => {
+              return date >= filterStart;
+            }
+          : undefined
+      }
       disabled={disabledStart}
     />
     <span className={styles.dateRange__divider} />
