@@ -5,7 +5,6 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "serve-json": "json-server ./mock/db.json -d 1000 --watch",
     "build": "tsc && vite build",
     "build-gh-pages": "tsc && vite build --base=/main/",
     "lint": "eslint --ext .ts,.tsx src",

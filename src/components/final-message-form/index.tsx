@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import cn from 'classnames';
 import styles from './styles.module.css';
 import { useAppSelector } from '../../redux-store/hooks';
@@ -7,30 +7,26 @@ import { Button } from '../../ui/button';
 import { useUpdateShiftSettingsMutation } from '../../redux-store/api';
 import { Navigate, useLocation } from 'react-router-dom';
 import { IAppLocation } from '../../utils';
-import { Loader } from '../../ui/loader';
 
 export const FinalMessageForm: React.FC = () => {
   const { state: locationState }: IAppLocation = useLocation();
   const { started } = useAppSelector(selectRootShifts);
+
   const [saveMessage, { isLoading, isSuccess }] = useUpdateShiftSettingsMutation();
 
-  const [inputValue, changeInputnValue] = useState(started?.final_message);
-
-  useEffect(() => {
-    changeInputnValue(started?.final_message);
-  }, [started]);
-
-  if (!started) {
-    return <Loader extClassName={styles.messageForm__loader} />;
-  }
+  const [inputValue, changeInputValue] = useState(started?.final_message || '');
 
   const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
 
-    saveMessage({ shiftId: started.id, final_message: inputValue });
+    if (started) {
+      const { id, title, started_at, finished_at } = started;
+
+      saveMessage({ shiftId: id, title, started_at, finished_at, final_message: inputValue });
+    }
   };
 
-  if (isSuccess) {
+  if (isSuccess || !started) {
     return <Navigate to={locationState?.background || '/'} replace />;
   }
 
@@ -41,7 +37,7 @@ export const FinalMessageForm: React.FC = () => {
         name="message"
         placeholder="Введите текст"
         className={cn(styles.messageForm__input, 'text border')}
-        onChange={(evt) => changeInputnValue(evt.currentTarget.value)}
+        onChange={(evt) => changeInputValue(evt.currentTarget.value)}
         spellCheck={'false'}
       ></textarea>
       <Button

@@ -1,6 +1,0 @@
-{
-  "/api/*": "/$1",
-  "/shifts/page/:page": "/shifts?page=:page",
-  "/requests_pending_/*": "/requests_pending_",
-  "/requests_pending_/:id": "/requests_pending_?id=:id"
-}

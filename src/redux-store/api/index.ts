@@ -34,6 +34,7 @@ export const api = createApi({
     }),
     getShiftUsers: builder.query<IShiftUsers, string>({
       query: (shiftId) => `/shifts/${shiftId}/users`,
+      providesTags: [{ type: 'shifts', id: 'preparing' }],
     }),
     updateShiftSettings: builder.mutation<
       Omit<IShift, 'total_users' | 'sequence_number'>,
@@ -54,7 +55,7 @@ export const api = createApi({
       invalidatesTags: [{ type: 'shifts' }],
     }),
     getPendingRequests: builder.query<IRequest[], string>({
-      query: (shiftId) => '/requests_pending?status=pending', //for production (GET)../shifts/{shift_id}/requests?status=pending
+      query: (shiftId) => `/shifts/${shiftId}/requests?status=pending`,
     }),
     approveRequest: builder.mutation<IRequest, { requestId: string; shiftId: string }>({
       //shiftId for manual cache update
