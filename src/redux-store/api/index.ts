@@ -58,11 +58,9 @@ export const api = createApi({
       query: (shiftId) => `/shifts/${shiftId}/requests?status=pending`,
     }),
     approveRequest: builder.mutation<IRequest, { requestId: string; shiftId: string }>({
-      //shiftId for manual cache update
       query: (arg) => ({
-        url: `/requests_pending/${arg.requestId}`, //for production (PATCH)../requests/{request_id}/approve
+        url: `/requests/${arg.requestId}/approve`,
         method: 'PATCH',
-        body: { status: 'approved' }, //delete before production
       }),
       async onQueryStarted({ requestId, shiftId }, { dispatch, queryFulfilled }) {
         try {
@@ -70,7 +68,7 @@ export const api = createApi({
           dispatch(
             api.util.updateQueryData('getPendingRequests', shiftId, (draft) => {
               const requests = draft.map((request) =>
-                request.id === requestId ? updatedRequest : request
+                request.request_id === requestId ? updatedRequest : request
               );
               return requests;
             })
@@ -80,12 +78,14 @@ export const api = createApi({
         }
       },
     }),
-    declineRequest: builder.mutation<IRequest, { requestId: string; shiftId: string }>({
-      //shiftId for manual cache update
-      query: (arg) => ({
-        url: `/requests_pending/${arg.requestId}`, //for production (PATCH)../requests/{request_id}/decline
+    declineRequest: builder.mutation<
+      IRequest,
+      { requestId: string; shiftId: string; message: string }
+    >({
+      query: ({ requestId, message, ...rest }) => ({
+        url: `/requests/${requestId}/decline`,
         method: 'PATCH',
-        body: { status: 'declined' }, //delete before production
+        body: { message },
       }),
       async onQueryStarted({ requestId, shiftId }, { dispatch, queryFulfilled }) {
         try {
@@ -93,7 +93,7 @@ export const api = createApi({
           dispatch(
             api.util.updateQueryData('getPendingRequests', shiftId, (draft) => {
               const requests = draft.map((request) =>
-                request.id === requestId ? updatedRequest : request
+                request.request_id === requestId ? updatedRequest : request
               );
               return requests;
             })

@@ -127,14 +127,10 @@ export const PageStartedShift = () => {
             <Route
               path={'finish'}
               element={
-                started ? (
-                  <ModalAlert
-                    closeModal={() => navigate(-1)}
-                    closeShift={() => setFinishShift(started.id)}
-                  />
-                ) : (
-                  <Navigate to={'/shifts/all'} replace />
-                )
+                <ModalAlert
+                  closeModal={() => navigate(-1)}
+                  closeShift={() => setFinishShift(started.id)}
+                />
               }
             />
           </Routes>

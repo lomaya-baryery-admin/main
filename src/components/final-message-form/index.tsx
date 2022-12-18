@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import cn from 'classnames';
-import styles from './styles.module.css';
 import { useAppSelector } from '../../redux-store/hooks';
 import { selectRootShifts } from '../../redux-store/root-shifts';
 import { Button } from '../../ui/button';
 import { useUpdateShiftSettingsMutation } from '../../redux-store/api';
 import { Navigate, useLocation } from 'react-router-dom';
 import { IAppLocation } from '../../utils';
+import styles from './styles.module.css';
 
 export const FinalMessageForm: React.FC = () => {
   const { state: locationState }: IAppLocation = useLocation();

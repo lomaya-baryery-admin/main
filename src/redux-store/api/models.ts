@@ -49,7 +49,8 @@ export type TUpdateShiftSettings = Partial<ICreateShift> & {
 
 export type TRequestStatus = 'pending' | 'approved' | 'declined';
 
-export interface IRequest extends IUser {
+export interface IRequest extends Omit<IUser, 'id'> {
+  user_id: string;
   request_id: string;
   status: TRequestStatus;
 }

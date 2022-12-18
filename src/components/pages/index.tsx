@@ -30,19 +30,41 @@ export const AppRoutes = () => {
           <Route path="shifts/preparing/" element={<PagePreparingShift />} />
           <Route path="shifts/started/*" element={<PageStartedShift />} />
           <Route path="shifts/finished/:id" element={<PageFinishedShift />} />
-          <Route path="requests/pending" element={<PageRequestsPending />} />
+          <Route path="requests/pending/*" element={<PageRequestsPending />} />
           <Route
             path="requests/considered"
-            element={<h1 className="text text_type_main-extra-large">Considered Page</h1>}
+            element={<h1 className="text text_type_main-extra-large">UNDER DEVELOP</h1>}
           />
-          <Route path="users" element={<div>6</div>} />
+          <Route
+            path="users"
+            element={<h1 className="text text_type_main-extra-large">UNDER DESIGN</h1>}
+          />
           <Route path="tasks/under_review" element={<PageTasksUnderReview />} />
           <Route path="tasks/under_review/:id" element={<PageTasksSlider />} />
-          <Route path="tasks/reviewed" element={<div>8</div>} />
-          <Route path="tasks/reviewed/:id" element={<div>8</div>} />
-          <Route path="tasks/declined" element={<div>9</div>} />
-          <Route path="tasks/declined/:id" element={<div>9</div>} />
-          <Route path="*" element={<div>страница не найдена </div>} />
+          <Route
+            path="tasks/reviewed"
+            element={<h1 className="text text_type_main-extra-large">UNDER DEVELOP</h1>}
+          />
+          <Route
+            path="tasks/reviewed/:id"
+            element={<h1 className="text text_type_main-extra-large">UNDER DEVELOP</h1>}
+          />
+          <Route
+            path="tasks/declined"
+            element={<h1 className="text text_type_main-extra-large">UNDER DEVELOP</h1>}
+          />
+          <Route
+            path="tasks/declined/:id"
+            element={<h1 className="text text_type_main-extra-large">UNDER DEVELOP</h1>}
+          />
+          <Route
+            path="*"
+            element={
+              <h1 className="text text_type_main-extra-large">
+                Страница не найдена или её никогда не было
+              </h1>
+            }
+          />
         </Route>
       </Routes>
       {state?.background && (

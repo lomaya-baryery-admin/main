@@ -3,7 +3,7 @@ import cn from 'classnames';
 import styles from './styles.module.css';
 import { Button } from '../../ui/button';
 import { CheckIcon, CloseIcon } from '../../ui/icons';
-import { getFormattedDate } from '../../utils/common-helpers';
+import { getFormattedDate } from '../../utils';
 
 interface ITaskDetailsProps {
   taskUrl: string;
