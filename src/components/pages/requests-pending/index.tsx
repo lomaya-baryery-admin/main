@@ -38,7 +38,7 @@ export const PageRequestsPending = () => {
   );
 
   const [approveRequest] = useApproveRequestMutation();
-  const [declineRequest, { isSuccess: isDeclineSuccess }] = useDeclineRequestMutation();
+  const [declineRequest] = useDeclineRequestMutation();
 
   const { rqstId: decliningRqstId } = deserializeQuery<{ rqstId: string }>(location.search);
 
@@ -122,7 +122,7 @@ export const PageRequestsPending = () => {
                 onSubmit={(message) =>
                   declineRequest({ requestId: decliningRqstId, shiftId: preparing.id, message })
                     .unwrap()
-                    .then(() => navigate(-1, { replace: true }))
+                    .then(() => navigate('/requests/pending', { replace: true }))
                 }
               />
             </Modal>

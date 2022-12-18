@@ -2,7 +2,6 @@ import { useCallback } from 'react';
 import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { Modal } from '../../ui/modal';
 import { IAppLocation } from '../../utils';
-import { FinalMessageForm } from '../final-message-form';
 import { ShiftSettingsForm } from '../shift-settings-form';
 import { Layout } from './layout';
 import { PageRequestsPending } from './requests-pending';
@@ -90,14 +89,6 @@ export const AppRoutes = () => {
             element={
               <Modal title={'Редактировать смену'} close={handleCloseModal}>
                 <ShiftSettingsForm shiftStatus="started" />
-              </Modal>
-            }
-          />
-          <Route
-            path="shifts/started/message"
-            element={
-              <Modal title={'Редактировать сообщение'} close={handleCloseModal}>
-                <FinalMessageForm />
               </Modal>
             }
           />

@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { secondsToMilliseconds } from 'date-fns';
 import {
   ICreateShift,
   IRequest,
@@ -104,7 +103,7 @@ export const api = createApi({
       },
     }),
     getTasksUnderReview: builder.query<ITask[], string>({
-      query: (shiftId) => '/tasks_under_review', //for production (GET)../user_tasks?status=under_review&shift_id={shift_id}
+      query: (shiftId) => `/reports/?shift_id=${shiftId}&status=reviewing`,
     }),
     approveTask: builder.mutation<
       ITask,
