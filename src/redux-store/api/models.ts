@@ -58,8 +58,8 @@ export interface IRequest extends Omit<IUser, 'id'> {
 export interface ITask {
   shift_id: string;
   shift_status: TShiftStatus;
-  id: string; //for production rename on user_task_id
-  user_task_created_at: string;
+  report_id: string;
+  report_created_at: string;
   user_name: string;
   user_surname: string;
   task_id: string;

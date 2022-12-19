@@ -11,8 +11,8 @@ interface ITaskDetailsProps {
   createdAt: string;
   userName: string;
   userSurname: string;
-  accept: () => void;
-  decline: () => void;
+  accept?: () => void;
+  decline?: () => void;
   extClassName?: string;
 }
 

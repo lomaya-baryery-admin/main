@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { Link, Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
 import cn from 'classnames';
 import {
@@ -13,8 +14,8 @@ import { ArrowLeftIcon, ArrowRightIcon, ChevronLeftIcon } from '../../../ui/icon
 import { Button } from '../../../ui/button';
 import { selectTasks } from '../../../redux-store/tasks-slider';
 import { Alert } from '../../../ui/alert';
-import { useMemo } from 'react';
 import { Loader } from '../../../ui/loader';
+import { skipToken } from '@reduxjs/toolkit/dist/query';
 import styles from './styles.module.css';
 
 export const PageTasksSlider = () => {
@@ -26,34 +27,34 @@ export const PageTasksSlider = () => {
 
   const tasksParentPath = pathname.slice(0, pathname.lastIndexOf('/'));
 
-  const taskIndex = tasks.findIndex((task) => task.id === id);
+  const taskIndex = tasks.findIndex((task) => task.report_id === id);
 
-  if (!started) {
-    return <Navigate to={tasksParentPath} />;
-  }
-
-  const { isError, isLoading } = useGetTasksUnderReviewQuery(started.id);
+  const { isError, isLoading } = useGetTasksUnderReviewQuery(started?.id ?? skipToken);
 
   const [approveRequest] = useApproveTaskMutation();
   const [declineRequest] = useDeclineTaskMutation();
 
+  const navigateAfterReview = () => {
+    if (tasks.length === 1) {
+      return navigate(tasksParentPath);
+    }
+
+    if (tasks.length > 1 && taskIndex === tasks.length - 1) {
+      return navigate(`${tasksParentPath}/${tasks[taskIndex - 1].report_id}`);
+    }
+
+    return navigate(`${tasksParentPath}/${tasks[taskIndex + 1].report_id}`);
+  };
+
   const handleApprove = async () => {
     try {
       await approveRequest({
-        taskId: tasks[taskIndex].id,
+        taskId: tasks[taskIndex].report_id,
         shiftId: tasks[taskIndex].shift_id,
         patch: { task_status: 'approved' },
       }).unwrap();
 
-      if (tasks.length === 1) {
-        return navigate(tasksParentPath);
-      }
-
-      if (tasks.length > 1 && taskIndex === tasks.length - 1) {
-        return navigate(`${tasksParentPath}/${tasks[taskIndex - 1].id}`);
-      }
-
-      return navigate(`${tasksParentPath}/${tasks[taskIndex + 1].id}`);
+      navigateAfterReview();
     } catch (error) {
       console.error(error);
     }
@@ -62,20 +63,12 @@ export const PageTasksSlider = () => {
   const handleDecline = async () => {
     try {
       await declineRequest({
-        taskId: tasks[taskIndex].id,
+        taskId: tasks[taskIndex].report_id,
         shiftId: tasks[taskIndex].shift_id,
         patch: { task_status: 'declined' },
       }).unwrap();
 
-      if (tasks.length === 1) {
-        return navigate(tasksParentPath);
-      }
-
-      if (tasks.length > 1 && taskIndex === tasks.length - 1) {
-        return navigate(`${tasksParentPath}/${tasks[taskIndex - 1].id}`);
-      }
-
-      return navigate(`${tasksParentPath}/${tasks[taskIndex + 1].id}`);
+      navigateAfterReview();
     } catch (error) {
       console.error(error);
     }
@@ -84,15 +77,17 @@ export const PageTasksSlider = () => {
   const handlePrevTask = () => {
     if (taskIndex === 0) {
       return;
+    } else {
+      navigate(`${tasksParentPath}/${tasks[taskIndex - 1].report_id}`);
     }
-    navigate(`${tasksParentPath}/${tasks[taskIndex - 1].id}`);
   };
 
   const handleNextTask = () => {
     if (taskIndex === tasks.length - 1) {
       return;
+    } else {
+      navigate(`${tasksParentPath}/${tasks[taskIndex + 1].report_id}`);
     }
-    navigate(`${tasksParentPath}/${tasks[taskIndex + 1].id}`);
   };
 
   const content = useMemo(() => {
@@ -115,12 +110,16 @@ export const PageTasksSlider = () => {
         photoUrl={tasks[taskIndex].photo_url}
         userName={tasks[taskIndex].user_name}
         userSurname={tasks[taskIndex].user_surname}
-        createdAt={tasks[taskIndex].user_task_created_at}
+        createdAt={tasks[taskIndex].report_created_at}
         accept={handleApprove}
         decline={handleDecline}
       />
     );
   }, [isError, isLoading, taskIndex, tasks]);
+
+  if (!started) {
+    return <Navigate to={tasksParentPath} />;
+  }
 
   return (
     <>

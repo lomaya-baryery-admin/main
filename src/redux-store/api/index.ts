@@ -109,11 +109,10 @@ export const api = createApi({
       ITask,
       { taskId: string; shiftId: string; patch: { task_status: IUserTask['status'] } }
     >({
-      //shiftId for manual cache update
-      query: (arg) => ({
-        url: `/tasks_under_review/${arg.taskId}`, //for production (PATCH)../requests/{request_id}/approve
+      query: ({ taskId, patch, ...rest }) => ({
+        url: `/reports/ ${taskId}/approve`,
         method: 'PATCH',
-        body: arg.patch, //delete before production
+        body: patch, //delete before production
       }),
       async onQueryStarted({ taskId, shiftId, patch }, { dispatch, queryFulfilled }) {
         try {
@@ -121,7 +120,7 @@ export const api = createApi({
           dispatch(
             api.util.updateQueryData('getTasksUnderReview', shiftId, (draft) => {
               const tasks = draft.map((task) =>
-                task.id === taskId ? { ...task, ...patch } : task
+                task.report_id === taskId ? { ...task, ...patch } : task
               );
               return tasks;
             })
@@ -141,11 +140,10 @@ export const api = createApi({
         };
       }
     >({
-      //shiftId for manual cache update
-      query: (arg) => ({
-        url: `/tasks_under_review/${arg.taskId}`, //for production (PATCH)../requests/{request_id}/decline
+      query: ({ taskId, patch, ...rest }) => ({
+        url: `/reports/${taskId}/decline`,
         method: 'PATCH',
-        body: arg.patch, //delete before production
+        body: patch, //delete before production
       }),
       async onQueryStarted({ taskId, shiftId, patch }, { dispatch, queryFulfilled }) {
         try {
@@ -153,7 +151,7 @@ export const api = createApi({
           dispatch(
             api.util.updateQueryData('getTasksUnderReview', shiftId, (draft) => {
               const tasks = draft.map((task) =>
-                task.id === taskId ? { ...task, ...patch } : task
+                task.report_id === taskId ? { ...task, ...patch } : task
               );
               return tasks;
             })

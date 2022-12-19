@@ -15,10 +15,10 @@ const tasksSliderlSlice = createSlice({
       (state, { payload }) => (state = payload)
     );
     builder.addMatcher(api.endpoints.approveTask.matchFulfilled, (state, { payload }) =>
-      state.filter((task) => task.id !== payload.id)
+      state.filter((task) => task.report_id !== payload.report_id)
     );
     builder.addMatcher(api.endpoints.declineTask.matchFulfilled, (state, { payload }) =>
-      state.filter((task) => task.id !== payload.id)
+      state.filter((task) => task.report_id !== payload.report_id)
     );
   },
 });

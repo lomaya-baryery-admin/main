@@ -62,19 +62,19 @@ export const PageTasksUnderReview = () => {
               <div className={cn(styles.tasksReview__tableRows, 'custom-scroll')}>
                 {data.map((task) => (
                   <TaskRow
-                    key={task.id}
+                    key={task.report_id}
                     extClassName={rowStyles}
                     taskData={task}
                     approve={() =>
                       approveRequest({
-                        taskId: task.id,
+                        taskId: task.report_id,
                         shiftId: started.id,
                         patch: { task_status: 'approved' },
                       })
                     }
                     decline={() =>
                       declineRequest({
-                        taskId: task.id,
+                        taskId: task.report_id,
                         shiftId: started.id,
                         patch: { task_status: 'declined' },
                       })
