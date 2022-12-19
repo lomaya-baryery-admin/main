@@ -12,28 +12,24 @@ interface IModalAlertProps {
 }
 
 export const ModalAlert: React.FC<IModalAlertProps> = ({ closeModal, closeShift }) => {
-  const handleCancel = () => {
-    closeModal();
-  };
-
   const handleFinish = () => {
     closeShift();
     closeModal();
   };
 
-  const handleEscPress = (evt: KeyboardEvent) => {
-    if (evt.code === 'Escape') {
-      handleCancel();
-    }
-  };
-
   const clickOnOverlay = (evt: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (evt.currentTarget == evt.target) {
-      handleCancel();
+    if (evt.currentTarget === evt.target) {
+      closeModal();
     }
   };
 
   useEffect(() => {
+    const handleEscPress = (evt: KeyboardEvent) => {
+      if (evt.code === 'Escape') {
+        closeModal();
+      }
+    };
+
     document.addEventListener('keyup', handleEscPress);
 
     return () => {
@@ -45,11 +41,11 @@ export const ModalAlert: React.FC<IModalAlertProps> = ({ closeModal, closeShift 
     <div className={styles.overlay} onMouseDown={clickOnOverlay}>
       <div className={styles.modalAlert}>
         <Alert
-          title={'Вы уверены, что хотите завершить смену?'}
+          title="Вы уверены, что хотите завершить смену?"
           extClassName={styles.modalAlert__alert}
         />
         <div className={styles.modalAlert__controls}>
-          <Button htmlType="button" size="small" type="primary" onClick={handleCancel}>
+          <Button htmlType="button" size="small" type="primary" onClick={closeModal}>
             Отменить
           </Button>
           <Button htmlType="button" size="small" type="negative" onClick={handleFinish}>

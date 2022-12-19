@@ -94,13 +94,7 @@ export const DateRange: FC<IDateRange> = ({
       renderCustomHeader={customHeader}
       dayClassName={() => styles.dataPicker__calendarWeekDay}
       formatWeekDay={(formattedDate) => getShortenWeekDay(formattedDate)}
-      filterDate={
-        filterStart
-          ? (date) => {
-              return date >= filterStart;
-            }
-          : undefined
-      }
+      filterDate={filterStart ? (date) => date >= filterStart : undefined}
       disabled={disabledStart}
     />
     <span className={styles.dateRange__divider} />
@@ -109,7 +103,7 @@ export const DateRange: FC<IDateRange> = ({
       showPopperArrow={false}
       locale={ru}
       selected={finishValue}
-      onChange={(date) => changeFinishDate(date!)}
+      onChange={(date) => date && changeFinishDate(date)}
       wrapperClassName={styles.datePicker}
       className={cn(styles.datePicker__input, 'text', 'text_type_extra_default')}
       calendarClassName={styles.dataPicker__calendar}

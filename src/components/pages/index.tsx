@@ -19,7 +19,7 @@ export const AppRoutes = () => {
 
   const rootLocation = state?.background || pathname.concat(search);
 
-  const handleCloseModal = useCallback(() => navigate(-1), []);
+  const handleCloseModal = useCallback(() => navigate(-1), [navigate]);
 
   return (
     <>
@@ -69,7 +69,7 @@ export const AppRoutes = () => {
           <Route
             path="shifts/create"
             element={
-              <Modal title={'Новая смена'} close={handleCloseModal}>
+              <Modal title="Новая смена" close={handleCloseModal}>
                 <ShiftSettingsForm shiftStatus="creating" />
               </Modal>
             }
@@ -77,7 +77,7 @@ export const AppRoutes = () => {
           <Route
             path="shifts/preparing/settings"
             element={
-              <Modal title={'Редактировать смену'} close={handleCloseModal}>
+              <Modal title="Редактировать смену" close={handleCloseModal}>
                 <ShiftSettingsForm shiftStatus="preparing" />
               </Modal>
             }
@@ -85,7 +85,7 @@ export const AppRoutes = () => {
           <Route
             path="shifts/started/settings"
             element={
-              <Modal title={'Редактировать смену'} close={handleCloseModal}>
+              <Modal title="Редактировать смену" close={handleCloseModal}>
                 <ShiftSettingsForm shiftStatus="started" />
               </Modal>
             }

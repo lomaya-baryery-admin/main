@@ -12,11 +12,13 @@ export interface IInputTextProps extends React.InputHTMLAttributes<HTMLInputElem
 
 export const InputText = React.forwardRef<HTMLInputElement, IInputTextProps>(
   ({ value, onChange, extClassName, error, errorText, ...props }, ref) => {
-    const errorToRender = useMemo(() => {
-      return error && errorText ? (
-        <span className={cn(styles.inputText__error, 'text')}>{errorText}</span>
-      ) : null;
-    }, [error]);
+    const errorToRender = useMemo(
+      () =>
+        error && errorText ? (
+          <span className={cn(styles.inputText__error, 'text')}>{errorText}</span>
+        ) : null,
+      [error, errorText]
+    );
 
     return (
       <div className={cn(styles.inputTextContainer, extClassName)}>

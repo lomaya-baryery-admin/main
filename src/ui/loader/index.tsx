@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './styles.module.css';
 import cn from 'classnames';
+import styles from './styles.module.css';
 
 interface ILoaderProps {
   extClassName?: string;
@@ -31,7 +31,7 @@ export const Loader: React.FC<ILoaderProps> = ({ extClassName, fullScreen }) => 
           to="360 64 64"
           dur="1000ms"
           repeatCount="indefinite"
-        ></animateTransform>
+        />
       </g>
     </svg>
   </div>

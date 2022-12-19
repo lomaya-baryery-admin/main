@@ -13,8 +13,8 @@ export interface IShift {
 
 export interface ICreateShift {
   title: string;
-  started_at: string;
-  finished_at: string;
+  startedAt: string;
+  finishedAt: string;
 }
 
 export interface IUser {
@@ -44,7 +44,7 @@ export interface IShiftUsers {
 
 export type TUpdateShiftSettings = Partial<ICreateShift> & {
   shiftId: string;
-  final_message: string;
+  finalMessage: string;
 };
 
 export type TRequestStatus = 'pending' | 'approved' | 'declined';
@@ -66,5 +66,5 @@ export interface ITask {
   task_description: string;
   task_url: string;
   photo_url: string;
-  task_status?: IUserTask['status']; //not exist in backend response
+  task_status?: IUserTask['status']; // not exist in backend response
 }

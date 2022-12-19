@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import cn from 'classnames';
+import { nanoid } from '@reduxjs/toolkit';
 import { IUserTask } from '../../redux-store/api/models';
 import { withTooltip } from '../tooltip';
 import { CircleCheckIcon, CircleStopIcon, CircleWarningIcon } from '../icons';
@@ -18,6 +19,8 @@ const StatusCell: React.FC<IStatusCellProps> = ({ status, ...props }) => {
         return <CircleWarningIcon type="pending" />;
       case 'declined':
         return <CircleStopIcon type="error" />;
+      default:
+        return '';
     }
   }, [status]);
 
@@ -41,14 +44,19 @@ export const TasksCalendar: React.FC<ITasksCalendarProps> = ({ start, finish, us
     const startDate = new Date(start).getDate();
     const monthDays: (string | number)[] = ['№'];
 
-    for (let day = startDate, i = 1; i <= 31; i++) {
+    for (let day = startDate, i = 1; i <= 31; i += 1) {
       monthDays.push(day);
-      day === 31 ? (day = 1) : day++;
+
+      if (day === 31) {
+        day = 1;
+      } else {
+        day += 1;
+      }
     }
 
-    return monthDays.map((val, index) => (
+    return monthDays.map((val) => (
       <div
-        key={index}
+        key={nanoid()}
         className={cn(
           styles.taskCalendar__item,
           styles.taskCalendar__item_type_heading,
@@ -77,7 +85,7 @@ export const TasksCalendar: React.FC<ITasksCalendarProps> = ({ start, finish, us
     for (
       let key = daysDiff, date = startDate, prevDay, monthCount = 2;
       date <= finishDate;
-      date.setUTCHours(24, 0, 0, 0), key++
+      date.setUTCHours(24, 0, 0, 0), key += 1
     ) {
       const day = date.getDate();
 
@@ -92,10 +100,12 @@ export const TasksCalendar: React.FC<ITasksCalendarProps> = ({ start, finish, us
           case 30:
             renderArr.push(null);
             break;
+          default:
+            break;
         }
       } else if (renderArr.length % 32 === 0) {
         renderArr.push(`м${monthCount}`);
-        monthCount++;
+        monthCount += 1;
       }
 
       renderArr.push({
@@ -106,11 +116,11 @@ export const TasksCalendar: React.FC<ITasksCalendarProps> = ({ start, finish, us
       prevDay = day;
     }
 
-    return renderArr.map((value, index) => {
+    return renderArr.map((value) => {
       if (typeof value === 'string') {
         return (
           <div
-            key={index}
+            key={nanoid()}
             className={cn(
               styles.taskCalendar__item,
               styles.taskCalendar__item_type_heading,
@@ -120,29 +130,33 @@ export const TasksCalendar: React.FC<ITasksCalendarProps> = ({ start, finish, us
             {value}
           </div>
         );
-      } else if (value === null) {
+      }
+
+      if (value === null) {
         return (
           <div
-            key={index}
+            key={nanoid()}
             className={cn(styles.taskCalendar__item, styles.taskCalendar__item_type_notExist)}
-          ></div>
+          />
         );
-      } else if (value?.task) {
+      }
+
+      if (value?.task) {
         const taskDate = new Date(value.task.task_date);
 
         return (
           <StatusCellWithTooltip
-            key={index}
+            key={nanoid()}
             status={value.task.status}
-            tooltipEnabled={true}
+            tooltipEnabled
             tooltipText={taskDate.toLocaleDateString('ru-RU')}
           />
         );
-      } else {
-        return <div key={index} className={styles.taskCalendar__item}></div>;
       }
+
+      return <div key={nanoid()} className={styles.taskCalendar__item} />;
     });
-  }, [userTasks]);
+  }, [userTasks, finish, start]);
 
   return (
     <div className={styles.tasksCalendar}>

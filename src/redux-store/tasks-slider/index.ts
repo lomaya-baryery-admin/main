@@ -10,16 +10,14 @@ const tasksSliderlSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addMatcher(
-      api.endpoints.getTasksUnderReview.matchFulfilled,
-      (state, { payload }) => (state = payload)
-    );
-    builder.addMatcher(api.endpoints.approveTask.matchFulfilled, (state, { payload }) =>
-      state.filter((task) => task.report_id !== payload.report_id)
-    );
-    builder.addMatcher(api.endpoints.declineTask.matchFulfilled, (state, { payload }) =>
-      state.filter((task) => task.report_id !== payload.report_id)
-    );
+    builder
+      .addMatcher(api.endpoints.getTasksUnderReview.matchFulfilled, (state, { payload }) => payload)
+      .addMatcher(api.endpoints.approveTask.matchFulfilled, (state, { payload }) =>
+        state.filter((task) => task.report_id !== payload.report_id)
+      )
+      .addMatcher(api.endpoints.declineTask.matchFulfilled, (state, { payload }) =>
+        state.filter((task) => task.report_id !== payload.report_id)
+      );
   },
 });
 

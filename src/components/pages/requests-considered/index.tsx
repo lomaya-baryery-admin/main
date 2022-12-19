@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import cn from 'classnames';
+import { skipToken } from '@reduxjs/toolkit/dist/query';
 import { ContentContainer } from '../../../ui/content-container';
 import { ContentHeading } from '../../../ui/content-heading';
 import { Table } from '../../../ui/table-native';
@@ -9,13 +10,12 @@ import { selectRootShifts } from '../../../redux-store/root-shifts';
 import { RequestRow } from '../../request-row';
 import { Loader } from '../../../ui/loader';
 import { Alert } from '../../../ui/alert';
-import { skipToken } from '@reduxjs/toolkit/dist/query';
 import styles from './styles.module.css';
 
 export const PageRequestsConsidered = () => {
   const { preparing } = useAppSelector(selectRootShifts);
 
-  const { data, isLoading, isError, isFetching } = useGetConsideredRequestsQuery(
+  const { data, isLoading, isFetching } = useGetConsideredRequestsQuery(
     preparing?.id ?? skipToken,
     {
       refetchOnMountOrArgChange: true,

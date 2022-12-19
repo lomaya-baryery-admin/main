@@ -8,7 +8,7 @@ interface ITooltip {
   posY: number;
 }
 
-const tooltipRoot = document.getElementById('tooltipRoot')!;
+const tooltipRoot = document.getElementById('tooltipRoot') as HTMLElement;
 
 export const Tooltip = React.forwardRef<HTMLParagraphElement, ITooltip>(
   ({ text, posX, posY }, ref) =>

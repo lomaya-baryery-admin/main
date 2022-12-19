@@ -24,15 +24,17 @@ export const StartedShiftRow: React.FC<IStartedShiftRowProps> = ({
 }) => {
   const [toggle, setToggle] = useState(false);
 
-  const statistics = useMemo(() => {
-    return tasksData.reduce(
-      (acc, curr) => {
-        acc[curr.status]++;
-        return acc;
-      },
-      { under_review: 0, approved: 0, declined: 0 }
-    );
-  }, [userData]);
+  const statistics = useMemo(
+    () =>
+      tasksData.reduce(
+        (acc, curr) => {
+          acc[curr.status] += 1;
+          return acc;
+        },
+        { under_review: 0, approved: 0, declined: 0 }
+      ),
+    [tasksData]
+  );
 
   return (
     <div className={cn(styles.row, 'tableContentRow')}>

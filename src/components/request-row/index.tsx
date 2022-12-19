@@ -43,7 +43,7 @@ export const RequestRow: React.FC<IRequestRowProps> = ({
       case 'declined':
         return <StatusLabel icon="CircleStopIcon" type="rejected" statusText="Участник отклонён" />;
       default:
-        const _exhaustive: never = requestData.status;
+        return null;
     }
   }, [requestData]);
 

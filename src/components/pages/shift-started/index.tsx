@@ -1,5 +1,7 @@
 import { useCallback, useMemo } from 'react';
 import cn from 'classnames';
+import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { skipToken } from '@reduxjs/toolkit/query/react';
 import { ContentContainer } from '../../../ui/content-container';
 import { ContentHeading } from '../../../ui/content-heading';
 import { Table } from '../../../ui/table-native';
@@ -13,11 +15,9 @@ import {
   useUpdateShiftSettingsMutation,
 } from '../../../redux-store/api';
 import { useAppSelector } from '../../../redux-store/hooks';
-import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '../../../ui/button';
 import { StartedShiftRow } from '../../started-shift-row';
 import { ModalAlert } from '../../../ui/modal-alert';
-import { skipToken } from '@reduxjs/toolkit/query/react';
 import { Modal } from '../../../ui/modal';
 import { MessageForm } from '../../message-form';
 import styles from './styles.module.css';
@@ -35,10 +35,7 @@ export const PageStartedShift = () => {
 
   const [changeMessage, { isLoading: isLoadingChangeMessage }] = useUpdateShiftSettingsMutation();
 
-  const [
-    setFinishShift,
-    { isLoading: isSetFinishLoading, isSuccess: isSetFinishSuccess, isError: isSetFinishError },
-  ] = useFinishShiftMutation();
+  const [setFinishShift, { isLoading: isSetFinishLoading }] = useFinishShiftMutation();
 
   const openShiftSettings = useCallback(
     () =>
@@ -47,61 +44,72 @@ export const PageStartedShift = () => {
           background: location.pathname,
         },
       }),
-    []
+    [navigate, location.pathname]
   );
 
-  const finishShift = useCallback(() => navigate('finish'), []);
+  const finishShift = useCallback(() => navigate('finish'), [navigate]);
 
   const handleChangeMessage = (message: string) => {
-    const { title, id, started_at, finished_at } = started!;
-    changeMessage({ shiftId: id, title, started_at, finished_at, final_message: message })
-      .unwrap()
-      .then(() => navigate('/shifts/started', { replace: true }));
+    if (started) {
+      changeMessage({
+        shiftId: started.id,
+        title: started.title,
+        startedAt: started.started_at,
+        finishedAt: started.finished_at,
+        finalMessage: message,
+      })
+        .unwrap()
+        .then(() => navigate('/shifts/started', { replace: true }));
+    }
   };
 
   const participantsTable = useMemo(() => {
     if (!started) {
-      return <Navigate to={'/shifts/all'} replace />;
+      return <Navigate to="/shifts/all" replace />;
     }
 
     if (isUsersLoading) {
       return <Loader extClassName={styles.shift__loader} />;
-    } else if (isUsersError || !data) {
+    }
+
+    if (isUsersError || !data) {
       return <Alert extClassName={styles.participants__alert} title={'Что-то пошло не\u00A0так'} />;
-    } else if (data.members.length === 0) {
+    }
+
+    if (data.members.length === 0) {
       return (
         <Alert
           extClassName={styles.participants__alert}
           title={'Нет принятых заявок на\u00A0участие'}
         />
       );
-    } else {
-      return (
-        <Table
-          extClassName={styles.shift__participantsTable}
-          gridClassName={styles.participants__tableColumns}
-          header={['Имя и фамилия', 'Город', 'Дата рождения', 'Статусы заданий']}
-          renderRows={(rowStyles) => (
-            <>
-              {data.members.map((member) => (
-                <StartedShiftRow
-                  key={member.id}
-                  cellsClassName={rowStyles}
-                  userData={member.user}
-                  tasksData={member.reports}
-                  shiftStart={started.started_at}
-                  shiftFinish={started.finished_at}
-                />
-              ))}
-            </>
-          )}
-        />
-      );
     }
+
+    return (
+      <Table
+        extClassName={styles.shift__participantsTable}
+        gridClassName={styles.participants__tableColumns}
+        header={['Имя и фамилия', 'Город', 'Дата рождения', 'Статусы заданий']}
+        renderRows={(rowStyles) => (
+          <>
+            {data.members.map((member) => (
+              <StartedShiftRow
+                key={member.id}
+                cellsClassName={rowStyles}
+                userData={member.user}
+                tasksData={member.reports}
+                shiftStart={started.started_at}
+                shiftFinish={started.finished_at}
+              />
+            ))}
+          </>
+        )}
+      />
+    );
   }, [isUsersLoading, isUsersError, data, started]);
 
   return !started ? (
-    <Navigate to={'/shifts/all'} replace />
+    <Navigate to="/shifts/all" replace />
   ) : (
     <>
       <ContentContainer extClassName={styles.shift__headingContainer}>
@@ -151,7 +159,7 @@ export const PageStartedShift = () => {
         <Route
           path="message"
           element={
-            <Modal title={'Редактировать сообщение'} close={() => navigate(-1)}>
+            <Modal title="Редактировать сообщение" close={() => navigate(-1)}>
               <MessageForm
                 initValue={started.final_message}
                 btnText="Сохранить"
@@ -162,7 +170,7 @@ export const PageStartedShift = () => {
           }
         />
         <Route
-          path={'finish'}
+          path="finish"
           element={
             <ModalAlert
               closeModal={() => navigate(-1)}

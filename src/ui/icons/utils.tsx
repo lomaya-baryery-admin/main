@@ -1,5 +1,3 @@
-import { MouseEventHandler, SVGProps, SyntheticEvent } from 'react';
-
 type IconType =
   | 'link'
   | 'link-active'

@@ -12,17 +12,12 @@ interface IModalProps extends PropsWithChildren {
 const modalRoot = document.getElementById('modalRoot') as HTMLElement;
 
 export const Modal: React.FC<IModalProps> = ({ title, children, close }) => {
-  const handleClose = () => {
-    close();
-  };
-
-  const handleCloseOnEsc = (evt: KeyboardEvent) => {
-    if (evt.key === 'Escape') {
-      handleClose();
-    }
-  };
-
   useEffect(() => {
+    const handleCloseOnEsc = (evt: KeyboardEvent) => {
+      if (evt.key === 'Escape') {
+        close();
+      }
+    };
     document.addEventListener('keyup', handleCloseOnEsc);
 
     return () => {
@@ -34,11 +29,7 @@ export const Modal: React.FC<IModalProps> = ({ title, children, close }) => {
     <div className={styles.modal}>
       <div className={styles.modal__heading}>
         <p className={cn('text', 'text_type_main-large', 'm-0', styles.modal__title)}>{title}</p>
-        <CloseIcon
-          className={styles.modal__closeIcon}
-          type={'interface-secondary'}
-          onClick={handleClose}
-        />
+        <CloseIcon className={styles.modal__closeIcon} type="interface-secondary" onClick={close} />
       </div>
       {children}
     </div>,

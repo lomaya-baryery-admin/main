@@ -1,6 +1,7 @@
 import { useCallback, useMemo } from 'react';
 import cn from 'classnames';
-import styles from './styles.module.css';
+import { skipToken } from '@reduxjs/toolkit/query/react';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { ContentContainer } from '../../../ui/content-container';
 import { ContentHeading } from '../../../ui/content-heading';
 import { Table } from '../../../ui/table-native';
@@ -11,8 +12,7 @@ import { Loader } from '../../../ui/loader';
 import { selectRootShifts } from '../../../redux-store/root-shifts';
 import { useGetShiftUsersQuery } from '../../../redux-store/api';
 import { useAppSelector } from '../../../redux-store/hooks';
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
-import { skipToken } from '@reduxjs/toolkit/query/react';
+import styles from './styles.module.css';
 
 export const PagePreparingShift = () => {
   const location = useLocation();
@@ -28,48 +28,44 @@ export const PagePreparingShift = () => {
           background: location.pathname,
         },
       }),
-    []
+    [navigate, location.pathname]
   );
 
   const participantsTable = useMemo(() => {
-    if (!preparing) {
-      return <Navigate to="/shifts/all" replace />;
-    }
-
     if (isLoading) {
       return <Loader extClassName={styles.shift__loader} />;
-    } else if (isError || !data) {
+    }
+
+    if (isError || !data) {
       return (
         <Alert extClassName={styles.participants__alert} title={'Что-то пошло не\u00A0 так'} />
       );
-    } else if (data.members.length === 0) {
+    }
+
+    if (data.members.length === 0) {
       return (
         <Alert
           extClassName={styles.participants__alert}
           title={'Нет принятых заявок на\u00A0участие'}
         />
       );
-    } else {
-      return (
-        <Table
-          extClassName={styles.shift__participantsTable}
-          gridClassName={styles.participants__tableColumns}
-          header={['Имя и фамилия', 'Город', 'Телефон', 'Дата рождения']}
-          renderRows={(rowStyles) => (
-            <>
-              {data.members.map((member) => (
-                <PreparingShiftRow
-                  key={member.id}
-                  extClassName={rowStyles}
-                  userData={member.user}
-                />
-              ))}
-            </>
-          )}
-        />
-      );
     }
-  }, [isLoading, isError, data, preparing]);
+
+    return (
+      <Table
+        extClassName={styles.shift__participantsTable}
+        gridClassName={styles.participants__tableColumns}
+        header={['Имя и фамилия', 'Город', 'Телефон', 'Дата рождения']}
+        renderRows={(rowStyles) => (
+          <>
+            {data.members.map((member) => (
+              <PreparingShiftRow key={member.id} extClassName={rowStyles} userData={member.user} />
+            ))}
+          </>
+        )}
+      />
+    );
+  }, [isLoading, isError, data]);
 
   return !preparing ? (
     <Navigate to="/shifts/all" replace />

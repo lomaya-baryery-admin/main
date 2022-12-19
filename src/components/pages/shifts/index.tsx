@@ -1,6 +1,6 @@
+import cn from 'classnames';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../../redux-store/hooks';
-import cn from 'classnames';
 import { Button } from '../../../ui/button';
 import { PlusIcon } from '../../../ui/icons';
 import { ContentHeading } from '../../../ui/content-heading';
@@ -36,7 +36,7 @@ export const PageShiftsAll = () => {
 
   return (
     <ContentContainer extClassName={styles.shifts}>
-      <ContentHeading title={'Смены'}>
+      <ContentHeading title="Смены">
         <Button
           htmlType="button"
           type={isPreparingShift ? 'disabled' : 'primary'}

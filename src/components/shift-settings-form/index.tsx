@@ -1,7 +1,7 @@
 import React, { FormEventHandler, useMemo, useState } from 'react';
-import { InputText } from '../../ui/inputText';
 import cn from 'classnames';
-import styles from './styles.module.css';
+import { Navigate, useLocation } from 'react-router-dom';
+import { InputText } from '../../ui/inputText';
 import { DateRange } from '../../ui/date-range';
 import { useAppSelector } from '../../redux-store/hooks';
 import { selectRootShifts } from '../../redux-store/root-shifts';
@@ -15,8 +15,8 @@ import {
   formatDate,
 } from './lib';
 import { useCreateNewShiftMutation, useUpdateShiftSettingsMutation } from '../../redux-store/api';
-import { Navigate, useLocation } from 'react-router-dom';
 import { IAppLocation } from '../../utils';
+import styles from './styles.module.css';
 
 export interface IShiftSettingsFormProps {
   shiftStatus: 'creating' | 'started' | 'preparing';
@@ -31,19 +31,15 @@ export const ShiftSettingsForm: React.FC<IShiftSettingsFormProps> = ({
 
   const { started, preparing } = useAppSelector(selectRootShifts);
 
-  const [
-    createShift,
-    { isError: isCreateError, isLoading: isCreateLoading, isSuccess: isCreateSuccess },
-  ] = useCreateNewShiftMutation();
+  const [createShift, { isLoading: isCreateLoading, isSuccess: isCreateSuccess }] =
+    useCreateNewShiftMutation();
 
-  const [
-    updateShift,
-    { isError: isUpdateError, isLoading: isUpdateLoading, isSuccess: isUpdateSuccess },
-  ] = useUpdateShiftSettingsMutation();
+  const [updateShift, { isLoading: isUpdateLoading, isSuccess: isUpdateSuccess }] =
+    useUpdateShiftSettingsMutation();
 
   const initShifTitle = useMemo(
     () => getTitle(shiftStatus, { started, preparing }),
-    [started, preparing]
+    [started, preparing, shiftStatus]
   );
   const [titleFieldValue, seTitleFieldValue] = useState(initShifTitle);
   const [toggleTextFieldError, setToggleTextFieldError] = useState(false);
@@ -66,20 +62,17 @@ export const ShiftSettingsForm: React.FC<IShiftSettingsFormProps> = ({
     if (shiftStatus === 'preparing') {
       if (started) {
         return new Date(started.finished_at);
-      } else {
-        return new Date(new Date().setHours(24, 0, 0, 0));
       }
-    } else {
-      return initStartDate;
+      return new Date(new Date().setHours(24, 0, 0, 0));
     }
-  }, [started, initStartDate]);
+    return initStartDate;
+  }, [started, initStartDate, shiftStatus]);
 
   const filterFinishDate = useMemo(() => {
     if (shiftStatus === 'started') {
       return new Date(new Date().setHours(24, 0, 0, 0));
-    } else {
-      return undefined;
     }
+    return undefined;
   }, [shiftStatus]);
 
   const dayCount = useMemo(
@@ -94,34 +87,36 @@ export const ShiftSettingsForm: React.FC<IShiftSettingsFormProps> = ({
     seTitleFieldValue(evt.currentTarget.value);
   };
 
+  const handleValidateTitle = () => {
+    setToggleTextFieldError(!validateTitle(titleFieldValue));
+  };
+
   const handleSubmit: FormEventHandler<HTMLFormElement> = (evt) => {
     evt.preventDefault();
 
     const shiftSettings = {
       title: titleFieldValue.trim(),
-      started_at: formatDate(startFieldValue),
-      finished_at: formatDate(finishFieldValue),
+      startedAt: formatDate(startFieldValue),
+      finishedAt: formatDate(finishFieldValue),
     };
 
     if (validateTitle(titleFieldValue)) {
       if (shiftStatus === 'creating') {
         createShift(shiftSettings);
       } else {
-        const { id, final_message } = shiftStatus === 'preparing' ? preparing! : started!;
+        const currentShift = shiftStatus === 'preparing' ? preparing : started;
 
-        updateShift({
-          shiftId: id,
-          final_message,
-          ...shiftSettings,
-        });
+        if (currentShift) {
+          updateShift({
+            shiftId: currentShift.id,
+            finalMessage: currentShift.final_message,
+            ...shiftSettings,
+          });
+        }
       }
     } else {
       handleValidateTitle();
     }
-  };
-
-  const handleValidateTitle = () => {
-    setToggleTextFieldError(!validateTitle(titleFieldValue));
   };
 
   if (isCreateSuccess || isUpdateSuccess) {
@@ -132,7 +127,7 @@ export const ShiftSettingsForm: React.FC<IShiftSettingsFormProps> = ({
     <form className={cn(styles.shiftForm, extClassName)} onSubmit={handleSubmit}>
       <div className={styles.shiftForm__field}>
         <label
-          htmlFor="title"
+          htmlFor="titleId"
           className={cn(
             styles.shiftForm__label,
             'text',
@@ -144,13 +139,13 @@ export const ShiftSettingsForm: React.FC<IShiftSettingsFormProps> = ({
         </label>
         <InputText
           onBlur={handleValidateTitle}
-          id="title"
+          id="titleId"
           name="title"
           extClassName={styles.shiftForm__inputText}
           value={titleFieldValue}
           onChange={handleChangeTitle}
           error={toggleTextFieldError}
-          errorText={'От 3 до 60 символов'}
+          errorText="От 3 до 60 символов"
         />
       </div>
       <div className={styles.shiftForm__field}>

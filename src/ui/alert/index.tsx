@@ -8,13 +8,11 @@ interface AlertProps {
   extClassName?: string;
 }
 
-export const Alert: FC<AlertProps> = ({ title, extClassName }) => {
-  return (
-    <div className={cn(extClassName, styles.alert)}>
-      <div className={styles.alert__icon}>
-        <AlertIcon type="link-active" />
-      </div>
-      <p className={cn(styles.alert__text, 'text', 'text_type_main-large', 'm-0')}>{title}</p>
+export const Alert: FC<AlertProps> = ({ title, extClassName }) => (
+  <div className={cn(extClassName, styles.alert)}>
+    <div className={styles.alert__icon}>
+      <AlertIcon type="link-active" />
     </div>
-  );
-};
+    <p className={cn(styles.alert__text, 'text', 'text_type_main-large', 'm-0')}>{title}</p>
+  </div>
+);

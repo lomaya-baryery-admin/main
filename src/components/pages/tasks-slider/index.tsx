@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
-import { Link, Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
 import cn from 'classnames';
+import { Link, Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { skipToken } from '@reduxjs/toolkit/dist/query';
 import {
   useApproveTaskMutation,
   useDeclineTaskMutation,
@@ -15,7 +16,6 @@ import { Button } from '../../../ui/button';
 import { selectTasks } from '../../../redux-store/tasks-slider';
 import { Alert } from '../../../ui/alert';
 import { Loader } from '../../../ui/loader';
-import { skipToken } from '@reduxjs/toolkit/dist/query';
 import styles from './styles.module.css';
 
 export const PageTasksSlider = () => {
@@ -25,7 +25,7 @@ export const PageTasksSlider = () => {
   const { pathname } = useLocation();
   const { id } = useParams();
 
-  const tasksParentPath = pathname.slice(0, pathname.lastIndexOf('/'));
+  const tasksParentPath = useMemo(() => pathname.slice(0, pathname.lastIndexOf('/')), [pathname]);
 
   const taskIndex = tasks.findIndex((task) => task.report_id === id);
 
@@ -34,60 +34,20 @@ export const PageTasksSlider = () => {
   const [approveRequest] = useApproveTaskMutation();
   const [declineRequest] = useDeclineTaskMutation();
 
-  const navigateAfterReview = () => {
-    if (tasks.length === 1) {
-      return navigate(tasksParentPath);
-    }
-
-    if (tasks.length > 1 && taskIndex === tasks.length - 1) {
-      return navigate(`${tasksParentPath}/${tasks[taskIndex - 1].report_id}`);
-    }
-
-    return navigate(`${tasksParentPath}/${tasks[taskIndex + 1].report_id}`);
-  };
-
-  const handleApprove = async () => {
-    try {
-      await approveRequest({
-        taskId: tasks[taskIndex].report_id,
-        shiftId: tasks[taskIndex].shift_id,
-        patch: { task_status: 'approved' },
-      }).unwrap();
-
-      navigateAfterReview();
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const handleDecline = async () => {
-    try {
-      await declineRequest({
-        taskId: tasks[taskIndex].report_id,
-        shiftId: tasks[taskIndex].shift_id,
-        patch: { task_status: 'declined' },
-      }).unwrap();
-
-      navigateAfterReview();
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   const handlePrevTask = () => {
     if (taskIndex === 0) {
       return;
-    } else {
-      navigate(`${tasksParentPath}/${tasks[taskIndex - 1].report_id}`);
     }
+
+    navigate(`${tasksParentPath}/${tasks[taskIndex - 1].report_id}`);
   };
 
   const handleNextTask = () => {
     if (taskIndex === tasks.length - 1) {
       return;
-    } else {
-      navigate(`${tasksParentPath}/${tasks[taskIndex + 1].report_id}`);
     }
+
+    navigate(`${tasksParentPath}/${tasks[taskIndex + 1].report_id}`);
   };
 
   const content = useMemo(() => {
@@ -103,6 +63,46 @@ export const PageTasksSlider = () => {
       return <Alert extClassName={styles.slider__alert} title="Отчёт не найден" />;
     }
 
+    const navigateAfterReview = () => {
+      if (tasks.length === 1) {
+        return navigate(tasksParentPath);
+      }
+
+      if (tasks.length > 1 && taskIndex === tasks.length - 1) {
+        return navigate(`${tasksParentPath}/${tasks[taskIndex - 1].report_id}`);
+      }
+
+      return navigate(`${tasksParentPath}/${tasks[taskIndex + 1].report_id}`);
+    };
+
+    const handleApprove = async () => {
+      try {
+        await approveRequest({
+          taskId: tasks[taskIndex].report_id,
+          shiftId: tasks[taskIndex].shift_id,
+          patch: { task_status: 'approved' },
+        }).unwrap();
+
+        navigateAfterReview();
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    const handleDecline = async () => {
+      try {
+        await declineRequest({
+          taskId: tasks[taskIndex].report_id,
+          shiftId: tasks[taskIndex].shift_id,
+          patch: { task_status: 'declined' },
+        }).unwrap();
+
+        navigateAfterReview();
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
     return (
       <TaskDetails
         extClassName={styles.slider__taskDetails}
@@ -115,7 +115,16 @@ export const PageTasksSlider = () => {
         decline={handleDecline}
       />
     );
-  }, [isError, isLoading, taskIndex, tasks]);
+  }, [
+    isError,
+    isLoading,
+    taskIndex,
+    tasks,
+    approveRequest,
+    declineRequest,
+    navigate,
+    tasksParentPath,
+  ]);
 
   if (!started) {
     return <Navigate to={tasksParentPath} />;

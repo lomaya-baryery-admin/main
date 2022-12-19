@@ -13,7 +13,6 @@ export function getTitle(
     case 'started':
       return rootShifts.started?.title || '';
     default:
-      const _exhaustive: never = shiftStatus;
       return '';
   }
 }
@@ -42,20 +41,20 @@ export function getStartDate(props: ICreateAndStartedProps | IPreparingProps) {
     return preparingStartAt
       ? new Date(preparingStartAt)
       : new Date(new Date().setHours(0, 0, 0, 0));
-  } else {
-    const { formType, startedFinishAt, startedStartAt } = props;
-    let startDate: Date = new Date();
-    startDate.setDate(startDate.getDate() + 1);
-
-    if (formType === 'creating' && startedFinishAt) {
-      startDate = new Date(startedFinishAt);
-      startDate.setDate(startDate.getDate() + 1);
-    } else if (formType === 'started') {
-      startDate = startedStartAt ? new Date(startedStartAt) : startDate;
-    }
-    startDate.setHours(0, 0, 0, 0);
-    return startDate;
   }
+
+  const { formType, startedFinishAt, startedStartAt } = props;
+  let startDate: Date = new Date();
+  startDate.setDate(startDate.getDate() + 1);
+
+  if (formType === 'creating' && startedFinishAt) {
+    startDate = new Date(startedFinishAt);
+    startDate.setDate(startDate.getDate() + 1);
+  } else if (formType === 'started') {
+    startDate = startedStartAt ? new Date(startedStartAt) : startDate;
+  }
+  startDate.setHours(0, 0, 0, 0);
+  return startDate;
 }
 
 export function getFinishDate(props: ICreateAndStartedProps | IPreparingProps) {
@@ -64,22 +63,22 @@ export function getFinishDate(props: ICreateAndStartedProps | IPreparingProps) {
     return preparingFinishAt
       ? new Date(preparingFinishAt)
       : new Date(new Date().setHours(0, 0, 0, 0));
-  } else {
-    const { formType, startedFinishAt } = props;
-
-    let finishDate: Date = new Date();
-
-    finishDate.setDate(finishDate.getDate() + 2);
-
-    if (formType === 'creating' && startedFinishAt) {
-      finishDate = new Date(startedFinishAt);
-      finishDate.setDate(finishDate.getDate() + 2);
-    } else if (formType === 'started') {
-      finishDate = startedFinishAt ? new Date(startedFinishAt) : finishDate;
-    }
-    finishDate.setHours(0, 0, 0, 0);
-    return finishDate;
   }
+
+  const { formType, startedFinishAt } = props;
+
+  let finishDate: Date = new Date();
+
+  finishDate.setDate(finishDate.getDate() + 2);
+
+  if (formType === 'creating' && startedFinishAt) {
+    finishDate = new Date(startedFinishAt);
+    finishDate.setDate(finishDate.getDate() + 2);
+  } else if (formType === 'started') {
+    finishDate = startedFinishAt ? new Date(startedFinishAt) : finishDate;
+  }
+  finishDate.setHours(0, 0, 0, 0);
+  return finishDate;
 }
 
 export function getDiffInDays(finish: Date, start: Date): number {

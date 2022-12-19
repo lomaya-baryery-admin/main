@@ -40,29 +40,29 @@ export const PageFinishedShift = () => {
           title={'В смене не\u00A0было участников'}
         />
       );
-    } else {
-      return (
-        <Table
-          extClassName={styles.shift__participantsTable}
-          gridClassName={styles.participants__tableColumns}
-          header={['Имя и фамилия', 'Город', 'Дата рождения', 'Статусы заданий']}
-          renderRows={(rowStyles) => (
-            <>
-              {data.members.map((member) => (
-                <FinishedShiftRow
-                  key={member.id}
-                  cellsClassName={rowStyles}
-                  userData={member.user}
-                  tasksData={member.reports}
-                  shiftStart={data.shift.started_at}
-                  shiftFinish={data.shift.finished_at}
-                />
-              ))}
-            </>
-          )}
-        />
-      );
     }
+
+    return (
+      <Table
+        extClassName={styles.shift__participantsTable}
+        gridClassName={styles.participants__tableColumns}
+        header={['Имя и фамилия', 'Город', 'Дата рождения', 'Статусы заданий']}
+        renderRows={(rowStyles) => (
+          <>
+            {data.members.map((member) => (
+              <FinishedShiftRow
+                key={member.id}
+                cellsClassName={rowStyles}
+                userData={member.user}
+                tasksData={member.reports}
+                shiftStart={data.shift.started_at}
+                shiftFinish={data.shift.finished_at}
+              />
+            ))}
+          </>
+        )}
+      />
+    );
   }, [isUsersLoading, isUsersError, data]);
 
   return !shift ? (

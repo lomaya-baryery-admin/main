@@ -21,29 +21,27 @@ export const ShiftSettingsRow: React.FC<IShiftSettingsRow> = ({
   finish,
   onButtonClick,
   participants,
-}) => {
-  return (
-    <div className={cn(styles.shiftSettingsRow, extClassName)}>
-      <CellText type="accent" text={title} />
-      <div className={styles.shiftSettingsRow__date}>
-        <CellDate date={start} />
-        <span className={cn(styles.shiftSettingsRow__dateDevider, 'text text_type_main-medium')}>
-          –
-        </span>
-        <CellDate date={finish} />
-        {onButtonClick && (
-          <Button
-            extClassName={styles.shiftSettingsRow__button}
-            htmlType="button"
-            type="secondary"
-            size="small"
-            onClick={onButtonClick}
-          >
-            Изменить
-          </Button>
-        )}
-      </div>
-      <CellText text={participants} />
+}) => (
+  <div className={cn(styles.shiftSettingsRow, extClassName)}>
+    <CellText type="accent" text={title} />
+    <div className={styles.shiftSettingsRow__date}>
+      <CellDate date={start} />
+      <span className={cn(styles.shiftSettingsRow__dateDevider, 'text text_type_main-medium')}>
+        –
+      </span>
+      <CellDate date={finish} />
+      {onButtonClick && (
+        <Button
+          extClassName={styles.shiftSettingsRow__button}
+          htmlType="button"
+          type="secondary"
+          size="small"
+          onClick={onButtonClick}
+        >
+          Изменить
+        </Button>
+      )}
     </div>
-  );
-};
+    <CellText text={participants} />
+  </div>
+);

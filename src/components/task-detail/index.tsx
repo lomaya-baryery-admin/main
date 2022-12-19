@@ -28,9 +28,7 @@ export const TaskDetails: React.FC<ITaskDetailsProps> = ({
 }) => {
   const createdDate = useMemo(() => getFormattedDate(createdAt), [createdAt]);
 
-  const renderingUserName = useMemo(() => {
-    return `${userName}\n${userSurname}`;
-  }, [userName, userSurname]);
+  const renderingUserName = useMemo(() => `${userName}\n${userSurname}`, [userName, userSurname]);
 
   return (
     <section className={cn(styles.taskDetails, extClassName)}>
@@ -43,7 +41,7 @@ export const TaskDetails: React.FC<ITaskDetailsProps> = ({
         >
           Задание
         </p>
-        <img src={taskUrl} className={styles.taskDetails__taskImage} />
+        <img src={taskUrl} className={styles.taskDetails__taskImage} alt="task" />
         <p
           className={cn(
             styles.taskDetails__title,
@@ -85,7 +83,7 @@ export const TaskDetails: React.FC<ITaskDetailsProps> = ({
         </Button>
       </div>
       <div className={styles.taskDetails__photoWrapper}>
-        <img src={photoUrl} className={styles.taskDetails__photo} />
+        <img src={photoUrl} className={styles.taskDetails__photo} alt="user task" />
       </div>
     </section>
   );

@@ -24,10 +24,10 @@ export const api = createApi({
       providesTags: ['shifts'],
     }),
     createNewShift: builder.mutation<Omit<IShift, 'total_users'>, ICreateShift>({
-      query: (data) => ({
+      query: ({ title, startedAt, finishedAt }) => ({
         url: '/shifts/',
         method: 'POST',
-        body: data,
+        body: { title, started_at: startedAt, finished_at: finishedAt },
       }),
       invalidatesTags: [{ type: 'shifts' }],
     }),
@@ -39,10 +39,15 @@ export const api = createApi({
       Omit<IShift, 'total_users' | 'sequence_number'>,
       TUpdateShiftSettings
     >({
-      query: ({ shiftId, ...body }) => ({
+      query: ({ shiftId, ...queryData }) => ({
         url: `/shifts/${shiftId}`,
         method: 'PATCH',
-        body,
+        body: {
+          title: queryData.title,
+          started_at: queryData.startedAt,
+          finished_at: queryData.finishedAt,
+          final_message: queryData.finalMessage,
+        },
       }),
       invalidatesTags: [{ type: 'shifts' }],
     }),
@@ -82,7 +87,7 @@ export const api = createApi({
             })
           );
         } catch (error) {
-          console.log(error);
+          console.error(error);
         }
       },
     }),
@@ -107,7 +112,7 @@ export const api = createApi({
             })
           );
         } catch (error) {
-          console.log(error);
+          console.error(error);
         }
       },
     }),
@@ -121,7 +126,7 @@ export const api = createApi({
       query: ({ taskId, patch, ...rest }) => ({
         url: `/reports/ ${taskId}/approve`,
         method: 'PATCH',
-        body: patch, //delete before production
+        body: patch, // delete before production
       }),
       async onQueryStarted({ taskId, shiftId, patch }, { dispatch, queryFulfilled }) {
         try {
@@ -135,7 +140,7 @@ export const api = createApi({
             })
           );
         } catch (error) {
-          console.log(error);
+          console.error(error);
         }
       },
     }),
@@ -152,7 +157,7 @@ export const api = createApi({
       query: ({ taskId, patch, ...rest }) => ({
         url: `/reports/${taskId}/decline`,
         method: 'PATCH',
-        body: patch, //delete before production
+        body: patch, // delete before production
       }),
       async onQueryStarted({ taskId, shiftId, patch }, { dispatch, queryFulfilled }) {
         try {
@@ -166,7 +171,7 @@ export const api = createApi({
             })
           );
         } catch (error) {
-          console.log(error);
+          console.error(error);
         }
       },
     }),

@@ -17,7 +17,7 @@ export const CellDate: React.FC<ICellTextProps> = ({ date, type = 'default', ext
       const convertedDate = new Date(date);
       return `${convertedDate.toLocaleDateString()} в ${convertedDate.toLocaleTimeString()}`;
     }
-  }, [date]);
+  }, [date, type]);
 
   return (
     <p className={cn(extClassName, 'text', 'text_type_main-default', `text_color_primary`, 'm-0')}>

@@ -13,20 +13,21 @@ export const Layout = () => {
   const content = useMemo(() => {
     if (isLoading) {
       return <Loader fullScreen />;
-    } else if (isError) {
-      return <h1 className={cn('text', 'text_type_main-extra-large')}>Сервер не доступен</h1>;
-    } else {
-      return (
-        <>
-          <nav className={styles.navigation}>
-            <SideBar />
-          </nav>
-          <section className={cn(styles.content, 'custom-scroll')}>
-            <Outlet />
-          </section>
-        </>
-      );
     }
+    if (isError) {
+      return <h1 className={cn('text', 'text_type_main-extra-large')}>Сервер не доступен</h1>;
+    }
+
+    return (
+      <>
+        <nav className={styles.navigation}>
+          <SideBar />
+        </nav>
+        <section className={cn(styles.content, 'custom-scroll')}>
+          <Outlet />
+        </section>
+      </>
+    );
   }, [isError, isLoading]);
 
   return (

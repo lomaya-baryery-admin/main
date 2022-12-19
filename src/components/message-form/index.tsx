@@ -36,8 +36,8 @@ export const MessageForm: React.FC<IMessageFormProps> = ({
         placeholder={placeholder}
         className={cn(styles.messageForm__input, 'text border')}
         onChange={(evt) => changeInputValue(evt.currentTarget.value)}
-        spellCheck={'false'}
-      ></textarea>
+        spellCheck="false"
+      />
       <Button
         size="small"
         htmlType="submit"
