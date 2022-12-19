@@ -1,23 +1,23 @@
-.startedShiftRow__data {
+.row__data {
   grid-template-rows: 80px;
 }
 
-.startedShiftRow__name {
+.row__name {
   display: flex;
   align-items: center;
 }
 
-.startedShiftRow__nameIcon {
+.row__nameIcon {
   margin-right: 12px;
   padding: 8px;
   cursor: pointer;
   transition: var(--transition-common);
 }
 
-.startedShiftRow__nameIcon:hover {
+.row__nameIcon:hover {
   opacity: var(--hover-opacity);
 }
 
-.startedShiftRow__nameIcon_rotated {
+.row__nameIcon_rotated {
   transform: rotate(90deg);
 }

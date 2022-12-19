@@ -35,14 +35,14 @@ export const StartedShiftRow: React.FC<IStartedShiftRowProps> = ({
   }, [userData]);
 
   return (
-    <div className={cn(styles.startedShiftRow, 'tableContentRow')}>
-      <div className={cn(styles.startedShiftRow__data, cellsClassName)}>
-        <div className={styles.startedShiftRow__name}>
+    <div className={cn(styles.row, 'tableContentRow')}>
+      <div className={cn(styles.row__data, cellsClassName)}>
+        <div className={styles.row__name}>
           <ChevronRightIcon
             onClick={() => setToggle((toggle) => !toggle)}
             type="interface-primary"
-            className={cn(styles.startedShiftRow__nameIcon, {
-              [styles.startedShiftRow__nameIcon_rotated]: toggle,
+            className={cn(styles.row__nameIcon, {
+              [styles.row__nameIcon_rotated]: toggle,
             })}
           />
           <CellText type="accent" text={`${userData.name} ${userData.surname}`} />

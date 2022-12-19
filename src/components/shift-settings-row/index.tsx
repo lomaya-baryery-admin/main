@@ -10,7 +10,7 @@ interface IShiftSettingsRow {
   title: string;
   start: string;
   finish: string;
-  onButtonClick: () => void;
+  onButtonClick?: () => void;
   participants: number;
 }
 
@@ -31,15 +31,17 @@ export const ShiftSettingsRow: React.FC<IShiftSettingsRow> = ({
           –
         </span>
         <CellDate date={finish} />
-        <Button
-          extClassName={styles.shiftSettingsRow__button}
-          htmlType="button"
-          type="secondary"
-          size="small"
-          onClick={onButtonClick}
-        >
-          Изменить
-        </Button>
+        {onButtonClick && (
+          <Button
+            extClassName={styles.shiftSettingsRow__button}
+            htmlType="button"
+            type="secondary"
+            size="small"
+            onClick={onButtonClick}
+          >
+            Изменить
+          </Button>
+        )}
       </div>
       <CellText text={participants} />
     </div>
