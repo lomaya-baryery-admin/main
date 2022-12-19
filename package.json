@@ -10,8 +10,8 @@
     "lint": "eslint --ext .ts,.tsx src",
     "lint.fix": "npm run lint --fix",
     "preview": "vite preview",
-    "prettier": "prettier --check src/**/*.{ts,tsx,css,json}",
-    "prettier-format": "prettier --write src/**/*.{ts,tsx,css,json}",
+    "prettier": "prettier --check src/**/*.{ts,tsx,css}",
+    "prettier-format": "prettier --write src/**/*.{ts,tsx,css}",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },

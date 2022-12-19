@@ -41,7 +41,7 @@ export const StatusLabel = ({ type, icon, statusText, className }: IStatusLabelP
       }
     };
 
-    return ( 
+    return (
       <span className={styles.status__icon}>
         <Icon size="18" type={getIconType(type)} />
       </span>
