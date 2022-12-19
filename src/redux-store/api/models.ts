@@ -66,5 +66,5 @@ export interface ITask {
   task_description: string;
   task_url: string;
   photo_url: string;
-  task_status?: IUserTask['status']; //not in backend response
+  task_status?: IUserTask['status']; //not exist in backend response
 }

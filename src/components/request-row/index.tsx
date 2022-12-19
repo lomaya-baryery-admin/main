@@ -9,8 +9,8 @@ import { StatusLabel } from '../../ui/status-label';
 interface IRequestRowProps {
   extClassName?: string;
   requestData: IRequest;
-  approve: () => void;
-  decline: () => void;
+  approve?: () => void;
+  decline?: () => void;
 }
 
 export const RequestRow: React.FC<IRequestRowProps> = ({

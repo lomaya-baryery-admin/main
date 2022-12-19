@@ -4,6 +4,7 @@ import { Modal } from '../../ui/modal';
 import { IAppLocation } from '../../utils';
 import { ShiftSettingsForm } from '../shift-settings-form';
 import { Layout } from './layout';
+import { PageRequestsConsidered } from './requests-considered';
 import { PageRequestsPending } from './requests-pending';
 import { PageFinishedShift } from './shift-finished';
 import { PagePreparingShift } from './shift-preparing';
@@ -30,10 +31,7 @@ export const AppRoutes = () => {
           <Route path="shifts/started/*" element={<PageStartedShift />} />
           <Route path="shifts/finished/:id" element={<PageFinishedShift />} />
           <Route path="requests/pending/*" element={<PageRequestsPending />} />
-          <Route
-            path="requests/considered"
-            element={<h1 className="text text_type_main-extra-large">UNDER DEVELOP</h1>}
-          />
+          <Route path="requests/considered" element={<PageRequestsConsidered />} />
           <Route
             path="users"
             element={<h1 className="text text_type_main-extra-large">UNDER DESIGN</h1>}

@@ -56,6 +56,15 @@ export const api = createApi({
     getPendingRequests: builder.query<IRequest[], string>({
       query: (shiftId) => `/shifts/${shiftId}/requests?status=pending`,
     }),
+    getConsideredRequests: builder.query<IRequest[], string>({
+      query: (shiftId) => `/shifts/${shiftId}/requests`,
+      transformResponse: (response: IRequest[]) => {
+        const transformedResponse = response.filter(
+          (request) => request.status === 'approved' || request.status === 'declined'
+        );
+        return transformedResponse;
+      },
+    }),
     approveRequest: builder.mutation<IRequest, { requestId: string; shiftId: string }>({
       query: (arg) => ({
         url: `/requests/${arg.requestId}/approve`,
@@ -171,6 +180,7 @@ export const {
   useUpdateShiftSettingsMutation,
   useFinishShiftMutation,
   useGetPendingRequestsQuery,
+  useGetConsideredRequestsQuery,
   useApproveRequestMutation,
   useDeclineRequestMutation,
   useGetTasksUnderReviewQuery,
